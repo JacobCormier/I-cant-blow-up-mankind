@@ -1,0 +1,39 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bkuaqsddntr0p"
+path="res://.godot/imported/Rove's-SmolPixelz-4.ttf-8a0049ec052332e9431842fc9c0dc89d.fontdata"
+
+[deps]
+
+source_file="res://resources/assets/fonts/rove_s_smolpixelz/Rove's-SmolPixelz-4.ttf"
+dest_files=["res://.godot/imported/Rove's-SmolPixelz-4.ttf-8a0049ec052332e9431842fc9c0dc89d.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

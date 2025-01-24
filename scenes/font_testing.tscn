@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://clcrspt0r5hnx"]
+
+[ext_resource type="FontFile" uid="uid://cpx2a6d7asdja" path="res://resources/assets/fonts/pixcon/PixCon.ttf" id="1_7cwc5"]
+[ext_resource type="FontFile" uid="uid://bkuaqsddntr0p" path="res://resources/assets/fonts/rove_s_smolpixelz/Rove's-SmolPixelz-4.ttf" id="2_2m3ow"]
+[ext_resource type="FontFile" uid="uid://cbxxdv8cajn81" path="res://resources/assets/fonts/stud_chaos/stud-chaos.ttf" id="3_75r4l"]
+[ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="4_uo2bb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va1ml"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Font_testing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_va1ml")
+
+[node name="PixCon" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 194.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("1_7cwc5")
+theme_override_font_sizes/font_size = 11
+text = "Dogs are cool
+Does this look ok?
+Is it legible enough
+11px is the closest"
+
+[node name="rove_smol" type="Label" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 74.0
+offset_right = 548.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("2_2m3ow")
+theme_override_font_sizes/font_size = 4
+text = "This is rove_smol. Very cute font that looks proper at 4px.
+It is however, wrong."
+
+[node name="stud_chaos" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 195.0
+offset_right = 249.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("3_75r4l")
+theme_override_font_sizes/font_size = 11
+text = "Stud Chaos! 
+This one looks mostly right at 11px"
+
+[node name="upheaval" type="Label" parent="."]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 114.0
+offset_right = 582.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("4_uo2bb")
+theme_override_font_sizes/font_size = 20
+text = "This is upheaval.
+I want this to work please
+20px, a tad large"
