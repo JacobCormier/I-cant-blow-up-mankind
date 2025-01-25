@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var globe_test: MeshInstance3D = $GlobeTest
-const TEST_BUILDING = preload("res://scenes/dev/test_building.tscn")
+const TEST_BUILDING = preload("res://scenes/dev/building_1.tscn")
 
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
@@ -56,22 +56,33 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 	return {"point": point, "normal": normal}	
 	
 func create_block_at_random_point():
-	
 	var sphere_radius = globe_test.mesh.radius
 	var result = random_point_on_sphere(sphere_radius)
 	
 	var point = result["point"]
 	var normal = result["normal"]
 	
-	# print("Random point on sphere:", point)
-	# print("Surface normal:", normal)
-	
 	var new_block = TEST_BUILDING.instantiate()
 	globe_test.add_child(new_block)
-	new_block.position = point
 	
 	new_block.global_transform.origin = point # Position the child at the random point
-	new_block.look_at(point + normal, Vector3.UP) # Align the child with the surface normal
+	
+	# Align the block's up vector with the surface normal
+	var up_vector = normal
+	var forward_vector = Vector3.FORWARD
+	if abs(forward_vector.dot(up_vector)) > 0.99:
+		# If forward is too close to up, choose a different forward vector
+		forward_vector = Vector3.RIGHT
+	
+	var right_vector = up_vector.cross(forward_vector).normalized()
+	forward_vector = right_vector.cross(up_vector).normalized()
+	
+	var basis = Basis(right_vector, up_vector, forward_vector)
+	var transform = new_block.transform
+	transform.origin = point
+	transform.basis = basis
+	new_block.transform = transform
+
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:

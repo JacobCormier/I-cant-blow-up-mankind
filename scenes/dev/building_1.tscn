@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj0wyomdjfqn5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mss4"]
+size = Vector3(30, 50, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4gds7"]
+size = Vector3(20, 20, 20)
+
+[node name="Building" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+mesh = SubResource("BoxMesh_8mss4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.8382, 14.7875)
+mesh = SubResource("BoxMesh_4gds7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.667817, 0.744323, 0.00172973, -0.7443, 0.667812, -0.00673976, -0.00617169, 0.0032135, 0.999976, 0, 40.5492, 14.7875)
+mesh = SubResource("BoxMesh_4gds7")
