@@ -13,22 +13,31 @@ var is_tilting = false
 var current_tilt = 0.0
 var tilt_speed = 2.0
 
-var original_position
+var origin_position
+var current_root_position
 const MAX_RUMBLE_VARIANCE := Vector3(0.25, 0.08, 0)
 
+var is_jumping := false
+var gravity := 10
+var vertical_speed := 0.0
+	
 func _ready() -> void:
-	original_position = position
+	origin_position = position
+	current_root_position = position
 
 func _process(delta: float) -> void:
 	if is_turning:
 		_handle_turning(delta)
+		
+	if is_jumping: 
+		process_jump(delta)
 	#Tilting isn't gonna work yet cause Quaternions suck
 	#if is_tilting:
 		#_handle_tilting(delta)
 		
 	# Random Rumble
-	var random_rumble_x = original_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x)
-	var random_rumble_y = original_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y)
+	var random_rumble_x = current_root_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x)
+	var random_rumble_y = current_root_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y)
 	position = Vector3(random_rumble_x, random_rumble_y, position.z)
 			
 func _handle_turning(delta: float):
@@ -68,4 +77,17 @@ func trigger_turn(direction: PlayerController.TurnDirection = PlayerController.T
 		PlayerController.TurnDirection.RIGHT:
 			target_turn_angle = -MAX_TURN_ANGLE
 			# target_tilt = -MAX_TILT_ANGLE
-	
+
+func trigger_jump():
+	if not is_jumping:
+		vertical_speed = 10
+		is_jumping = true
+		
+func process_jump(delta):
+	if is_jumping: 
+		if vertical_speed <= 0 and current_root_position.y <= origin_position.y:
+			current_root_position = Vector3(current_root_position.x, current_root_position.y, current_root_position.z)
+			is_jumping = false 
+		else:
+			current_root_position = Vector3(current_root_position.x, current_root_position.y + vertical_speed * delta, current_root_position.z)
+			vertical_speed -= gravity * delta

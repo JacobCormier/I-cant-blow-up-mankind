@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b2tjmlptu81xy"]
 
-[ext_resource type="PackedScene" uid="uid://d2bax0x8x0ye7" path="res://resources/assets/models/ICBM/ICBM.fbx" id="1_0ceod"]
+[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="1_0ceod"]
 [ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="2_4oixf"]
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="3_iywlv"]
 [ext_resource type="Script" path="res://scripts/player/rocket_animator.gd" id="4_76p6r"]
