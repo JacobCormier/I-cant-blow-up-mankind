@@ -18,6 +18,7 @@ config/icon="res://resources/assets/png/MochiFace.png"
 [autoload]
 
 MusicManager="*res://scripts/sound/music/music_manager.gd"
+Globals="*res://scripts/globals/globals.gd"
 
 [display]
 
