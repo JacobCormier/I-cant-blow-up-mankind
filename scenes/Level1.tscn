@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b2tjmlptu81xy"]
 
-[ext_resource type="PackedScene" uid="uid://d2bax0x8x0ye7" path="res://resources/assets/models/ICBM/ICBM.fbx" id="1_0ceod"]
+[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="1_0ceod"]
 [ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="2_4oixf"]
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="3_iywlv"]
 [ext_resource type="Script" path="res://scripts/player/rocket_animator.gd" id="4_76p6r"]
@@ -54,7 +54,7 @@ normal_texture = SubResource("NoiseTexture2D_0hec7")
 environment = SubResource("Environment_26xqv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 643.26, 0)
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0.036, 504, 116.027)
@@ -74,5 +74,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 494, 97)
 script = ExtResource("3_iywlv")
 
 [node name="ICBM" parent="Player" instance=ExtResource("1_0ceod")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.320927, 0.947104, 0, -0.947104, 0.320927, 0, 0, 0.763107)
 script = ExtResource("4_76p6r")
