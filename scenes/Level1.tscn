@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2tjmlptu81xy"]
+[gd_scene load_steps=11 format=3 uid="uid://b2tjmlptu81xy"]
 
 [ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="2_4oixf"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="2_xur1j"]
@@ -46,12 +46,6 @@ albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_0hec7")
 
-[sub_resource type="BoxMesh" id="BoxMesh_dqsoy"]
-size = Vector3(0.5, 10, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mphm8"]
-size = Vector3(0.5, 10, 0.5)
-
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -72,17 +66,6 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_dwrjb")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_p3gbj")
-
-[node name="Collider" type="Node3D" parent="GlobeManager/GlobeTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
-
-[node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="GlobeManager/GlobeTest/Collider"]
-mesh = SubResource("BoxMesh_dqsoy")
-
-[node name="Area3D" type="Area3D" parent="GlobeManager/GlobeTest/Collider"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GlobeManager/GlobeTest/Collider/Area3D"]
-shape = SubResource("BoxShape3D_mphm8")
 
 [node name="Player" parent="." instance=ExtResource("2_xur1j")]
 transform = Transform3D(1, 0, 0, 0, 0.320927, 0.947104, 0, -0.947104, 0.320927, 0, 494, 97)

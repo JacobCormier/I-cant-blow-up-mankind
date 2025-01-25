@@ -16,18 +16,8 @@ var orbit_speed_z: float:
 var direction: PlayerController.TurnDirection
 
 func _ready():
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
-	create_block_at_random_point()
+	for x in range(0, 50):
+		create_block_at_random_point()
 	
 func _process(delta: float) -> void:
 		globe_test.rotate_x(ORBIT_SPEED_X * delta)
@@ -38,7 +28,7 @@ func _process(delta: float) -> void:
 		
 
 # Function to generate a random point on the sphere and surface normal
-func random_point_on_sphere(radius: float) -> Dictionary:
+func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	# Random azimuthal angle phi in [0, 2*pi]
 	var phi = randf() * TAU
 	# Random z in [-1, 1]
@@ -48,6 +38,13 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 	# Cartesian coordinates scaled by the sphere's radius
 	var x = radius * local_radius * cos(phi)
 	var y = radius * local_radius * sin(phi)
+	
+	# Make sure the point is only on the bottom half of values
+	# Pretty sure I rolled the globe onto it's side to hide a texture seam,
+	# So it is unexpectedly the x value instead
+	if x > 0:
+		x = -x
+	
 	var point = Vector3(x, y, radius * z)
 	
 	# The surface normal is the normalized position vector
@@ -57,7 +54,7 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 	
 func create_block_at_random_point():
 	var sphere_radius = globe_test.mesh.radius
-	var result = random_point_on_sphere(sphere_radius)
+	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
 	var point = result["point"]
 	var normal = result["normal"]
