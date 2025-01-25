@@ -55,7 +55,7 @@ environment = SubResource("Environment_26xqv")
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0.036, 504, 116.027)
+transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
 
 [node name="GlobeManager" type="Node3D" parent="."]
 script = ExtResource("2_4oixf")

@@ -44,8 +44,10 @@ func _handle_turning(delta: float):
 		# Smoothly interpolate the current angle towards the target angle
 		current_angle = lerp(current_angle, target_turn_angle, turn_speed * delta)
 		
-		# Apply the rotation to the object's Y-axis
+		# Apply the rotation to the object
+		rotation_degrees.x = abs(current_angle)
 		rotation_degrees.y = current_angle
+		rotation_degrees.z = -2*current_angle
 
 		# Check if the current angle is close to the target angle to switch direction
 		if abs(current_angle- target_turn_angle) < 1.0: # A small threshold to detect when to reverse
@@ -58,6 +60,7 @@ func _handle_tilting(delta: float):
 		current_tilt = lerp(current_tilt, target_tilt, tilt_speed * delta)
 		
 		rotation_degrees.z = current_tilt
+		rotation_degrees.y = current_tilt
 		
 		if abs(current_tilt - target_tilt) < 1.0: # A small threshold to detect when to reverse
 			is_tilting = false
@@ -72,10 +75,10 @@ func trigger_turn(direction: PlayerController.TurnDirection = PlayerController.T
 			target_turn_angle = 0.0
 			# target_tilt = 0.0
 		PlayerController.TurnDirection.LEFT:
-			target_turn_angle = MAX_TURN_ANGLE
+			target_turn_angle = -MAX_TURN_ANGLE
 			# target_tilt = MAX_TILT_ANGLE
 		PlayerController.TurnDirection.RIGHT:
-			target_turn_angle = -MAX_TURN_ANGLE
+			target_turn_angle = MAX_TURN_ANGLE
 			# target_tilt = -MAX_TILT_ANGLE
 
 func trigger_jump():

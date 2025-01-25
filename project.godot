@@ -23,8 +23,7 @@ MusicManager="*res://scripts/sound/music/music_manager.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=4
-window/size/always_on_top=true
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
