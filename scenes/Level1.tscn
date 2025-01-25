@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2tjmlptu81xy"]
+[gd_scene load_steps=6 format=3 uid="uid://b2tjmlptu81xy"]
 
-[ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="2_4oixf"]
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="1_n7di7"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="2_xur1j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
@@ -22,30 +22,6 @@ fog_depth_begin = 200.0
 fog_depth_end = 200.0
 volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_dwrjb"]
-radius = 500.0
-height = 1000.0
-radial_segments = 120
-rings = 64
-
-[sub_resource type="Gradient" id="Gradient_k5i1u"]
-colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5yhah"]
-noise_type = 3
-frequency = 0.0034
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
-seamless = true
-as_normal_map = true
-color_ramp = SubResource("Gradient_k5i1u")
-noise = SubResource("FastNoiseLite_5yhah")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3gbj"]
-albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_0hec7")
-
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -57,15 +33,7 @@ transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.260
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
 
-[node name="GlobeManager" type="Node3D" parent="."]
-script = ExtResource("2_4oixf")
-
-[node name="GlobeTest" type="MeshInstance3D" parent="GlobeManager"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("SphereMesh_dwrjb")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_p3gbj")
+[node name="GameGlobe" parent="." instance=ExtResource("1_n7di7")]
 
 [node name="Player" parent="." instance=ExtResource("2_xur1j")]
 transform = Transform3D(1, 0, 0, 0, 0.320927, 0.947104, 0, -0.947104, 0.320927, 0, 494, 97)

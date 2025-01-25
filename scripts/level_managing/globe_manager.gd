@@ -1,6 +1,8 @@
 extends Node3D
 
-@onready var globe_test: MeshInstance3D = $GlobeTest
+@onready var visual_container: Node3D = $VisualContainer
+@onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
+
 const TEST_BUILDING = preload("res://scenes/dev/building_1.tscn")
 
 const ORBIT_SPEED_X = 0.3
@@ -18,13 +20,14 @@ var direction: PlayerController.TurnDirection
 func _ready():
 	for x in range(0, 50):
 		create_block_at_random_point()
+	Engine.time_scale = 0.1
 	
 func _process(delta: float) -> void:
-		globe_test.rotate_x(ORBIT_SPEED_X * delta)
+		visual_container.rotate_x(ORBIT_SPEED_X * delta)
 		
 		var transition_speed = 1.5
 		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * transition_speed)
-		globe_test.rotate_z(orbit_speed_z * delta)
+		visual_container.rotate_z(orbit_speed_z * delta)
 		
 
 # Function to generate a random point on the sphere and surface normal
@@ -40,10 +43,8 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	var y = radius * local_radius * sin(phi)
 	
 	# Make sure the point is only on the bottom half of values
-	# Pretty sure I rolled the globe onto it's side to hide a texture seam,
-	# So it is unexpectedly the x value instead
-	if x > 0:
-		x = -x
+	if y > 0:
+		y = -y
 	
 	var point = Vector3(x, y, radius * z)
 	
@@ -53,14 +54,14 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	return {"point": point, "normal": normal}	
 	
 func create_block_at_random_point():
-	var sphere_radius = globe_test.mesh.radius
+	var sphere_radius = globe_visual.mesh.radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
 	var point = result["point"]
 	var normal = result["normal"]
 	
 	var new_block = TEST_BUILDING.instantiate()
-	globe_test.add_child(new_block)
+	visual_container.add_child(new_block)
 	
 	new_block.global_transform.origin = point # Position the child at the random point
 	
