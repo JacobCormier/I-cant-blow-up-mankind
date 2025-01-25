@@ -29,21 +29,23 @@ height = 500.0
 radial_segments = 120
 rings = 64
 
-[sub_resource type="Gradient" id="Gradient_w4omr"]
-offsets = PackedFloat32Array(0.254098, 0.737705)
-colors = PackedColorArray(0.808594, 0.808594, 0.808594, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_k5i1u"]
+colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ruosg"]
-frequency = 0.0391
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5yhah"]
+noise_type = 3
+frequency = 0.0034
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rc7kn"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
 seamless = true
-color_ramp = SubResource("Gradient_w4omr")
-noise = SubResource("FastNoiseLite_ruosg")
+as_normal_map = true
+color_ramp = SubResource("Gradient_k5i1u")
+noise = SubResource("FastNoiseLite_5yhah")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3gbj"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
-roughness_texture = SubResource("NoiseTexture2D_rc7kn")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [node name="Level1" type="Node3D"]
 
@@ -56,16 +58,20 @@ transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.260
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0.036, 247, 116.027)
 
-[node name="ICBM" parent="." instance=ExtResource("1_0ceod")]
-transform = Transform3D(1.6423, -0.570714, -4.98934e-08, 0, -4.37114e-08, 2, -1.14143, -0.821149, -7.17871e-08, 0, 237, 97)
-
 [node name="GlobeManager" type="Node3D" parent="."]
 script = ExtResource("2_4oixf")
 
 [node name="GlobeTest" type="MeshInstance3D" parent="GlobeManager"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("SphereMesh_dwrjb")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_p3gbj")
 
 [node name="TestBuilding" parent="." instance=ExtResource("3_jshj4")]
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 237, 97)
+
+[node name="ICBM" parent="Player" instance=ExtResource("1_0ceod")]
+transform = Transform3D(0.866025, -0.5, 1.49012e-08, 0, 2.98023e-08, 1, -0.5, -0.866025, 2.58096e-08, 0, 0, 0)
