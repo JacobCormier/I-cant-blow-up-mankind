@@ -3,9 +3,16 @@ extends Node3D
 @onready var globe_test: MeshInstance3D = $GlobeTest
 const TEST_BUILDING = preload("res://scenes/dev/test_building.tscn")
 
-var orbit_speed_x = 0.3
+const ORBIT_SPEED_X = 0.3
+var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 0.3
-var orbit_speed_z : float
+
+var orbit_speed_z: float:
+	set(value):
+		value = clampf(value, -MAX_Z_ORBIT_SPEED, MAX_Z_ORBIT_SPEED)
+		orbit_speed_z = value
+
+
 var direction: PlayerController.TurnDirection
 
 func _ready():
@@ -23,10 +30,11 @@ func _ready():
 	create_block_at_random_point()
 	
 func _process(delta: float) -> void:
-		globe_test.rotate_x(orbit_speed_x * delta)
-		globe_test.rotate_z(orbit_speed_z * delta)
+		globe_test.rotate_x(ORBIT_SPEED_X * delta)
 		
-		print(orbit_speed_z)
+		var transition_speed = 1.0
+		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * transition_speed)
+		globe_test.rotate_z(orbit_speed_z * delta)
 		
 
 # Function to generate a random point on the sphere and surface normal
@@ -68,8 +76,8 @@ func create_block_at_random_point():
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:
 		PlayerController.TurnDirection.NONE:
-			orbit_speed_z = 0.0
+			orbit_speed_z_target = 0.0
 		PlayerController.TurnDirection.LEFT:
-			orbit_speed_z = -MAX_Z_ORBIT_SPEED
+			orbit_speed_z_target = -MAX_Z_ORBIT_SPEED
 		PlayerController.TurnDirection.RIGHT:
-			orbit_speed_z = MAX_Z_ORBIT_SPEED
+			orbit_speed_z_target = MAX_Z_ORBIT_SPEED
