@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwtn180ee6nw8"]
+[gd_scene load_steps=9 format=3 uid="uid://cwtn180ee6nw8"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_h3d2r"]
-[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
+[ext_resource type="PackedScene" uid="uid://d2bax0x8x0ye7" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
 [ext_resource type="Script" path="res://scripts/player/rocket_animator.gd" id="3_btq88"]
 [ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="4_gjylr"]
-[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
+[ext_resource type="Texture2D" uid="uid://csk6toa63g00" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7u6t"]
 resource_local_to_scene = true
@@ -12,6 +12,12 @@ albedo_texture = ExtResource("4_rsaft")
 emission_enabled = true
 emission = Color(0.923906, 0, 0.246785, 1)
 emission_energy_multiplier = 0.15
+
+[sub_resource type="BoxMesh" id="BoxMesh_58y6q"]
+size = Vector3(0.5, 10, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2yam"]
+size = Vector3(0.5, 10, 0.5)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_h3d2r")
@@ -30,5 +36,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 
 [node name="rocket_particles" parent="ICBM" instance=ExtResource("4_gjylr")]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
+
+[node name="Collider" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="Collider"]
+mesh = SubResource("BoxMesh_58y6q")
+
+[node name="Area3D" type="Area3D" parent="Collider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D"]
+shape = SubResource("BoxShape3D_e2yam")
 
 [editable path="ICBM"]
