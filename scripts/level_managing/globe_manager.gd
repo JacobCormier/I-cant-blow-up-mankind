@@ -20,7 +20,6 @@ var direction: PlayerController.TurnDirection
 func _ready():
 	for x in range(0, 50):
 		create_block_at_random_point()
-	Engine.time_scale = 0.1
 	
 func _process(delta: float) -> void:
 		visual_container.rotate_x(ORBIT_SPEED_X * delta)
