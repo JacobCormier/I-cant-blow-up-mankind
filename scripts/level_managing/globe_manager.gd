@@ -63,8 +63,8 @@ func create_block_at_random_point():
 	var point = result["point"]
 	var normal = result["normal"]
 	
-	print("Random point on sphere:", point)
-	print("Surface normal:", normal)
+	# print("Random point on sphere:", point)
+	# print("Surface normal:", normal)
 	
 	var new_block = TEST_BUILDING.instantiate()
 	globe_test.add_child(new_block)
