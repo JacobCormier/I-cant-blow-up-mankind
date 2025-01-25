@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cuxn7vqqfy5fc"]
 
-[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM.fbx" id="2_rb7m4"]
+[ext_resource type="PackedScene" uid="uid://d2bax0x8x0ye7" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_rb7m4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yo2q6"]
 sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
