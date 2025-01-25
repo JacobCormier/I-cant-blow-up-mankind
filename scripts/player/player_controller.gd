@@ -2,7 +2,8 @@ class_name PlayerController
 extends Node3D
 
 @onready var icbm_model: Node3D = $ICBM
-@onready var globe_test: MeshInstance3D = $"../GlobeManager/GlobeTest"
+@onready var globe_manager: Node3D = $"../GlobeManager"
+
 
 var current_turn_direction = TurnDirection.NONE
 enum TurnDirection {NONE, LEFT, RIGHT}
@@ -39,5 +40,5 @@ func _input(event: InputEvent) -> void:
 		icbm_model.trigger_turn(current_turn_direction)
 		
 	# Next is Left right movement
-	
+	globe_manager.pass_in_movement_direction(current_turn_direction)
 	

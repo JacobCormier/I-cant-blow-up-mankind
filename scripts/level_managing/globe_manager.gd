@@ -4,8 +4,8 @@ extends Node3D
 const TEST_BUILDING = preload("res://scenes/test_building.tscn")
 
 var orbit_speed_x = 0.3
-const MAX_Z_ORBIT_SPEED = 0.2
-@export_range(-MAX_Z_ORBIT_SPEED, MAX_Z_ORBIT_SPEED) var orbit_speed_z : float
+const MAX_Z_ORBIT_SPEED = 0.3
+var orbit_speed_z : float
 var direction: PlayerController.TurnDirection
 
 func _ready():
@@ -25,6 +25,8 @@ func _ready():
 func _process(delta: float) -> void:
 		globe_test.rotate_x(orbit_speed_x * delta)
 		globe_test.rotate_z(orbit_speed_z * delta)
+		
+		print(orbit_speed_z)
 		
 
 # Function to generate a random point on the sphere and surface normal
@@ -64,4 +66,10 @@ func create_block_at_random_point():
 	new_block.look_at(point + normal, Vector3.UP) # Align the child with the surface normal
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
-	pass
+	match direction:
+		PlayerController.TurnDirection.NONE:
+			orbit_speed_z = 0.0
+		PlayerController.TurnDirection.LEFT:
+			orbit_speed_z = -MAX_Z_ORBIT_SPEED
+		PlayerController.TurnDirection.RIGHT:
+			orbit_speed_z = MAX_Z_ORBIT_SPEED
