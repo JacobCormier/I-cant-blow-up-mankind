@@ -18,7 +18,7 @@ var orbit_speed_z: float:
 var direction: PlayerController.TurnDirection
 
 func _ready():
-	for x in range(0, 50):
+	for x in range(0, 150):
 		create_block_at_random_point()
 	
 func _process(delta: float) -> void:
