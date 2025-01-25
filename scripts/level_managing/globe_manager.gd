@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var globe_test: MeshInstance3D = $GlobeTest
-const TEST_BUILDING = preload("res://scenes/test_building.tscn")
+const TEST_BUILDING = preload("res://scenes/dev/test_building.tscn")
 
 var orbit_speed_x = 0.3
 const MAX_Z_ORBIT_SPEED = 0.3
