@@ -8,11 +8,8 @@
 [node name="Player" type="Node3D"]
 script = ExtResource("1_h3d2r")
 
-[node name="ICBMTransformParent" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.320927, 0.947104, 0, -0.947104, 0.320927, 0, 0, 0.763107)
-
-[node name="ICBM" parent="ICBMTransformParent" instance=ExtResource("2_3hlt2")]
+[node name="ICBM" parent="." instance=ExtResource("2_3hlt2")]
 script = ExtResource("3_btq88")
 
-[node name="rocket_particles" parent="ICBMTransformParent/ICBM" instance=ExtResource("4_gjylr")]
+[node name="rocket_particles" parent="ICBM" instance=ExtResource("4_gjylr")]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)

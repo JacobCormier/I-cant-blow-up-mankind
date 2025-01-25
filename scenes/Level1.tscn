@@ -75,4 +75,4 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_p3gbj")
 
 [node name="Player" parent="." instance=ExtResource("2_xur1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 494, 97)
+transform = Transform3D(1, 0, 0, 0, 0.320927, 0.947104, 0, -0.947104, 0.320927, 0, 494, 97)

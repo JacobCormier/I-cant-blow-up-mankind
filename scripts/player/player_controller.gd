@@ -1,9 +1,8 @@
 class_name PlayerController
 extends Node3D
 
-@onready var icbm_model: Node3D = $ICBMTransformParent/ICBM
+@onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GlobeManager"
-
 
 var current_turn_direction = TurnDirection.NONE
 enum TurnDirection {NONE, LEFT, RIGHT}
