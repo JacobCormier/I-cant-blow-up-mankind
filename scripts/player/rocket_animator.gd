@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var engine = $CenterEngine
+
 var target_turn_angle = 0.0 # Maximum angle in degrees for left/right movement
 const MAX_TURN_ANGLE = 30.0
 var is_turning = false
@@ -18,14 +20,15 @@ var current_root_position
 const MAX_RUMBLE_VARIANCE := Vector3(0.25, 0.08, 0)
 
 var is_jumping := false
-var gravity := 10
+var jump_strength := 40
+var gravity := 30
 var vertical_speed := 0.0
 	
 func _ready() -> void:
 	origin_position = position
 	current_root_position = position
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	if is_turning:
 		_handle_turning(delta)
 		
@@ -38,7 +41,7 @@ func _process(delta: float) -> void:
 	# Random Rumble
 	var random_rumble_x = current_root_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x)
 	var random_rumble_y = current_root_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y)
-	position = Vector3(random_rumble_x, random_rumble_y, position.z)
+	position = Vector3(random_rumble_x, random_rumble_y, current_root_position.z)
 			
 func _handle_turning(delta: float):
 		# Smoothly interpolate the current angle towards the target angle
@@ -83,14 +86,14 @@ func trigger_turn(direction: PlayerController.TurnDirection = PlayerController.T
 
 func trigger_jump():
 	if not is_jumping:
-		vertical_speed = 10
+		vertical_speed = jump_strength
 		is_jumping = true
 		
 func process_jump(delta):
 	if is_jumping: 
-		if vertical_speed <= 0 and current_root_position.y <= origin_position.y:
+		if vertical_speed <= 0 and current_root_position.z <= origin_position.z:
 			current_root_position = Vector3(current_root_position.x, current_root_position.y, current_root_position.z)
 			is_jumping = false 
 		else:
-			current_root_position = Vector3(current_root_position.x, current_root_position.y + vertical_speed * delta, current_root_position.z)
+			current_root_position = Vector3(current_root_position.x, current_root_position.y, current_root_position.z + vertical_speed * delta)
 			vertical_speed -= gravity * delta

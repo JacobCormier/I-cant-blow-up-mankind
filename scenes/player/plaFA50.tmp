@@ -19,13 +19,7 @@ script = ExtResource("1_h3d2r")
 [node name="ICBM" parent="." instance=ExtResource("2_3hlt2")]
 script = ExtResource("3_btq88")
 
-[node name="RightEngine" parent="ICBM" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
-
 [node name="CenterEngine" parent="ICBM" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
-
-[node name="LeftEngine" parent="ICBM" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 
 [node name="rocket_particles" parent="ICBM" instance=ExtResource("4_gjylr")]
