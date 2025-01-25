@@ -1,4 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bypkrts3xqu66"]
+[gd_scene load_steps=10 format=3 uid="uid://bypkrts3xqu66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ss8nu"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Curve" id="Curve_l425y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.95315, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1piir"]
+curve = SubResource("Curve_l425y")
+
+[sub_resource type="Gradient" id="Gradient_e5jxw"]
+offsets = PackedFloat32Array(0, 0.00909091, 0.0454545, 0.109091, 0.945455)
+colors = PackedColorArray(1, 0.796875, 0, 1, 1, 0.492188, 0, 1, 0.78125, 0, 0, 1, 0.105469, 0.105469, 0.105469, 1, 0.695313, 0.58667, 0.58667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_os1y4"]
+gradient = SubResource("Gradient_e5jxw")
 
 [sub_resource type="Curve" id="Curve_dvnpv"]
 _data = [Vector2(0.0144928, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.355072, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.70604, 0.0, 0, 0]
@@ -17,6 +34,8 @@ linear_accel_min = -370.0
 linear_accel_max = -300.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_sau1p")
+color_ramp = SubResource("GradientTexture1D_os1y4")
+alpha_curve = SubResource("CurveTexture_1piir")
 
 [sub_resource type="SphereMesh" id="SphereMesh_4nhqo"]
 
@@ -24,6 +43,7 @@ scale_curve = SubResource("CurveTexture_sau1p")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.45442, -0.0541382)
+material_override = SubResource("StandardMaterial3D_ss8nu")
 amount = 128
 lifetime = 0.38
 preprocess = 1.0
