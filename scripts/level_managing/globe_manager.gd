@@ -7,18 +7,17 @@ var orbit_speed = 0.5
 
 func _ready():
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout	
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout	
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout	
 	create_block_at_random_point()
-	await get_tree().create_timer(1.0).timeout
-	create_block_at_random_point()	
+	create_block_at_random_point()
+	create_block_at_random_point()
+	create_block_at_random_point()
+	create_block_at_random_point()
+	create_block_at_random_point()
+	create_block_at_random_point()
 	
 func _process(delta: float) -> void:
 		globe_test.rotate_x(orbit_speed * delta)
