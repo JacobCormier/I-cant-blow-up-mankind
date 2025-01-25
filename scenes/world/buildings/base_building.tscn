@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://jiikdlvsrooo"]
+
+[node name="base_building" type="Node3D"]
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Collider" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="Collider"]
