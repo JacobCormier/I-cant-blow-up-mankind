@@ -5,7 +5,7 @@ const TEST_BUILDING = preload("res://scenes/dev/test_building.tscn")
 
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
-const MAX_Z_ORBIT_SPEED = 0.3
+const MAX_Z_ORBIT_SPEED = 0.8
 
 var orbit_speed_z: float:
 	set(value):
@@ -32,7 +32,7 @@ func _ready():
 func _process(delta: float) -> void:
 		globe_test.rotate_x(ORBIT_SPEED_X * delta)
 		
-		var transition_speed = 1.0
+		var transition_speed = 1.5
 		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * transition_speed)
 		globe_test.rotate_z(orbit_speed_z * delta)
 		
