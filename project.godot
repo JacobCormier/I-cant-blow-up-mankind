@@ -19,7 +19,7 @@ config/icon="res://resources/assets/png/MochiFace.png"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=4
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -27,6 +27,15 @@ window/stretch/aspect="expand"
 
 import/blender/enabled=false
 
+[navigation]
+
+3d/default_cell_size=7.87
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=0
+scaling_3d/scale=2.0
+textures/decals/filter=0
+textures/light_projectors/filter=0
