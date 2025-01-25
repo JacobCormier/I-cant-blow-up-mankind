@@ -7,8 +7,6 @@ extends Node3D
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 
-const TEST_BUILDING = preload("res://scenes/dev/building_1.tscn")
-
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 0.8
@@ -23,7 +21,9 @@ var direction: PlayerController.TurnDirection
 
 func _ready():
 	for x in range(0, 150):
-		create_block_at_random_point()
+		var size = Globals.level_1_buildings.size()
+		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
+		create_object_at_random_point(new_object)
 	
 func _process(delta: float) -> void:
 		visual_container.rotate_x(ORBIT_SPEED_X * delta)
@@ -56,17 +56,17 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	
 	return {"point": point, "normal": normal}	
 	
-func create_block_at_random_point():
+func create_object_at_random_point(object: PackedScene):
 	var sphere_radius = globe_visual.mesh.radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
 	var point = result["point"]
 	var normal = result["normal"]
 	
-	var new_block = TEST_BUILDING.instantiate()
-	visual_container.add_child(new_block)
+	var new_object = object.instantiate()
+	visual_container.add_child(new_object)
 	
-	new_block.global_transform.origin = point # Position the child at the random point
+	new_object.global_transform.origin = point # Position the child at the random point
 	
 	# Align the block's up vector with the surface normal
 	var up_vector = normal
@@ -79,10 +79,10 @@ func create_block_at_random_point():
 	forward_vector = right_vector.cross(up_vector).normalized()
 	
 	var basis = Basis(right_vector, up_vector, forward_vector)
-	var transform = new_block.transform
+	var transform = new_object.transform
 	transform.origin = point
 	transform.basis = basis
-	new_block.transform = transform
+	new_object.transform = transform
 
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
