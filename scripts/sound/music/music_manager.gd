@@ -19,7 +19,6 @@ func _ready():
 func play_music_sequence():
 	music_player.stream = THEME_INTRO_AND_VERSE
 	music_player.play()
-	print(music_player.volume_db)
 	music_player.finished.connect(_on_theme_intro_finished)
 
 func _on_theme_intro_finished():

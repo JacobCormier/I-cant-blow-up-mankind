@@ -1,5 +1,9 @@
 extends Node3D
 
+# Jacob Cormier 2025-01-25
+# Add a radius for where the game takes place,
+# and a different radius for the visual of the mesh
+
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 
@@ -89,3 +93,7 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 			orbit_speed_z_target = -MAX_Z_ORBIT_SPEED
 		PlayerController.TurnDirection.RIGHT:
 			orbit_speed_z_target = MAX_Z_ORBIT_SPEED
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	print(area)
