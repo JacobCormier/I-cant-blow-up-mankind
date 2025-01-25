@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2tjmlptu81xy"]
+
+[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM.fbx" id="1_0ceod"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
+
+[sub_resource type="Environment" id="Environment_26xqv"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 200.0
+fog_depth_end = 200.0
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dwrjb"]
+radius = 250.0
+height = 500.0
+radial_segments = 120
+rings = 64
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3gbj"]
+albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_scw36"]
+size = Vector3(50, 50, 50)
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_26xqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0.036, 247, 116.027)
+
+[node name="GlobeTest" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_dwrjb")
+surface_material_override/0 = SubResource("StandardMaterial3D_p3gbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GlobeTest"]
+mesh = SubResource("BoxMesh_scw36")
+
+[node name="ICBM" parent="." instance=ExtResource("1_0ceod")]
+transform = Transform3D(1.6423, -0.570714, -4.98934e-08, 0, -4.37114e-08, 2, -1.14143, -0.821149, -7.17871e-08, 0, 237, 97)
