@@ -60,62 +60,6 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 
 # Function to generate a random point on the sphere and surface normal
 func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
-	return random_point_on_bottom_of_sphere3(radius)
-	# Random azimuthal angle phi in [0, 2*pi]
-	var phi = randf() * TAU
-	# This is a random value from -1 to 0,
-	# but then when the orb rotates, those values are not on the bottom anymore
-	# Random z in [-1, 0]
-	var z = randf() - 1
-	# Compute the radius in the xy-plane
-	var local_radius = sqrt(1.0 - z * z)
-	# Cartesian coordinates scaled by the sphere's radius
-	var x = radius * local_radius * cos(phi)
-	var y = radius * local_radius * sin(phi)
-	
-	var point = Vector3(x, y, radius * z)
-	
-	# The surface normal is the normalized position vector
-	var normal = point.normalized()
-	
-	return {"point": point, "normal": normal}	
-	
-func random_point_on_bottom_of_sphere2(radius: float) -> Dictionary:
-	# Get the sphere's global transform
-	var sphere_transform = globe_visual.global_transform
-
-	# Define the global down direction
-	var global_down = Vector3(0, -1, 0)
-
-	# Transform global down to the sphere's local space manually (reverse the rotation)
-	var sphere_rotation = sphere_transform.basis
-	var bottom_direction_local = sphere_rotation.transposed() * global_down
-	bottom_direction_local = bottom_direction_local.normalized()
-
-	# Generate a random point on the lower hemisphere in local space
-	var phi = randf() * TAU  # Random azimuthal angle phi in [0, 2*pi]
-	var z = -randf()         # Random z in [-1, 0] (bottom half only)
-	var local_radius = sqrt(1.0 - z * z)
-	var x = radius * local_radius * cos(phi)
-	var y = radius * local_radius * sin(phi)
-	var local_point = Vector3(x, y, radius * z)
-
-	# Reverse the sphere's rotation (apply the inverse rotation)
-	var rotated_point = sphere_rotation.transposed() * local_point
-
-	# Rotate the point by an additional 90 degrees about the local X-axis
-	var rotation_offset = Basis(Vector3(1, 0, 0), deg_to_rad(-90))  # 90-degree rotation around the X-axis
-	rotated_point = rotation_offset * rotated_point
-
-	# Transform the rotated point to global space
-	var global_point = sphere_transform.origin + rotated_point
-
-	# Compute the surface normal in global space
-	var normal = (global_point - sphere_transform.origin).normalized()
-
-	return {"point": global_point, "normal": normal}
-	
-func random_point_on_bottom_of_sphere3(radius: float) -> Dictionary:
 	# Get the sphere's global transform
 	var sphere_transform = globe_visual.global_transform
 
@@ -202,7 +146,6 @@ func place_object_at_random_point(object: Node3D):
 	transform.origin = point
 	transform.basis = basis
 	object.transform = transform
-	print(transform)
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:
