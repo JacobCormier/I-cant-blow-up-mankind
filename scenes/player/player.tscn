@@ -26,7 +26,6 @@ script = ExtResource("1_h3d2r")
 
 [node name="ICBM" parent="." instance=ExtResource("2_3hlt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
-visible = false
 script = ExtResource("3_btq88")
 
 [node name="RightEngine" parent="ICBM" index="2"]
@@ -46,7 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 script = ExtResource("6_y6hog")
 
 [node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="Collider"]
-visible = false
 mesh = SubResource("BoxMesh_58y6q")
 
 [node name="Area3D" type="Area3D" parent="Collider"]

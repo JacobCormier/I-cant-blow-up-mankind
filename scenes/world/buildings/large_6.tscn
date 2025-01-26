@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://baburhyxoqd4u"]
+
+[ext_resource type="PackedScene" uid="uid://jiikdlvsrooo" path="res://scenes/world/buildings/base_building.tscn" id="1_ofyy4"]
+[ext_resource type="PackedScene" uid="uid://dljgmq3y0wsd2" path="res://resources/assets/models/kenney_buildings/large_buildingF.fbx" id="2_8a10r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s58wo"]
+size = Vector3(48.305, 27.105, 18.23)
+
+[node name="base_building" instance=ExtResource("1_ofyy4")]
+
+[node name="large_buildingF" parent="Visual" index="0" instance=ExtResource("2_8a10r")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5318, 0)
+shape = SubResource("BoxShape3D_s58wo")

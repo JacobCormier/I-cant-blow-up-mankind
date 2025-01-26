@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dccqs0kuycb64"]
 
 [ext_resource type="PackedScene" uid="uid://jiikdlvsrooo" path="res://scenes/world/buildings/base_building.tscn" id="1_884m3"]
-[ext_resource type="PackedScene" uid="uid://c8qs4fvlf74kv" path="res://resources/assets/models/kenney_buildings/skyscraperA.fbx" id="2_k0r2c"]
+[ext_resource type="PackedScene" uid="uid://ddnjpbag5cs8y" path="res://resources/assets/models/kenney_buildings/skyscraperA.fbx" id="2_k0r2c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pihfv"]
 size = Vector3(25, 75, 25)

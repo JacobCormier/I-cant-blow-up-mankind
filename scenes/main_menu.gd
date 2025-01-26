@@ -19,14 +19,15 @@ const TIME_SCALE = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	setup_tween_animation()
+	start_tween_animation()
 	current_root_position = player.position
 	launchPad_root_position = launchPad.position
 	camera_root_position = camera_3d.position
 
+func trigger_dialogue() -> void:
+	Engine.time_scale = 0
+	
 func end_sequence() -> void:
-	# Caleb Reath
-	# Trigger next scene
 	get_tree().change_scene_to_packed(LEVEL_1)
 	
 func end_launch_shake() -> void:
@@ -59,7 +60,7 @@ func rumble(node, root_position, x_scale = 1, y_scale = 1):
 	var random_rumble_y = root_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y) * y_scale
 	node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
 
-func setup_tween_animation():
+func start_tween_animation():
 	# Lid Opening halfway
 	tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN)
@@ -106,4 +107,7 @@ func setup_tween_animation():
 	tween.parallel().tween_property(camera_3d, "rotation_degrees:y", 0, TIME_SCALE * 8)
 	tween.parallel().tween_property(camera_3d, "rotation_degrees:z", 0, TIME_SCALE * 8)
 	tween.parallel().tween_property(game_globe, "rotation_degrees:x", 180, TIME_SCALE * 12)
+	#tween.parallel().tween_property(game_globe, "rotation_degrees:x", 1800000, TIME_SCALE * 120000)
+	#tween.tween_callback(trigger_dialogue)
+	tween.tween_interval(1)
 	tween.tween_callback(end_sequence)
