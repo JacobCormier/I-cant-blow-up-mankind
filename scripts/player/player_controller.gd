@@ -1,16 +1,21 @@
 class_name PlayerController
 extends Node3D
 
+signal on_player_death
+
 @onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GameGlobe"
 
-
-var current_turn_direction = TurnDirection.NONE
 enum TurnDirection {NONE, LEFT, RIGHT}
+var current_turn_direction = TurnDirection.NONE
+
 
 var is_input_left := false
 var is_input_right := false
 var is_input_jumping := false
+
+func _ready() -> void:
+	on_player_death.connect(_trigger_player_death)
 
 func _input(event: InputEvent) -> void:
 	# Read input Actions
@@ -51,3 +56,5 @@ func _input(event: InputEvent) -> void:
 	# Next is Left right movement
 	globe_manager.pass_in_movement_direction(current_turn_direction)
 	
+func _trigger_player_death() -> void:
+	print("YOU DIED!")
