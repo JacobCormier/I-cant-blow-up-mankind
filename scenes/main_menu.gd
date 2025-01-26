@@ -30,7 +30,7 @@ func trigger_dialogue() -> void:
 	Engine.time_scale = 0
 	
 func end_sequence() -> void:
-	get_tree().change_scene_to_packed(LEVEL_1)
+	get_tree().change_scene_to_packed(Globals.LEVEL_1)
 	
 func end_launch_shake() -> void:
 	is_launching = false

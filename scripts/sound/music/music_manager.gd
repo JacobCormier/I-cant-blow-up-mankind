@@ -13,7 +13,7 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	music_player.pitch_scale = 1.0
 	add_child(music_player)
-	play_music_sequence()
+	
 
 func play_music_sequence():
 	music_player.stream = THEME_INTRO_AND_VERSE

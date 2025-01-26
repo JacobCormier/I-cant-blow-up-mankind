@@ -30,7 +30,7 @@ func do_main_menu_tween(tween, attribute, target, time):
 
 func _ready():
 	globe_visual_a = globe_visual
-	area_3d.on_object_ready_for_reset.connect(_reset_object)
+	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	for x in range(0, 450):
@@ -167,7 +167,8 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 		PlayerController.TurnDirection.RIGHT:
 			orbit_speed_z_target = MAX_Z_ORBIT_SPEED
 
-func _reset_object(object: Node3D) -> void:
+func _reset_building_for_points(object: Node3D) -> void:
+	# Technically, ANYTHING we reset with this is generating pointsd >:(
 	game_ui.score += 10
 	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
 		var size = Globals.level_1_buildings.size()
@@ -175,3 +176,6 @@ func _reset_object(object: Node3D) -> void:
 		create_object_at_random_point(new_object)
 	else:
 		place_object_at_random_point(object)
+		
+func _reset_object(object: Node3D) -> void:
+	place_object_at_random_point(object)

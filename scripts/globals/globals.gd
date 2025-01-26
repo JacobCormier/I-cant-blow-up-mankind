@@ -2,6 +2,8 @@ extends Node
 
 signal on_fuel_pickup(object: Node3D)
 
+const LEVEL_1 = preload("res://scenes/Level1.tscn")
+
 const level_1_buildings = [
 	preload("res://scenes/world/buildings/large_1.tscn"),
 	preload("res://scenes/world/buildings/large_2.tscn"),
