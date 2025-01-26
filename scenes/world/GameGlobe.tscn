@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1rnwuckdbdon"]
+[gd_scene load_steps=10 format=3 uid="uid://c1rnwuckdbdon"]
 
 [ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="1_x0yea"]
+[ext_resource type="Script" path="res://scripts/level_managing/world_obstacle_collider.gd" id="2_w7nhy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_smda0"]
 radius = 500.0
@@ -46,6 +47,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 405.078, 268.307)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_w7nhy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_2bd5s")
@@ -54,4 +58,4 @@ shape = SubResource("BoxShape3D_2bd5s")
 mesh = SubResource("BoxMesh_mannl")
 skeleton = NodePath("../..")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]

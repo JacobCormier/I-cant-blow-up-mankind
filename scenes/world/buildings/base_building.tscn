@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://jiikdlvsrooo"]
+[gd_scene load_steps=2 format=3 uid="uid://jiikdlvsrooo"]
+
+[ext_resource type="Script" path="res://scripts/level_managing/obstacle_collider.gd" id="1_nm32v"]
 
 [node name="base_building" type="Node3D"]
 
@@ -7,3 +9,6 @@
 [node name="Collider" type="Node3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="Collider"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_nm32v")
