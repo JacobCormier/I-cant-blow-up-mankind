@@ -39,5 +39,9 @@ transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.
 [node name="Player" parent="." instance=ExtResource("2_xur1j")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
 
+<<<<<<< HEAD
 [node name="GameUI" parent="." instance=ExtResource("3_7b1lg")]
 visible = false
+=======
+[editable path="GameGlobe"]
+>>>>>>> spawn_fix

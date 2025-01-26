@@ -12,6 +12,9 @@ const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 0.8
 
+# Debug flag to change building movement behaviour to spawn rather than move
+const CREATE_AND_STAY_INSTEAD_OF_MOVE = false
+
 var orbit_speed_z: float:
 	set(value):
 		value = clampf(value, -MAX_Z_ORBIT_SPEED, MAX_Z_ORBIT_SPEED)
@@ -23,7 +26,7 @@ var direction: PlayerController.TurnDirection
 func _ready():
 	area_3d.on_object_ready_for_reset.connect(_reset_object)
 	
-	for x in range(0, 150):
+	for x in range(0, 450):
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
 		create_object_at_random_point(new_object)
@@ -57,12 +60,13 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 
 # Function to generate a random point on the sphere and surface normal
 func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
+	return random_point_on_bottom_of_sphere3(radius)
 	# Random azimuthal angle phi in [0, 2*pi]
 	var phi = randf() * TAU
 	# This is a random value from -1 to 0,
 	# but then when the orb rotates, those values are not on the bottom anymore
 	# Random z in [-1, 0]
-	var z = randf() - 1.0
+	var z = randf() - 1
 	# Compute the radius in the xy-plane
 	var local_radius = sqrt(1.0 - z * z)
 	# Cartesian coordinates scaled by the sphere's radius
@@ -76,6 +80,73 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	
 	return {"point": point, "normal": normal}	
 	
+func random_point_on_bottom_of_sphere2(radius: float) -> Dictionary:
+	# Get the sphere's global transform
+	var sphere_transform = globe_visual.global_transform
+
+	# Define the global down direction
+	var global_down = Vector3(0, -1, 0)
+
+	# Transform global down to the sphere's local space manually (reverse the rotation)
+	var sphere_rotation = sphere_transform.basis
+	var bottom_direction_local = sphere_rotation.transposed() * global_down
+	bottom_direction_local = bottom_direction_local.normalized()
+
+	# Generate a random point on the lower hemisphere in local space
+	var phi = randf() * TAU  # Random azimuthal angle phi in [0, 2*pi]
+	var z = -randf()         # Random z in [-1, 0] (bottom half only)
+	var local_radius = sqrt(1.0 - z * z)
+	var x = radius * local_radius * cos(phi)
+	var y = radius * local_radius * sin(phi)
+	var local_point = Vector3(x, y, radius * z)
+
+	# Reverse the sphere's rotation (apply the inverse rotation)
+	var rotated_point = sphere_rotation.transposed() * local_point
+
+	# Rotate the point by an additional 90 degrees about the local X-axis
+	var rotation_offset = Basis(Vector3(1, 0, 0), deg_to_rad(-90))  # 90-degree rotation around the X-axis
+	rotated_point = rotation_offset * rotated_point
+
+	# Transform the rotated point to global space
+	var global_point = sphere_transform.origin + rotated_point
+
+	# Compute the surface normal in global space
+	var normal = (global_point - sphere_transform.origin).normalized()
+
+	return {"point": global_point, "normal": normal}
+	
+func random_point_on_bottom_of_sphere3(radius: float) -> Dictionary:
+	# Get the sphere's global transform
+	var sphere_transform = globe_visual.global_transform
+
+	# Define the sphere's local up direction (global space, using transposed basis)
+	var sphere_up = sphere_transform.basis.transposed().y
+
+	# Generate a random point on the sphere's surface
+	var phi = randf() * TAU  # Random azimuthal angle phi in [0, 2*pi]
+	var z = randf() * 2 - 1  # Random z in [-1, 1] (full sphere)
+	var local_radius = sqrt(1.0 - z * z)
+	var x = radius * local_radius * cos(phi)
+	var y = radius * local_radius * sin(phi)
+	var local_point = Vector3(x, y, radius * z)
+
+	# Transform the local point to global space
+	var global_point = sphere_transform.origin + sphere_transform.basis * local_point
+
+	# Check alignment with the sphere's up direction
+	var direction_to_point = (global_point - sphere_transform.origin).normalized()
+	var up_alignment = direction_to_point.dot(sphere_up)
+
+	# If the point is too close to the top hemisphere, transpose it to the bottom
+	if up_alignment > 0:
+		global_point = sphere_transform.origin - (global_point - sphere_transform.origin)
+
+	# Compute the surface normal in global space
+	var normal = (global_point - sphere_transform.origin).normalized()
+
+	return {"point": global_point, "normal": normal}
+
+	
 func create_object_at_random_point(object: PackedScene):
 	var sphere_radius = globe_visual.mesh.radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
@@ -84,6 +155,7 @@ func create_object_at_random_point(object: PackedScene):
 	var normal = result["normal"]
 	
 	var new_object = object.instantiate()
+	new_object.parent = self
 	globe_visual.add_child(new_object)
 	
 	new_object.global_transform.origin = point # Position the child at the random point
@@ -130,6 +202,7 @@ func place_object_at_random_point(object: Node3D):
 	transform.origin = point
 	transform.basis = basis
 	object.transform = transform
+	print(transform)
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:
@@ -141,4 +214,9 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 			orbit_speed_z_target = MAX_Z_ORBIT_SPEED
 
 func _reset_object(object: Node3D) -> void:
-	place_object_at_random_point(object)
+	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
+		var size = Globals.level_1_buildings.size()
+		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
+		create_object_at_random_point(new_object)
+	else:
+		place_object_at_random_point(object)
