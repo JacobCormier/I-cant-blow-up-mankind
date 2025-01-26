@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var game_globe: Node3D = $GameGlobe
+@onready var block: Node3D = $Block
 @onready var lid = $Block/Lid
 @onready var launchPad = $Block/LaunchPad
 @onready var player = $Block/LaunchPad/MenuPlayer
@@ -23,6 +25,9 @@ func _ready() -> void:
 func end_sequence() -> void:
 	# Caleb Reath
 	# Trigger next scene
+	return
+	
+func end_launch_shake() -> void:
 	is_launching = false
 	
 func trigger_launch() -> void:
@@ -59,7 +64,7 @@ func setup_tween_animation():
 	# Lid slam open
 	tween.set_trans(Tween.TRANS_BOUNCE)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(lid, "rotation_degrees:z", 29.4, 2)
+	tween.tween_property(lid, "rotation_degrees:z", 26.5, 2)
 	tween.tween_callback(trigger_rising)
 	
 	# Raise launch pad
@@ -79,8 +84,28 @@ func setup_tween_animation():
 	tween.set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(player, "position:y", 500, 8)
 	
-	# Pan Camera
+	# Pan Camera Up
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.parallel().tween_property(camera_3d, "rotation_degrees:x", 65, 8)
+	tween.parallel().tween_property(camera_3d, "rotation_degrees:x", 65, 8)	
+	tween.tween_callback(end_launch_shake)
+	
+	# Lower launch pad and block Fast
+	tween.tween_interval(0)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(launchPad, "position:y", -15, 2)
+	tween.parallel().tween_property(block, "position:y", -15, 2)
+	tween.parallel().tween_property(player, "position:z", 250, 2)
+	
+	# Pan Camera Down
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.parallel().tween_property(camera_3d, "position:x", 0, 8)
+	tween.parallel().tween_property(camera_3d, "position:y", 516.134, 5)
+	tween.parallel().tween_property(camera_3d, "position:z", 134.103, 7)
+	tween.parallel().tween_property(camera_3d, "rotation_degrees:x", -13.7, 8)
+	tween.parallel().tween_property(camera_3d, "rotation_degrees:y", 0, 8)
+	tween.parallel().tween_property(camera_3d, "rotation_degrees:z", 0, 8)
+	tween.parallel().tween_property(game_globe, "rotation_degrees:x", 360, 20)
 	tween.tween_callback(end_sequence)
