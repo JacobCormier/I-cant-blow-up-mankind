@@ -3,8 +3,19 @@ extends Node
 var loaded_high_score := 0
 var save_data: SaveData = null
 
+var current_fuel: float:
+	set(value):
+		value = clampf(value, 0, 100)
+		current_fuel = value
+
 func _ready() -> void:
 	_initialize_save_data()
+
+func reload_fuel(amount: int = 100):
+	print("picked up fuel!")
+	current_fuel += amount
+
+#region Save Data
 
 func check_high_score(score: float) -> void:
 	save_data.check_high_score(score)
@@ -28,3 +39,5 @@ func _initialize_save_data() -> void:
 
 func trigger_save() -> void:
 	ResourceSaver.save(save_data, 'user://save_data.tres')
+
+#endregion

@@ -31,16 +31,21 @@ func do_main_menu_tween(tween, attribute, target, time):
 func _ready():
 	globe_visual_a = globe_visual
 	area_3d.on_object_ready_for_reset.connect(_reset_object)
+	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	for x in range(0, 450):
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
 		create_object_at_random_point(new_object)
+		
+	for x in range(0, 100):
+		var new_object = Globals.FUEL_CAN
+		create_object_at_random_point(new_object)
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
 		
-		var transition_speed = 1.5
+		var transition_speed = 2.5
 		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * transition_speed)
 		globe_visual.rotate_z(orbit_speed_z * delta)
 		
@@ -105,7 +110,7 @@ func create_object_at_random_point(object: PackedScene):
 	var normal = result["normal"]
 	
 	var new_object = object.instantiate()
-	new_object.parent = self
+	#new_object.parent = self
 	globe_visual.add_child(new_object)
 	
 	new_object.global_transform.origin = point # Position the child at the random point
