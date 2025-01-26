@@ -48,4 +48,5 @@ theme_override_font_sizes/font_size = 20
 text = "It was the most powerful nuclear missile the world had ever seen."
 horizontal_alignment = 1
 autowrap_mode = 2
-visible_ratio = -0.0153846
+visible_characters = 0
+visible_ratio = 0.0

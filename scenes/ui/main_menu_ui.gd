@@ -2,6 +2,8 @@ extends Control
 
 @onready var skip_button: Button = $MainMenuControl/Panel/SkipButton
 
+@onready var dialogue_ui: CanvasLayer = $"../DialogueUI"
+
 
 func _ready() -> void:
 	print(OS.get_data_dir())
@@ -28,3 +30,4 @@ func _on_launch_button_pressed() -> void:
 	Engine.time_scale = 1.0
 	MusicManager.play_music_sequence()
 	self.visible = false
+	dialogue_ui.start_dialogue()

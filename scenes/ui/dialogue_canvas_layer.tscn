@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://flpg23tk2gi5"]
+
+[ext_resource type="Script" path="res://scenes/ui/dialogue_canvas_script.gd" id="1_1rx5a"]
+[ext_resource type="PackedScene" uid="uid://wk0st30aie61" path="res://scenes/ui/dialogue_boxes/story_1.tscn" id="2_atcj4"]
+[ext_resource type="PackedScene" uid="uid://m8wedmo7i2i5" path="res://scenes/ui/dialogue_boxes/story_2.tscn" id="3_crsie"]
+[ext_resource type="PackedScene" uid="uid://dp0s0y3n8038j" path="res://scenes/ui/dialogue_boxes/story_3.tscn" id="4_s8akh"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+script = ExtResource("1_1rx5a")
+
+[node name="Story_1" parent="." instance=ExtResource("2_atcj4")]
+offset_left = 355.0
+offset_top = 133.0
+offset_right = -285.0
+offset_bottom = -227.0
+
+[node name="Story_2" parent="." instance=ExtResource("3_crsie")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -630.0
+offset_bottom = -350.0
+
+[node name="Story_3" parent="." instance=ExtResource("4_s8akh")]
+offset_left = 177.0
+offset_top = 241.0
+offset_right = -463.0
+offset_bottom = -119.0
+initial_delay = 5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://boc0o8c8520pf"]
+[gd_scene load_steps=39 format=3 uid="uid://boc0o8c8520pf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_mudj7"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_oloa8"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cwj0hlbndmg7n" path="res://scenes/world/buildings/skyscraper_6.tscn" id="22_s7mgw"]
 [ext_resource type="PackedScene" uid="uid://dnrj2r14s2bdt" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="23_e2qwh"]
 [ext_resource type="PackedScene" uid="uid://dti42yrq2ji54" path="res://scenes/ui/main_menu_ui.tscn" id="24_gi80t"]
+[ext_resource type="PackedScene" uid="uid://flpg23tk2gi5" path="res://scenes/ui/dialogue_canvas_layer.tscn" id="25_lb5q6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
 sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
@@ -319,6 +320,8 @@ mesh = SubResource("BoxMesh_ensnl")
 skeleton = NodePath("../Diorama/Road/LeftSidewalk")
 
 [node name="MainMenuUI" parent="." instance=ExtResource("24_gi80t")]
+
+[node name="DialogueUI" parent="." instance=ExtResource("25_lb5q6")]
 
 [editable path="GameGlobe"]
 [editable path="Block/Lid"]

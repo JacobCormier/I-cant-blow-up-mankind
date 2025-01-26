@@ -1,9 +1,12 @@
 extends Control
 
+signal on_complete
+
 @onready var dialogue_label: Label = $NinePatchRect/MarginContainer/DialogueLabel
 
 @export var letter_reveal_speed = 16.0
 @export var dissapear_delay = 40
+@export var initial_delay = 0
 
 var is_triggered = false
 var letters_count = 0
@@ -22,8 +25,10 @@ func _process(delta: float) -> void:
 			dialogue_label.visible_characters = int_letter_count
 			
 		if int_letter_count > dialogue_label.get_total_character_count() + dissapear_delay:
+			on_complete.emit()
 			self.queue_free()
 
 func trigger_dialogue() -> void:
+	await get_tree().create_timer(initial_delay).timeout
 	is_triggered = true
 	self.visible = true

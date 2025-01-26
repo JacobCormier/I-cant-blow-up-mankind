@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp0s0y3n8038j"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/dialogue_base.tscn" id="1_unbmp"]
+
+[node name="Story_3" instance=ExtResource("1_unbmp")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "when it was launched, it truly was the end of the world..."
