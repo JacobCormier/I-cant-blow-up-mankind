@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_mudj7"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_oloa8"]
-[ext_resource type="PackedScene" uid="uid://c2jdhswp6mevj" path="res://resources/assets/models/LaunchPad/Block.fbx" id="3_qfytl"]
-[ext_resource type="PackedScene" uid="uid://vpn5e80wk35n" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="4_oujf3"]
-[ext_resource type="PackedScene" uid="uid://du85us8wjg6xb" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="5_1y8to"]
+[ext_resource type="PackedScene" uid="uid://bqcfrty6yvbjv" path="res://resources/assets/models/LaunchPad/Block.fbx" id="3_qfytl"]
+[ext_resource type="PackedScene" uid="uid://c1h5vw0n1swu5" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="4_oujf3"]
+[ext_resource type="PackedScene" uid="uid://dwi7psrkeqnqq" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="5_1y8to"]
 [ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="6_wkxok"]
 [ext_resource type="PackedScene" uid="uid://dccqs0kuycb64" path="res://scenes/world/buildings/skyscraper_1.tscn" id="7_73kbp"]
 [ext_resource type="PackedScene" uid="uid://dhlr7o063jt8q" path="res://scenes/world/buildings/skyscraper_2.tscn" id="8_m0hmd"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://n62rwrldw58j" path="res://scenes/world/buildings/small_5.tscn" id="20_24b86"]
 [ext_resource type="PackedScene" uid="uid://ctcspmasa5wa7" path="res://scenes/world/buildings/small_6.tscn" id="21_pw621"]
 [ext_resource type="PackedScene" uid="uid://cwj0hlbndmg7n" path="res://scenes/world/buildings/skyscraper_6.tscn" id="22_s7mgw"]
-[ext_resource type="PackedScene" uid="uid://dnrj2r14s2bdt" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="23_e2qwh"]
+[ext_resource type="PackedScene" uid="uid://88rs34ua3fer" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="23_e2qwh"]
 [ext_resource type="PackedScene" uid="uid://dti42yrq2ji54" path="res://scenes/ui/main_menu_ui.tscn" id="24_gi80t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
