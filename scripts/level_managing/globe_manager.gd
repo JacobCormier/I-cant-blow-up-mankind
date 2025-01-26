@@ -11,7 +11,8 @@ extends Node3D
 
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
-const MAX_Z_ORBIT_SPEED = 0.8
+const MAX_Z_ORBIT_SPEED = 1.0
+const z_transition_speed = 2.5
 
 var globe_visual_a
 # Debug flag to change building movement behaviour to spawn rather than move
@@ -45,8 +46,8 @@ func _ready():
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
 		
-		var transition_speed = 2.5
-		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * transition_speed)
+		
+		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
 		globe_visual.rotate_z(orbit_speed_z * delta)
 		
 
