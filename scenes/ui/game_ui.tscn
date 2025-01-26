@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=9 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -36,6 +36,15 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fjat"]
+bg_color = Color(0.15, 0.15, 0.15, 0.713726)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_mbn1m")
@@ -153,17 +162,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScorePanel" type="Panel" parent="ScoreControl"]
+[node name="ScoreLabel" type="Label" parent="ScoreControl"]
 layout_mode = 0
-offset_right = 154.455
-offset_bottom = 23.875
-
-[node name="ScoreLabel" type="Label" parent="ScoreControl/ScorePanel"]
-layout_mode = 0
-offset_left = 7.0
-offset_right = 141.0
-offset_bottom = 26.0
-text = "Score: 100000000"
+offset_left = 17.0
+offset_top = 6.0
+offset_right = 93.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_4fjat")
+text = "Score:"
 
 [connection signal="pressed" from="DeathScreenControl/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="DeathScreenControl/Panel/QuitButton" to="." method="_on_quit_button_pressed"]

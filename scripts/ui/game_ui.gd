@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var high_score_label: Label = $DeathScreenControl/Panel/HighScoreLabel
 @onready var death_screen_control: Control = $DeathScreenControl
 @onready var score_control: Control = $ScoreControl
-@onready var score_label: Label = $ScoreControl/ScorePanel/ScoreLabel
+@onready var score_label: Label = $ScoreControl/ScoreLabel
 
 var score := 0.0
 var is_score_posted = false
