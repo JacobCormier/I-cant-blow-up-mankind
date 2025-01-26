@@ -7,6 +7,7 @@ extends Node3D
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 @onready var area_3d: Area3D = $Area3D
+@onready var game_ui: CanvasLayer = $"../GameUI"
 
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
@@ -162,6 +163,7 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 			orbit_speed_z_target = MAX_Z_ORBIT_SPEED
 
 func _reset_object(object: Node3D) -> void:
+	game_ui.score += 10
 	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]

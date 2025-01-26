@@ -60,5 +60,5 @@ func _input(event: InputEvent) -> void:
 	globe_manager.pass_in_movement_direction(current_turn_direction)
 	
 func _trigger_player_death() -> void:
-	game_ui.visible = true
+	game_ui.show_death()
 	Engine.time_scale = 0.0
