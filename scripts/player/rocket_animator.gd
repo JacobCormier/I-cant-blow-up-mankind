@@ -26,7 +26,10 @@ var vertical_speed := 0.0
 	
 func _ready() -> void:
 	origin_position = position
+	origin_position = Vector3(origin_position.x, origin_position.y, origin_position.z - 50)
 	current_root_position = position
+	is_jumping = true
+	visible = true
 
 func _process(delta: float) -> void:	
 	if is_turning:
