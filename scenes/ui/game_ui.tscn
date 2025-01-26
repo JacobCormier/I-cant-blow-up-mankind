@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj45q8xq7lgpo"]
+
+[ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
+[ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.65098)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfkr5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ahxr"]
+bg_color = Color(0.890625, 0.556179, 0.49054, 1)
+border_width_bottom = 5
+border_color = Color(0.768627, 0.478431, 0.470588, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6mna"]
+bg_color = Color(0.421875, 0.0395508, 0.0395508, 1)
+border_color = Color(0.568627, 0.176471, 0.282353, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr7hd"]
+bg_color = Color(0.792969, 0.216827, 0.216827, 1)
+border_width_bottom = 5
+border_color = Color(0.568627, 0.176471, 0.282353, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_mbn1m")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wq746")
+
+[node name="LoseLabel" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.5
+offset_top = 45.0
+offset_right = 155.5
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+text = "You have destroyed humanity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.5
+offset_top = 66.0
+offset_right = 155.5
+offset_bottom = 89.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+text = "Final Score: 666"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Control/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -240.0
+offset_right = 246.0
+offset_bottom = -144.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hfkr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ahxr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6mna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cr7hd")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="Control/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -240.0
+offset_right = -150.0
+offset_bottom = -144.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hfkr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ahxr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6mna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cr7hd")
+text = "Quit"
+
+[connection signal="pressed" from="Control/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/Panel/QuitButton" to="." method="_on_quit_button_pressed"]
