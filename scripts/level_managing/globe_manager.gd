@@ -12,6 +12,7 @@ const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 0.8
 
+var globe_visual_a
 # Debug flag to change building movement behaviour to spawn rather than move
 const CREATE_AND_STAY_INSTEAD_OF_MOVE = false
 
@@ -23,7 +24,11 @@ var orbit_speed_z: float:
 
 var direction: PlayerController.TurnDirection
 
+func do_main_menu_tween(tween, attribute, target, time):
+	tween.tween_property(globe_visual, attribute, target, time)
+
 func _ready():
+	globe_visual_a = globe_visual
 	area_3d.on_object_ready_for_reset.connect(_reset_object)
 	
 	for x in range(0, 450):

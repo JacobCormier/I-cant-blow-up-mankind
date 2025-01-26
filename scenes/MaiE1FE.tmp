@@ -41,15 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 0.957928, -0.28701, 0, 0.28701, 0.957928, 0.
 [node name="GameGlobe" parent="." instance=ExtResource("1_4ynai")]
 script = null
 
-[node name="Area3D" parent="GameGlobe" index="1"]
-visible = false
-
-[node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
-visible = false
-
-[node name="VisualBox" parent="GameGlobe/Area3D" index="1"]
-visible = false
-
 [node name="Block" parent="." instance=ExtResource("2_5pf7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031, 501.624, -0.159)
 
@@ -65,5 +56,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
 [node name="MenuPlayer" parent="Block/LaunchPad" instance=ExtResource("2_oib7q")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.042, 7.22601, 0.213)
 
-[editable path="GameGlobe"]
 [editable path="Block/Lid"]
