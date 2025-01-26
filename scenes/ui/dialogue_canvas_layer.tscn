@@ -22,8 +22,12 @@ offset_right = -630.0
 offset_bottom = -350.0
 
 [node name="Story_3" parent="." instance=ExtResource("4_s8akh")]
-offset_left = 177.0
-offset_top = 241.0
-offset_right = -463.0
-offset_bottom = -119.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_top = -71.0
+offset_right = 0.0
+offset_bottom = -71.0
+grow_vertical = 0
 initial_delay = 5

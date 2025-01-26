@@ -17,7 +17,8 @@ size = Vector3(0.1, 0.1, 0.1)
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_mlqjc"]
-height = 0.5
+radius = 0.4
+height = 0.45
 is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r75pw"]
@@ -30,7 +31,7 @@ mesh = SubResource("BoxMesh_ix6nv")
 surface_material_override/0 = SubResource("StandardMaterial3D_ceph6")
 
 [node name="Left Eye" type="MeshInstance3D" parent="FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.567381, 0.247611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
 mesh = SubResource("BoxMesh_nu0hm")
 surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
@@ -41,7 +42,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6esfl")
 
 [node name="Right Eye" type="MeshInstance3D" parent="FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.567, 0.247834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
 mesh = SubResource("BoxMesh_nu0hm")
 surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
@@ -51,7 +52,7 @@ mesh = SubResource("BoxMesh_5w5tk")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6esfl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.168174, 0.00138211)
+[node name="Mouth" type="MeshInstance3D" parent="FakeBlock"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.253368, -0.0374449)
 mesh = SubResource("SphereMesh_mlqjc")
 surface_material_override/0 = SubResource("StandardMaterial3D_r75pw")
