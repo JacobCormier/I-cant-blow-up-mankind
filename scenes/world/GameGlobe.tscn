@@ -28,25 +28,25 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bd5s"]
-size = Vector3(500, 200, 200)
+size = Vector3(1000, 200, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mannl"]
-size = Vector3(500, 200, 200)
+size = Vector3(1000, 200, 200)
 
 [node name="GameGlobe" type="Node3D"]
 script = ExtResource("1_x0yea")
 
 [node name="VisualContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.431409, 0.902157, 0, -0.902157, 0.431409, 0, 0, 0)
 
 [node name="GlobeVisual" type="MeshInstance3D" parent="VisualContainer"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("SphereMesh_smda0")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 405.078, 268.307)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1933, 405.078, 268.307)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_w7nhy")
