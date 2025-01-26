@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctcspmasa5wa7"]
+[gd_scene load_steps=5 format=3 uid="uid://ctcspmasa5wa7"]
 
 [ext_resource type="PackedScene" uid="uid://jiikdlvsrooo" path="res://scenes/world/buildings/base_building.tscn" id="1_kg7gi"]
 [ext_resource type="PackedScene" uid="uid://c1rilhwpfgt43" path="res://resources/assets/models/kenney_buildings/small_buildingF.fbx" id="2_tchv4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mia6x"]
-size = Vector3(8.505, 8.8532, 8.915)
+size = Vector3(19.465, 21.413, 18.915)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gv5to"]
+size = Vector3(9.615, 13.76, 9.635)
 
 [node name="base_building" instance=ExtResource("1_kg7gi")]
 
@@ -16,5 +19,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7786, 0)
 shape = SubResource("BoxShape3D_mia6x")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Collider/Area3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48314, 27.1987, 5.00569)
-shape = SubResource("BoxShape3D_mia6x")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94771, 24.8358, 4.96453)
+shape = SubResource("BoxShape3D_gv5to")
