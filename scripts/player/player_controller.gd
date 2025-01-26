@@ -5,6 +5,7 @@ signal on_player_death
 
 @onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GameGlobe"
+@onready var game_ui: CanvasLayer = $"../GameUI"
 
 enum TurnDirection {NONE, LEFT, RIGHT}
 var current_turn_direction = TurnDirection.NONE
@@ -16,6 +17,7 @@ var is_input_jumping := false
 
 func _ready() -> void:
 	on_player_death.connect(_trigger_player_death)
+	Engine.time_scale = 1.0
 
 func _input(event: InputEvent) -> void:
 	# Read input Actions
@@ -57,4 +59,5 @@ func _input(event: InputEvent) -> void:
 	globe_manager.pass_in_movement_direction(current_turn_direction)
 	
 func _trigger_player_death() -> void:
-	print("YOU DIED!")
+	game_ui.visible = true
+	Engine.time_scale = 0.0
