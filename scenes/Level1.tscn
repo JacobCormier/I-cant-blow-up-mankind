@@ -17,11 +17,18 @@ sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
 background_mode = 2
 background_color = Color(0.119751, 0.7315, 0.851563, 1)
 sky = SubResource("Sky_672je")
+glow_enabled = true
+glow_bloom = 0.25
 fog_mode = 1
 fog_density = 1.0
-fog_depth_begin = 200.0
-fog_depth_end = 200.0
+fog_depth_begin = 0.0
+fog_depth_end = 410.5
 volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+volumetric_fog_length = 74.78
+volumetric_fog_detail_spread = 1.21838
+adjustment_enabled = true
+adjustment_contrast = 1.02
+adjustment_saturation = 1.1
 
 [node name="Level1" type="Node3D"]
 
@@ -30,6 +37,8 @@ environment = SubResource("Environment_26xqv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
