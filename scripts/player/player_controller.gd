@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 		
 	if is_input_jumping:
 		icbm_model.trigger_jump()
+		collider.trigger_jump()
 		
 	# Next is Left right movement
 	globe_manager.pass_in_movement_direction(current_turn_direction)
