@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwtn180ee6nw8"]
+[gd_scene load_steps=8 format=3 uid="uid://1kdyt4pl2xrc"]
 
-[ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_h3d2r"]
-[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
-[ext_resource type="Script" path="res://scripts/player/rocket_animator.gd" id="3_btq88"]
-[ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="4_gjylr"]
-[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
+[ext_resource type="Script" path="res://scenes/player/menu_player.gd" id="1_tccar"]
+[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_37dns"]
+[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_0kgm2"]
+[ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="5_dvj57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7u6t"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_rsaft")
+albedo_texture = ExtResource("4_0kgm2")
 emission_enabled = true
 emission = Color(0.923906, 0, 0.246785, 1)
 emission_energy_multiplier = 0.15
@@ -19,11 +18,11 @@ size = Vector3(0.5, 10, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e2yam"]
 size = Vector3(0.5, 10, 0.5)
 
-[node name="Player" type="Node3D"]
-script = ExtResource("1_h3d2r")
+[node name="MenuPlayer" type="Node3D"]
+transform = Transform3D(1, 0.00025976, -7.4061e-07, -0.00025976, 1, 0.000143383, 7.91044e-07, -0.000143383, 1, 0, 0, 0)
+script = ExtResource("1_tccar")
 
-[node name="ICBM" parent="." instance=ExtResource("2_3hlt2")]
-script = ExtResource("3_btq88")
+[node name="ICBM" parent="." instance=ExtResource("2_37dns")]
 
 [node name="RightEngine" parent="ICBM" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
@@ -34,11 +33,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 [node name="LeftEngine" parent="ICBM" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 
-[node name="rocket_particles" parent="ICBM" instance=ExtResource("4_gjylr")]
+[node name="rocket_particles" parent="ICBM" instance=ExtResource("5_dvj57")]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
 
 [node name="Collider" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+visible = false
 
 [node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="Collider"]
 mesh = SubResource("BoxMesh_58y6q")

@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bypkrts3xqu66"]
+[gd_scene load_steps=11 format=3 uid="uid://bypkrts3xqu66"]
+
+[ext_resource type="Script" path="res://scenes/particles/rocket_particles.gd" id="1_vid2n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ss8nu"]
 vertex_color_use_as_albedo = true
@@ -40,6 +42,7 @@ alpha_curve = SubResource("CurveTexture_1piir")
 [sub_resource type="SphereMesh" id="SphereMesh_4nhqo"]
 
 [node name="rocket_particles" type="Node3D"]
+script = ExtResource("1_vid2n")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.45442, -0.0541382)

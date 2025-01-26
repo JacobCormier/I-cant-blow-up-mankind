@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://boc0o8c8520pf"]
+
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="1_4ynai"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_miq7g"]
+[ext_resource type="PackedScene" uid="uid://c2jdhswp6mevj" path="res://resources/assets/models/LaunchPad/Block.fbx" id="2_5pf7c"]
+[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="2_oib7q"]
+[ext_resource type="PackedScene" uid="uid://du85us8wjg6xb" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="3_7swm0"]
+[ext_resource type="PackedScene" uid="uid://vpn5e80wk35n" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="3_gjuge"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
+
+[sub_resource type="Environment" id="Environment_26xqv"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 200.0
+fog_depth_end = 200.0
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_miq7g")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_26xqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.957928, -0.28701, 0, 0.28701, 0.957928, 0.366213, 500.532, 22.7713)
+
+[node name="GameGlobe" parent="." instance=ExtResource("1_4ynai")]
+script = null
+
+[node name="Block" parent="." instance=ExtResource("2_5pf7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031, 501.624, -0.159)
+
+[node name="Lid" parent="Block" instance=ExtResource("3_gjuge")]
+transform = Transform3D(4.25738e-08, -9.90724e-09, 1, -0.23207, -0.972699, 2.43366e-10, 0.972699, -0.23207, -4.37107e-08, 0.161, 0.928986, 7.45743)
+
+[node name="Lid" parent="Block/Lid" index="0"]
+transform = Transform3D(-96.5473, 8.56032e-06, -8.21807, 26.0505, -1.37924e-06, -30.4575, -8.62406e-06, -100, -2.83412e-07, 0.0332108, 3.05176e-05, -0.00730328)
+
+[node name="LaunchPad" parent="Block" instance=ExtResource("3_7swm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
+
+[node name="MenuPlayer" parent="Block/LaunchPad" instance=ExtResource("2_oib7q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.042, 7.22601, 0.213)
+
+[editable path="Block/Lid"]
