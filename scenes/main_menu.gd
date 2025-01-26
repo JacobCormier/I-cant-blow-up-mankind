@@ -7,6 +7,8 @@ const LEVEL_1 = preload("res://scenes/Level1.tscn")
 @onready var launchPad = $Block/LaunchPad
 @onready var player = $Block/LaunchPad/MenuPlayer
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var diorama: Node3D = $Diorama
+@onready var diorama_camera_base: MeshInstance3D = $DioramaCameraBase
 
 var is_launching = false
 var is_rising = false
@@ -60,11 +62,28 @@ func rumble(node, root_position, x_scale = 1, y_scale = 1):
 	var random_rumble_y = root_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y) * y_scale
 	node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
 
+func remove_diorama():
+	diorama.visible = false
+	
+func remove_base():
+	diorama_camera_base.visible = false
+
 func start_tween_animation():
-	# Lid Opening halfway
 	tween = get_tree().create_tween()
+	
+	# Pan Camera 180deg
 	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property(lid, "rotation_degrees:z", -75, TIME_SCALE * 2)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(camera_3d, "rotation_degrees:y", 90, TIME_SCALE * 3)	
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(camera_3d, "rotation_degrees:y", 0, TIME_SCALE * 3)	
+	tween.tween_callback(remove_diorama)
+	
+	# Lid Opening halfway
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(lid, "rotation_degrees:z", -70, TIME_SCALE * 2)
 	
 	# Lid slam open
 	tween.set_trans(Tween.TRANS_BOUNCE)
@@ -94,6 +113,7 @@ func start_tween_animation():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.parallel().tween_property(camera_3d, "rotation_degrees:x", 65, TIME_SCALE * 8)	
 	tween.tween_callback(end_launch_shake)
+	tween.tween_callback(remove_base)
 	
 	# Pan Camera Down
 	tween.set_ease(Tween.EASE_OUT)

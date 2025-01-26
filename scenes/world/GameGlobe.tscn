@@ -28,10 +28,10 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bd5s"]
-size = Vector3(1200, 1000, 200)
+size = Vector3(400, 600, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mannl"]
-size = Vector3(1200, 1000, 200)
+size = Vector3(400, 600, 200)
 
 [node name="GameGlobe" type="Node3D"]
 script = ExtResource("1_x0yea")
@@ -52,9 +52,11 @@ collision_mask = 2
 script = ExtResource("2_w7nhy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 254.932, 0)
 shape = SubResource("BoxShape3D_2bd5s")
 
 [node name="VisualBox" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 263.551, 0)
 mesh = SubResource("BoxMesh_mannl")
 skeleton = NodePath("../..")
 
