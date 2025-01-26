@@ -6,6 +6,7 @@ signal on_player_death
 @onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GameGlobe"
 @onready var game_ui: CanvasLayer = $"../GameUI"
+@onready var collider: Node3D = $Collider
 
 enum TurnDirection {NONE, LEFT, RIGHT}
 var current_turn_direction = TurnDirection.NONE
@@ -41,16 +42,15 @@ func _input(event: InputEvent) -> void:
 	# Check Left-Right Controls
 	if is_input_left and is_input_right:
 		current_turn_direction = TurnDirection.NONE
-		icbm_model.trigger_turn(current_turn_direction)
 	elif is_input_left:
 		current_turn_direction = TurnDirection.LEFT
-		icbm_model.trigger_turn(current_turn_direction)
 	elif is_input_right:
 		current_turn_direction = TurnDirection.RIGHT
-		icbm_model.trigger_turn(current_turn_direction)  
 	else:
 		current_turn_direction = TurnDirection.NONE
-		icbm_model.trigger_turn(current_turn_direction)
+		
+	icbm_model.trigger_turn(current_turn_direction)
+	collider.trigger_turn(current_turn_direction)
 		
 	if is_input_jumping:
 		icbm_model.trigger_jump()

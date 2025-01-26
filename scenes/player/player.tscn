@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwtn180ee6nw8"]
+[gd_scene load_steps=11 format=3 uid="uid://cwtn180ee6nw8"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_h3d2r"]
 [ext_resource type="PackedScene" uid="uid://d2bax0x8x0ye7" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="4_gjylr"]
 [ext_resource type="Texture2D" uid="uid://csk6toa63g00" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
 [ext_resource type="Script" path="res://scripts/player/player_collider.gd" id="6_gn5m8"]
+[ext_resource type="Script" path="res://scripts/player/collider_anchor.gd" id="6_y6hog"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7u6t"]
 resource_local_to_scene = true
@@ -40,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.980
 
 [node name="Collider" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+script = ExtResource("6_y6hog")
 
 [node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="Collider"]
 mesh = SubResource("BoxMesh_58y6q")
