@@ -19,6 +19,7 @@ config/icon="res://resources/assets/png/MochiFace.png"
 
 MusicManager="*res://scripts/sound/music/music_manager.gd"
 Globals="*res://scripts/globals/globals.gd"
+PlayerStats="*res://scripts/globals/player_stats.gd"
 
 [display]
 

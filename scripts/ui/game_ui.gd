@@ -17,10 +17,9 @@ func _process(delta: float) -> void:
 		score_label.text = "Score: " + str(int(score))
 	elif not is_score_posted:
 		is_score_posted = true
-		print(death_screen_control.visible)
+		PlayerStats.check_high_score(score)
 		final_score_label.text = "Final Score: " + str(int(score))
-		Globals.check_high_score(score)
-		high_score_label.text = "High Score: " + str(int(Globals.high_score))
+		high_score_label.text = "High Score: " + str(int(PlayerStats.loaded_high_score))
 
 func show_death():
 	death_screen_control.visible = true
