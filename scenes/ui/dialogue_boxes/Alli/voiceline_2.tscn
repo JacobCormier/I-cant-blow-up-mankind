@@ -5,13 +5,10 @@
 [node name="voiceline_2" instance=ExtResource("1_vkexq")]
 
 [node name="NinePatchRect" parent="." index="0"]
-offset_left = -77.0
-offset_top = -17.0
-offset_right = 77.0
-offset_bottom = 18.0
+offset_left = -103.0
+offset_top = -27.0
+offset_right = 103.0
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "
-
-Please! I don't want to do this!
+text = "Please! I don't want to do this!
 "

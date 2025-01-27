@@ -5,7 +5,4 @@
 [node name="voiceline_3" instance=ExtResource("1_wtimh")]
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "
-
-I didn't sign up for this!
-"
+text = "I didn't sign up for this!"

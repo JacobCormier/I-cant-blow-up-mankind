@@ -69,26 +69,26 @@ initial_delay = 4.5
 end_delay = 2.0
 
 [node name="voiceline_1" parent="." instance=ExtResource("6_vnxdu")]
-offset_left = 211.0
-offset_top = 11.0
-offset_right = 211.0
-offset_bottom = 11.0
+offset_left = 169.0
+offset_top = 14.0
+offset_right = 169.0
+offset_bottom = 14.0
 initial_delay = 2.0
 end_delay = 2.0
 
 [node name="voiceline_2" parent="." instance=ExtResource("7_qsk14")]
-offset_left = 228.0
-offset_top = -61.0
-offset_right = 228.0
-offset_bottom = -61.0
+offset_left = 202.0
+offset_top = -46.0
+offset_right = 202.0
+offset_bottom = -46.0
 initial_delay = 0.2
 end_delay = 1.6
 
 [node name="voiceline_3" parent="." instance=ExtResource("8_8kq3u")]
-offset_left = 252.0
-offset_top = -125.0
-offset_right = 252.0
-offset_bottom = -125.0
+offset_left = 220.0
+offset_top = -105.0
+offset_right = 220.0
+offset_bottom = -105.0
 initial_delay = 0.2
 end_delay = 1.0
 

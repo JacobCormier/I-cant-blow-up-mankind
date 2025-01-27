@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://fnhraxx1yeh2" path="res://resources/assets/ui/panel_grey_green.png" id="1_cpj16"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue_script.gd" id="1_xdsmv"]
-[ext_resource type="FontFile" uid="uid://bkuaqsddntr0p" path="res://resources/assets/fonts/rove_s_smolpixelz/Rove's-SmolPixelz-4.ttf" id="2_pc7e7"]
+[ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_r06cv"]
 
 [node name="base_voiceline" type="Control"]
 layout_mode = 3
@@ -22,10 +22,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -17.5
-offset_right = 63.0
-offset_bottom = 17.5
+offset_left = -94.0
+offset_top = -28.0
+offset_right = 94.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cpj16")
@@ -55,10 +55,8 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0.321569, 0.529412, 0.219608, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_pc7e7")
-theme_override_font_sizes/font_size = 4
-text = "
-
-Hellooo? Is anyone there?
-"
+theme_override_fonts/font = ExtResource("3_r06cv")
+theme_override_font_sizes/font_size = 20
+text = "Hellooo? Is anyone there?"
 horizontal_alignment = 1
+autowrap_mode = 3
