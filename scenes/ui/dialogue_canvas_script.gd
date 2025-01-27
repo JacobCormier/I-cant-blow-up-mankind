@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var voiceline_1: Control = $voiceline_1
 @onready var voiceline_2: Control = $voiceline_2
 @onready var voiceline_3: Control = $voiceline_3
+@onready var story_5: Control = $Story_5
+@onready var voiceline_4: Control = $voiceline_4
 @onready var voiceling_title: Control = $voiceling_title
 
 var current_step = 0
@@ -22,6 +24,8 @@ func _ready() -> void:
 	story_array.append(voiceline_1)
 	story_array.append(voiceline_2)
 	story_array.append(voiceline_3)
+	story_array.append(story_5)
+	story_array.append(voiceline_4)
 	story_array.append(voiceling_title)
 
 func start_dialogue() -> void:

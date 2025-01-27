@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqhnfdjovhonb"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_705qf"]
+
+[node name="Story_5" instance=ExtResource("1_705qf")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "this missile had reached a new level of sentience."

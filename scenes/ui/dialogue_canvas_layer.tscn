@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://flpg23tk2gi5"]
+[gd_scene load_steps=13 format=3 uid="uid://flpg23tk2gi5"]
 
 [ext_resource type="Script" path="res://scenes/ui/dialogue_canvas_script.gd" id="1_1rx5a"]
 [ext_resource type="PackedScene" uid="uid://bhpnrlikfdtyw" path="res://scenes/ui/dialogue_boxes/Narrator/story_1.tscn" id="2_atcj4"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://giv0sq4i3uvk" path="res://scenes/ui/dialogue_boxes/Alli/voiceline_2.tscn" id="7_qsk14"]
 [ext_resource type="PackedScene" uid="uid://di4vrlb0m0ka2" path="res://scenes/ui/dialogue_boxes/Alli/voiceline_3.tscn" id="8_8kq3u"]
 [ext_resource type="PackedScene" uid="uid://bp61j6luxxyrs" path="res://scenes/ui/dialogue_boxes/Alli/voiceline_title.tscn" id="9_ckcr5"]
+[ext_resource type="PackedScene" uid="uid://cqhnfdjovhonb" path="res://scenes/ui/dialogue_boxes/Narrator/story_5.tscn" id="10_kl6b0"]
+[ext_resource type="PackedScene" uid="uid://bwv5i0myqvcug" path="res://scenes/ui/dialogue_boxes/Alli/voiceline_4.tscn" id="11_4dtkq"]
 
 [node name="DialogueUI" type="CanvasLayer"]
 script = ExtResource("1_1rx5a")
@@ -92,8 +94,29 @@ offset_bottom = -105.0
 initial_delay = 0.2
 end_delay = 1.0
 
+[node name="Story_5" parent="." instance=ExtResource("10_kl6b0")]
+offset_top = 59.0
+offset_bottom = 59.0
+initial_delay = 1.0
+end_delay = 2.0
+
+[node name="voiceline_4" parent="." instance=ExtResource("11_4dtkq")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -100.0
+offset_top = 34.0
+offset_right = -100.0
+offset_bottom = 34.0
+grow_horizontal = 0
+grow_vertical = 1
+initial_delay = 0.2
+end_delay = 1.1
+
 [node name="voiceling_title" parent="." instance=ExtResource("9_ckcr5")]
 offset_top = -85.0
 offset_bottom = -85.0
-initial_delay = 4.0
+initial_delay = 0.8
 end_delay = 12.0
