@@ -101,6 +101,12 @@ visible = false
 [node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
 visible = false
 
+[node name="MenuPlayer" parent="." instance=ExtResource("6_wkxok")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)
+
+[node name="FollowCam" type="Camera3D" parent="MenuPlayer"]
+transform = Transform3D(-0.782608, 0.622515, 1.44627e-07, 0.596259, 0.7496, -0.287361, -0.178886, -0.224891, -0.957823, -4.94, 35, -28.115)
+
 [node name="Block" parent="." instance=ExtResource("3_qfytl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216044, 501.624, -0.131486)
 
@@ -112,9 +118,6 @@ transform = Transform3D(-96.5473, 8.56032e-06, -8.21807, 26.0505, -1.37924e-06, 
 
 [node name="LaunchPad" parent="Block" instance=ExtResource("5_1y8to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
-
-[node name="MenuPlayer" parent="Block/LaunchPad" instance=ExtResource("6_wkxok")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.042, 7.22601, 0.213)
 
 [node name="Diorama" type="Node3D" parent="."]
 

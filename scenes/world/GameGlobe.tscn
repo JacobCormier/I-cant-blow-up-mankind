@@ -34,7 +34,7 @@ size = Vector3(400, 600, 200)
 script = ExtResource("1_x0yea")
 
 [node name="VisualContainer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.431409, 0.902157, 0, -0.902157, 0.431409, 0, 0, 0)
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, 0, 0)
 
 [node name="GlobeVisual" type="MeshInstance3D" parent="VisualContainer"]
 cast_shadow = 0

@@ -27,7 +27,10 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_launch_button_pressed() -> void:
-	Engine.time_scale = 1.0
-	MusicManager.play_music_sequence()
+	Engine.time_scale = 100.0
 	self.visible = false
 	dialogue_ui.start_dialogue()
+	
+	MusicManager.stop()
+	#await get_tree().create_timer(1).timeout
+	MusicManager.play_music_sequence()
