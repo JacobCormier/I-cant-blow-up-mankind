@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 		
 
 func reload_fuel(amount: int = 100):
-	print("picked up fuel!")
 	current_fuel += amount
 
 func _handle_fuel_deterioration(delta: float) -> void:
@@ -58,12 +57,14 @@ func add_to_score(add_value: int) -> void:
 func start_gameplay() -> void:
 	SoundManager.kill_sound()
 	MusicManager.play_music_sequence()
+	SoundManager.start_engine()
 	is_gameplay_running = true
 	current_score = 0.0
 
 func end_gameplay() -> void:
 	MusicManager.stop()
 	SoundManager.play_nuclear_sound()
+	SoundManager.kill_engine()
 	is_gameplay_running = false
 	
 

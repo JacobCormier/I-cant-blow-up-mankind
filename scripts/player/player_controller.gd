@@ -40,12 +40,16 @@ func _input(event: InputEvent) -> void:
 	# Check Left-Right Controls
 	if is_input_left and is_input_right:
 		current_turn_direction = TurnDirection.NONE
+		SoundManager.stop_engine()
 	elif is_input_left:
 		current_turn_direction = TurnDirection.LEFT
+		SoundManager.trigger_engine()
 	elif is_input_right:
 		current_turn_direction = TurnDirection.RIGHT
+		SoundManager.trigger_engine()
 	else:
 		current_turn_direction = TurnDirection.NONE
+		SoundManager.stop_engine()
 		
 	icbm_model.trigger_turn(current_turn_direction)
 	collider.trigger_turn(current_turn_direction)
