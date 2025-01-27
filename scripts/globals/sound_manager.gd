@@ -10,7 +10,7 @@ var rocket_engine_player = AudioStreamPlayer
 var is_engine_on = false
 const MIN_ENGINE_VOLUME_DB = -80.0
 const MAX_ENGINE_VOLUME_DB = -20.0
-var engine_fade_speed = 1.0
+var engine_fade_speed = 2.0
 
 const MIN_ENGINE_PITCH = 0.2
 const MAX_ENGINE_PITCH = 1.3
