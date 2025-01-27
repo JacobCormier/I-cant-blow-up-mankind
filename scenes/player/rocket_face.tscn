@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 1.05879e-22, 0, 0.853887, 0.520458, -8.35187e-23, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, -4.37114e-08, -4.37114e-08, 1.91069e-15, 1, 8.74228e-08, 1, 1.91068e-15, 0, 53.742, 0.1)
-fov = 10.3
+fov = 4.0
 
 [node name="MenuPlayer" parent="." instance=ExtResource("2_6qscm")]
 transform = Transform3D(0.858156, -0.23276, 0.457592, 0.179992, 0.971149, 0.156434, -0.480802, -0.0518824, 0.875293, 0.864, -4.28, 0.243)

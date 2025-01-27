@@ -22,9 +22,9 @@ func _ready() -> void:
 	camera_root_position = camera_3d.position
 	
 func _process(delta):
-	micro_rumble(camera_3d, camera_root_position, delta, 0)
-	micro_rumble(camera_3d, camera_root_position, delta, 1, 0.02, 0.02, 0.07)
-	micro_rumble(camera_3d, camera_root_position, delta, 2, 0.05, 0.05, 0.13)
+	micro_rumble(camera_3d, camera_root_position, delta, 0, 0.05, 0.1, 0.05)
+	micro_rumble(camera_3d, camera_root_position, delta, 1, 0.2, 0.1, 0.17)
+	micro_rumble(camera_3d, camera_root_position, delta, 2, 0.4, 0.3, 0.43)
 
 
 func randomize_talk_frequency() -> void:
@@ -35,12 +35,12 @@ func randomize_talk_frequency() -> void:
 	tween.tween_property(mouth, "mesh:height", MAX_MOUTH_HEIGHT, talk_frequency/2.0)
 	tween.finished.connect(randomize_talk_frequency)
 
-func micro_rumble(node, root_position, delta, index, x_variance = 0.01, y_variance = 0.01, time_scale = 0.05):
+func micro_rumble(node, root_position, delta, index, x_variance = 0.01, z_variance = 0.01, time_scale = 0.05):
 	if last_jitter[index] > time_scale:
 		last_jitter[index] = 0
 		var random_rumble_x = root_position.x + randf_range(0, x_variance)
-		var random_rumble_y = root_position.y + randf_range(0, y_variance)
-		node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
+		var random_rumble_z = root_position.z + randf_range(0, z_variance)
+		node.position = Vector3(random_rumble_x, root_position.y, random_rumble_z)
 	else:
-		last_jitter[index] += delta
+		last_jitter[index] += randf() * delta
 	
