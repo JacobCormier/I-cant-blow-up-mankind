@@ -2,6 +2,7 @@ extends Node
 
 const THEME_INTRO_AND_VERSE = preload("res://resources/assets/sound/music/Theme_IntroAndVerse.wav")
 const VERSE_2_LOOPEDTWICE = preload("res://resources/assets/sound/music/Verse2_loopedtwice.wav")
+const CALM_AMBIANCE = preload("res://resources/assets/sound/music/CalmAmbiance.mp3")
 
 enum MusicStates {NONE, TITLE, GAME}
 
@@ -14,6 +15,9 @@ func _ready():
 	music_player.pitch_scale = 1.0
 	add_child(music_player)
 	
+	music_player.stream = CALM_AMBIANCE
+	music_player.play()
+	 
 
 func play_music_sequence():
 	music_player.stream = THEME_INTRO_AND_VERSE
@@ -24,3 +28,6 @@ func _on_theme_intro_finished():
 	music_player.finished.disconnect(_on_theme_intro_finished)
 	music_player.stream = VERSE_2_LOOPEDTWICE
 	music_player.play()
+
+func stop():
+	music_player.stop()

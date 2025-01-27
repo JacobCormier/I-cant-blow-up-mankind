@@ -20,7 +20,7 @@ var current_root_position
 const MAX_RUMBLE_VARIANCE := Vector3(0.25, 0.08, 0)
 
 var is_jumping := false
-var jump_strength := 40
+var jump_strength := 50
 var gravity := 30
 var vertical_speed := 0.0
 	
