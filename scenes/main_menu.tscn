@@ -95,6 +95,9 @@ transform = Transform3D(-1, 2.51219e-08, 8.37355e-08, 0, 0.957823, -0.287361, -8
 [node name="GameGlobe" parent="." instance=ExtResource("2_oloa8")]
 script = null
 
+[node name="VisualContainer" parent="GameGlobe" index="0"]
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, 0, 0)
+
 [node name="Area3D" parent="GameGlobe" index="1"]
 visible = false
 
