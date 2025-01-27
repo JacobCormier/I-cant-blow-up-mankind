@@ -4,12 +4,14 @@ extends CanvasLayer
 @onready var death_screen_control: Control = $DeathScreenControl
 @onready var score_control: Control = $ScoreControl
 @onready var score_label: Label = $ScoreControl/ScoreLabel
+@onready var fuel_progress_bar: TextureProgressBar = $ScoreControl/FuelProgressBar
 
 var score := 0.0
 var is_score_posted = false
 
-func _read():
+func _ready():
 	death_screen_control.visible = false
+	PlayerStats.on_fuel_changed.connect(update_fuel)
 
 func _process(delta: float) -> void:
 	if death_screen_control.visible == false:
@@ -25,9 +27,12 @@ func show_death():
 	death_screen_control.visible = true
 	score_control.visible = false
 
-func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
+func update_fuel(fuel_count: int) -> void:
+	fuel_progress_bar.value = fuel_count
 
+func _on_restart_button_pressed() -> void:
+	PlayerStats.reload_fuel()
+	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

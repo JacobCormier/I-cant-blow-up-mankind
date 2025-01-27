@@ -1,8 +1,6 @@
 class_name PlayerController
 extends Node3D
 
-signal on_player_death
-
 @onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GameGlobe"
 @onready var game_ui: CanvasLayer = $"../GameUI"
@@ -17,7 +15,7 @@ var is_input_right := false
 var is_input_jumping := false
 
 func _ready() -> void:
-	on_player_death.connect(_trigger_player_death)
+	PlayerStats.on_player_death.connect(_trigger_player_death)
 	Engine.time_scale = 1.0
 
 func _input(event: InputEvent) -> void:
