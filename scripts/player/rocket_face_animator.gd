@@ -2,8 +2,8 @@ extends Node3D
 
 enum FaceStates {NONE, TALK, SURPRISE, PANIC, SAD, HAPPY, EXCITED}
 
-@onready var camera_3d: Camera3D = $Camera3D
-@onready var mouth: MeshInstance3D = $MenuPlayer/FakeBlock/Mouth
+@onready var menu_player: Node3D = $Camera3D/MenuPlayer
+@onready var mouth: MeshInstance3D = $Camera3D/MenuPlayer/FakeBlock/Mouth
 
 const MAX_MOUTH_HEIGHT = 0.45
 const MIN_MOUTH_HEIGHT = 0.1
@@ -14,18 +14,70 @@ const MIN_TALK_FREQUENCY = 0.1
 const MAX_TALK_FREQUENCY = 0.6
 
 var tween: Tween
-var camera_root_position
+var turn_tween: Tween
+var turn_dir = 1
+var cur_tween_dir = 1
+var did_turn= false 
+var player_root_position
 var last_jitter = [0, 0, 0]
+
+var is_input_left = false
+var is_input_right = false
 
 func _ready() -> void:
 	randomize_talk_frequency()
-	camera_root_position = camera_3d.position
+	player_root_position = menu_player.position
+	print("ROICKET READY")
 	
-func _process(delta):
-	micro_rumble(camera_3d, camera_root_position, delta, 0, 0.05, 0.1, 0.05)
-	micro_rumble(camera_3d, camera_root_position, delta, 1, 0.2, 0.1, 0.17)
-	micro_rumble(camera_3d, camera_root_position, delta, 2, 0.4, 0.3, 0.43)
+func _process(delta):	
+	micro_rumble(menu_player, player_root_position, delta, 0, 0.05, 0.1, 0.05)
+	micro_rumble(menu_player, player_root_position, delta, 1, 0.2, 0.1, 0.17)
+	micro_rumble(menu_player, player_root_position, delta, 2, 0.4, 0.3, 0.3)
+	
+	if (is_input_left and is_input_right) or (not is_input_left and not is_input_right): 
+		turn_dir = 1
+	elif is_input_left:
+		turn_dir = 0
+	elif is_input_right:
+		turn_dir = 2
 
+	turn()
+	
+func _input(event):
+	# Read input Actions
+	if event is InputEventKey:  # Check if it's a key event
+		if event.pressed:  # Check if the key was pressed
+			if Input.is_action_pressed("ui_left") and not is_input_left:
+				is_input_left = true
+			elif Input.is_action_pressed("ui_right") and not is_input_right:
+				is_input_right = true
+		elif event.is_action_released("ui_left") and is_input_left:
+			is_input_left = false
+		elif event.is_action_released("ui_right") and is_input_right:
+			is_input_right = false
+
+func turn():
+	if turn_dir != cur_tween_dir:
+		if not turn_tween == null:
+			turn_tween.stop()
+			turn_tween = null
+		did_turn = false
+
+	if not did_turn:
+		cur_tween_dir = turn_dir
+		var rotation = -50
+		
+		did_turn = true
+		if turn_dir == 0:
+			rotation = -115
+		elif turn_dir == 2:
+			rotation = -15
+			
+		turn_tween = get_tree().create_tween()
+		
+		turn_tween.set_ease(Tween.EASE_OUT)
+		turn_tween.set_trans(Tween.TRANS_CUBIC)
+		turn_tween.tween_property(menu_player, "rotation_degrees:x", rotation,  1)	
 
 func randomize_talk_frequency() -> void:
 	tween = null
@@ -35,12 +87,12 @@ func randomize_talk_frequency() -> void:
 	tween.tween_property(mouth, "mesh:height", MAX_MOUTH_HEIGHT, talk_frequency/2.0)
 	tween.finished.connect(randomize_talk_frequency)
 
-func micro_rumble(node, root_position, delta, index, x_variance = 0.01, z_variance = 0.01, time_scale = 0.05):
+func micro_rumble(node, root_position, delta, index, x_variance = 0.01, y_variance = 0.01, time_scale = 0.05):
 	if last_jitter[index] > time_scale:
 		last_jitter[index] = 0
 		var random_rumble_x = root_position.x + randf_range(0, x_variance)
-		var random_rumble_z = root_position.z + randf_range(0, z_variance)
-		node.position = Vector3(random_rumble_x, root_position.y, random_rumble_z)
+		var random_rumble_y = root_position.y + randf_range(0, y_variance)
+		node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
 	else:
 		last_jitter[index] += randf() * delta
 	

@@ -186,7 +186,9 @@ func _reset_building_for_points(object: Node3D) -> void:
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
 		create_object_at_random_point(new_object, globe_game_radius)
 	else:
+		#get_tree().create_timer(3).timeout.connect(place_object_at_random_point.bind(object, globe_game_radius))
 		place_object_at_random_point(object, globe_game_radius)
+		
 		
 func _reset_object(object: Node3D) -> void:
 	place_object_at_random_point(object, globe_game_radius)

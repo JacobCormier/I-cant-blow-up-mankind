@@ -37,7 +37,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
 
 [node name="Collider" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+transform = Transform3D(1, 4.88415e-12, 0, 2.99321e-12, 1, 0, 2.27374e-13, 0, 1, 0.0118051, 0.0262416, -0.285608)
 visible = false
 
 [node name="VisibleColliderRepresentation" type="MeshInstance3D" parent="Collider"]

@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var fuel_progress_bar: TextureProgressBar = $ScoreControl/FuelProgressBar
 @onready var sub_viewport: SubViewport = $SubViewport
 @onready var texture_rect: TextureRect = $TextureRect
+@onready var rocket_face: Node3D = $SubViewport/RocketFace
 
 func _ready():
 	death_screen_control.visible = false
@@ -21,7 +22,9 @@ func _process(delta):
 		shader_material.set("shader_parameter/time", Time.get_ticks_msec() / 1000.0)
 		shader_material.set("shader_parameter/resolution", Vector2(sub_viewport.size.x, sub_viewport.size.y))
 		shader_material.set("shader_parameter/texture_albedo", sub_viewport.get_texture())
-	
+
+func _input(event):
+	rocket_face._input(event)
 
 func show_death():
 	death_screen_control.visible = true
