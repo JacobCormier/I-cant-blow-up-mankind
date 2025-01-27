@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://boc0o8c8520pf"]
+[gd_scene load_steps=41 format=3 uid="uid://boc0o8c8520pf"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_mudj7"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_oloa8"]
 [ext_resource type="PackedScene" uid="uid://c2jdhswp6mevj" path="res://resources/assets/models/LaunchPad/Block.fbx" id="3_qfytl"]
+[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_77i7d"]
 [ext_resource type="PackedScene" uid="uid://vpn5e80wk35n" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="4_oujf3"]
 [ext_resource type="PackedScene" uid="uid://du85us8wjg6xb" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="5_1y8to"]
 [ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="6_wkxok"]
@@ -44,6 +45,13 @@ fog_density = 1.0
 fog_depth_begin = 200.0
 fog_depth_end = 200.0
 volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ix6l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_77i7d")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg2mm"]
 albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
@@ -106,6 +114,15 @@ visible = false
 
 [node name="MenuPlayer" parent="." instance=ExtResource("6_wkxok")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)
+
+[node name="RightEngine" parent="MenuPlayer/ICBM" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="CenterEngine" parent="MenuPlayer/ICBM" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="LeftEngine" parent="MenuPlayer/ICBM" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
 
 [node name="FollowCam" type="Camera3D" parent="MenuPlayer"]
 transform = Transform3D(-0.782608, 0.622515, 1.44627e-07, 0.596259, 0.7496, -0.287361, -0.178886, -0.224891, -0.957823, -4.94, 35, -28.115)
@@ -349,4 +366,6 @@ skeleton = NodePath("../Diorama/Road/LeftSidewalk")
 [node name="DialogueUI" parent="." instance=ExtResource("25_lb5q6")]
 
 [editable path="GameGlobe"]
+[editable path="MenuPlayer"]
+[editable path="MenuPlayer/ICBM"]
 [editable path="Block/Lid"]

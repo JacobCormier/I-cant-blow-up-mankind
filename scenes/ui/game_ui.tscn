@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=15 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
 [ext_resource type="Texture2D" uid="uid://bx1ahc0sns7l3" path="res://resources/assets/ui/progress_white_small_border.png" id="3_c5vxs"]
 [ext_resource type="Texture2D" uid="uid://o88emmgjm8nb" path="res://resources/assets/ui/progress_red_small.png" id="4_jcsar"]
+[ext_resource type="PackedScene" uid="uid://cti5lnlicuk1l" path="res://scenes/player/rocket_face.tscn" id="5_ee4rg"]
+[ext_resource type="Texture2D" uid="uid://b43p7ut3iavhp" path="res://resources/assets/png/MochiFace.png" id="6_1anad"]
+[ext_resource type="Shader" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
 bg_color = Color(0.129412, 0.129412, 0.129412, 0.65098)
@@ -47,6 +50,10 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 expand_margin_left = 10.0
 expand_margin_right = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri6y0"]
+shader = ExtResource("6_avoad")
+shader_parameter/time = null
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_mbn1m")
@@ -200,6 +207,20 @@ stretch_margin_right = 6
 stretch_margin_bottom = 6
 texture_under = ExtResource("3_c5vxs")
 texture_progress = ExtResource("4_jcsar")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="RocketFace" parent="SubViewport" instance=ExtResource("5_ee4rg")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ri6y0")
+offset_left = 524.0
+offset_top = 240.0
+offset_right = 626.0
+offset_bottom = 347.0
+texture = ExtResource("6_1anad")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="pressed" from="DeathScreenControl/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="DeathScreenControl/Panel/QuitButton" to="." method="_on_quit_button_pressed"]

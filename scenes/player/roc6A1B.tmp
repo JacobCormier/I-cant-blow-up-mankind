@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cti5lnlicuk1l"]
+[gd_scene load_steps=10 format=3 uid="uid://cti5lnlicuk1l"]
 
 [ext_resource type="Script" path="res://scripts/player/rocket_face_animator.gd" id="1_rthuy"]
-[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="2_6qscm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ix6nv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceph6"]
-transparency = 1
 albedo_color = Color(0.264528, 0.29, 0.2001, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nu0hm"]
@@ -26,52 +24,45 @@ height = 0.45
 is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r75pw"]
-shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="RocketFace" type="Node3D"]
 script = ExtResource("1_rthuy")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 1.05879e-22, 0, 0.853887, 0.520458, -8.35187e-23, -0.520458, 0.853887, 7.10543e-15, 0, 4.62748)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, -4.37114e-08, -4.37114e-08, 1.91069e-15, 1, 8.74228e-08, 1, 1.91068e-15, 0, 53.742, 0.1)
-fov = 10.3
-
-[node name="MenuPlayer" parent="." instance=ExtResource("2_6qscm")]
-transform = Transform3D(0.858156, -0.23276, 0.457592, 0.179992, 0.971149, 0.156434, -0.480802, -0.0518824, 0.875293, 0.864, -4.28, 0.243)
-script = null
-
-[node name="FakeBlock" type="MeshInstance3D" parent="MenuPlayer"]
-transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
+[node name="FakeBlock" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ix6nv")
-skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ceph6")
 
-[node name="Left Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
+[node name="Left Eye" type="MeshInstance3D" parent="FakeBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
 mesh = SubResource("BoxMesh_nu0hm")
 surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
-[node name="Left Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Left Eye"]
+[node name="Left Eye Inner" type="MeshInstance3D" parent="FakeBlock/Left Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
 mesh = SubResource("BoxMesh_5w5tk")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6esfl")
 
-[node name="Right Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
+[node name="Right Eye" type="MeshInstance3D" parent="FakeBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
 mesh = SubResource("BoxMesh_nu0hm")
 surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
-[node name="Right Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Right Eye"]
+[node name="Right Eye Inner" type="MeshInstance3D" parent="FakeBlock/Right Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
 mesh = SubResource("BoxMesh_5w5tk")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6esfl")
 
-[node name="Mouth" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
+[node name="Mouth" type="MeshInstance3D" parent="FakeBlock"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.253368, -0.0374449)
 mesh = SubResource("SphereMesh_mlqjc")
 surface_material_override/0 = SubResource("StandardMaterial3D_r75pw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, -4.37114e-08, -4.37114e-08, 1.91069e-15, 1, 8.74228e-08, 1, 1.91069e-15, 0, 1.48703, 0.0999142)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.567384, 0.823453, 0, -0.823453, 0.567384, -4.76837e-07, 0.799062, 0.77429)
+light_energy = 2.071
