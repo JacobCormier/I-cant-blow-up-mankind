@@ -18,6 +18,7 @@ directional_shadow_max_distance = 200.0
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_850ih")]
+globe_visual_radius = 400.0
 
 [node name="Player" parent="." instance=ExtResource("3_gng8u")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
