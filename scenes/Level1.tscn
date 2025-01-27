@@ -16,6 +16,7 @@ directional_shadow_max_distance = 200.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
+current = true
 
 [node name="GameGlobe" parent="." instance=ExtResource("1_n7di7")]
 sky_color = Color(1, 0, 0, 1)
