@@ -6,22 +6,11 @@ extends CanvasLayer
 @onready var score_label: Label = $ScoreControl/ScoreLabel
 @onready var fuel_progress_bar: TextureProgressBar = $ScoreControl/FuelProgressBar
 
-var score := 0.0
-var is_score_posted = false
-
 func _ready():
 	death_screen_control.visible = false
 	PlayerStats.on_fuel_changed.connect(update_fuel)
-
-func _process(delta: float) -> void:
-	if death_screen_control.visible == false:
-		score += delta
-		score_label.text = "Score: " + str(int(score))
-	elif not is_score_posted:
-		is_score_posted = true
-		PlayerStats.check_high_score(score)
-		final_score_label.text = "Final Score: " + str(int(score))
-		high_score_label.text = "High Score: " + str(int(PlayerStats.loaded_high_score))
+	PlayerStats.on_score_changed.connect(update_score)
+	PlayerStats.start_gameplay()
 
 func show_death():
 	death_screen_control.visible = true
@@ -29,6 +18,11 @@ func show_death():
 
 func update_fuel(fuel_count: int) -> void:
 	fuel_progress_bar.value = fuel_count
+
+func update_score(score_count: int) -> void:
+	score_label.text = "Score: " + str(int(score_count))
+	final_score_label.text = "Final Score: " + str(int(score_count))
+	high_score_label.text = "High Score: " + str(int(PlayerStats.loaded_high_score))
 
 func _on_restart_button_pressed() -> void:
 	PlayerStats.reload_fuel()

@@ -2,6 +2,9 @@ extends Node
 
 signal on_player_death
 signal on_fuel_changed(fuel_amount: int)
+signal on_score_changed(score_amount: int)
+
+var is_gameplay_running := false
 
 var loaded_high_score := 0
 var save_data: SaveData = null
@@ -14,13 +17,23 @@ var current_fuel: float:
 		value = clampf(value, 0, 100)
 		current_fuel = value
 		on_fuel_changed.emit(value)
+		
+var current_score: float:
+	set(value):
+		value = clampf(value, 0.0, 9999999999.0)
+		current_score = value
+		check_high_score(value)
+		on_score_changed.emit(value)
 
 func _ready() -> void:
 	_initialize_save_data()
 	reload_fuel()
+	on_player_death.connect(end_gameplay)
 
 func _process(delta: float) -> void:
-	_handle_fuel_deterioration(delta)
+	if is_gameplay_running:
+		_handle_fuel_deterioration(delta)
+		_handle_score_updates(delta)
 		
 
 func reload_fuel(amount: int = 100):
@@ -35,6 +48,20 @@ func _handle_fuel_deterioration(delta: float) -> void:
 		fuel_deterioration -= 1.0
 		if current_fuel == 0:
 			on_player_death.emit()
+			
+func _handle_score_updates(delta: float) -> void:
+	current_score += delta
+
+func add_to_score(add_value: int) -> void:
+	current_score += add_value
+
+func start_gameplay() -> void:
+	is_gameplay_running = true
+	current_score = 0.0
+
+func end_gameplay() -> void:
+	is_gameplay_running = false
+	
 
 #region Save Data
 

@@ -170,7 +170,7 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 
 func _reset_building_for_points(object: Node3D) -> void:
 	# Technically, ANYTHING we reset with this is generating pointsd >:(
-	game_ui.score += 10
+	PlayerStats.add_to_score(10)
 	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
