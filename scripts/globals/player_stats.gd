@@ -56,10 +56,14 @@ func add_to_score(add_value: int) -> void:
 	current_score += add_value
 
 func start_gameplay() -> void:
+	SoundManager.kill_sound()
+	MusicManager.play_music_sequence()
 	is_gameplay_running = true
 	current_score = 0.0
 
 func end_gameplay() -> void:
+	MusicManager.stop()
+	SoundManager.play_nuclear_sound()
 	is_gameplay_running = false
 	
 

@@ -20,9 +20,12 @@ func _ready():
 	 
 
 func play_music_sequence():
-	music_player.stream = THEME_INTRO_AND_VERSE
-	music_player.play()
-	music_player.finished.connect(_on_theme_intro_finished)
+	if (music_player.stream == THEME_INTRO_AND_VERSE or music_player.stream == VERSE_2_LOOPEDTWICE) and music_player.playing:
+		return
+	else:
+		music_player.stream = THEME_INTRO_AND_VERSE
+		music_player.play()
+		music_player.finished.connect(_on_theme_intro_finished)
 
 func _on_theme_intro_finished():
 	music_player.finished.disconnect(_on_theme_intro_finished)
