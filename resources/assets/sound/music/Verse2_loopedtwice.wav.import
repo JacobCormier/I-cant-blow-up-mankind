@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dgtiat8md810"
+uid="uid://q2pvg8ennkt7"
 path="res://.godot/imported/Verse2_loopedtwice.wav-5b63a54274055bfe35ea5c54b3bd0b73.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=2
+edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0
