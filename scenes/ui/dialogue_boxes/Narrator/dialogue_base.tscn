@@ -6,19 +6,22 @@
 
 [node name="TextBox" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -640.0
-offset_bottom = -360.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_j1jdh")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 261.0
-offset_bottom = 105.0
+offset_left = -130.0
+offset_top = -52.0
+offset_right = 131.0
+offset_bottom = 53.0
 pivot_offset = Vector2(130, 52)
 texture = ExtResource("1_b0yp7")
 patch_margin_left = 16
@@ -41,12 +44,11 @@ theme_override_constants/margin_bottom = 20
 [node name="DialogueLabel" type="Label" parent="NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0.317647, 0.372549, 0.419608, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_7qk50")
 theme_override_font_sizes/font_size = 20
-text = "It was the most powerful nuclear missile the world had ever seen."
+text = "Derpyderpy"
 horizontal_alignment = 1
-autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
+autowrap_mode = 3

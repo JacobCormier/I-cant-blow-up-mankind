@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhpnrlikfdtyw"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_xrg8j"]
+
+[node name="Story_1" instance=ExtResource("1_xrg8j")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "It was the most powerful nuclear missile the world had ever seen."

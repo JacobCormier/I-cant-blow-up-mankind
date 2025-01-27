@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm5adfggp1hcn"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_641dw"]
+
+[node name="Story_4" instance=ExtResource("1_641dw")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -147.0
+offset_right = 148.0
+pivot_offset = Vector2(147, 52)
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "But humanity still had hope, for something unexpected happened that day..."

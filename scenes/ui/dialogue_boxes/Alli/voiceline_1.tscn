@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuvxjs7lncu6u"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue_boxes/Alli/base_voiceline.tscn" id="1_xj5d8"]
+
+[node name="voiceline_1" instance=ExtResource("1_xj5d8")]

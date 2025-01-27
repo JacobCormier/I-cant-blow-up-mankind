@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd80hajdimbgk"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_fclbm"]
+
+[node name="Story_2" instance=ExtResource("1_fclbm")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -141.0
+offset_top = -65.0
+offset_right = 142.0
+offset_bottom = 65.0
+pivot_offset = Vector2(141, 84)
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "With advanced A.I. targeting and a payload pushing the limits of what was possible..."

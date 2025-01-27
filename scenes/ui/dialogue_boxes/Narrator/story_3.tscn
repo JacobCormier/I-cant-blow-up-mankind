@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b47wdrit4e65v"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_unbmp"]
+
+[node name="Story_3" instance=ExtResource("1_unbmp")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -132.0
+offset_top = -45.0
+offset_right = 133.0
+offset_bottom = 45.0
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "this weapon had the power to destroy the entire planet. "
