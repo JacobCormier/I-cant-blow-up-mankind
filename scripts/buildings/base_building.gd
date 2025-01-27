@@ -3,7 +3,6 @@ extends Node3D
 var parent
 
 var TIMER_DEATH = false
-var onGround = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

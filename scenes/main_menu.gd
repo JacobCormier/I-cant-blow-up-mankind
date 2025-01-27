@@ -43,6 +43,7 @@ func end_launch_shake() -> void:
 	
 func trigger_launch() -> void:
 	current_root_position = player.position
+	camera_root_position = camera_3d.position
 	is_launching = true
 	player.rocket_particles.gpu_particles_3d.emitting = true
 	
@@ -62,6 +63,7 @@ func _process(delta: float) -> void:
 		
 	if is_rising:
 		rumble(launchPad, launchPad_root_position, 0.5, 0.5)
+		rumble(player, current_root_position)		
 
 func rumble(node, root_position, x_scale = 1, y_scale = 1):
 	var random_rumble_x = root_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x) * x_scale

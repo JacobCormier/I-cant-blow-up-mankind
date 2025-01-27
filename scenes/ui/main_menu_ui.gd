@@ -27,7 +27,7 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_launch_button_pressed() -> void:
-	Engine.time_scale = 100.0
+	Engine.time_scale = 1.0
 	self.visible = false
 	dialogue_ui.start_dialogue()
 	
