@@ -4,6 +4,15 @@ extends Node3D
 # Add a radius for where the game takes place,
 # and a different radius for the visual of the mesh
 
+
+const globe_game_radius = 500
+@export var sky_color: Color # Sky color
+@export var planet_color: Color # Planet Color
+@export var globe_visual_radius: float # Radius of the spinning globe
+@export var obstacle_array_name: String # Identification for the obstacles
+@export var decoration_array_name: String # Identification for the decorations
+
+
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 @onready var area_3d: Area3D = $Area3D
@@ -14,7 +23,6 @@ var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 1.0
 const z_transition_speed = 2.5
 
-var globe_visual_a
 # Debug flag to change building movement behaviour to spawn rather than move
 const CREATE_AND_STAY_INSTEAD_OF_MOVE = false
 
@@ -30,18 +38,20 @@ func do_main_menu_tween(tween, attribute, target, time):
 	tween.tween_property(globe_visual, attribute, target, time)
 
 func _ready():
-	globe_visual_a = globe_visual
 	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	for x in range(0, 450):
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
-		create_object_at_random_point(new_object)
+		create_object_at_random_point(new_object, globe_game_radius)
 		
 	for x in range(0, 100):
 		var new_object = Globals.FUEL_CAN
-		create_object_at_random_point(new_object)
+		create_object_at_random_point(new_object, globe_game_radius)
+		
+	globe_visual.mesh.radius = globe_visual_radius
+	globe_visual.mesh.height = globe_visual_radius * 2.0
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
@@ -103,8 +113,8 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 	return {"point": global_point, "normal": normal}
 
 	
-func create_object_at_random_point(object: PackedScene):
-	var sphere_radius = globe_visual.mesh.radius
+func create_object_at_random_point(object: PackedScene, radius: float):
+	var sphere_radius = radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
 	var point = result["point"]
@@ -132,8 +142,8 @@ func create_object_at_random_point(object: PackedScene):
 	transform.basis = basis
 	new_object.transform = transform
 
-func place_object_at_random_point(object: Node3D):
-	var sphere_radius = globe_visual.mesh.radius
+func place_object_at_random_point(object: Node3D ,radius: float):
+	var sphere_radius = radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
 	var point = result["point"]
@@ -174,9 +184,9 @@ func _reset_building_for_points(object: Node3D) -> void:
 	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
 		var size = Globals.level_1_buildings.size()
 		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
-		create_object_at_random_point(new_object)
+		create_object_at_random_point(new_object, globe_game_radius)
 	else:
-		place_object_at_random_point(object)
+		place_object_at_random_point(object, globe_game_radius)
 		
 func _reset_object(object: Node3D) -> void:
-	place_object_at_random_point(object)
+	place_object_at_random_point(object, globe_game_radius)
