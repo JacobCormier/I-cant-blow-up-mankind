@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b2wpdgyvdco8c"]
+
+[ext_resource type="Script" uid="uid://dt82u2o0l3i87" path="res://resources/custom/level_data/level_data.gd" id="1_llfh4"]
+
+[resource]
+script = ExtResource("1_llfh4")
+progress_goal = 10000
+initial_obstacles = 450
+initial_fuel = 175
+obstacles_per_wave = 25
+fuel_per_wave = 10
+wave_frequency = 60.0
+metadata/_custom_type_script = ExtResource("1_llfh4")

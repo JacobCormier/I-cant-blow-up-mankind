@@ -9,12 +9,14 @@ const globe_game_radius = 500
 @export var sky_color: Color # Sky color
 @export var planet_color: Color # Planet Color
 @export var globe_visual_radius: float # Radius of the spinning globe
-
+@export var level_data: LevelData # Resource for the level data
 
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 @onready var area_3d: Area3D = $Area3D
 @onready var game_ui: CanvasLayer = $"../GameUI"
+
+@onready var wave_timer: Timer = $WaveTimer
 
 const ORBIT_SPEED_X = 0.3
 var orbit_speed_z_target : float
@@ -33,15 +35,18 @@ func do_main_menu_tween(tween, attribute, target, time):
 	tween.tween_property(globe_visual, attribute, target, time)
 
 func _ready():
+	wave_timer.wait_time = level_data.wave_frequency
+	wave_timer.timeout.connect(_spawn_wave)
+	wave_timer.start()
 	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	_setup_globe()
 	
-	for x in range(0, 450):
+	for x in range(0, level_data.initial_obstacles):
 		_create_obstacle()
 		
-	for x in range(0, 100):
+	for x in range(0, level_data.initial_fuel):
 		_create_fuel()
 		
 	
@@ -203,3 +208,6 @@ func _create_obstacle() -> void:
 	var size = obstacles.size()
 	var new_object = obstacles[randi_range(0, size - 1)]
 	create_object_at_random_bottom_point(new_object, globe_game_radius)
+
+func _spawn_wave() -> void:
+	print("WAVE SPAWNED!")
