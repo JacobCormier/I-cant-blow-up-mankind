@@ -21,9 +21,6 @@ var orbit_speed_z_target : float
 const MAX_Z_ORBIT_SPEED = 1.0
 const z_transition_speed = 2.5
 
-# Debug flag to change building movement behaviour to spawn rather than move
-const CREATE_AND_STAY_INSTEAD_OF_MOVE = false
-
 var orbit_speed_z: float:
 	set(value):
 		value = clampf(value, -MAX_Z_ORBIT_SPEED, MAX_Z_ORBIT_SPEED)
@@ -107,7 +104,7 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 
 	return {"point": global_point, "normal": normal}
 
-func create_object_at_random_point(object: PackedScene, radius: float):
+func create_object_at_random_bottom_point(object: PackedScene, radius: float):
 	var sphere_radius = radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
@@ -184,13 +181,7 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 func _reset_building_for_points(object: Node3D) -> void:
 	# Technically, ANYTHING we reset with this is generating pointsd >:(
 	PlayerStats.add_to_score(10)
-	if CREATE_AND_STAY_INSTEAD_OF_MOVE:
-		var size = Globals.level_1_buildings.size()
-		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
-		create_object_at_random_point(new_object, globe_game_radius)
-	else:
-		#get_tree().create_timer(3).timeout.connect(place_object_at_random_point.bind(object, globe_game_radius))
-		place_object_at_random_point(object, globe_game_radius)	
+	place_object_at_random_point(object, globe_game_radius)	
 		
 func _reset_object(object: Node3D) -> void:
 	place_object_at_random_point(object, globe_game_radius)
@@ -203,10 +194,10 @@ func _create_fuel() -> void:
 			new_object = Globals.FUEL_CAN
 		else:
 			new_object = Globals.GOLDEN_FUEL_CAN
-		create_object_at_random_point(new_object, globe_game_radius)
+		create_object_at_random_bottom_point(new_object, globe_game_radius)
 
 func _create_obstacle() -> void:
 	var obstacles = Globals.get_current_level_obstacles()
 	var size = obstacles.size()
 	var new_object = obstacles[randi_range(0, size - 1)]
-	create_object_at_random_point(new_object, globe_game_radius)
+	create_object_at_random_bottom_point(new_object, globe_game_radius)
