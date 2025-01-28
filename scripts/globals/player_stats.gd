@@ -37,7 +37,7 @@ var current_score: float:
 var current_progress: float:
 	set(value):
 		current_progress = value
-		# Add a check for completing the level.
+		check_end_of_level(value)
 		on_progress_changed.emit(value, progress_goal)
 
 func _ready() -> void:
@@ -86,6 +86,11 @@ func end_gameplay() -> void:
 	SoundManager.kill_engine()
 	is_gameplay_running = false
 	
+func check_end_of_level(value) -> void:
+	if value >= progress_goal:
+		print("YOU WIN!")
+		# Jacob Cormier
+		# This will trigger the transition and scene swap
 
 #region Save Data
 
