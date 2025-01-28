@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwtn180ee6nw8"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_h3d2r"]
-[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
+[ext_resource type="PackedScene" uid="uid://cjj5vuqes34yd" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_3hlt2"]
 [ext_resource type="Script" path="res://scripts/player/rocket_animator.gd" id="3_btq88"]
 [ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="4_gjylr"]
-[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_rsaft"]
 [ext_resource type="Script" path="res://scripts/player/player_collider.gd" id="6_gn5m8"]
 [ext_resource type="Script" path="res://scripts/player/collider_anchor.gd" id="6_y6hog"]
 

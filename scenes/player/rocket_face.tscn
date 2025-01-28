@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cti5lnlicuk1l"]
+[gd_scene load_steps=10 format=3 uid="uid://cti5lnlicuk1l"]
 
 [ext_resource type="Script" path="res://scripts/player/rocket_face_animator.gd" id="1_rthuy"]
 [ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="2_6qscm"]
@@ -11,8 +11,6 @@ albedo_color = Color(0.264528, 0.29, 0.2001, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nu0hm"]
 size = Vector3(0.25, 0.25, 0.25)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qixjo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5w5tk"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -50,7 +48,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ceph6")
 [node name="Left Eye" type="MeshInstance3D" parent="Camera3D/MenuPlayer/FakeBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
 mesh = SubResource("BoxMesh_nu0hm")
-surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
 [node name="Left Eye Inner" type="MeshInstance3D" parent="Camera3D/MenuPlayer/FakeBlock/Left Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
@@ -61,7 +58,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6esfl")
 [node name="Right Eye" type="MeshInstance3D" parent="Camera3D/MenuPlayer/FakeBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
 mesh = SubResource("BoxMesh_nu0hm")
-surface_material_override/0 = SubResource("StandardMaterial3D_qixjo")
 
 [node name="Right Eye Inner" type="MeshInstance3D" parent="Camera3D/MenuPlayer/FakeBlock/Right Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
