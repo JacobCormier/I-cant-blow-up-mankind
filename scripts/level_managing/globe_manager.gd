@@ -55,8 +55,11 @@ func _ready():
 			new_object = Globals.GOLDEN_FUEL_CAN
 		create_object_at_random_point(new_object, globe_game_radius)
 		
+	# Set up the globe based on export variables
 	globe_visual.mesh.radius = globe_visual_radius
 	globe_visual.mesh.height = globe_visual_radius * 2.0
+	var globe_material = globe_visual.get_surface_override_material(0)
+	globe_material.albedo_color = planet_color
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)

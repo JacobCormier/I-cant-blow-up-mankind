@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1rnwuckdbdon"]
 
-[ext_resource type="Script" path="res://scripts/level_managing/globe_manager.gd" id="1_x0yea"]
-[ext_resource type="Script" path="res://scripts/level_managing/world_obstacle_collider.gd" id="2_w7nhy"]
+[ext_resource type="Script" uid="uid://djumnxmegab28" path="res://scripts/level_managing/globe_manager.gd" id="1_x0yea"]
+[ext_resource type="Script" uid="uid://bh8mhegm1mult" path="res://scripts/level_managing/world_obstacle_collider.gd" id="2_w7nhy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_smda0"]
 radius = 500.0
