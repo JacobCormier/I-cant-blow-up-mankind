@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dti42yrq2ji54"]
+[gd_scene load_steps=15 format=3 uid="uid://dti42yrq2ji54"]
 
 [ext_resource type="Script" uid="uid://i4qapvc5yvp7" path="res://scripts/ui/main_menu_ui.gd" id="1_can6x"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_q7ib8"]
@@ -8,6 +8,16 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vh4c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8bkt"]
+bg_color = Color(0.46, 0.2484, 0.2484, 1)
+border_width_bottom = 5
+border_color = Color(0.330869, 0.169571, 0.169781, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efrib"]
 bg_color = Color(0.890625, 0.556179, 0.49054, 1)
@@ -112,6 +122,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_q7ib8")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_b8bkt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")

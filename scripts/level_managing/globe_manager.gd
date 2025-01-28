@@ -9,8 +9,6 @@ const globe_game_radius = 500
 @export var sky_color: Color # Sky color
 @export var planet_color: Color # Planet Color
 @export var globe_visual_radius: float # Radius of the spinning globe
-@export var obstacle_array_name: String # Identification for the obstacles
-@export var decoration_array_name: String # Identification for the decorations
 
 
 @onready var visual_container: Node3D = $VisualContainer
