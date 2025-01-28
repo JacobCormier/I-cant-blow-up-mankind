@@ -30,7 +30,6 @@ var orbit_speed_z: float:
 		value = clampf(value, -MAX_Z_ORBIT_SPEED, MAX_Z_ORBIT_SPEED)
 		orbit_speed_z = value
 
-
 var direction: PlayerController.TurnDirection
 
 func do_main_menu_tween(tween, attribute, target, time):

@@ -24,7 +24,7 @@ fog_depth_end = 200.0
 volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_smda0"]
-radius = 500.0
+radius = 495.25
 height = 1000.0
 radial_segments = 120
 rings = 64

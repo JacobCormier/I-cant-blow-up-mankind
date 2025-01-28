@@ -21,6 +21,7 @@ MusicManager="*res://scripts/sound/music/music_manager.gd"
 Globals="*res://scripts/globals/globals.gd"
 PlayerStats="*res://scripts/globals/player_stats.gd"
 SoundManager="*res://scripts/globals/sound_manager.gd"
+AnimationUtils="*res://scripts/globals/AnimationUtils.gd"
 
 [display]
 

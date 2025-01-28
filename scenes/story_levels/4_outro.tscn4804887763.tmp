@@ -1,8 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://cgkpwkc0ea2i5"]
+[gd_scene load_steps=42 format=3 uid="uid://cgkpwkc0ea2i5"]
 
 [ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_830yr"]
-[ext_resource type="Texture2D" uid="uid://bego8y2qlfr1n" path="res://resources/assets/png/moon_texture.jpg" id="2_uy4vs"]
-[ext_resource type="Texture2D" uid="uid://bvqqcbtgsydm8" path="res://resources/assets/png/moon_normal.jpg" id="3_qhnro"]
+[ext_resource type="Script" uid="uid://dcscscoafotly" path="res://scripts/cutscenes/tweens/outro_zero_g_flip.gd" id="2_vfhc2"]
 [ext_resource type="PackedScene" uid="uid://cjj5vuqes34yd" path="res://resources/assets/models/ICBM/ICBM.fbx" id="3_uy4vs"]
 [ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_qhnro"]
 [ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="5_o4cpy"]
@@ -15,30 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="12_ch573"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="13_ckfaw"]
 [ext_resource type="PackedScene" uid="uid://cti5lnlicuk1l" path="res://scenes/player/face_cam_rocket.tscn" id="14_klxeu"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_qhnro"]
-radius = 500.0
-height = 1000.0
-radial_segments = 120
-rings = 64
-
-[sub_resource type="Gradient" id="Gradient_4fqsv"]
-colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcctt"]
-noise_type = 3
-frequency = 0.0034
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
-seamless = true
-as_normal_map = true
-color_ramp = SubResource("Gradient_4fqsv")
-noise = SubResource("FastNoiseLite_pcctt")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
-albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n355b"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -83,14 +58,29 @@ func set_sky_color(color: Color):
 	environment.sky.sky_material.ground_horizon_color = color
 "
 
-[sub_resource type="SphereMesh" id="SphereMesh_uy4vs"]
-radius = 500.0
+[sub_resource type="SphereMesh" id="SphereMesh_jm84i"]
+radius = 495.25
 height = 1000.0
+radial_segments = 120
+rings = 64
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhnro"]
-albedo_texture = ExtResource("2_uy4vs")
+[sub_resource type="Gradient" id="Gradient_4fqsv"]
+colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcctt"]
+noise_type = 3
+frequency = 0.0034
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_4fqsv")
+noise = SubResource("FastNoiseLite_pcctt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a3k3"]
+albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
-normal_texture = ExtResource("3_qhnro")
+normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xab3b"]
 resource_local_to_scene = true
@@ -186,8 +176,21 @@ emission_energy_multiplier = 0.15
 [node name="Outro" type="Node3D"]
 script = ExtResource("1_830yr")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.830012, -0.557745, 0, 0.557745, -0.830012, 0, 0, 0)
+[node name="CustomEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1a3k3")
+script = SubResource("GDScript_lbxvt")
+
+[node name="DirectionalLight_Part1" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99939, -0.0348995, 0, 0.0348995, 0.99939, 0, 3.26051, 0)
+visible = false
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
+[node name="DirectionalLight_Part2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.920505, 0.390731, 0, -0.390731, 0.920505, 0, 3.26051, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+script = ExtResource("2_vfhc2")
 
 [node name="GameGlobe" type="Node3D" parent="."]
 
@@ -196,45 +199,16 @@ transform = Transform3D(1, 0, 0, 0, 0.431, 0.902, 0, -0.902, 0.431, 0, 0, 0)
 
 [node name="GlobeVisual" type="MeshInstance3D" parent="GameGlobe/VisualContainer"]
 cast_shadow = 0
-mesh = SubResource("SphereMesh_qhnro")
+mesh = SubResource("SphereMesh_jm84i")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
-
-[node name="WaveTimer" type="Timer" parent="GameGlobe"]
-
-[node name="CustomEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1a3k3")
-script = SubResource("GDScript_lbxvt")
-
-[node name="DirectionalLight_Part1" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.553392, 0.832921, 0, -0.832921, 0.553392, 0, 1.70846, -2.77706)
-visible = false
-shadow_enabled = true
-directional_shadow_max_distance = 200.0
-
-[node name="MoonRevealLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0593064, 0.99824, 0, -0.99824, -0.0593064, 0, 1497.45, -981.144)
-shadow_enabled = true
-directional_shadow_max_distance = 200.0
-
-[node name="Moon" type="Node3D" parent="MoonRevealLight"]
-transform = Transform3D(1, 0, 0, 0, 0.988494, 0.151261, 0, -0.151261, 0.988494, 0, -2041.99, -10111.6)
-visible = false
-
-[node name="VisualContainer" type="Node3D" parent="MoonRevealLight/Moon"]
-transform = Transform3D(0.978148, -0.0710874, -0.195311, 0, -0.939394, 0.341912, -0.207912, -0.33444, -0.918866, 0, 0, 0)
-
-[node name="GlobeVisual" type="MeshInstance3D" parent="MoonRevealLight/Moon/VisualContainer"]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_uy4vs")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qhnro")
+surface_material_override/0 = SubResource("StandardMaterial3D_1a3k3")
 
 [node name="Player" type="Node3D" parent="."]
-transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.0220589, 0.945846, -0.323865, 0.116767, -0.31929, -0.940436, -4.08041, 1510.39, -962.796)
+transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
+visible = false
 
 [node name="ICBMCharacter" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 
 [node name="RocketModel" parent="Player/ICBMCharacter" instance=ExtResource("3_uy4vs")]
 
@@ -521,18 +495,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cl26b")
 [node name="LeftEngine" parent="GameUI/FaceCam/SubViewport/FaceCamRocket/Camera3D/ICBMCharacter/RocketModel" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_cl26b")
 
+[node name="RocketParticles" parent="GameUI/FaceCam/SubViewport/FaceCamRocket/Camera3D/ICBMCharacter/RocketModel" index="6"]
+visible = false
+
 [node name="IntroCam" type="Camera3D" parent="."]
-transform = Transform3D(0.955547, -0.225521, 0.189921, -0.251122, -0.284996, 0.925049, -0.154491, -0.931621, -0.32896, -6.69781, 1518.12, -964.881)
-current = true
+transform = Transform3D(0.955547, -0.225521, 0.189921, 0, 0.644153, 0.764897, -0.294839, -0.730895, 0.615518, 294.111, 1617.29, 787.442)
 fov = 119.4
 
 [node name="RevealCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.943234, -0.153885, -0.294328, 0.282883, 0.0921205, -0.95472, 0.174031, -0.983785, -0.0433596, -7.84482, 1502.87, -961.786)
+transform = Transform3D(-0.943234, -0.153885, -0.294328, 0, 0.886186, -0.463329, 0.332129, -0.437028, -0.835881, 292.964, 1606.66, 776.069)
+current = true
 fov = 100.0
-far = 10000.0
 
 [node name="FinaleCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.943234, -0.153885, -0.294328, 0.282883, 0.0921205, -0.95472, 0.174031, -0.983785, -0.0433596, -3.95981, 1455.94, -974.983)
+transform = Transform3D(-0.943234, -0.153885, -0.294328, 0, 0.886186, -0.463329, 0.332129, -0.437028, -0.835881, 292.964, 1606.66, 776.069)
+current = true
 fov = 100.0
 
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/RestartButton" to="GameUI" method="_on_restart_button_pressed"]

@@ -1,91 +1,60 @@
 extends Node3D
 
-@onready var ground_cam: Camera3D = $GroundCam
-@onready var follow_cam: Camera3D = $ICBMCharacter/FollowCam
+@onready var intro_cam: Camera3D = $IntroCam
+@onready var reveal_cam: Camera3D = $RevealCam
+@onready var finale_cam: Camera3D = $FinaleCam
+@onready var moon_reveal_light: DirectionalLight3D = $MoonRevealLight
+@onready var rocket_particles: Node3D = $Player/ICBMCharacter/RocketModel/RocketParticles
+@onready var game_globe: Node3D = $GameGlobe
+@onready var moon: Node3D = $MoonRevealLight/Moon
+@onready var moon_visual: Node3D = $MoonRevealLight/Moon/VisualContainer
+
 var OutroTweens = preload("res://scripts/cutscenes/tweens/outro_tweens.gd").new()
 
-enum OutroStep {
-	FOLLOW,
-	STATIONARY,
-	INTERCEPT,
-	SPACE,
-	SUN
-}
-
-var rumble_intensity = 0
-const MAX_RUMBLE_VARIANCE := Vector3(0.25, 0.08, 0)
-
-var step = OutroStep.FOLLOW
 var tween
+var active_camera
 var camera_root_position
+var camera_shake = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Engine.time_scale = 1
-	start_tween_animation()
-	camera_root_position = follow_cam.position
+	active_camera = intro_cam
+	camera_root_position = intro_cam.position
+	OutroTweens.play_sequence(self)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if step == OutroStep.FOLLOW:
-		print("FOLLOW Follow Cam")
-		rumble(follow_cam, camera_root_position, rumble_intensity, rumble_intensity)
-		step_complete(0)
-	elif step == OutroStep.STATIONARY:
-		print("STATIONARY Ground Cam")
-		if rumble_intensity > 0:
-			rumble(ground_cam, camera_root_position, rumble_intensity, rumble_intensity)
-	elif step == OutroStep.INTERCEPT:
-		print("INTERCEPT Follow Cam")
-		rumble(follow_cam, camera_root_position, rumble_intensity, rumble_intensity)
-	elif step == OutroStep.SPACE:
-		print("SPACE Follow Cam")
-		rumble(follow_cam, camera_root_position, rumble_intensity, rumble_intensity)
-	elif step == OutroStep.SUN:
-		print("SUN Follow Cam")
-		rumble(follow_cam, camera_root_position, rumble_intensity, rumble_intensity)
-	else:
-		print("Impossible State")
+	if camera_shake:
+		AnimationUtils.rumble(active_camera, camera_root_position)
 
-func step_complete(step_completed):
-	if step_completed == OutroStep.FOLLOW:
-		print("FOLLOW Cam Step Complete")
-		camera_root_position = ground_cam.position
-		ground_cam.make_current()
-		tween = OutroTweens.step2(self, get_tree().create_tween())
-		step = OutroStep.STATIONARY
-	elif step_completed == OutroStep.STATIONARY:
-		print("STATIONARY Cam Step Complete")
-		camera_root_position = follow_cam.position
-		follow_cam.make_current()
-		tween = OutroTweens.step3()
-		step = OutroStep.INTERCEPT
-	elif step_completed == OutroStep.INTERCEPT:
-		print("INTERCEPT Cam Step Complete")
-		tween = OutroTweens.step4()
-		step = OutroStep.SPACE
-	elif step_completed == OutroStep.SPACE:
-		print("SPACE Cam Step Complete")
-		tween = OutroTweens.step5()
-		step = OutroStep.STATIONARY
-	elif step_completed == OutroStep.SUN:
-		print("SUN Cam Step Complete")
-		tween = OutroTweens.step6()
-	else:
-		print("Impossible State")
+func intro_started():
+	print("intro_started")
+	active_camera = intro_cam
+	intro_cam.make_current()
+	
+func moon_reveal_started():
+	print("moon_reveal_started")
+	active_camera = reveal_cam
+	reveal_cam.make_current()
+	game_globe.visible = false
+	moon.visible = true
+
+func finale_started():
+	print("finale_started")
+	active_camera = finale_cam
+	finale_cam.make_current()
+
+func start_camera_shake():
+	camera_shake = true
+	start_particles()
 		
-func rumble(node, root_position, x_scale = 1, y_scale = 1):
-	var random_rumble_x = root_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x) * x_scale
-	var random_rumble_y = root_position.y + randf_range(0, MAX_RUMBLE_VARIANCE.y) * y_scale
-	node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
+func start_particles():
+	rocket_particles.visible = true
 	
-func start_tween_animation():
-	tween = get_tree().create_tween()
-	
-	# Shake Camera as rocket flies by
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "rumble_intensity", 4,  3)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "rumble_intensity", 0,  5)	
+func stop_camera_shake():
+	camera_shake = false
+	stop_particles()
+		
+func stop_particles():
+	rocket_particles.visible = false
