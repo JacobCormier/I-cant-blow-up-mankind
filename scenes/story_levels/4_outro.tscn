@@ -234,7 +234,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qhnro")
 transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.0220589, 0.945846, -0.323865, 0.116767, -0.31929, -0.940436, -4.08041, 1510.39, -962.796)
 
 [node name="ICBMCharacter" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RocketModel" parent="Player/ICBMCharacter" instance=ExtResource("3_uy4vs")]
 
