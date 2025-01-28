@@ -7,6 +7,11 @@ extends Control
 @onready var endless_control: Control = $EndlessControl
 @onready var endless_button: Button = $MainMenuControl/Panel/EndlessButton
 
+@onready var title: Label = $MainMenuControl/Panel/Title
+@onready var title_real: Label = $MainMenuControl/Panel/TitleReal
+@onready var sub_title: Label = $MainMenuControl/Panel/SubTitle
+@onready var sub_title_real: Label = $MainMenuControl/Panel/SubTitleReal
+
 
 func _ready() -> void:
 	print(OS.get_data_dir())
@@ -17,6 +22,11 @@ func _ready() -> void:
 	
 	if PlayerStats.loaded_high_score > 0:
 		skip_button.visible = true
+		
+		title.visible = false
+		title_real.visible = true
+		sub_title.visible = false
+		sub_title_real.visible = true
 	
 func _on_endless_button_pressed() -> void:
 	skip_button.visible = false
