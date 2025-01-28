@@ -92,9 +92,7 @@ func _on_restart_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	PlayerStats.reload_fuel()
 	SoundManager.kill_sound()
-	print(Globals.MAIN_MENU)
-	get_tree().paused = false
-	get_tree().change_scene_to_packed(Globals.MAIN_MENU)
+	get_tree().change_scene_to_file("res://scenes/story_levels/0_main_menu.tscn")
 
 func slide_face_cam():
 	tween = get_tree().create_tween()
@@ -102,8 +100,8 @@ func slide_face_cam():
 	# Pan Camera 180deg
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(face_cam, "position:x", 498, 1)	
-	tween.tween_property(face_cam, "position:y", 241, 1)	
+	tween.tween_property(face_cam, "position:x", 498, 1)
+	tween.tween_property(face_cam, "position:y", 241, 1)
 
 func wait_for_input_or_timeout(timeout: float, callback):
 	if timer_tween == null:
