@@ -76,3 +76,10 @@ func get_current_level_obstacles() -> Array:
 		print("Globals::get_current_level_obstacles --- INVALID LEVEL REQUESTED")
 		
 	return []
+
+func get_current_level_decorations() -> Array:
+	if current_level == 3:
+		# only the space level has decorations for the planet
+		return level_2_buildings
+		
+	return []
