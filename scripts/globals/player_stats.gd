@@ -3,6 +3,7 @@ extends Node
 signal on_player_death
 signal on_fuel_changed(fuel_amount: int)
 signal on_score_changed(score_amount: int)
+signal on_progress_changed(progress_value: int)
 
 var is_gameplay_running := false
 
@@ -16,6 +17,10 @@ const FUEL_DETERIORATION_MULTIPLIER = 10.0
 
 var current_fuel: float:
 	set(value):
+		var excess = value - 100
+		if excess > 0:
+			current_progress += excess
+		
 		value = clampf(value, 0, 100)
 		current_fuel = value
 		on_fuel_changed.emit(value)
@@ -26,6 +31,11 @@ var current_score: float:
 		current_score = value
 		check_high_score(value)
 		on_score_changed.emit(value)
+
+var current_progress: float:
+	set(value):
+		current_progress = value
+		on_progress_changed.emit(value)
 
 func _ready() -> void:
 	_initialize_save_data()
@@ -55,6 +65,9 @@ func _handle_score_updates(delta: float) -> void:
 
 func add_to_score(add_value: int) -> void:
 	current_score += add_value
+
+func add_to_progress(add_value: int) -> void:
+	current_progress += add_value
 
 func start_gameplay() -> void:
 	SoundManager.kill_sound()

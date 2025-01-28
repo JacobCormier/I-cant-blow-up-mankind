@@ -263,3 +263,6 @@ func _create_decoration() -> void:
 	var size = decorations.size()
 	var new_deco = decorations[randi_range(0, size - 1)]
 	create_object_at_random_point(new_deco, globe_visual_radius)
+
+func get_progress_goal() -> int:
+	return level_data.progress_goal
