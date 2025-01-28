@@ -21,3 +21,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
 [node name="Area3D" parent="Collider" index="0"]
 fuel_amount = 100
+score_amount = 200
