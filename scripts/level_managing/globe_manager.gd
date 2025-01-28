@@ -45,7 +45,13 @@ func _ready():
 		create_object_at_random_point(new_object, globe_game_radius)
 		
 	for x in range(0, 100):
-		var new_object = Globals.FUEL_CAN
+		var new_object
+		# Random number from 0 to 3
+		var random_selection = randi_range(0, 3)
+		if random_selection != 0:
+			new_object = Globals.FUEL_CAN
+		else:
+			new_object = Globals.GOLDEN_FUEL_CAN
 		create_object_at_random_point(new_object, globe_game_radius)
 		
 	globe_visual.mesh.radius = globe_visual_radius
