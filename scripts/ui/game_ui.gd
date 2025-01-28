@@ -8,7 +8,9 @@ extends CanvasLayer
 @onready var sub_viewport: SubViewport = $FaceCam/SubViewport
 @onready var face_cam: TextureRect = $FaceCam
 @onready var face_cam_rocket: Node3D = $FaceCam/SubViewport/FaceCamRocket
+
 @onready var level_progress_bar: TextureProgressBar = $ScoreControl/LevelProgressBar
+@onready var progress_label: Label = $ScoreControl/ProgressLabel
 
 var dead = false
 var timer_tween
@@ -73,6 +75,13 @@ func update_score(score_count: int) -> void:
 
 func update_progress(progress_count: int, progress_goal: int) -> void:
 	# THis needs the total progress goal as well.
+	if progress_goal < 0 and level_progress_bar.visible == true:
+		level_progress_bar.hide()
+		progress_label.hide()
+	elif progress_goal >= 0 and level_progress_bar.visible == false:
+		level_progress_bar.hide()
+		progress_label.hide()
+	
 	level_progress_bar.max_value = progress_goal
 	level_progress_bar.value = progress_count
 

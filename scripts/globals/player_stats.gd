@@ -37,6 +37,7 @@ var current_score: float:
 var current_progress: float:
 	set(value):
 		current_progress = value
+		# Add a check for completing the level.
 		on_progress_changed.emit(value, progress_goal)
 
 func _ready() -> void:
