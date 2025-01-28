@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp61j6luxxyrs"]
+[gd_scene load_steps=2 format=3 uid="uid://bp61j6luxxyrs"]
 
 [ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue_boxes/Alli/base_voiceline.tscn" id="1_vspsv"]
-[ext_resource type="FontFile" uid="uid://bke5g57g1p40o" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="2_scgna"]
 
 [node name="voiceline_title" instance=ExtResource("1_vspsv")]
 
@@ -14,10 +13,11 @@ offset_bottom = 85.0
 [node name="MarginContainer" parent="NinePatchRect" index="0"]
 offset_top = -17.0
 offset_bottom = 17.0
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 32
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_scgna")
 theme_override_font_sizes/font_size = 40
 text = "I
 Can't
@@ -25,4 +25,3 @@ Blow-up
 mankind!!!
 "
 horizontal_alignment = 0
-autowrap_mode = 3

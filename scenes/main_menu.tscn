@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://boc0o8c8520pf"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_mudj7"]
+[ext_resource type="Script" uid="uid://dgp52ar4rky7w" path="res://scenes/main_menu.gd" id="1_mudj7"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_oloa8"]
 [ext_resource type="PackedScene" uid="uid://xow7tpha4ipr" path="res://resources/assets/models/LaunchPad/Block.fbx" id="3_qfytl"]
 [ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_77i7d"]
