@@ -40,26 +40,12 @@ func _ready():
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	for x in range(0, 450):
-		var obstacles = Globals.get_current_level_obstacles()
-		var size = obstacles.size()
-		var new_object = obstacles[randi_range(0, size - 1)]
-		create_object_at_random_point(new_object, globe_game_radius)
+		_create_obstacle()
 		
 	for x in range(0, 100):
-		var new_object
-		# Golden Fuel Cans have a 20% of spawning
-		var random_selection = randi_range(0, 4)
-		if random_selection != 0:
-			new_object = Globals.FUEL_CAN
-		else:
-			new_object = Globals.GOLDEN_FUEL_CAN
-		create_object_at_random_point(new_object, globe_game_radius)
+		_create_fuel()
 		
-	# Set up the globe based on export variables
-	globe_visual.mesh.radius = globe_visual_radius
-	globe_visual.mesh.height = globe_visual_radius * 2.0
-	var globe_material = globe_visual.get_surface_override_material(0)
-	globe_material.albedo_color = planet_color
+	_setup_globe()
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
@@ -68,6 +54,7 @@ func _process(delta: float) -> void:
 		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
 		globe_visual.rotate_z(orbit_speed_z * delta)
 		
+#region Sphere Positioning
 
 # Function to generate a random point on the sphere and surface normal
 func random_point_on_sphere(radius: float) -> Dictionary:
@@ -120,7 +107,6 @@ func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
 
 	return {"point": global_point, "normal": normal}
 
-	
 func create_object_at_random_point(object: PackedScene, radius: float):
 	var sphere_radius = radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
@@ -176,6 +162,15 @@ func place_object_at_random_point(object: Node3D ,radius: float):
 	transform.origin = point
 	transform.basis = basis
 	object.transform = transform
+	
+#endregion 
+
+func _setup_globe() -> void:
+	# Set up the globe based on export variables
+	globe_visual.mesh.radius = globe_visual_radius
+	globe_visual.mesh.height = globe_visual_radius * 2.0
+	var globe_material = globe_visual.get_surface_override_material(0)
+	globe_material.albedo_color = planet_color
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:
@@ -195,8 +190,23 @@ func _reset_building_for_points(object: Node3D) -> void:
 		create_object_at_random_point(new_object, globe_game_radius)
 	else:
 		#get_tree().create_timer(3).timeout.connect(place_object_at_random_point.bind(object, globe_game_radius))
-		place_object_at_random_point(object, globe_game_radius)
-		
+		place_object_at_random_point(object, globe_game_radius)	
 		
 func _reset_object(object: Node3D) -> void:
 	place_object_at_random_point(object, globe_game_radius)
+
+func _create_fuel() -> void:
+		var new_object
+		# Golden Fuel Cans have a 20% of spawning
+		var random_selection = randi_range(0, 4)
+		if random_selection != 0:
+			new_object = Globals.FUEL_CAN
+		else:
+			new_object = Globals.GOLDEN_FUEL_CAN
+		create_object_at_random_point(new_object, globe_game_radius)
+
+func _create_obstacle() -> void:
+	var obstacles = Globals.get_current_level_obstacles()
+	var size = obstacles.size()
+	var new_object = obstacles[randi_range(0, size - 1)]
+	create_object_at_random_point(new_object, globe_game_radius)
