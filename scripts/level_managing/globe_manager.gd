@@ -40,8 +40,9 @@ func _ready():
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
 	for x in range(0, 450):
-		var size = Globals.level_1_buildings.size()
-		var new_object = Globals.level_1_buildings[randi_range(0, size - 1)]
+		var obstacles = Globals.get_current_level_obstacles()
+		var size = obstacles.size()
+		var new_object = obstacles[randi_range(0, size - 1)]
 		create_object_at_random_point(new_object, globe_game_radius)
 		
 	for x in range(0, 100):
