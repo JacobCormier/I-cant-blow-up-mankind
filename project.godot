@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="I.C.B.M."
+config/name="ICBM"
 run/main_scene="res://scenes/main_menu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://resources/assets/png/MochiFace.png"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://dtmwn8p7jab2a"
 
 [autoload]
 
