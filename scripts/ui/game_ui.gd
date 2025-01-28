@@ -87,13 +87,14 @@ func update_progress(progress_count: int, progress_goal: int) -> void:
 
 func _on_restart_button_pressed() -> void:
 	PlayerStats.reload_fuel()
-	get_tree().reload_current_scene()
+	Globals.restart_level()
 
 func _on_menu_button_pressed() -> void:
 	PlayerStats.reload_fuel()
 	SoundManager.kill_sound()
-	var main_menu_scene_path = "res://scenes/story_levels/0_main_menu.tscn"
-	get_tree().change_scene_to_file(main_menu_scene_path)
+	print(Globals.MAIN_MENU)
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(Globals.MAIN_MENU)
 
 func slide_face_cam():
 	tween = get_tree().create_tween()

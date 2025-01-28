@@ -91,6 +91,7 @@ func check_end_of_level(value) -> void:
 		print("YOU WIN!")
 		# Jacob Cormier
 		# This will trigger the transition and scene swap
+		Globals.next_level()
 
 #region Save Data
 
