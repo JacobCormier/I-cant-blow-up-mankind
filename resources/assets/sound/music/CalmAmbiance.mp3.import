@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/CalmAmbiance.mp3-1341519b75b081e9d96491efaa31
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
