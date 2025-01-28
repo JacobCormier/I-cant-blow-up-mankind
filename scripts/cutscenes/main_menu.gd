@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var game_globe: Node3D = $GameGlobe
+@onready var menu_globe: Node3D = $MenuGlobe
 @onready var block: Node3D = $LaunchSilo/Block
 @onready var lid: Node3D = $LaunchSilo/Block/Lid
 @onready var launch_pad: Node3D = $LaunchSilo/Block/LaunchPad
@@ -84,7 +84,6 @@ func save_positions():
 
 func switch_camera():
 	if (follow_cam.current):
-		Engine.time_scale = 1
 		camera_3d.make_current()
 		is_following = false
 	else:
@@ -166,20 +165,18 @@ func start_tween_animation():
 	# Derotate camera
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(camera_3d, "rotation_degrees:y", 0, TIME_SCALE * 3)
+	tween.tween_interval(TIME_SCALE * 0)
+	tween.parallel().tween_property(camera_3d, "rotation_degrees:y", 0, TIME_SCALE * 3)
 	tween.parallel().tween_property(camera_3d, "rotation_degrees:z", 0, TIME_SCALE * 3)
 	tween.parallel().tween_property(camera_3d, "position:y", 916.134, 0)
 	tween.parallel().tween_property(camera_3d, "rotation_degrees:x", -13.7, TIME_SCALE * 3)
 	
 	# Game Position
-	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_interval(TIME_SCALE * 1)
-	tween.tween_interval(0)
-	tween.tween_property(camera_3d, "position:x", 0, TIME_SCALE * 8)
+	tween.tween_interval(TIME_SCALE * 5)
+	tween.parallel().tween_property(camera_3d, "position:x", 0, TIME_SCALE * 5)
 	tween.parallel().tween_property(camera_3d, "position:y", 516.134, TIME_SCALE * 5)
-	tween.parallel().tween_property(camera_3d, "position:z", 134.103, TIME_SCALE * 7)
-	tween.parallel().tween_property(game_globe, "rotation_degrees:x", 200, TIME_SCALE * 9)
-	#tween.parallel().tween_property(game_globe, "rotation_degrees:x", 1800000, TIME_SCALE * 120000)
-	#tween.tween_callback(trigger_dialogue)
+	tween.parallel().tween_property(camera_3d, "position:z", 134.103, TIME_SCALE * 5)
+	tween.parallel().tween_property(menu_globe, "rotation_degrees:x", 200, TIME_SCALE * 10).as_relative()
+	tween.tween_interval(TIME_SCALE * 2)
 	tween.tween_callback(end_sequence)
