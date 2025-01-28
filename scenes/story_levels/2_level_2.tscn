@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccme6ta6rl3e"]
+[gd_scene load_steps=7 format=3 uid="uid://b5gs18itf47d4"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_rqmkm"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_or4ol"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_ur47r"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_or4ol"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_pa4fy"]
 
-[node name="Level2" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xab3b"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_or4ol")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
+
+[node name="Level1" type="Node3D"]
 
 [node name="CustomEnvironment" parent="." instance=ExtResource("1_rqmkm")]
 
@@ -16,11 +24,31 @@ directional_shadow_max_distance = 200.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)
+current = true
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_or4ol")]
+planet_color = Color(0.355825, 0.43, 0.3311, 1)
 globe_visual_radius = 500.0
 
 [node name="Player" parent="." instance=ExtResource("3_ur47r")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
+starting_altitude = 50
+
+[node name="ICBMCharacter" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="RightEngine" parent="Player/ICBMCharacter/RocketModel" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="CenterEngine" parent="Player/ICBMCharacter/RocketModel" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="LeftEngine" parent="Player/ICBMCharacter/RocketModel" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
 
 [node name="GameUI" parent="." instance=ExtResource("4_pa4fy")]
+
+[editable path="Player"]
+[editable path="Player/ICBMCharacter"]
+[editable path="Player/ICBMCharacter/RocketModel"]
+[editable path="GameUI"]
