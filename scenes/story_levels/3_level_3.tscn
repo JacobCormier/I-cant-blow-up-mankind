@@ -19,7 +19,7 @@ emission_energy_multiplier = 0.15
 [node name="CustomEnvironment" parent="." instance=ExtResource("1_b5bkc")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+transform = Transform3D(1, 0, 0, 0, -0.939692, 0.34202, 0, -0.34202, -0.939692, 0, 3.26051, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
