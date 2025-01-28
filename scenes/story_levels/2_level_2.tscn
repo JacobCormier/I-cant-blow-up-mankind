@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.
 current = true
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_or4ol")]
-sky_color = Color(0.166364, 0.433676, 0.412871, 1)
+sky_color = Color(0.059476, 0.36885, 0.745168, 1)
 planet_color = Color(0.355825, 0.43, 0.3311, 1)
 globe_visual_radius = 500.0
 level_data = ExtResource("3_pa4fy")
