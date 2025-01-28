@@ -44,8 +44,6 @@ func _ready():
 	Globals.on_fuel_pickup.connect(_reset_object)
 	PlayerStats.initialize_progress_goal(level_data.progress_goal)
 	
-	Globals.current_level = 3
-	
 	_setup_globe()
 	
 	for x in range(0, level_data.initial_obstacles):
