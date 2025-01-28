@@ -5,9 +5,9 @@ extends CanvasLayer
 @onready var score_control: Control = $ScoreControl
 @onready var score_label: Label = $ScoreControl/ScoreLabel
 @onready var fuel_progress_bar: TextureProgressBar = $ScoreControl/FuelProgressBar
-@onready var sub_viewport: SubViewport = $SubViewport
-@onready var texture_rect: TextureRect = $TextureRect
-@onready var rocket_face: Node3D = $SubViewport/RocketFace
+@onready var rocket_face: Node3D = $FaceCam/SubViewport/RocketFace
+@onready var sub_viewport: SubViewport = $FaceCam/SubViewport
+@onready var face_cam: TextureRect = $FaceCam
 
 func _ready():
 	death_screen_control.visible = false
@@ -16,9 +16,9 @@ func _ready():
 	PlayerStats.start_gameplay()
 	
 func _process(delta):
-	texture_rect.texture = sub_viewport.get_texture()
-	if texture_rect.material and texture_rect.material.is_class("ShaderMaterial"):
-		var shader_material = texture_rect.material as ShaderMaterial
+	face_cam.texture = sub_viewport.get_texture()
+	if face_cam.material and face_cam.material.is_class("ShaderMaterial"):
+		var shader_material = face_cam.material as ShaderMaterial
 		shader_material.set("shader_parameter/time", Time.get_ticks_msec() / 1000.0)
 		shader_material.set("shader_parameter/resolution", Vector2(sub_viewport.size.x, sub_viewport.size.y))
 		shader_material.set("shader_parameter/texture_albedo", sub_viewport.get_texture())
