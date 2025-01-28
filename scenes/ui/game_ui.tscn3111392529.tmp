@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
-bg_color = Color(0.254782, 0.0311538, 0.0629222, 1)
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.65098)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfkr5"]
 
@@ -62,6 +62,7 @@ shader_parameter/time = null
 script = ExtResource("1_mbn1m")
 
 [node name="DeathScreenControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -279,13 +280,11 @@ expand_mode = 1
 [node name="FaceCamRocket" parent="FaceCam/SubViewport" instance=ExtResource("5_ee4rg")]
 
 [node name="WhiteTransition" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="pressed" from="DeathScreenControl/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="DeathScreenControl/Panel/MenuButton" to="." method="_on_menu_button_pressed"]

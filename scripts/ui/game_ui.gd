@@ -12,13 +12,16 @@ extends CanvasLayer
 @onready var level_progress_bar: TextureProgressBar = $ScoreControl/LevelProgressBar
 @onready var progress_label: Label = $ScoreControl/ProgressLabel
 
-var dead = false
-var timer_tween
-var timer_delta = 0
+@onready var white_transition: ColorRect = $WhiteTransition
+
+var rumble_intensity = 0
+var camera_root_position
+
 var tween
 var space_pressed = false
 
 func _ready():
+	camera_root_position = get_viewport().get_camera_3d().position
 	death_screen_control.visible = false
 	PlayerStats.on_fuel_changed.connect(update_fuel)
 	PlayerStats.on_score_changed.connect(update_score)
@@ -27,41 +30,34 @@ func _ready():
 	slide_face_cam()
 	
 func _process(delta):
-	# On Death Engine speed is 0 so tween must be done manually
-	if timer_tween != null:
-		timer_delta += delta
-		timer_tween.custom_step(timer_delta)
-		
 	face_cam.texture = sub_viewport.get_texture()
 	if face_cam.material and face_cam.material.is_class("ShaderMaterial"):
 		var shader_material = face_cam.material as ShaderMaterial
 		shader_material.set("shader_parameter/time", Time.get_ticks_msec() / 1000.0)
 		shader_material.set("shader_parameter/resolution", Vector2(sub_viewport.size.x, sub_viewport.size.y))
 		shader_material.set("shader_parameter/texture_albedo", sub_viewport.get_texture())
+		
+	if rumble_intensity > 0:
+		AnimationUtils.rumble(get_viewport().get_camera_3d(), camera_root_position, rumble_intensity, rumble_intensity, Vector3(1.0, 1.0, 1.0))
 
 func _input(event):
 	face_cam_rocket._input(event)
-	
-	if event is InputEventKey:  # Check if it's a key event
-		if event.pressed:  # Check if the key was pressed
-			if Input.is_action_pressed("ui_select") and not space_pressed:
-				space_pressed = true
-				if dead:
-					if not death_screen_control.visible:
-						timer_tween.custom_step(100)
-					else:
-						_on_restart_button_pressed()
-		if event.is_action_released("ui_select") and space_pressed:
-			space_pressed = false
 
 func trigger_death():
-	dead = true
 	# Wait a few seconds for explosion to occur before showing UI. Skippable on space
-	wait_for_input_or_timeout(7, show_death_ui)
+	# Jacob Cormier - add a check to not allow the player to skip the very first time
+	print("TWEEN STARTED!")
+	var tween = get_tree().create_tween()
+	tween.set_ignore_time_scale(true)
+	tween.tween_property(white_transition, "modulate:a", 1.0, 4)
+	tween.parallel().tween_property(self, "rumble_intensity", 15, 4)
+	tween.tween_callback(show_death_ui)
+	tween.tween_callback(face_cam.hide)
+	tween.tween_interval(3.0)
+	tween.tween_property(white_transition, "modulate:a", 0.0, 2)
+	
 	
 func show_death_ui():
-	timer_tween.kill()
-	timer_tween = null
 	death_screen_control.visible = true
 	score_control.visible = false
 
@@ -104,9 +100,3 @@ func slide_face_cam():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(face_cam, "position:x", 498, 1)
 	tween.tween_property(face_cam, "position:y", 241, 1)
-
-func wait_for_input_or_timeout(timeout: float, callback):
-	if timer_tween == null:
-		timer_tween = get_tree().create_tween()
-		timer_tween.tween_interval(timeout)
-		timer_tween.tween_callback(callback)
