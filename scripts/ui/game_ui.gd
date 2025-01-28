@@ -46,7 +46,6 @@ func _input(event):
 func trigger_death():
 	# Wait a few seconds for explosion to occur before showing UI. Skippable on space
 	# Jacob Cormier - add a check to not allow the player to skip the very first time
-	print("TWEEN STARTED!")
 	var tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
 	tween.tween_property(white_transition, "modulate:a", 1.0, 4)
