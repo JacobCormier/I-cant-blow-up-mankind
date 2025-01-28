@@ -20,6 +20,7 @@ func _ready():
 	death_screen_control.visible = false
 	PlayerStats.on_fuel_changed.connect(update_fuel)
 	PlayerStats.on_score_changed.connect(update_score)
+	PlayerStats.on_progress_changed.connect(update_progress)
 	PlayerStats.start_gameplay()
 	slide_face_cam()
 	
@@ -69,6 +70,11 @@ func update_score(score_count: int) -> void:
 	score_label.text = "Score: " + str(int(score_count))
 	final_score_label.text = "Final Score: " + str(int(score_count))
 	high_score_label.text = "High Score: " + str(int(PlayerStats.loaded_high_score))
+
+func update_progress(progress_count: int, progress_goal: int) -> void:
+	# THis needs the total progress goal as well.
+	level_progress_bar.max_value = progress_goal
+	level_progress_bar.value = progress_count
 
 func _on_restart_button_pressed() -> void:
 	PlayerStats.reload_fuel()

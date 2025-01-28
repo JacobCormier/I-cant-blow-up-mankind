@@ -3,7 +3,7 @@ extends Node
 signal on_player_death
 signal on_fuel_changed(fuel_amount: int)
 signal on_score_changed(score_amount: int)
-signal on_progress_changed(progress_value: int)
+signal on_progress_changed(progress_value: int, progress_goal: int)
 
 var is_gameplay_running := false
 
@@ -14,6 +14,8 @@ var save_data: SaveData = null
 
 var fuel_deterioration = 0.0
 const FUEL_DETERIORATION_MULTIPLIER = 10.0
+
+var progress_goal: int
 
 var current_fuel: float:
 	set(value):
@@ -35,7 +37,7 @@ var current_score: float:
 var current_progress: float:
 	set(value):
 		current_progress = value
-		on_progress_changed.emit(value)
+		on_progress_changed.emit(value, progress_goal)
 
 func _ready() -> void:
 	_initialize_save_data()
@@ -65,16 +67,17 @@ func _handle_score_updates(delta: float) -> void:
 
 func add_to_score(add_value: int) -> void:
 	current_score += add_value
-
-func add_to_progress(add_value: int) -> void:
-	current_progress += add_value
-
+	
+func initialize_progress_goal(new_progress_goal: int):	
+	progress_goal = new_progress_goal
+	
 func start_gameplay() -> void:
 	SoundManager.kill_sound()
 	MusicManager.play_music_sequence()
 	SoundManager.start_engine()
 	is_gameplay_running = true
 	current_score = 0.0
+	current_progress = 0.0
 
 func end_gameplay() -> void:
 	MusicManager.stop()

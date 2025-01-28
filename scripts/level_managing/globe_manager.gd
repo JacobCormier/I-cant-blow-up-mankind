@@ -42,6 +42,9 @@ func _ready():
 	wave_timer.start()
 	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
+	PlayerStats.initialize_progress_goal(level_data.progress_goal)
+	
+	Globals.current_level = 3
 	
 	_setup_globe()
 	
