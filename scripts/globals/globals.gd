@@ -4,6 +4,8 @@ signal on_fuel_pickup(object: Node3D)
 
 const MAIN_MENU = preload("res://scenes/story_levels/0_main_menu.tscn")
 const LEVEL_1 = preload("res://scenes/story_levels/1_level_1.tscn")
+const LEVEL_2 = preload("res://scenes/story_levels/2_level_2.tscn")
+const LEVEL_3 = preload("res://scenes/story_levels/3_level_3.tscn")
 const ARCADE = preload("res://scenes/endless_levels/arcade.tscn")
 const FIRST_PERSON = preload("res://scenes/endless_levels/first_person.tscn")
 const STANDARD = preload("res://scenes/endless_levels/standard.tscn")
