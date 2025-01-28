@@ -13,15 +13,17 @@ offset_bottom = 85.0
 [node name="MarginContainer" parent="NinePatchRect" index="0"]
 offset_top = -17.0
 offset_bottom = 17.0
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+size_flags_vertical = 4
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "I
 Can't
 Blow-up
-mankind!!!
-"
+mankind!!!"
 horizontal_alignment = 0

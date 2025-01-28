@@ -9,10 +9,6 @@ offset_left = -103.0
 offset_top = -27.0
 offset_right = 103.0
 
-[node name="MarginContainer" parent="NinePatchRect" index="0"]
-theme_override_constants/margin_top = 18
-
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
 custom_minimum_size = Vector2(1, 1)
-text = "Please! I don't want to do this!
-"
+text = "Please! I don't want to do this!"
