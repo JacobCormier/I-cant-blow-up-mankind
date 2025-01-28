@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cti5lnlicuk1l" path="res://scenes/player/face_cam_rocket.tscn" id="5_ee4rg"]
 [ext_resource type="Texture2D" uid="uid://bfuokk4mxoble" path="res://resources/assets/ui/minimap_icon_jewel_white.png" id="5_fftnl"]
 [ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="6_1anad"]
-[ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
+[ext_resource type="Shader" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 
