@@ -47,8 +47,8 @@ func _ready():
 		
 	for x in range(0, 100):
 		var new_object
-		# Random number from 0 to 3
-		var random_selection = randi_range(0, 3)
+		# Golden Fuel Cans have a 20% of spawning
+		var random_selection = randi_range(0, 4)
 		if random_selection != 0:
 			new_object = Globals.FUEL_CAN
 		else:
