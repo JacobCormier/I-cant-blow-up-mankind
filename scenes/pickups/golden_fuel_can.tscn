@@ -1,9 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://i24ksmxmoa78"]
+[gd_scene load_steps=10 format=3 uid="uid://i24ksmxmoa78"]
 
 [ext_resource type="PackedScene" uid="uid://x1gso8x3y5bk" path="res://scenes/pickups/fuel_can.tscn" id="1_kduik"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tucmy"]
 albedo_color = Color(1, 0.6, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kduik"]
+vertex_color_use_as_albedo = true
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.657122, 0.446772, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_tucmy"]
+offsets = PackedFloat32Array(0.461538, 0.790598, 0.897436)
+colors = PackedColorArray(0.548791, 0.431055, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_otufp"]
+gradient = SubResource("Gradient_tucmy")
+
+[sub_resource type="Curve" id="Curve_kduik"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tucmy"]
+curve = SubResource("Curve_kduik")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_23swc"]
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 39.91
+gravity = Vector3(0, 0, 0)
+damping_min = 41.611
+damping_max = 60.403
+scale_curve = SubResource("CurveTexture_tucmy")
+color_ramp = SubResource("GradientTexture1D_otufp")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_wcqq8"]
+shape = 0
 
 [node name="FuelCan" instance=ExtResource("1_kduik")]
 
@@ -22,3 +58,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 [node name="Area3D" parent="Collider" index="0"]
 fuel_amount = 100
 score_amount = 200
+
+[node name="ShineEmitter" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(0.976567, -0.215213, 0, 0.215213, 0.976567, 0, 0, 0, 1, 0.179599, 35, 0)
+material_override = SubResource("StandardMaterial3D_kduik")
+amount = 15
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_23swc")
+draw_pass_1 = SubResource("RibbonTrailMesh_wcqq8")

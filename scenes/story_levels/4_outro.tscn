@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://crpmlgcwd3ui1"]
+
+[ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_830yr"]
+[ext_resource type="Script" uid="uid://bowcf10kjom02" path="res://scripts/cutscenes/outro_globe_controller.gd" id="2_830yr"]
+[ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="3_00yid"]
+[ext_resource type="PackedScene" uid="uid://bo1qjl47rsq2h" path="res://scenes/player/icbm_character.tscn" id="4_slcm7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
+
+[sub_resource type="Environment" id="Environment_26xqv"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 200.0
+fog_depth_end = 200.0
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_smda0"]
+radius = 500.0
+height = 1000.0
+radial_segments = 120
+rings = 64
+
+[sub_resource type="Gradient" id="Gradient_4fqsv"]
+colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcctt"]
+noise_type = 3
+frequency = 0.0034
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_4fqsv")
+noise = SubResource("FastNoiseLite_pcctt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
+albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_0hec7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ood42"]
+radius = 500.0
+height = 1000.0
+radial_segments = 120
+rings = 64
+
+[sub_resource type="Gradient" id="Gradient_00yid"]
+colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_slcm7"]
+noise_type = 3
+frequency = 0.0034
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j4p3n"]
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_00yid")
+noise = SubResource("FastNoiseLite_slcm7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukuv5"]
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_j4p3n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
+albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ensnl"]
+material = SubResource("StandardMaterial3D_htgb0")
+size = Vector3(19.725, 1, 1.875)
+
+[node name="Outro" type="Node3D"]
+script = ExtResource("1_830yr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_26xqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+
+[node name="GroundCam" type="Camera3D" parent="."]
+transform = Transform3D(-0.982781, -0.0566449, -0.175878, 0, 0.951851, -0.306561, 0.184775, -0.301283, -0.935461, -7.30714, 507.216, 5.23931)
+
+[node name="OutroGlobe" type="Node3D" parent="."]
+script = ExtResource("2_830yr")
+
+[node name="VisualContainer" type="Node3D" parent="OutroGlobe"]
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, -1.34, 0)
+
+[node name="GlobeVisual" type="MeshInstance3D" parent="OutroGlobe/VisualContainer"]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_smda0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
+
+[node name="SunGlobe" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1103.14)
+script = ExtResource("2_830yr")
+
+[node name="VisualContainer" type="Node3D" parent="SunGlobe"]
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, -1.34, 0)
+
+[node name="GlobeVisual" type="MeshInstance3D" parent="SunGlobe/VisualContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, -2315.57, 1107.3)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ood42")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukuv5")
+
+[node name="EmpireDiorama" parent="." instance=ExtResource("3_00yid")]
+
+[node name="base_building5" parent="EmpireDiorama/Diorama" index="8"]
+transform = Transform3D(0.0408291, 0, 0.999166, 0, 1, 0, -0.999166, 0, 0.0408291, 18.3739, 500.942, 39.1554)
+
+[node name="base_building9" parent="EmpireDiorama/Diorama" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.46, 494.174, 30.299)
+
+[node name="Road" parent="EmpireDiorama/Diorama" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.998744, -0.0501049, 0, 0.0501049, 0.998744, -1.90735e-06, 499.099, 39.6103)
+
+[node name="DioramaCameraBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402, -0.15, 500.035, 21.768)
+mesh = SubResource("BoxMesh_ensnl")
+skeleton = NodePath("")
+
+[node name="ICBMCharacter" parent="." instance=ExtResource("4_slcm7")]
+transform = Transform3D(-1, 5.64642e-08, -8.82957e-08, -8.74001e-08, 0.0156702, 0.999877, 5.78407e-08, 0.999877, -0.0156702, -0.0203956, 519.547, -14.3227)
+
+[node name="FollowCam" type="Camera3D" parent="ICBMCharacter"]
+transform = Transform3D(-0.572774, 0.087504, -0.81503, -0.819686, -0.0530207, 0.570354, 0.00669472, 0.994752, 0.102095, -1.72098, 5.78796, 0.301147)
+
+[editable path="EmpireDiorama"]

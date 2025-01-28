@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4le72d53g6k2"]
+[gd_scene load_steps=14 format=3 uid="uid://d4le72d53g6k2"]
 
-[ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_vy7c2"]
-[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_03otv"]
-[ext_resource type="PackedScene" uid="uid://bo1qjl47rsq2h" path="res://scenes/player/icbm_character.tscn" id="4_7rmvi"]
-[ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="8_k2ueb"]
+[ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_muwdx"]
+[ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="2_3q5uh"]
+[ext_resource type="PackedScene" uid="uid://bo1qjl47rsq2h" path="res://scenes/player/icbm_character.tscn" id="3_rfwuq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
 sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
@@ -24,6 +23,30 @@ fog_depth_begin = 200.0
 fog_depth_end = 200.0
 volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_smda0"]
+radius = 500.0
+height = 1000.0
+radial_segments = 120
+rings = 64
+
+[sub_resource type="Gradient" id="Gradient_4fqsv"]
+colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcctt"]
+noise_type = 3
+frequency = 0.0034
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
+seamless = true
+as_normal_map = true
+color_ramp = SubResource("Gradient_4fqsv")
+noise = SubResource("FastNoiseLite_pcctt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
+albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_0hec7")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
 albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
 
@@ -31,8 +54,8 @@ albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
 material = SubResource("StandardMaterial3D_htgb0")
 size = Vector3(19.725, 1, 1.875)
 
-[node name="Outro" type="Node3D"]
-script = ExtResource("1_vy7c2")
+[node name="Transition_1_2" type="Node3D"]
+script = ExtResource("1_muwdx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_26xqv")
@@ -43,19 +66,18 @@ transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.260
 [node name="GroundCam" type="Camera3D" parent="."]
 transform = Transform3D(-0.982781, -0.0566449, -0.175878, 0, 0.951851, -0.306561, 0.184775, -0.301283, -0.935461, -7.30714, 507.216, 5.23931)
 
-[node name="GameGlobe" parent="." instance=ExtResource("2_03otv")]
-script = null
+[node name="TransitionGlobe" type="Node3D" parent="."]
 
-[node name="VisualContainer" parent="GameGlobe" index="0"]
+[node name="VisualContainer" type="Node3D" parent="TransitionGlobe"]
 transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, -1.34, 0)
 
-[node name="Area3D" parent="GameGlobe" index="1"]
-visible = false
+[node name="GlobeVisual" type="MeshInstance3D" parent="TransitionGlobe/VisualContainer"]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_smda0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
 
-[node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
-visible = false
-
-[node name="EmpireDiorama" parent="." instance=ExtResource("8_k2ueb")]
+[node name="EmpireDiorama" parent="." instance=ExtResource("2_3q5uh")]
 
 [node name="base_building5" parent="EmpireDiorama/Diorama" index="8"]
 transform = Transform3D(0.0408291, 0, 0.999166, 0, 1, 0, -0.999166, 0, 0.0408291, 18.3739, 500.942, 39.1554)
@@ -71,11 +93,10 @@ transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402
 mesh = SubResource("BoxMesh_ensnl")
 skeleton = NodePath("")
 
-[node name="ICBMCharacter" parent="." instance=ExtResource("4_7rmvi")]
-transform = Transform3D(-1, 5.64642e-08, -8.82957e-08, -8.74001e-08, 0.0156702, 0.999877, 5.78407e-08, 0.999877, -0.0156702, -0.0203956, 519.547, -14.3227)
+[node name="ICBMCharacter" parent="." instance=ExtResource("3_rfwuq")]
+transform = Transform3D(-1, 5.64642e-08, -8.82957e-08, -8.74001e-08, 0.0156702, 0.999877, 5.78407e-08, 0.999877, -0.0156702, -0.0203956, 536.461, -14.3227)
 
 [node name="FollowCam" type="Camera3D" parent="ICBMCharacter"]
 transform = Transform3D(-0.572774, 0.087504, -0.81503, -0.819686, -0.0530207, 0.570354, 0.00669472, 0.994752, 0.102095, -1.72098, 5.78796, 0.301147)
 
-[editable path="GameGlobe"]
 [editable path="EmpireDiorama"]

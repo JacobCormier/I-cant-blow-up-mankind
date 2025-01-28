@@ -21,7 +21,6 @@ current = true
 [node name="GameGlobe" parent="." instance=ExtResource("2_mftq4")]
 sky_color = Color(1, 0, 0, 1)
 globe_visual_radius = 500.0
-obstacle_array_name = "level_1_buildings"
 
 [node name="Player" parent="." instance=ExtResource("3_a6dx8")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)

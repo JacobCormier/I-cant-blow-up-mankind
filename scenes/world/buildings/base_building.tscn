@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jiikdlvsrooo"]
 
 [ext_resource type="Script" uid="uid://bdh2fuyhsnqcw" path="res://scripts/buildings/base_building.gd" id="1_myuq0"]
-[ext_resource type="Script" uid="uid://dakxrbshg5wrx" path="res://scripts/level_managing/obstacle_collider.gd" id="1_nm32v"]
+[ext_resource type="Script" path="res://scripts/level_managing/obstacle_collider.gd" id="1_nm32v"]
 
 [node name="base_building" type="Node3D"]
 script = ExtResource("1_myuq0")
