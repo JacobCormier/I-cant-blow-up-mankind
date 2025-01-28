@@ -1,12 +1,12 @@
 extends Node3D
 
 @onready var game_globe: Node3D = $GameGlobe
-@onready var block: Node3D = $Block
-@onready var lid = $Block/Lid
-@onready var launchPad = $Block/LaunchPad
+@onready var block: Node3D = $LaunchSilo/Block
+@onready var lid: Node3D = $LaunchSilo/Block/Lid
+@onready var launch_pad: Node3D = $LaunchSilo/Block/LaunchPad
 @onready var player = $MenuPlayer
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var diorama: Node3D = $Diorama
+@onready var empire_diorama: Node3D = $EmpireDiorama
 @onready var diorama_camera_base: MeshInstance3D = $DioramaCameraBase
 @onready var follow_cam: Camera3D = $MenuPlayer/FollowCam
 
@@ -25,7 +25,7 @@ const TIME_SCALE = 1
 func _ready() -> void:
 	start_tween_animation()
 	current_root_position = player.position
-	launchPad_root_position = launchPad.position
+	launchPad_root_position = launch_pad.position
 	camera_root_position = camera_3d.position
 	follow_cam_root_position = follow_cam.position
 
@@ -51,7 +51,7 @@ func trigger_rising() -> void:
 	
 func finish_rising() -> void:
 	is_rising = false
-	launchPad_root_position = launchPad.position
+	launchPad_root_position = launch_pad.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		rumble(follow_cam, follow_cam_root_position)
 		
 	if is_rising:
-		rumble(launchPad, launchPad_root_position, 0.5, 0.5)
+		rumble(launch_pad, launchPad_root_position, 0.5, 0.5)
 		rumble(player, current_root_position)		
 
 func rumble(node, root_position, x_scale = 1, y_scale = 1):
@@ -70,7 +70,7 @@ func rumble(node, root_position, x_scale = 1, y_scale = 1):
 	node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
 
 func remove_diorama():
-	diorama.visible = false
+	empire_diorama.visible = false
 	
 func remove_base():
 	diorama_camera_base.visible = false
@@ -117,7 +117,7 @@ func start_tween_animation():
 	# Raise launch pad
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(launchPad, "position:y", 0.55, TIME_SCALE * 4)
+	tween.tween_property(launch_pad, "position:y", 0.55, TIME_SCALE * 4)
 	tween.parallel().tween_property(player, "position:y", 509.4, TIME_SCALE * 4)
 	tween.tween_callback(finish_rising)
 	

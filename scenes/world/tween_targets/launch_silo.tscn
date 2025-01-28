@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt4eq7hpnpwl1"]
+
+[ext_resource type="PackedScene" uid="uid://xow7tpha4ipr" path="res://resources/assets/models/LaunchPad/Block.fbx" id="1_dihyd"]
+[ext_resource type="PackedScene" uid="uid://cj736pysf224e" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="2_h5cte"]
+[ext_resource type="PackedScene" uid="uid://b037aiqpemkrt" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="3_4glfj"]
+
+[node name="LaunchSilo" type="Node3D"]
+
+[node name="Block" parent="." instance=ExtResource("1_dihyd")]
+
+[node name="Lid" parent="Block" instance=ExtResource("2_h5cte")]
+transform = Transform3D(4.25738e-08, -9.90724e-09, 1, -0.23207, -0.972699, 2.43366e-10, 0.972699, -0.23207, -4.37107e-08, 0.161, 0.928986, 7.45743)
+
+[node name="Lid" parent="Block/Lid" index="0"]
+transform = Transform3D(-96.5473, 8.56032e-06, -8.21807, 26.0505, -1.37924e-06, -30.4575, -8.62406e-06, -100, -2.83412e-07, 0.0332108, 3.05176e-05, -0.00730328)
+
+[node name="LaunchPad" parent="Block" instance=ExtResource("3_4glfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
+
+[editable path="Block/Lid"]

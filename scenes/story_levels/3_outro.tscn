@@ -1,64 +1,88 @@
-[gd_scene load_steps=9 format=3 uid="uid://clstsfmenmvpv"]
+[gd_scene load_steps=11 format=3 uid="uid://d4le72d53g6k2"]
 
-[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_rocket.tscn" id="1_jmvb3"]
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_03otv"]
+[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_rocket.tscn" id="3_d3v7s"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_44er8"]
+[ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="8_k2ueb"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_iawfx"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogn0c"]
-transparency = 1
-albedo_color = Color(0.264528, 0.29, 0.2001, 0)
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
 
-[sub_resource type="BoxMesh" id="BoxMesh_xw3nx"]
-size = Vector3(0.25, 0.25, 0.25)
+[sub_resource type="Environment" id="Environment_26xqv"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 200.0
+fog_depth_end = 200.0
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_pr1rq"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ix6l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_44er8")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mty8s"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
+albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_7l0fn"]
-radius = 0.4
-height = 0.45
-is_hemisphere = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kupfg"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_ensnl"]
+material = SubResource("StandardMaterial3D_htgb0")
+size = Vector3(19.725, 1, 1.875)
 
 [node name="Outro" type="Node3D"]
 
-[node name="MenuPlayer" parent="." instance=ExtResource("1_jmvb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_26xqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.51219e-08, 8.37355e-08, 0, 0.957823, -0.287361, -8.74228e-08, -0.287361, -0.957823, 0, 500.555, 22.767)
+
+[node name="GameGlobe" parent="." instance=ExtResource("2_03otv")]
 script = null
 
-[node name="FakeBlock" type="MeshInstance3D" parent="MenuPlayer"]
-transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
-mesh = SubResource("BoxMesh_iawfx")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ogn0c")
+[node name="VisualContainer" parent="GameGlobe" index="0"]
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, 0, 0)
 
-[node name="Left Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
-mesh = SubResource("BoxMesh_xw3nx")
+[node name="Area3D" parent="GameGlobe" index="1"]
+visible = false
 
-[node name="Left Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Left Eye"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
-mesh = SubResource("BoxMesh_pr1rq")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mty8s")
+[node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
+visible = false
 
-[node name="Right Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
-mesh = SubResource("BoxMesh_xw3nx")
+[node name="MenuPlayer" parent="." instance=ExtResource("3_d3v7s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)
 
-[node name="Right Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Right Eye"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
-mesh = SubResource("BoxMesh_pr1rq")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mty8s")
+[node name="RightEngine" parent="MenuPlayer/ICBM" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
 
-[node name="Mouth" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
-mesh = SubResource("SphereMesh_7l0fn")
-surface_material_override/0 = SubResource("StandardMaterial3D_kupfg")
+[node name="CenterEngine" parent="MenuPlayer/ICBM" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="LeftEngine" parent="MenuPlayer/ICBM" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="FollowCam" type="Camera3D" parent="MenuPlayer"]
+transform = Transform3D(-0.782608, 0.622515, 1.44627e-07, 0.596259, 0.7496, -0.287361, -0.178886, -0.224891, -0.957823, -4.94, 35, -28.115)
+
+[node name="EmpireDiorama" parent="." instance=ExtResource("8_k2ueb")]
+
+[node name="DioramaCameraBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402, -0.15, 500.035, 21.768)
+mesh = SubResource("BoxMesh_ensnl")
+skeleton = NodePath("")
+
+[editable path="GameGlobe"]
+[editable path="MenuPlayer"]
+[editable path="MenuPlayer/ICBM"]

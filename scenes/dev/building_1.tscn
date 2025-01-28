@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://14duxk2khw5r"]
-
-[ext_resource type="Script" path="res://scenes/dev/building_controller.gd" id="1_wr8uw"]
-
-[node name="Building" type="Node3D"]
-script = ExtResource("1_wr8uw")

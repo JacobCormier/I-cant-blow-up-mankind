@@ -5,6 +5,8 @@ extends Node3D
 @onready var game_ui: CanvasLayer = $"../GameUI"
 @onready var icbm_character: Node3D = $ICBMCharacter
 
+@export var starting_altitude: int = 0
+
 enum TurnDirection {NONE, LEFT, RIGHT}
 var current_turn_direction = TurnDirection.NONE
 
@@ -14,6 +16,7 @@ var is_input_jumping := false
 
 func _ready() -> void:
 	PlayerStats.on_player_death.connect(_trigger_player_death)
+	icbm_character.starting_altitude = starting_altitude
 	Engine.time_scale = 1.0
 
 func _input(event: InputEvent) -> void:
@@ -58,5 +61,6 @@ func _input(event: InputEvent) -> void:
 	globe_manager.pass_in_movement_direction(current_turn_direction)
 	
 func _trigger_player_death() -> void:
-	game_ui.show_death()
+	game_ui.trigger_death()
+	#  icbm_character.trigger_death()
 	Engine.time_scale = 0.0

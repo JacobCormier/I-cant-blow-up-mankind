@@ -144,7 +144,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_o6mna")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cr7hd")
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="DeathScreenControl/Panel"]
+[node name="MenuButton" type="Button" parent="DeathScreenControl/Panel"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
 anchors_preset = 3
@@ -164,7 +164,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_hfkr5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4ahxr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o6mna")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cr7hd")
-text = "Quit"
+text = "Menu"
 
 [node name="ScoreControl" type="Control" parent="."]
 layout_mode = 3
@@ -220,9 +220,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -142.0
+offset_left = 11.0
 offset_top = -119.0
-offset_right = -37.0
+offset_right = 116.0
 offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -244,4 +244,4 @@ expand_mode = 1
 [node name="FaceCamRocket" parent="FaceCam/SubViewport" instance=ExtResource("5_ee4rg")]
 
 [connection signal="pressed" from="DeathScreenControl/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="DeathScreenControl/Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="DeathScreenControl/Panel/MenuButton" to="." method="_on_menu_button_pressed"]

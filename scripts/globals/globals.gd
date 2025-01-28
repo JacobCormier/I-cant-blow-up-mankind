@@ -2,7 +2,11 @@ extends Node
 
 signal on_fuel_pickup(object: Node3D)
 
+const MAIN_MENU = preload("res://scenes/story_levels/0_main_menu.tscn")
 const LEVEL_1 = preload("res://scenes/story_levels/1_level_1.tscn")
+const ARCADE = preload("res://scenes/endless_levels/arcade.tscn")
+const FIRST_PERSON = preload("res://scenes/endless_levels/first_person.tscn")
+const STANDARD = preload("res://scenes/endless_levels/standard.tscn")
 
 const level_1_buildings = [
 	preload("res://scenes/world/buildings/large_1.tscn"),

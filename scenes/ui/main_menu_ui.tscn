@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dti42yrq2ji54"]
+[gd_scene load_steps=14 format=3 uid="uid://dti42yrq2ji54"]
 
 [ext_resource type="Script" uid="uid://i4qapvc5yvp7" path="res://scripts/ui/main_menu_ui.gd" id="1_can6x"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_q7ib8"]
+[ext_resource type="Texture2D" uid="uid://dithw8t1j65s1" path="res://resources/assets/png/tic_tac_toe.png" id="3_b8bkt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfpyc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -37,6 +38,40 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qegi1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02l8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq2e2"]
+bg_color = Color(0.890625, 0.556179, 0.49054, 1)
+border_width_bottom = 5
+border_color = Color(0.768627, 0.478431, 0.470588, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xem4"]
+bg_color = Color(0.421875, 0.0395508, 0.0395508, 1)
+border_color = Color(0.568627, 0.176471, 0.282353, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cb75"]
+bg_color = Color(0.792969, 0.216827, 0.216827, 1)
+border_width_bottom = 5
+border_color = Color(0.568627, 0.176471, 0.282353, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
 [node name="MainMenuUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -63,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vfpyc")
 
-[node name="QuitButton" type="Button" parent="MainMenuControl/Panel"]
+[node name="EndlessButton" type="Button" parent="MainMenuControl/Panel"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
 anchors_preset = 2
@@ -80,7 +115,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
-text = "QUIT"
+text = "Endless"
 
 [node name="LaunchButton" type="Button" parent="MainMenuControl/Panel"]
 custom_minimum_size = Vector2(120, 120)
@@ -163,7 +198,269 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SkipButton" type="Button" parent="MainMenuControl/Panel"]
+[node name="OptionsControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="OptionsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qegi1")
+
+[node name="BackButton" type="Button" parent="OptionsControl/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -160.0
+offset_right = 216.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_02l8k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oq2e2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xem4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5cb75")
+text = "Back
+"
+
+[node name="Panel" type="Panel" parent="OptionsControl/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 151.0
+grow_horizontal = 2
+
+[node name="SubTitle" type="Label" parent="OptionsControl/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -61.5
+offset_right = 106.0
+offset_bottom = 61.5
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+text = "Mute:
+Music:
+Master:
+Dialogue:
+Music:
+FX:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MuteAll" type="CheckBox" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 1
+offset_left = 110.0
+offset_top = -2.0
+offset_right = 134.0
+offset_bottom = 22.0
+
+[node name="MuteMusic" type="CheckBox" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 19.0
+offset_right = 134.0
+offset_bottom = 43.0
+
+[node name="FXVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 1
+offset_left = 114.0
+offset_top = 66.0
+offset_right = 314.0
+offset_bottom = 82.0
+
+[node name="MusicVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 45.0
+offset_right = 314.0
+offset_bottom = 61.0
+
+[node name="DialogueVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 107.0
+offset_right = 314.0
+offset_bottom = 123.0
+
+[node name="MasterVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 86.0
+offset_right = 314.0
+offset_bottom = 102.0
+
+[node name="Control" type="Control" parent="OptionsControl/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="OptionsControl/Panel/Panel/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 6.0
+offset_right = -14.0
+offset_bottom = 37.0
+grow_horizontal = 0
+rotation = 0.31563
+scale = Vector2(1.39859, 1.59063)
+texture = ExtResource("3_b8bkt")
+expand_mode = 1
+
+[node name="EndlessControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="EndlessControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vfpyc")
+
+[node name="Text" type="Label" parent="EndlessControl/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330469
+anchor_top = 0.0305556
+anchor_right = 0.641407
+anchor_bottom = 0.138889
+offset_left = -99.5
+offset_right = 99.5
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+text = "Inter-continental
+ballistic missile"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="EndlessControl/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -160.0
+offset_right = 216.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
+text = "Back"
+
+[node name="StandardButton" type="Button" parent="EndlessControl/Panel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -172.0
+offset_right = 60.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
+text = "Standard"
+
+[node name="FirstPersonButton" type="Button" parent="EndlessControl/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -111.0
+offset_right = -121.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
+text = "fpv"
+
+[node name="ArcadeButton" type="Button" parent="EndlessControl/Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -211.0
+offset_right = -121.0
+offset_bottom = -115.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
+text = "Arcade"
+
+[node name="CommonControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SkipButton" type="Button" parent="CommonControl"]
 visible = false
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 1
@@ -172,10 +469,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -93.0
-offset_right = 36.0
-offset_bottom = -21.0
+offset_left = 264.0
+offset_top = 227.0
+offset_right = 336.0
+offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_q7ib8")
@@ -187,7 +484,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
 text = "SKIP
 INTRO"
 
-[connection signal="pressed" from="MainMenuControl/Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/Panel/EndlessButton" to="." method="_on_endless_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/LaunchButton" to="." method="_on_launch_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenuControl/Panel/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="OptionsControl/Panel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="EndlessControl/Panel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="EndlessControl/Panel/StandardButton" to="." method="_on_standard_button_pressed"]
+[connection signal="pressed" from="EndlessControl/Panel/FirstPersonButton" to="." method="_on_first_person_button_pressed"]
+[connection signal="pressed" from="EndlessControl/Panel/ArcadeButton" to="." method="_on_arcade_button_pressed"]
+[connection signal="pressed" from="CommonControl/SkipButton" to="." method="_on_skip_button_pressed"]

@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2tjmlptu81xy"]
+[gd_scene load_steps=7 format=3 uid="uid://b2tjmlptu81xy"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_rx1xl"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_mfdcb"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_xab3b"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_mfdcb"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_od0km"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xab3b"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_mfdcb")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
 
 [node name="Level1" type="Node3D"]
 
@@ -25,7 +33,23 @@ obstacle_array_name = "level_1_buildings"
 
 [node name="Player" parent="." instance=ExtResource("3_xab3b")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
+starting_altitude = 50
+
+[node name="ICBMCharacter" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="RightEngine" parent="Player/ICBMCharacter/RocketModel" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="CenterEngine" parent="Player/ICBMCharacter/RocketModel" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="LeftEngine" parent="Player/ICBMCharacter/RocketModel" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
 
 [node name="GameUI" parent="." instance=ExtResource("4_od0km")]
 
+[editable path="Player"]
+[editable path="Player/ICBMCharacter"]
+[editable path="Player/ICBMCharacter/RocketModel"]
 [editable path="GameUI"]

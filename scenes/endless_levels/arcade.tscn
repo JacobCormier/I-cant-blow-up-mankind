@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxwc2rg0hl3c5"]
+
+[ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_3utl4"]
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_mftq4"]
+[ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_a6dx8"]
+[ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_bmgqk"]
+
+[node name="ArcadeEndless" type="Node3D"]
+
+[node name="CustomEnvironment" parent="." instance=ExtResource("1_3utl4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.665635, 0.746278, 0, -0.746278, 0.665635, 0.036, 598.428, 133.717)
+current = true
+
+[node name="GameGlobe" parent="." instance=ExtResource("2_mftq4")]
+sky_color = Color(1, 0, 0, 1)
+globe_visual_radius = 500.0
+obstacle_array_name = "level_1_buildings"
+
+[node name="Player" parent="." instance=ExtResource("3_a6dx8")]
+transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
+
+[node name="GameUI" parent="." instance=ExtResource("4_bmgqk")]
+
+[editable path="GameUI"]
