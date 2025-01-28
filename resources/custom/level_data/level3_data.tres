@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_llfh4")
-progress_goal = 10000
-initial_obstacles = 450
-initial_fuel = 175
-obstacles_per_wave = 25
-fuel_per_wave = 10
-wave_frequency = 60.0
+progress_goal = 3000
+initial_obstacles = 200
+initial_fuel = 100
+obstacles_per_wave = 30
+fuel_per_wave = 20
+wave_frequency = 10.0
 metadata/_custom_type_script = ExtResource("1_llfh4")

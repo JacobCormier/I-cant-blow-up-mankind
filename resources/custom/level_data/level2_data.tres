@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_rpsdx")
-progress_goal = 5000
-initial_obstacles = 350
+progress_goal = 3000
+initial_obstacles = 300
 initial_fuel = 150
-obstacles_per_wave = 50
-fuel_per_wave = 25
-wave_frequency = 60.0
+obstacles_per_wave = 10
+fuel_per_wave = 10
+wave_frequency = 10.0
 metadata/_custom_type_script = ExtResource("1_rpsdx")

@@ -83,6 +83,7 @@ func restart_level() -> void:
 	if current_level <= 0:
 		get_tree().reload_current_scene()
 	else:
+		current_level = 1
 		get_tree().change_scene_to_packed(Globals.LEVEL_1)
 	
 func get_current_level_obstacles() -> Array:

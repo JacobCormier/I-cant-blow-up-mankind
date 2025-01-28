@@ -23,6 +23,7 @@ const TIME_SCALE = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.current_level = 1
 	start_tween_animation()
 	current_root_position = player.position
 	launchPad_root_position = launch_pad.position
