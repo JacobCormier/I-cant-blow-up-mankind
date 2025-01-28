@@ -9,5 +9,5 @@ initial_obstacles = 250
 initial_fuel = 100
 obstacles_per_wave = 50
 fuel_per_wave = 50
-wave_frequency = 60.0
+wave_frequency = 30.0
 metadata/_custom_type_script = ExtResource("1_4mddl")

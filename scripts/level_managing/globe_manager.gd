@@ -210,4 +210,9 @@ func _create_obstacle() -> void:
 	create_object_at_random_bottom_point(new_object, globe_game_radius)
 
 func _spawn_wave() -> void:
-	print("WAVE SPAWNED!")
+	print("WAVE SPAWNED")
+	for x in range(0, level_data.obstacles_per_wave):
+		_create_obstacle()
+		
+	for x in range(0, level_data.fuel_per_wave):
+		_create_fuel()
