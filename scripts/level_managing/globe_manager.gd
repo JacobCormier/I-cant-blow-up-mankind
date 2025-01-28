@@ -36,13 +36,15 @@ func _ready():
 	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
 	
+	_setup_globe()
+	
 	for x in range(0, 450):
 		_create_obstacle()
 		
 	for x in range(0, 100):
 		_create_fuel()
 		
-	_setup_globe()
+	
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)

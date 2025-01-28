@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var sub_viewport: SubViewport = $FaceCam/SubViewport
 @onready var face_cam: TextureRect = $FaceCam
 @onready var face_cam_rocket: Node3D = $FaceCam/SubViewport/FaceCamRocket
+@onready var level_progress_bar: TextureProgressBar = $ScoreControl/LevelProgressBar
 
 var dead = false
 var timer_tween
