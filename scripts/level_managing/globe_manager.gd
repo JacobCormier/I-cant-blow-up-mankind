@@ -11,6 +11,8 @@ const globe_game_radius = 500
 @export var globe_visual_radius: float # Radius of the spinning globe
 @export var level_data: LevelData # Resource for the level data
 
+@onready var custom_environment: WorldEnvironment = $"../CustomEnvironment"
+
 @onready var visual_container: Node3D = $VisualContainer
 @onready var globe_visual: MeshInstance3D = $VisualContainer/GlobeVisual
 @onready var area_3d: Area3D = $Area3D
@@ -47,9 +49,13 @@ func _ready():
 		_create_obstacle()
 		
 	for x in range(0, level_data.initial_fuel):
-		_create_fuel()
+		_create_fuel()	
 		
-	
+	var decorations = Globals.get_current_level_decorations()
+	if decorations.size() > 0:
+		# Create decorations at globe_visual_radius using random_point_on_sphere
+		for x in range(0, 400):
+			_create_decoration()
 	
 func _process(delta: float) -> void:
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
@@ -78,6 +84,39 @@ func random_point_on_sphere(radius: float) -> Dictionary:
 	var normal = point.normalized()
 	
 	return {"point": point, "normal": normal}	
+
+func create_object_at_random_point(object: PackedScene, radius: float):
+	# THIS IS USED ONLY FOR DECORATIONS
+	# DO NOT USE FOR OBSTACLES
+	var sphere_radius = radius
+	var result = random_point_on_sphere(sphere_radius)
+	
+	var point = result["point"]
+	var normal = result["normal"]
+	
+	var new_object = object.instantiate()
+	#new_object.parent = self
+	globe_visual.add_child(new_object)
+	
+	new_object.global_transform.origin = point # Position the child at the random point
+	
+	# Align the block's up vector with the surface normal
+	var up_vector = normal
+	var forward_vector = Vector3.FORWARD
+	if abs(forward_vector.dot(up_vector)) > 0.99:
+		# If forward is too close to up, choose a different forward vector
+		forward_vector = Vector3.RIGHT
+	
+	var right_vector = up_vector.cross(forward_vector).normalized()
+	forward_vector = right_vector.cross(up_vector).normalized()
+	
+	var basis = Basis(right_vector, up_vector, forward_vector)
+	var transform = new_object.transform
+	transform.origin = point
+	transform.basis = basis
+	new_object.transform = transform
+	new_object.scale = new_object.scale / 2.0
+	new_object.collider.queue_free()
 
 # Function to generate a random point on the sphere and surface normal
 func random_point_on_bottom_of_sphere(radius: float) -> Dictionary:
@@ -140,7 +179,7 @@ func create_object_at_random_bottom_point(object: PackedScene, radius: float):
 	transform.basis = basis
 	new_object.transform = transform
 
-func place_object_at_random_point(object: Node3D ,radius: float):
+func place_object_at_random_bottom_point(object: Node3D ,radius: float):
 	var sphere_radius = radius
 	var result = random_point_on_bottom_of_sphere(sphere_radius)
 	
@@ -175,6 +214,8 @@ func _setup_globe() -> void:
 	globe_visual.mesh.height = globe_visual_radius * 2.0
 	var globe_material = globe_visual.get_surface_override_material(0)
 	globe_material.albedo_color = planet_color
+	custom_environment.set_sky_color(sky_color)
+	
 
 func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 	match direction:
@@ -188,10 +229,10 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 func _reset_building_for_points(object: Node3D) -> void:
 	# Technically, ANYTHING we reset with this is generating pointsd >:(
 	PlayerStats.add_to_score(10)
-	place_object_at_random_point(object, globe_game_radius)	
+	place_object_at_random_bottom_point(object, globe_game_radius)	
 		
 func _reset_object(object: Node3D) -> void:
-	place_object_at_random_point(object, globe_game_radius)
+	place_object_at_random_bottom_point(object, globe_game_radius)
 
 func _create_fuel() -> void:
 		var new_object
@@ -216,3 +257,9 @@ func _spawn_wave() -> void:
 		
 	for x in range(0, level_data.fuel_per_wave):
 		_create_fuel()
+
+func _create_decoration() -> void:
+	var decorations = Globals.get_current_level_decorations()
+	var size = decorations.size()
+	var new_deco = decorations[randi_range(0, size - 1)]
+	create_object_at_random_point(new_deco, globe_visual_radius)

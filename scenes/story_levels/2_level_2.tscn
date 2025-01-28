@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5gs18itf47d4"]
+[gd_scene load_steps=8 format=3 uid="uid://b5gs18itf47d4"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_rqmkm"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_or4ol"]
+[ext_resource type="Resource" uid="uid://dkviox713ps61" path="res://resources/custom/level_data/level2_data.tres" id="3_pa4fy"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_ur47r"]
 [ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_or4ol"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_pa4fy"]
@@ -27,8 +28,10 @@ transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.
 current = true
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_or4ol")]
+sky_color = Color(0.166364, 0.433676, 0.412871, 1)
 planet_color = Color(0.355825, 0.43, 0.3311, 1)
 globe_visual_radius = 500.0
+level_data = ExtResource("3_pa4fy")
 
 [node name="Player" parent="." instance=ExtResource("3_ur47r")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)

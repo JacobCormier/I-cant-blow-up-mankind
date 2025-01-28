@@ -1,7 +1,7 @@
 extends Node3D
 
 var parent
-
+@onready var collider: Node3D = $Collider
 var TIMER_DEATH = false
 
 # Called when the node enters the scene tree for the first time.

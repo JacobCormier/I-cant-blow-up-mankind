@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://3rvmrijmbdl0"]
+[gd_scene load_steps=5 format=3 uid="uid://3rvmrijmbdl0"]
+
+[ext_resource type="Script" uid="uid://dyvjwkkdypoo5" path="res://scripts/level_managing/custom_environment_script.gd" id="1_hsnmk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
 sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
@@ -13,6 +15,8 @@ sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
 background_mode = 2
 background_color = Color(0.119751, 0.7315, 0.851563, 1)
 sky = SubResource("Sky_672je")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.75
 tonemap_mode = 3
 tonemap_exposure = 0.8
 glow_enabled = true
@@ -31,3 +35,4 @@ adjustment_saturation = 1.1
 
 [node name="CustomEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_26xqv")
+script = ExtResource("1_hsnmk")

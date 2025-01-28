@@ -43,12 +43,7 @@ const level_2_buildings = [
 ]
 
 const level_3_buildings = [ # Plan to change this to asteroids instead, maybe with random y value added
-	preload("res://scenes/world/buildings/skyscraper_1.tscn"),
-	preload("res://scenes/world/buildings/skyscraper_2.tscn"),
-	preload("res://scenes/world/buildings/skyscraper_3.tscn"),
-	preload("res://scenes/world/buildings/skyscraper_4.tscn"),
-	preload("res://scenes/world/buildings/skyscraper_5.tscn"),
-	preload("res://scenes/world/buildings/skyscraper_6.tscn")
+	preload("res://scenes/world/asteroids/Asteroid_1.tscn")
 ]
 
 

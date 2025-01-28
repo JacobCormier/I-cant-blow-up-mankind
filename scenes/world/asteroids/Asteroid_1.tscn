@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bairrvkib3won"]
+
+[ext_resource type="PackedScene" uid="uid://jiikdlvsrooo" path="res://scenes/world/buildings/base_building.tscn" id="1_xefry"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jbxls"]
+radius = 15.0
+height = 30.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1ntwk"]
+noise_type = 2
+frequency = 0.0774
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y1m37"]
+seamless = true
+noise = SubResource("FastNoiseLite_1ntwk")
+
+[sub_resource type="Gradient" id="Gradient_lxkq0"]
+offsets = PackedFloat32Array(0.459016, 0.606557)
+colors = PackedColorArray(0.281187, 0.281187, 0.281187, 1, 0.529067, 0.529067, 0.529067, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_la21k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h6y3r"]
+seamless = true
+color_ramp = SubResource("Gradient_lxkq0")
+noise = SubResource("FastNoiseLite_la21k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81mio"]
+albedo_color = Color(0.297277, 0.182611, 0.19962, 1)
+roughness_texture = SubResource("NoiseTexture2D_h6y3r")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_y1m37")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5sfx1"]
+radius = 14.5
+
+[node name="base_building" instance=ExtResource("1_xefry")]
+
+[node name="Visual" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3612, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
+mesh = SubResource("SphereMesh_jbxls")
+surface_material_override/0 = SubResource("StandardMaterial3D_81mio")
+
+[node name="Collider" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3612, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D" index="0"]
+shape = SubResource("SphereShape3D_5sfx1")
