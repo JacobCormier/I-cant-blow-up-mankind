@@ -24,7 +24,6 @@ func _ready():
 	add_child(audio_player)
 	add_child(rocket_engine_player)
 	
-	
 	rocket_engine_player.stream = ROCKET_LOOP
 	rocket_engine_player.volume_db = MIN_ENGINE_VOLUME_DB
 	

@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://bo1qjl47rsq2h"]
+
+[ext_resource type="PackedScene" uid="uid://cjj5vuqes34yd" path="res://resources/assets/models/ICBM/ICBM.fbx" id="1_3ca61"]
+[ext_resource type="Script" uid="uid://rm0kt318umjn" path="res://scripts/player/rocket_animator.gd" id="2_oqqtf"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="3_lln7h"]
+[ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="4_a1xsm"]
+[ext_resource type="Script" path="res://scripts/player/collider_anchor.gd" id="5_r6dgl"]
+[ext_resource type="Script" uid="uid://dopf6pddvwen5" path="res://scripts/player/player_collider.gd" id="6_0xbo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8q0o"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_lln7h")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
+
+[sub_resource type="BoxMesh" id="BoxMesh_67xb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0sbu"]
+transparency = 1
+albedo_color = Color(0.264528, 0.29, 0.2001, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4stcf"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_amacs"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vknu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0f66h"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7cpbi"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f6u0m"]
+radius = 0.4
+height = 0.45
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etc3m"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8q0o"]
+size = Vector3(1, 10, 1)
+
+[node name="ICBMCharacter" type="Node3D"]
+
+[node name="RocketModel" parent="." instance=ExtResource("1_3ca61")]
+script = ExtResource("2_oqqtf")
+
+[node name="RightEngine" parent="RocketModel" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v8q0o")
+
+[node name="CenterEngine" parent="RocketModel" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v8q0o")
+
+[node name="LeftEngine" parent="RocketModel" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v8q0o")
+
+[node name="RocketParticles" parent="RocketModel" instance=ExtResource("4_a1xsm")]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
+
+[node name="Face" type="MeshInstance3D" parent="RocketModel"]
+transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
+mesh = SubResource("BoxMesh_67xb7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0sbu")
+
+[node name="Left Eye" type="MeshInstance3D" parent="RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
+mesh = SubResource("BoxMesh_4stcf")
+
+[node name="Left Eye Inner" type="MeshInstance3D" parent="RocketModel/Face/Left Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_amacs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
+
+[node name="Right Eye" type="MeshInstance3D" parent="RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
+mesh = SubResource("BoxMesh_0f66h")
+
+[node name="Right Eye Inner" type="MeshInstance3D" parent="RocketModel/Face/Right Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_7cpbi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
+
+[node name="Mouth" type="MeshInstance3D" parent="RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
+mesh = SubResource("SphereMesh_f6u0m")
+surface_material_override/0 = SubResource("StandardMaterial3D_etc3m")
+
+[node name="Collider" type="Node3D" parent="."]
+script = ExtResource("5_r6dgl")
+
+[node name="Area3D" type="Area3D" parent="Collider"]
+collision_mask = 2
+script = ExtResource("6_0xbo4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D"]
+shape = SubResource("BoxShape3D_v8q0o")
+
+[connection signal="area_entered" from="Collider/Area3D" to="Collider/Area3D" method="_on_area_entered"]
+
+[editable path="RocketModel"]

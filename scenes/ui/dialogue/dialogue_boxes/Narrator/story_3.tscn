@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b47wdrit4e65v"]
 
-[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_unbmp"]
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_unbmp"]
 
 [node name="Story_3" instance=ExtResource("1_unbmp")]
 

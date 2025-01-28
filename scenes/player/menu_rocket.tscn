@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://1kdyt4pl2xrc"]
+[gd_scene load_steps=9 format=3 uid="uid://1kdyt4pl2xrc"]
 
-[ext_resource type="Script" path="res://scenes/player/menu_player.gd" id="1_tccar"]
-[ext_resource type="PackedScene" uid="uid://b4rko3vvy3dbs" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_37dns"]
-[ext_resource type="Texture2D" uid="uid://xvf3ryxvlddn" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_0kgm2"]
+[ext_resource type="Script" uid="uid://dfal3ej5mhryv" path="res://scripts/player/menu_player_controller.gd" id="1_tccar"]
+[ext_resource type="PackedScene" uid="uid://cjj5vuqes34yd" path="res://resources/assets/models/ICBM/ICBM.fbx" id="2_37dns"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_0kgm2"]
+[ext_resource type="Script" uid="uid://b6np3rcmyeie7" path="res://scripts/player/effects/engine_glow.gd" id="4_0vfk6"]
 [ext_resource type="PackedScene" uid="uid://bypkrts3xqu66" path="res://scenes/particles/rocket_particles.tscn" id="5_dvj57"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7u6t"]
@@ -18,7 +19,7 @@ size = Vector3(0.5, 10, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e2yam"]
 size = Vector3(0.5, 10, 0.5)
 
-[node name="MenuPlayer" type="Node3D"]
+[node name="MenuRocket" type="Node3D"]
 transform = Transform3D(1, 0.00025976, -7.4061e-07, -0.00025976, 1, 0.000143383, 7.91044e-07, -0.000143383, 1, 0, 0, 0)
 script = ExtResource("1_tccar")
 
@@ -29,6 +30,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
 
 [node name="CenterEngine" parent="ICBM" index="3"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")
+script = ExtResource("4_0vfk6")
 
 [node name="LeftEngine" parent="ICBM" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m7u6t")

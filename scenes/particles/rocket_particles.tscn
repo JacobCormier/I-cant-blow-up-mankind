@@ -41,7 +41,7 @@ alpha_curve = SubResource("CurveTexture_1piir")
 
 [sub_resource type="SphereMesh" id="SphereMesh_4nhqo"]
 
-[node name="rocket_particles" type="Node3D"]
+[node name="RocketParticles" type="Node3D"]
 script = ExtResource("1_vid2n")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

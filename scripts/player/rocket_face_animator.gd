@@ -2,8 +2,8 @@ extends Node3D
 
 enum FaceStates {NONE, TALK, SURPRISE, PANIC, SAD, HAPPY, EXCITED}
 
-@onready var menu_player: Node3D = $Camera3D/MenuPlayer
-@onready var mouth: MeshInstance3D = $Camera3D/MenuPlayer/FakeBlock/Mouth
+@onready var icbm_character: Node3D = $Camera3D/ICBMCharacter
+@onready var mouth: MeshInstance3D = $Camera3D/ICBMCharacter/RocketModel/Face/Mouth
 
 const MAX_MOUTH_HEIGHT = 0.45
 const MIN_MOUTH_HEIGHT = 0.1
@@ -18,7 +18,7 @@ var turn_tween: Tween
 var turn_dir = 1
 var cur_tween_dir = 1
 var did_turn= false 
-var player_root_position
+var icbm_character_root_position
 var last_jitter = [0, 0, 0]
 
 var is_input_left = false
@@ -26,13 +26,12 @@ var is_input_right = false
 
 func _ready() -> void:
 	randomize_talk_frequency()
-	player_root_position = menu_player.position
-	print("ROICKET READY")
+	icbm_character_root_position = icbm_character.position
 	
 func _process(delta):	
-	micro_rumble(menu_player, player_root_position, delta, 0, 0.05, 0.1, 0.05)
-	micro_rumble(menu_player, player_root_position, delta, 1, 0.2, 0.1, 0.17)
-	micro_rumble(menu_player, player_root_position, delta, 2, 0.4, 0.3, 0.3)
+	micro_rumble(icbm_character, icbm_character_root_position, delta, 0, 0.05, 0.1, 0.05)
+	micro_rumble(icbm_character, icbm_character_root_position, delta, 1, 0.2, 0.1, 0.17)
+	micro_rumble(icbm_character, icbm_character_root_position, delta, 2, 0.4, 0.3, 0.3)
 	
 	if (is_input_left and is_input_right) or (not is_input_left and not is_input_right): 
 		turn_dir = 1
@@ -77,7 +76,7 @@ func turn():
 		
 		turn_tween.set_ease(Tween.EASE_OUT)
 		turn_tween.set_trans(Tween.TRANS_CUBIC)
-		turn_tween.tween_property(menu_player, "rotation_degrees:x", rotation,  1)	
+		turn_tween.tween_property(icbm_character, "rotation_degrees:x", rotation,  1)	
 
 func randomize_talk_frequency() -> void:
 	tween = null

@@ -1,14 +1,12 @@
 class_name PlayerController
 extends Node3D
 
-@onready var icbm_model: Node3D = $ICBM
 @onready var globe_manager: Node3D = $"../GameGlobe"
 @onready var game_ui: CanvasLayer = $"../GameUI"
-@onready var collider: Node3D = $Collider
+@onready var icbm_character: Node3D = $ICBMCharacter
 
 enum TurnDirection {NONE, LEFT, RIGHT}
 var current_turn_direction = TurnDirection.NONE
-
 
 var is_input_left := false
 var is_input_right := false
@@ -51,12 +49,10 @@ func _input(event: InputEvent) -> void:
 		current_turn_direction = TurnDirection.NONE
 		SoundManager.stop_engine()
 		
-	icbm_model.trigger_turn(current_turn_direction)
-	collider.trigger_turn(current_turn_direction)
+	icbm_character.trigger_turn(current_turn_direction)
 		
 	if is_input_jumping:
-		icbm_model.trigger_jump()
-		collider.trigger_jump()
+		icbm_character.trigger_jump()
 		
 	# Next is Left right movement
 	globe_manager.pass_in_movement_direction(current_turn_direction)

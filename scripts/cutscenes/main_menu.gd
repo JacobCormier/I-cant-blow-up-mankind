@@ -1,6 +1,5 @@
 extends Node3D
 
-const LEVEL_1 = preload("res://scenes/Level1.tscn")
 @onready var game_globe: Node3D = $GameGlobe
 @onready var block: Node3D = $Block
 @onready var lid = $Block/Lid
@@ -31,7 +30,7 @@ func _ready() -> void:
 	follow_cam_root_position = follow_cam.position
 
 func trigger_dialogue() -> void:
-	Engine.time_scale = 0
+	Engine.time_scale = 1.0
 	
 func end_sequence() -> void:
 	get_tree().change_scene_to_packed(Globals.LEVEL_1)

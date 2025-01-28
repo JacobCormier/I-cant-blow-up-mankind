@@ -1,31 +1,31 @@
 [gd_scene load_steps=41 format=3 uid="uid://boc0o8c8520pf"]
 
-[ext_resource type="Script" uid="uid://dgp52ar4rky7w" path="res://scenes/main_menu.gd" id="1_mudj7"]
-[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_oloa8"]
-[ext_resource type="PackedScene" uid="uid://xow7tpha4ipr" path="res://resources/assets/models/LaunchPad/Block.fbx" id="3_qfytl"]
-[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_77i7d"]
-[ext_resource type="PackedScene" uid="uid://cj736pysf224e" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="4_oujf3"]
-[ext_resource type="PackedScene" uid="uid://b037aiqpemkrt" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="5_1y8to"]
-[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_player.tscn" id="6_wkxok"]
-[ext_resource type="PackedScene" uid="uid://dccqs0kuycb64" path="res://scenes/world/buildings/skyscraper_1.tscn" id="7_73kbp"]
-[ext_resource type="PackedScene" uid="uid://dhlr7o063jt8q" path="res://scenes/world/buildings/skyscraper_2.tscn" id="8_m0hmd"]
-[ext_resource type="PackedScene" uid="uid://b5lg8l7tquv5f" path="res://scenes/world/buildings/skyscraper_3.tscn" id="9_2kpem"]
-[ext_resource type="PackedScene" uid="uid://c8ybje1hnw1mi" path="res://scenes/world/buildings/skyscraper_4.tscn" id="10_ncf0o"]
-[ext_resource type="PackedScene" uid="uid://cgk28k8sjee0u" path="res://scenes/world/buildings/large_1.tscn" id="11_e2ka3"]
-[ext_resource type="PackedScene" uid="uid://dg5huvnt57w7n" path="res://scenes/world/buildings/large_2.tscn" id="12_n4sgq"]
-[ext_resource type="PackedScene" uid="uid://b0tcjabnvk6g6" path="res://scenes/world/buildings/large_3.tscn" id="13_h05pi"]
-[ext_resource type="PackedScene" uid="uid://db1e2gv0asyvd" path="res://scenes/world/buildings/large_4.tscn" id="14_dh763"]
-[ext_resource type="PackedScene" uid="uid://8dxsegdf201v" path="res://scenes/world/buildings/large_5.tscn" id="15_gcpa2"]
-[ext_resource type="PackedScene" uid="uid://baburhyxoqd4u" path="res://scenes/world/buildings/large_6.tscn" id="16_ky2b2"]
-[ext_resource type="PackedScene" uid="uid://bi0rws44bmw4d" path="res://scenes/world/buildings/small_1.tscn" id="17_trvai"]
-[ext_resource type="PackedScene" uid="uid://ce2unwxnvr1r0" path="res://scenes/world/buildings/small_2.tscn" id="18_rxl4a"]
-[ext_resource type="PackedScene" uid="uid://b63yi36y0xciy" path="res://scenes/world/buildings/small_3.tscn" id="19_ogjf1"]
-[ext_resource type="PackedScene" uid="uid://n62rwrldw58j" path="res://scenes/world/buildings/small_5.tscn" id="20_24b86"]
-[ext_resource type="PackedScene" uid="uid://ctcspmasa5wa7" path="res://scenes/world/buildings/small_6.tscn" id="21_pw621"]
-[ext_resource type="PackedScene" uid="uid://cwj0hlbndmg7n" path="res://scenes/world/buildings/skyscraper_6.tscn" id="22_s7mgw"]
-[ext_resource type="PackedScene" uid="uid://cgdy1ir2dceld" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="23_e2qwh"]
-[ext_resource type="PackedScene" uid="uid://dti42yrq2ji54" path="res://scenes/ui/main_menu_ui.tscn" id="24_gi80t"]
-[ext_resource type="PackedScene" uid="uid://flpg23tk2gi5" path="res://scenes/ui/dialogue_canvas_layer.tscn" id="25_lb5q6"]
+[ext_resource type="Script" uid="uid://qgwiel6v32nc" path="res://scripts/cutscenes/main_menu.gd" id="1_bprw1"]
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_kv4rk"]
+[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_rocket.tscn" id="3_fnbgm"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_qfa8f"]
+[ext_resource type="PackedScene" uid="uid://xow7tpha4ipr" path="res://resources/assets/models/LaunchPad/Block.fbx" id="5_2uvyq"]
+[ext_resource type="PackedScene" uid="uid://cj736pysf224e" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="6_0e3hp"]
+[ext_resource type="PackedScene" uid="uid://b037aiqpemkrt" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="7_yyv6l"]
+[ext_resource type="PackedScene" uid="uid://dccqs0kuycb64" path="res://scenes/world/buildings/skyscraper_1.tscn" id="8_6aj40"]
+[ext_resource type="PackedScene" uid="uid://dhlr7o063jt8q" path="res://scenes/world/buildings/skyscraper_2.tscn" id="9_wbjv8"]
+[ext_resource type="PackedScene" uid="uid://b5lg8l7tquv5f" path="res://scenes/world/buildings/skyscraper_3.tscn" id="10_a5um3"]
+[ext_resource type="PackedScene" uid="uid://c8ybje1hnw1mi" path="res://scenes/world/buildings/skyscraper_4.tscn" id="11_qb12k"]
+[ext_resource type="PackedScene" uid="uid://cgk28k8sjee0u" path="res://scenes/world/buildings/large_1.tscn" id="12_wy4m1"]
+[ext_resource type="PackedScene" uid="uid://dg5huvnt57w7n" path="res://scenes/world/buildings/large_2.tscn" id="13_w4phl"]
+[ext_resource type="PackedScene" uid="uid://b0tcjabnvk6g6" path="res://scenes/world/buildings/large_3.tscn" id="14_f5r11"]
+[ext_resource type="PackedScene" uid="uid://db1e2gv0asyvd" path="res://scenes/world/buildings/large_4.tscn" id="15_ppis5"]
+[ext_resource type="PackedScene" uid="uid://8dxsegdf201v" path="res://scenes/world/buildings/large_5.tscn" id="16_ln73e"]
+[ext_resource type="PackedScene" uid="uid://baburhyxoqd4u" path="res://scenes/world/buildings/large_6.tscn" id="17_injo3"]
+[ext_resource type="PackedScene" uid="uid://bi0rws44bmw4d" path="res://scenes/world/buildings/small_1.tscn" id="18_2itvq"]
+[ext_resource type="PackedScene" uid="uid://ce2unwxnvr1r0" path="res://scenes/world/buildings/small_2.tscn" id="19_eb07n"]
+[ext_resource type="PackedScene" uid="uid://b63yi36y0xciy" path="res://scenes/world/buildings/small_3.tscn" id="20_ewicd"]
+[ext_resource type="PackedScene" uid="uid://n62rwrldw58j" path="res://scenes/world/buildings/small_5.tscn" id="21_2bh14"]
+[ext_resource type="PackedScene" uid="uid://ctcspmasa5wa7" path="res://scenes/world/buildings/small_6.tscn" id="22_kekko"]
+[ext_resource type="PackedScene" uid="uid://cwj0hlbndmg7n" path="res://scenes/world/buildings/skyscraper_6.tscn" id="23_txe26"]
+[ext_resource type="PackedScene" uid="uid://cgdy1ir2dceld" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="24_0g1tu"]
+[ext_resource type="PackedScene" uid="uid://dti42yrq2ji54" path="res://scenes/ui/main_menu_ui.tscn" id="25_4xgb2"]
+[ext_resource type="PackedScene" uid="uid://flpg23tk2gi5" path="res://scenes/ui/dialogue/dialogue_canvas_layer.tscn" id="26_hvf6q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
 sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
@@ -48,7 +48,7 @@ volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ix6l"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("4_77i7d")
+albedo_texture = ExtResource("4_qfa8f")
 emission_enabled = true
 emission = Color(0.923906, 0, 0.246785, 1)
 emission_energy_multiplier = 0.15
@@ -89,7 +89,7 @@ material = SubResource("StandardMaterial3D_htgb0")
 size = Vector3(19.725, 1, 1.875)
 
 [node name="MainMenu" type="Node3D"]
-script = ExtResource("1_mudj7")
+script = ExtResource("1_bprw1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_26xqv")
@@ -100,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.260
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 2.51219e-08, 8.37355e-08, 0, 0.957823, -0.287361, -8.74228e-08, -0.287361, -0.957823, 0, 500.555, 22.767)
 
-[node name="GameGlobe" parent="." instance=ExtResource("2_oloa8")]
+[node name="GameGlobe" parent="." instance=ExtResource("2_kv4rk")]
 script = null
 
 [node name="VisualContainer" parent="GameGlobe" index="0"]
@@ -112,7 +112,7 @@ visible = false
 [node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
 visible = false
 
-[node name="MenuPlayer" parent="." instance=ExtResource("6_wkxok")]
+[node name="MenuPlayer" parent="." instance=ExtResource("3_fnbgm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)
 
 [node name="RightEngine" parent="MenuPlayer/ICBM" index="2"]
@@ -127,97 +127,97 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
 [node name="FollowCam" type="Camera3D" parent="MenuPlayer"]
 transform = Transform3D(-0.782608, 0.622515, 1.44627e-07, 0.596259, 0.7496, -0.287361, -0.178886, -0.224891, -0.957823, -4.94, 35, -28.115)
 
-[node name="Block" parent="." instance=ExtResource("3_qfytl")]
+[node name="Block" parent="." instance=ExtResource("5_2uvyq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216044, 501.624, -0.131486)
 
-[node name="Lid" parent="Block" instance=ExtResource("4_oujf3")]
+[node name="Lid" parent="Block" instance=ExtResource("6_0e3hp")]
 transform = Transform3D(4.25738e-08, -9.90724e-09, 1, -0.23207, -0.972699, 2.43366e-10, 0.972699, -0.23207, -4.37107e-08, 0.161, 0.928986, 7.45743)
 
 [node name="Lid" parent="Block/Lid" index="0"]
 transform = Transform3D(-96.5473, 8.56032e-06, -8.21807, 26.0505, -1.37924e-06, -30.4575, -8.62406e-06, -100, -2.83412e-07, 0.0332108, 3.05176e-05, -0.00730328)
 
-[node name="LaunchPad" parent="Block" instance=ExtResource("5_1y8to")]
+[node name="LaunchPad" parent="Block" instance=ExtResource("7_yyv6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
 
 [node name="Diorama" type="Node3D" parent="."]
 
-[node name="Skyscraper1" parent="Diorama" instance=ExtResource("7_73kbp")]
+[node name="Skyscraper1" parent="Diorama" instance=ExtResource("8_6aj40")]
 transform = Transform3D(1, 0, 0, 0, 0.937428, -0.348179, 0, 0.348179, 0.937428, 27.9658, 464.749, 184.316)
 metadata/onGround = true
 
-[node name="Skyscraper2" parent="Diorama" instance=ExtResource("7_73kbp")]
+[node name="Skyscraper2" parent="Diorama" instance=ExtResource("8_6aj40")]
 transform = Transform3D(0.996839, -0.0744794, 0.0276631, 0.0794508, 0.934465, -0.347079, 0, 0.348179, 0.937428, -27.068, 464.749, 185.922)
 metadata/onGround = true
 
-[node name="Skyscraper3" parent="Diorama" instance=ExtResource("7_73kbp")]
+[node name="Skyscraper3" parent="Diorama" instance=ExtResource("8_6aj40")]
 transform = Transform3D(1, 0, 0, 0, 0.997233, -0.0743347, 0, 0.0743347, 0.997233, 27.3626, 464.749, 148.573)
 metadata/onGround = true
 
-[node name="Skyscraper4" parent="Diorama" instance=ExtResource("7_73kbp")]
+[node name="Skyscraper4" parent="Diorama" instance=ExtResource("8_6aj40")]
 transform = Transform3D(0.996614, -0.0820771, -0.00495602, 0.0806516, 0.987487, -0.135515, 0.0160167, 0.134656, 0.990763, -26.9082, 469.806, 175.152)
 metadata/onGround = true
 
-[node name="base_building" parent="Diorama" instance=ExtResource("8_m0hmd")]
+[node name="base_building" parent="Diorama" instance=ExtResource("9_wbjv8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2588, 478.347, 157.232)
 metadata/onGround = true
 
-[node name="base_building2" parent="Diorama" instance=ExtResource("9_2kpem")]
+[node name="base_building2" parent="Diorama" instance=ExtResource("10_a5um3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3291, 478.085, 150.034)
 metadata/onGround = true
 
-[node name="base_building3" parent="Diorama" instance=ExtResource("10_ncf0o")]
+[node name="base_building3" parent="Diorama" instance=ExtResource("11_qb12k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.755, 478.982, 156.714)
 metadata/onGround = true
 
-[node name="base_building4" parent="Diorama" instance=ExtResource("11_e2ka3")]
+[node name="base_building4" parent="Diorama" instance=ExtResource("12_wy4m1")]
 transform = Transform3D(1, -0.000628322, 0, 0.000628322, 1, 0, 0, 0, 1, -57.3471, 480.215, 126.17)
 metadata/onGround = true
 
-[node name="base_building5" parent="Diorama" instance=ExtResource("12_n4sgq")]
+[node name="base_building5" parent="Diorama" instance=ExtResource("13_w4phl")]
 transform = Transform3D(-0.498155, 0, 0.867088, 0, 1, 0, -0.867088, 0, -0.498155, 26.5613, 497.54, 34.3036)
 metadata/onGround = true
 
-[node name="base_building6" parent="Diorama" instance=ExtResource("13_h05pi")]
+[node name="base_building6" parent="Diorama" instance=ExtResource("14_f5r11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.548, 480.52, 119.932)
 metadata/onGround = true
 
-[node name="base_building7" parent="Diorama" instance=ExtResource("14_dh763")]
+[node name="base_building7" parent="Diorama" instance=ExtResource("15_ppis5")]
 transform = Transform3D(0.857572, 0, 0.514365, 0, 1, 0, -0.514365, 0, 0.857572, 50.5747, 480.861, 114.158)
 metadata/onGround = true
 
-[node name="base_building8" parent="Diorama" instance=ExtResource("15_gcpa2")]
+[node name="base_building8" parent="Diorama" instance=ExtResource("16_ln73e")]
 transform = Transform3D(0.775022, 0, 0.631935, 0, 1, 0, -0.631935, 0, 0.775022, 75.868, 481.275, 96.1116)
 metadata/onGround = true
 
-[node name="base_building9" parent="Diorama" instance=ExtResource("16_ky2b2")]
+[node name="base_building9" parent="Diorama" instance=ExtResource("17_injo3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.569, 481.239, 85.456)
 metadata/onGround = true
 
-[node name="base_building10" parent="Diorama" instance=ExtResource("17_trvai")]
+[node name="base_building10" parent="Diorama" instance=ExtResource("18_2itvq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.8298, 476.821, 121.318)
 metadata/onGround = true
 
-[node name="base_building11" parent="Diorama" instance=ExtResource("18_rxl4a")]
+[node name="base_building11" parent="Diorama" instance=ExtResource("19_eb07n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.064, 473.582, 123.428)
 metadata/onGround = true
 
-[node name="base_building12" parent="Diorama" instance=ExtResource("19_ogjf1")]
+[node name="base_building12" parent="Diorama" instance=ExtResource("20_ewicd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3031, 485.411, 123.426)
 metadata/onGround = true
 
-[node name="base_building13" parent="Diorama" instance=ExtResource("20_24b86")]
+[node name="base_building13" parent="Diorama" instance=ExtResource("21_2bh14")]
 transform = Transform3D(0.0155677, 0, -0.999879, 0, 1, 0, 0.999879, 0, 0.0155677, -45.0766, 493.919, 49.115)
 metadata/onGround = true
 
-[node name="base_building14" parent="Diorama" instance=ExtResource("21_pw621")]
+[node name="base_building14" parent="Diorama" instance=ExtResource("22_kekko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.076, 484.113, 149.967)
 metadata/onGround = true
 
-[node name="base_building15" parent="Diorama" instance=ExtResource("22_s7mgw")]
+[node name="base_building15" parent="Diorama" instance=ExtResource("23_txe26")]
 transform = Transform3D(1, 0, 0, 0, 0.969872, -0.243615, 0, 0.243615, 0.969872, -0.805, 420.641, 336.598)
 metadata/onGround = true
 
-[node name="low_buildingA" parent="Diorama/base_building15" instance=ExtResource("23_e2qwh")]
+[node name="low_buildingA" parent="Diorama/base_building15" instance=ExtResource("24_0g1tu")]
 transform = Transform3D(-52.995, 0, -7.13719e-06, 0, 64.95, 0, 4.63297e-06, 0, -81.64, -0.498558, 97.2861, 6.87708)
 
 [node name="Road" type="MeshInstance3D" parent="Diorama"]
@@ -361,9 +361,9 @@ transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402
 mesh = SubResource("BoxMesh_ensnl")
 skeleton = NodePath("../Diorama/Road/LeftSidewalk")
 
-[node name="MainMenuUI" parent="." instance=ExtResource("24_gi80t")]
+[node name="MainMenuUI" parent="." instance=ExtResource("25_4xgb2")]
 
-[node name="DialogueUI" parent="." instance=ExtResource("25_lb5q6")]
+[node name="DialogueUI" parent="." instance=ExtResource("26_hvf6q")]
 
 [editable path="GameGlobe"]
 [editable path="MenuPlayer"]

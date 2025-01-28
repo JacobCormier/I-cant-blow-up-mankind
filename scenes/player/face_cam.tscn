@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://unvllt0s0fsy"]
+
+[ext_resource type="Script" uid="uid://bhn22hxamxwp5" path="res://scripts/player/rocket_face_animator.gd" id="1_0gx7s"]
+[ext_resource type="PackedScene" uid="uid://bo1qjl47rsq2h" path="res://scenes/player/icbm_character.tscn" id="2_ab7kc"]
+
+[node name="RocketFace" type="Node3D"]
+script = ExtResource("1_0gx7s")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.821425, -0.521312, 0.231289, -0.0512012, 0.471315, 0.880478, -0.568013, 0.711404, -0.413842, 7.86055, 894.144, 112.888)
+fov = 4.0
+far = 675.0
+
+[node name="ICBM" parent="Camera3D" instance=ExtResource("2_ab7kc")]
+transform = Transform3D(-0.77153, 0.12349, -0.624093, -0.633608, -0.0608159, 0.77126, 0.0572881, 0.99048, 0.125166, 0.062, -0.447, -47.546)

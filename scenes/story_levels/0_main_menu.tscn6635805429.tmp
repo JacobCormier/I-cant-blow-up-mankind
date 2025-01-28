@@ -1,0 +1,371 @@
+[gd_scene load_steps=41 format=3 uid="uid://boc0o8c8520pf"]
+
+[ext_resource type="Script" uid="uid://qgwiel6v32nc" path="res://scripts/cutscenes/main_menu.gd" id="1_bprw1"]
+[ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_kv4rk"]
+[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_rocket.tscn" id="3_fnbgm"]
+[ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_qfa8f"]
+[ext_resource type="PackedScene" uid="uid://xow7tpha4ipr" path="res://resources/assets/models/LaunchPad/Block.fbx" id="5_2uvyq"]
+[ext_resource type="PackedScene" uid="uid://cj736pysf224e" path="res://resources/assets/models/LaunchPad/Lid.fbx" id="6_0e3hp"]
+[ext_resource type="PackedScene" uid="uid://b037aiqpemkrt" path="res://resources/assets/models/LaunchPad/LaunchPad.fbx" id="7_yyv6l"]
+[ext_resource type="PackedScene" uid="uid://dccqs0kuycb64" path="res://scenes/world/buildings/skyscraper_1.tscn" id="8_6aj40"]
+[ext_resource type="PackedScene" uid="uid://dhlr7o063jt8q" path="res://scenes/world/buildings/skyscraper_2.tscn" id="9_wbjv8"]
+[ext_resource type="PackedScene" uid="uid://b5lg8l7tquv5f" path="res://scenes/world/buildings/skyscraper_3.tscn" id="10_a5um3"]
+[ext_resource type="PackedScene" uid="uid://c8ybje1hnw1mi" path="res://scenes/world/buildings/skyscraper_4.tscn" id="11_qb12k"]
+[ext_resource type="PackedScene" uid="uid://cgk28k8sjee0u" path="res://scenes/world/buildings/large_1.tscn" id="12_wy4m1"]
+[ext_resource type="PackedScene" uid="uid://dg5huvnt57w7n" path="res://scenes/world/buildings/large_2.tscn" id="13_w4phl"]
+[ext_resource type="PackedScene" uid="uid://b0tcjabnvk6g6" path="res://scenes/world/buildings/large_3.tscn" id="14_f5r11"]
+[ext_resource type="PackedScene" uid="uid://db1e2gv0asyvd" path="res://scenes/world/buildings/large_4.tscn" id="15_ppis5"]
+[ext_resource type="PackedScene" uid="uid://8dxsegdf201v" path="res://scenes/world/buildings/large_5.tscn" id="16_ln73e"]
+[ext_resource type="PackedScene" uid="uid://baburhyxoqd4u" path="res://scenes/world/buildings/large_6.tscn" id="17_injo3"]
+[ext_resource type="PackedScene" uid="uid://bi0rws44bmw4d" path="res://scenes/world/buildings/small_1.tscn" id="18_2itvq"]
+[ext_resource type="PackedScene" uid="uid://ce2unwxnvr1r0" path="res://scenes/world/buildings/small_2.tscn" id="19_eb07n"]
+[ext_resource type="PackedScene" uid="uid://b63yi36y0xciy" path="res://scenes/world/buildings/small_3.tscn" id="20_ewicd"]
+[ext_resource type="PackedScene" uid="uid://n62rwrldw58j" path="res://scenes/world/buildings/small_5.tscn" id="21_2bh14"]
+[ext_resource type="PackedScene" uid="uid://ctcspmasa5wa7" path="res://scenes/world/buildings/small_6.tscn" id="22_kekko"]
+[ext_resource type="PackedScene" uid="uid://cwj0hlbndmg7n" path="res://scenes/world/buildings/skyscraper_6.tscn" id="23_txe26"]
+[ext_resource type="PackedScene" uid="uid://cgdy1ir2dceld" path="res://resources/assets/models/kenney_buildings/low_buildingA.fbx" id="24_0g1tu"]
+[ext_resource type="PackedScene" uid="uid://dti42yrq2ji54" path="res://scenes/ui/main_menu_ui.tscn" id="25_4xgb2"]
+[ext_resource type="PackedScene" uid="uid://flpg23tk2gi5" path="res://scenes/ui/dialogue/dialogue_canvas_layer.tscn" id="26_hvf6q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
+
+[sub_resource type="Environment" id="Environment_26xqv"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 200.0
+fog_depth_end = 200.0
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ix6l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_qfa8f")
+emission_enabled = true
+emission = Color(0.923906, 0, 0.246785, 1)
+emission_energy_multiplier = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg2mm"]
+albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y5r5g"]
+material = SubResource("StandardMaterial3D_qg2mm")
+size = Vector3(8.095, 1, 34.105)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i5310"]
+size = Vector3(0.185, 1, 36.09)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qg8wk"]
+size = Vector3(0.185, 1, 14.815)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_debkn"]
+albedo_color = Color(0.589768, 0.608376, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_osr41"]
+material = SubResource("StandardMaterial3D_debkn")
+size = Vector3(0.185, 1, 2.19)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
+albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkuh8"]
+material = SubResource("StandardMaterial3D_htgb0")
+size = Vector3(6.12, 1, 37.165)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h4f1d"]
+material = SubResource("StandardMaterial3D_htgb0")
+size = Vector3(6.12, 1, 14.71)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ensnl"]
+material = SubResource("StandardMaterial3D_htgb0")
+size = Vector3(19.725, 1, 1.875)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_bprw1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_26xqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.51219e-08, 8.37355e-08, 0, 0.957823, -0.287361, -8.74228e-08, -0.287361, -0.957823, 0, 500.555, 22.767)
+
+[node name="GameGlobe" parent="." instance=ExtResource("2_kv4rk")]
+script = null
+
+[node name="VisualContainer" parent="GameGlobe" index="0"]
+transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.433414, 0, 0, 0)
+
+[node name="Area3D" parent="GameGlobe" index="1"]
+visible = false
+
+[node name="CollisionShape3D" parent="GameGlobe/Area3D" index="0"]
+visible = false
+
+[node name="MenuPlayer" parent="." instance=ExtResource("3_fnbgm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)
+
+[node name="RightEngine" parent="MenuPlayer/ICBM" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="CenterEngine" parent="MenuPlayer/ICBM" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="LeftEngine" parent="MenuPlayer/ICBM" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ix6l")
+
+[node name="FollowCam" type="Camera3D" parent="MenuPlayer"]
+transform = Transform3D(-0.782608, 0.622515, 1.44627e-07, 0.596259, 0.7496, -0.287361, -0.178886, -0.224891, -0.957823, -4.94, 35, -28.115)
+
+[node name="Block" parent="." instance=ExtResource("5_2uvyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216044, 501.624, -0.131486)
+
+[node name="Lid" parent="Block" instance=ExtResource("6_0e3hp")]
+transform = Transform3D(4.25738e-08, -9.90724e-09, 1, -0.23207, -0.972699, 2.43366e-10, 0.972699, -0.23207, -4.37107e-08, 0.161, 0.928986, 7.45743)
+
+[node name="Lid" parent="Block/Lid" index="0"]
+transform = Transform3D(-96.5473, 8.56032e-06, -8.21807, 26.0505, -1.37924e-06, -30.4575, -8.62406e-06, -100, -2.83412e-07, 0.0332108, 3.05176e-05, -0.00730328)
+
+[node name="LaunchPad" parent="Block" instance=ExtResource("7_yyv6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.7833, 0)
+
+[node name="Diorama" type="Node3D" parent="."]
+
+[node name="Skyscraper1" parent="Diorama" instance=ExtResource("8_6aj40")]
+transform = Transform3D(1, 0, 0, 0, 0.937428, -0.348179, 0, 0.348179, 0.937428, 27.9658, 464.749, 184.316)
+metadata/onGround = true
+
+[node name="Skyscraper2" parent="Diorama" instance=ExtResource("8_6aj40")]
+transform = Transform3D(0.996839, -0.0744794, 0.0276631, 0.0794508, 0.934465, -0.347079, 0, 0.348179, 0.937428, -27.068, 464.749, 185.922)
+metadata/onGround = true
+
+[node name="Skyscraper3" parent="Diorama" instance=ExtResource("8_6aj40")]
+transform = Transform3D(1, 0, 0, 0, 0.997233, -0.0743347, 0, 0.0743347, 0.997233, 27.3626, 464.749, 148.573)
+metadata/onGround = true
+
+[node name="Skyscraper4" parent="Diorama" instance=ExtResource("8_6aj40")]
+transform = Transform3D(0.996614, -0.0820771, -0.00495602, 0.0806516, 0.987487, -0.135515, 0.0160167, 0.134656, 0.990763, -26.9082, 469.806, 175.152)
+metadata/onGround = true
+
+[node name="base_building" parent="Diorama" instance=ExtResource("9_wbjv8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2588, 478.347, 157.232)
+metadata/onGround = true
+
+[node name="base_building2" parent="Diorama" instance=ExtResource("10_a5um3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3291, 478.085, 150.034)
+metadata/onGround = true
+
+[node name="base_building3" parent="Diorama" instance=ExtResource("11_qb12k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.755, 478.982, 156.714)
+metadata/onGround = true
+
+[node name="base_building4" parent="Diorama" instance=ExtResource("12_wy4m1")]
+transform = Transform3D(1, -0.000628322, 0, 0.000628322, 1, 0, 0, 0, 1, -57.3471, 480.215, 126.17)
+metadata/onGround = true
+
+[node name="base_building5" parent="Diorama" instance=ExtResource("13_w4phl")]
+transform = Transform3D(-0.498155, 0, 0.867088, 0, 1, 0, -0.867088, 0, -0.498155, 26.5613, 497.54, 34.3036)
+metadata/onGround = true
+
+[node name="base_building6" parent="Diorama" instance=ExtResource("14_f5r11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.548, 480.52, 119.932)
+metadata/onGround = true
+
+[node name="base_building7" parent="Diorama" instance=ExtResource("15_ppis5")]
+transform = Transform3D(0.857572, 0, 0.514365, 0, 1, 0, -0.514365, 0, 0.857572, 50.5747, 480.861, 114.158)
+metadata/onGround = true
+
+[node name="base_building8" parent="Diorama" instance=ExtResource("16_ln73e")]
+transform = Transform3D(0.775022, 0, 0.631935, 0, 1, 0, -0.631935, 0, 0.775022, 75.868, 481.275, 96.1116)
+metadata/onGround = true
+
+[node name="base_building9" parent="Diorama" instance=ExtResource("17_injo3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.569, 481.239, 85.456)
+metadata/onGround = true
+
+[node name="base_building10" parent="Diorama" instance=ExtResource("18_2itvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.8298, 476.821, 121.318)
+metadata/onGround = true
+
+[node name="base_building11" parent="Diorama" instance=ExtResource("19_eb07n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.064, 473.582, 123.428)
+metadata/onGround = true
+
+[node name="base_building12" parent="Diorama" instance=ExtResource("20_ewicd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3031, 485.411, 123.426)
+metadata/onGround = true
+
+[node name="base_building13" parent="Diorama" instance=ExtResource("21_2bh14")]
+transform = Transform3D(0.0155677, 0, -0.999879, 0, 1, 0, 0.999879, 0, 0.0155677, -45.0766, 493.919, 49.115)
+metadata/onGround = true
+
+[node name="base_building14" parent="Diorama" instance=ExtResource("22_kekko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.076, 484.113, 149.967)
+metadata/onGround = true
+
+[node name="base_building15" parent="Diorama" instance=ExtResource("23_txe26")]
+transform = Transform3D(1, 0, 0, 0, 0.969872, -0.243615, 0, 0.243615, 0.969872, -0.805, 420.641, 336.598)
+metadata/onGround = true
+
+[node name="low_buildingA" parent="Diorama/base_building15" instance=ExtResource("24_0g1tu")]
+transform = Transform3D(-52.995, 0, -7.13719e-06, 0, 64.95, 0, 4.63297e-06, 0, -81.64, -0.498558, 97.2861, 6.87708)
+
+[node name="Road" type="MeshInstance3D" parent="Diorama"]
+transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402, -1.90735e-06, 499.099, 39.6103)
+mesh = SubResource("BoxMesh_y5r5g")
+
+[node name="Lines" type="Node3D" parent="Diorama/Road"]
+
+[node name="LeftLine" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.366, 0.0367126, -0.94894)
+mesh = SubResource("BoxMesh_i5310")
+skeleton = NodePath("../../..")
+
+[node name="RightLine" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38217, 0.00140381, -9.69073)
+mesh = SubResource("BoxMesh_qg8wk")
+skeleton = NodePath("../..")
+
+[node name="Line3" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617676, -9.85146)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../..")
+
+[node name="Line2" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, -4.68132)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../..")
+
+[node name="RightLine2" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38217, 0.00140381, 10.0364)
+mesh = SubResource("BoxMesh_qg8wk")
+skeleton = NodePath("../..")
+
+[node name="Line4" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, 0.911663)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../..")
+
+[node name="Line5" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, 7.56999)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../..")
+
+[node name="Line6" type="MeshInstance3D" parent="Diorama/Road/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, -14.1788)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../..")
+
+[node name="LeftSidewalk" type="MeshInstance3D" parent="Diorama/Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.975, 0.17, 0)
+mesh = SubResource("BoxMesh_gkuh8")
+
+[node name="RightSidewalk" type="MeshInstance3D" parent="Diorama/Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.975, 0.318634, -11.3727)
+mesh = SubResource("BoxMesh_h4f1d")
+skeleton = NodePath("../LeftSidewalk")
+
+[node name="Road2" type="MeshInstance3D" parent="Diorama/Road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.3802, -0.00445557, 0.172935)
+mesh = SubResource("BoxMesh_y5r5g")
+
+[node name="Lines" type="Node3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, 3.38985)
+
+[node name="LeftLine" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.366, 0.0367126, -4.38614)
+mesh = SubResource("BoxMesh_i5310")
+skeleton = NodePath("../..")
+
+[node name="RightLine" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, -2.38217, 0.00140381, -13.7992)
+mesh = SubResource("BoxMesh_qg8wk")
+skeleton = NodePath("../..")
+
+[node name="Line3" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617676, -9.85146)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../..")
+
+[node name="Line2" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, -4.68132)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../..")
+
+[node name="RightLine2" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -2.38217, 0.0557861, 6.2907)
+mesh = SubResource("BoxMesh_qg8wk")
+skeleton = NodePath("../..")
+
+[node name="RightLine3" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -2.38217, 0.0318604, -6.95663)
+mesh = SubResource("BoxMesh_qg8wk")
+skeleton = NodePath("../..")
+
+[node name="Line4" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0643311, -4.68132)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../..")
+
+[node name="Line5" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0.0617676, 0.927551)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../..")
+
+[node name="Line6" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0.0643311, 6.09769)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../..")
+
+[node name="Line7" type="MeshInstance3D" parent="Diorama/Road/Road2/Lines"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0.0617676, 11.7704)
+mesh = SubResource("BoxMesh_osr41")
+skeleton = NodePath("../../../..")
+
+[node name="LeftSidewalk" type="MeshInstance3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.975, 0.170013, -9.19681)
+mesh = SubResource("BoxMesh_gkuh8")
+
+[node name="RightSidewalk" type="MeshInstance3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.3589, 0.318634, 12.2417)
+mesh = SubResource("BoxMesh_h4f1d")
+skeleton = NodePath("../LeftSidewalk")
+
+[node name="RightSidewalk2" type="MeshInstance3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.3589, 0.318634, 6.31543)
+mesh = SubResource("BoxMesh_h4f1d")
+skeleton = NodePath("../LeftSidewalk")
+
+[node name="RightSidewalk3" type="MeshInstance3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.3589, 0.318634, 0.277073)
+mesh = SubResource("BoxMesh_h4f1d")
+skeleton = NodePath("../LeftSidewalk")
+
+[node name="RightSidewalk4" type="MeshInstance3D" parent="Diorama/Road/Road2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.3589, 0.318634, -5.69146)
+mesh = SubResource("BoxMesh_h4f1d")
+skeleton = NodePath("../LeftSidewalk")
+
+[node name="DioramaCameraBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402, -0.15, 500.035, 21.768)
+mesh = SubResource("BoxMesh_ensnl")
+skeleton = NodePath("../Diorama/Road/LeftSidewalk")
+
+[node name="MainMenuUI" parent="." instance=ExtResource("25_4xgb2")]
+
+[node name="DialogueUI" parent="." instance=ExtResource("26_hvf6q")]
+
+[editable path="GameGlobe"]
+[editable path="MenuPlayer"]
+[editable path="MenuPlayer/ICBM"]
+[editable path="Block/Lid"]

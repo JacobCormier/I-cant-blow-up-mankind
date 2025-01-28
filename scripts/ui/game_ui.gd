@@ -5,9 +5,9 @@ extends CanvasLayer
 @onready var score_control: Control = $ScoreControl
 @onready var score_label: Label = $ScoreControl/ScoreLabel
 @onready var fuel_progress_bar: TextureProgressBar = $ScoreControl/FuelProgressBar
-@onready var rocket_face: Node3D = $FaceCam/SubViewport/RocketFace
 @onready var sub_viewport: SubViewport = $FaceCam/SubViewport
 @onready var face_cam: TextureRect = $FaceCam
+@onready var face_cam_rocket: Node3D = $FaceCam/SubViewport/FaceCamRocket
 
 func _ready():
 	death_screen_control.visible = false
@@ -24,7 +24,7 @@ func _process(delta):
 		shader_material.set("shader_parameter/texture_albedo", sub_viewport.get_texture())
 
 func _input(event):
-	rocket_face._input(event)
+	face_cam_rocket._input(event)
 
 func show_death():
 	death_screen_control.visible = true

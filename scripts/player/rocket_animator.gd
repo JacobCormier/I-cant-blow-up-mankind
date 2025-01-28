@@ -1,7 +1,5 @@
 extends Node3D
 
-@onready var engine = $CenterEngine
-
 var target_turn_angle = 0.0 # Maximum angle in degrees for left/right movement
 const MAX_TURN_ANGLE = 30.0
 var is_turning = false
@@ -25,8 +23,7 @@ var gravity := 30
 var vertical_speed := 0.0
 	
 func _ready() -> void:
-	origin_position = position
-	origin_position = Vector3(origin_position.x, origin_position.y, origin_position.z - 50)
+	origin_position = Vector3(position.x, position.y, position.z)
 	current_root_position = position
 	is_jumping = true
 	visible = true

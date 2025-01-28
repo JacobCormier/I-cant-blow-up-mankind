@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://clstsfmenmvpv"]
+
+[ext_resource type="PackedScene" uid="uid://1kdyt4pl2xrc" path="res://scenes/player/menu_rocket.tscn" id="1_jmvb3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iawfx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogn0c"]
+transparency = 1
+albedo_color = Color(0.264528, 0.29, 0.2001, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xw3nx"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pr1rq"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mty8s"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7l0fn"]
+radius = 0.4
+height = 0.45
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kupfg"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Outro" type="Node3D"]
+
+[node name="MenuPlayer" parent="." instance=ExtResource("1_jmvb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = null
+
+[node name="FakeBlock" type="MeshInstance3D" parent="MenuPlayer"]
+transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
+mesh = SubResource("BoxMesh_iawfx")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ogn0c")
+
+[node name="Left Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
+mesh = SubResource("BoxMesh_xw3nx")
+
+[node name="Left Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Left Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_pr1rq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mty8s")
+
+[node name="Right Eye" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
+mesh = SubResource("BoxMesh_xw3nx")
+
+[node name="Right Eye Inner" type="MeshInstance3D" parent="MenuPlayer/FakeBlock/Right Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_pr1rq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mty8s")
+
+[node name="Mouth" type="MeshInstance3D" parent="MenuPlayer/FakeBlock"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
+mesh = SubResource("SphereMesh_7l0fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_kupfg")
