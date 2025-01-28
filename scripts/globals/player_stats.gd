@@ -6,6 +6,8 @@ signal on_score_changed(score_amount: int)
 
 var is_gameplay_running := false
 
+var loaded_endless_unlocked := false
+
 var loaded_high_score := 0
 var save_data: SaveData = null
 
@@ -74,7 +76,11 @@ func check_high_score(score: float) -> void:
 	save_data.check_high_score(score)
 	trigger_save()
 	loaded_high_score = save_data.high_score
-
+	
+func toggle_unlock() -> void:
+	save_data.loaded_endless_unlocked = not save_data.loaded_endless_unlocked
+	trigger_save()
+	loaded_endless_unlocked = save_data.loaded_endless_unlocked
 
 func _initialize_save_data() -> void:
 	if ResourceLoader.exists('user://save_data.tres'):
@@ -85,6 +91,7 @@ func _initialize_save_data() -> void:
 		ResourceSaver.save(save_data, 'user://save_data.tres')
 		
 	loaded_high_score = save_data.high_score
+	loaded_endless_unlocked = save_data.loaded_endless_unlocked
 	
 	# Jacob Cormier
 	# Add check for if high_score is > 1 for skipping intro

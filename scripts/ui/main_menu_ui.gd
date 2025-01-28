@@ -5,12 +5,15 @@ extends Control
 @onready var options_control: Control = $OptionsControl
 @onready var skip_button: Button = $CommonControl/SkipButton
 @onready var endless_control: Control = $EndlessControl
+@onready var endless_button: Button = $MainMenuControl/Panel/EndlessButton
 
 
 func _ready() -> void:
 	print(OS.get_data_dir())
 	print(OS.get_user_data_dir())
 	Engine.time_scale = 0.0
+	
+	endless_button.disabled = not PlayerStats.loaded_endless_unlocked
 	
 	if PlayerStats.loaded_high_score > 0:
 		skip_button.visible = true
@@ -54,3 +57,7 @@ func _on_arcade_button_pressed() -> void:
 func _on_first_person_button_pressed() -> void:
 	var scene_path = "res://scenes/endless_levels/first_person.tscn"
 	get_tree().change_scene_to_file(scene_path)
+
+func _on_toggle_unlock_button_pressed() -> void:
+	PlayerStats.toggle_unlock()
+	endless_button.disabled = not PlayerStats.loaded_endless_unlocked
