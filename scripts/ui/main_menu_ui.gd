@@ -25,6 +25,8 @@ func _on_endless_button_pressed() -> void:
 
 func _on_skip_button_pressed() -> void:
 	MusicManager.play_music_sequence()
+	PlayerStats.current_score = 0.0
+	PlayerStats.current_progress = 0.0
 	get_tree().change_scene_to_packed(Globals.LEVEL_1)
 
 func _on_options_button_pressed() -> void:

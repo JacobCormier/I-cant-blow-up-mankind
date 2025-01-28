@@ -42,7 +42,9 @@ func _ready():
 	wave_timer.start()
 	area_3d.on_object_ready_for_reset.connect(_reset_building_for_points)
 	Globals.on_fuel_pickup.connect(_reset_object)
+	PlayerStats.is_progress_loaded = false
 	PlayerStats.initialize_progress_goal(level_data.progress_goal)
+	PlayerStats.after_progress_goal_loaded()
 	
 	_setup_globe()
 	
@@ -59,6 +61,7 @@ func _ready():
 			_create_decoration()
 	
 func _process(delta: float) -> void:
+	
 		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
 		
 		

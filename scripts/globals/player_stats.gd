@@ -15,7 +15,7 @@ var save_data: SaveData = null
 var fuel_deterioration = 0.0
 const FUEL_DETERIORATION_MULTIPLIER = 10.0
 
-var progress_goal: int
+var progress_goal: int = 999999
 
 var current_fuel: float:
 	set(value):
@@ -34,6 +34,7 @@ var current_score: float:
 		check_high_score(value)
 		on_score_changed.emit(value)
 
+var is_progress_loaded := true
 var current_progress: float:
 	set(value):
 		current_progress = value
@@ -49,6 +50,10 @@ func _process(delta: float) -> void:
 	if is_gameplay_running:
 		_handle_fuel_deterioration(delta)
 		_handle_score_updates(delta)
+		
+	if not is_progress_loaded:
+		is_progress_loaded = true
+		current_progress = current_progress
 		
 
 func reload_fuel(amount: int = 100):
@@ -77,14 +82,17 @@ func start_gameplay() -> void:
 	MusicManager.play_music_sequence()
 	SoundManager.start_engine()
 	is_gameplay_running = true
-	current_score = 0.0
-	current_progress = 0.0
+
+func after_progress_goal_loaded() -> void:
+	current_progress = 0
+	is_progress_loaded = false
 
 func end_gameplay() -> void:
 	MusicManager.stop()
 	SoundManager.play_nuclear_sound()
 	SoundManager.kill_engine()
 	is_gameplay_running = false
+	is_progress_loaded = false
 	
 func check_end_of_level(value) -> void:
 	if value >= progress_goal:

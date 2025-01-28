@@ -87,6 +87,8 @@ func update_progress(progress_count: int, progress_goal: int) -> void:
 
 func _on_restart_button_pressed() -> void:
 	PlayerStats.reload_fuel()
+	PlayerStats.current_score = 0.0
+	PlayerStats.current_progress = 0.0
 	Globals.restart_level()
 
 func _on_menu_button_pressed() -> void:
