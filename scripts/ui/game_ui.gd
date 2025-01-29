@@ -14,6 +14,7 @@ extends CanvasLayer
 
 @onready var white_transition: ColorRect = $WhiteTransition
 @onready var skip_prompt: Panel = $SkipPrompt
+@onready var initial_move_prompt: Panel = $InitialPrompt
 
 var rumble_intensity = 0
 var camera_root_position
@@ -31,6 +32,7 @@ func _ready():
 	PlayerStats.on_score_changed.connect(update_score)
 	PlayerStats.on_progress_changed.connect(update_progress)
 	PlayerStats.start_gameplay()
+	initial_move_prompt.visible = not PlayerStats.save_data.has_moved
 	slide_face_cam()
 	
 func _process(delta):
@@ -61,7 +63,22 @@ func _input(event):
 			_on_restart_button_pressed()
 		elif Input.is_action_pressed("right"):
 			_on_menu_button_pressed()
-
+			
+	# Checks for beginner controls
+	# Move
+	if PlayerStats.save_data.has_moved == false:
+		if Input.is_action_pressed("left"):
+			PlayerStats.save_data.has_moved = true
+			initial_move_prompt.visible = false
+		if Input.is_action_pressed("right"):
+			PlayerStats.save_data.has_moved = true
+			initial_move_prompt.visible = false
+			
+	# Jump
+	if PlayerStats.save_data.has_jumped == false:
+		if Input.is_action_pressed("jump"):
+			PlayerStats.save_data.has_jumped = true
+			
 func trigger_death():
 	if PlayerStats.save_data.has_exploded == false:
 		PlayerStats.save_data.has_exploded = true
