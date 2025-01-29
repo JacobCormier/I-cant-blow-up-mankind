@@ -213,6 +213,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LeftArrow" type="TextureRect" parent="DeathScreenControl/Panel/SkipPrompt/Control"]
+layout_mode = 0
 offset_left = 128.0
 offset_top = 63.0
 offset_right = 168.0
@@ -222,6 +223,7 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("11_bxde6")
 
 [node name="RightArrow" type="TextureRect" parent="DeathScreenControl/Panel/SkipPrompt/Control"]
+layout_mode = 0
 offset_left = -128.0
 offset_top = 63.0
 offset_right = -88.0
@@ -372,6 +374,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LeftArrow" type="TextureRect" parent="InitialPrompt/Control"]
+layout_mode = 0
 offset_left = 128.0
 offset_top = 63.0
 offset_right = 168.0
@@ -381,6 +384,7 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("11_bxde6")
 
 [node name="RightArrow" type="TextureRect" parent="InitialPrompt/Control"]
+layout_mode = 0
 offset_left = -128.0
 offset_top = 63.0
 offset_right = -88.0

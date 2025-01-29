@@ -38,7 +38,8 @@ var is_progress_loaded := true
 var current_progress: float:
 	set(value):
 		current_progress = value
-		check_end_of_level(value)
+		if is_gameplay_running:
+			check_end_of_level(value)
 		on_progress_changed.emit(value, progress_goal)
 
 func _ready() -> void:
