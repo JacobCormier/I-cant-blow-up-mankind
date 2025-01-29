@@ -2,6 +2,9 @@ extends Control
 
 @onready var dialogue_label: Label = $NinePatchRect/MarginContainer/DialogueLabel
 
+@export var random_messages: Array[String]
+@export var death_messages: Array[String]
+
 @export var MAX_INTERVAL : float = 15.0
 @export var MIN_INTERVAL : float = 10.0
 var current_interval_timer : float
@@ -38,7 +41,9 @@ func _restart_interval_timer() -> void:
 	current_interval_timer = randf_range(MIN_INTERVAL, MAX_INTERVAL)
 
 func _trigger_random_message() -> void:
-	# pick a message
+	var random_number = randi_range(0, random_messages.size() - 1)
+	dialogue_label.text = random_messages[random_number]
+	
 	is_triggered = true
 	tween = get_tree().create_tween()
 	tween_message()
@@ -47,6 +52,9 @@ func _trigger_random_message() -> void:
 
 func _trigger_death_message() -> void:
 	_reset_all() 
+	
+	var random_number = randi_range(0, death_messages.size() - 1)
+	dialogue_label.text = death_messages[random_number]
 	
 	# select death message
 	

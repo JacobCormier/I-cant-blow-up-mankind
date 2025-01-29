@@ -12,6 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jttyr")
+random_messages = Array[String](["I need to go faster!", "I got a biiiig cock"])
+death_messages = Array[String](["I'm sorry everyone!"])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.666667)

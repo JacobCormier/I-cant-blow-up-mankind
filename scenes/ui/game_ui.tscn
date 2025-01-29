@@ -324,6 +324,7 @@ offset_top = -2.0
 offset_right = -109.0
 offset_bottom = -2.0
 grow_horizontal = 0
+random_messages = Array[String](["I need to go faster!"])
 
 [node name="FaceCam" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ri6y0")
