@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		tween.set_trans(Tween.TRANS_ELASTIC)
 		tween.tween_property(left_arrow, "position:x", left_arrow.position.x + movement, duration)
 		tween.parallel().tween_property(right_arrow, "position:x", right_arrow.position.x - movement, duration)
-		tween.set_trans(Tween.TRANS_LINEAR)
+		tween.set_trans(Tween.TRANS_EXPO)
 		tween.tween_property(left_arrow, "position:x", left_arrow.position.x - movement, duration / 2)
 		tween.parallel().tween_property(right_arrow, "position:x", right_arrow.position.x + movement, duration / 2)
 		
