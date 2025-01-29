@@ -21,22 +21,20 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	# Read input Actions
-	if event is InputEventKey:  # Check if it's a key event
-		if event.pressed:  # Check if the key was pressed
-			if Input.is_action_pressed("ui_left") and not is_input_left:
-				is_input_left = true
-			elif Input.is_action_pressed("ui_right") and not is_input_right:
-				is_input_right = true
-		elif event.is_action_released("ui_left") and is_input_left:
-			is_input_left = false
-		elif event.is_action_released("ui_right") and is_input_right:
-			is_input_right = false
-	if event is InputEventKey:  # Check if it's a key event
-		if event.pressed:  # Check if the key was pressed
-			if Input.is_action_pressed("ui_select") and not is_input_jumping:
-				is_input_jumping = true
-		if event.is_action_released("ui_select") and is_input_jumping:
-			is_input_jumping = false
+
+	if Input.is_action_pressed("left") and not is_input_left:
+		is_input_left = true
+	elif Input.is_action_pressed("right") and not is_input_right:
+		is_input_right = true
+	elif event.is_action_released("left") and is_input_left:
+		is_input_left = false
+	elif event.is_action_released("right") and is_input_right:
+		is_input_right = false
+
+	if Input.is_action_pressed("jump") and not is_input_jumping:
+		is_input_jumping = true
+	if event.is_action_released("jump") and is_input_jumping:
+		is_input_jumping = false
 
 	# Check Left-Right Controls
 	if is_input_left and is_input_right:

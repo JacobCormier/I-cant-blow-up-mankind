@@ -74,7 +74,7 @@ func _handle_score_updates(delta: float) -> void:
 func add_to_score(add_value: int) -> void:
 	current_score += add_value
 	
-func initialize_progress_goal(new_progress_goal: int):	
+func initialize_progress_goal(new_progress_goal: int):
 	progress_goal = new_progress_goal
 	
 func start_gameplay() -> void:

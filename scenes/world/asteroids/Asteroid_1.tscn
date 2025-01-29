@@ -35,16 +35,17 @@ normal_texture = SubResource("NoiseTexture2D_y1m37")
 radius = 14.5
 
 [node name="base_building" instance=ExtResource("1_xefry")]
+is_asteroid = true
 
 [node name="Visual" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3612, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.17, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
 mesh = SubResource("SphereMesh_jbxls")
 surface_material_override/0 = SubResource("StandardMaterial3D_81mio")
 
 [node name="Collider" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3612, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.17, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D" index="0"]
 shape = SubResource("SphereShape3D_5sfx1")

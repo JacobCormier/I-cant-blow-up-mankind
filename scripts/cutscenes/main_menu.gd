@@ -180,6 +180,6 @@ func start_tween_animation():
 	tween.parallel().tween_property(camera_3d, "position:x", 0, TIME_SCALE * 5)
 	tween.parallel().tween_property(camera_3d, "position:y", 516.134, TIME_SCALE * 5)
 	tween.parallel().tween_property(camera_3d, "position:z", 134.103, TIME_SCALE * 5)
-	tween.parallel().tween_property(menu_globe, "rotation_degrees:x", 200, TIME_SCALE * 10).as_relative()
-	tween.tween_interval(TIME_SCALE * 2)
+	tween.parallel().tween_property(menu_globe, "rotation_degrees:x", 250, TIME_SCALE * 15).as_relative()
+	tween.tween_interval(TIME_SCALE * 0.01)
 	tween.tween_callback(end_sequence)

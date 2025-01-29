@@ -4,6 +4,7 @@ extends Resource
 @export var loaded_endless_unlocked := false
 @export var high_score := 0
 @export var has_beaten_game := false
+@export var has_exploded := false
 
 
 func check_high_score(score: int) -> void:
