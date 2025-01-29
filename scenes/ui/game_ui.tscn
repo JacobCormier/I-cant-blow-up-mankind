@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=25 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" uid="uid://cisn6hwfq6row" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 [ext_resource type="PackedScene" uid="uid://dh2u5jg1f5ex2" path="res://scenes/ui/dialogue/random_quip_box.tscn" id="9_x0n6o"]
-[ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="10_aq72h"]
 [ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
 [ext_resource type="Script" uid="uid://cxcvbxtc1qkhr" path="res://scripts/ui/skip_prompt.gd" id="11_opxtl"]
 [ext_resource type="Script" uid="uid://do3gmbwxhrofg" path="res://scripts/ui/jump_prompt.gd" id="13_crnce"]
@@ -316,60 +315,6 @@ horizontal_alignment = 1
 
 [node name="RandomQuipBox" parent="ScoreControl" instance=ExtResource("9_x0n6o")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -2.0
-offset_right = -109.0
-offset_bottom = -2.0
-grow_horizontal = 0
-starting_messages = Array[String](["Here we go!", "Good luck, me!", "I'd better not hit anything.", "I need to collect fuel!", "I need to get to orbit!", "I shouldn't be here!", "I need to go higher!", "What a nightmare!", "Where am I?", "This is only a test, right?", "I don't belong here!", "Why did they launch me?", "Not on Taco Tuesday!", "Don't Panic!", "This has got to be illegal.", "who authorized this?", "There's a 0.001% of survival!", "Praise the sun!", "Wake up samurai!", "It's dangerous to go alone!", "Would you kindly dodge?", "i am speed!", "do or to not, there is no try", "I can't touch anything!"])
-random_messages = Array[String](["I need to go faster!", "I need more fuel", "Golden fuel is worth more!", "I can't crash now!", "I need to get out here!", "Gas gas gas!", "Gotta go fast!", "A little to the left!", "A little to the right!", "Watch out!", "FASTER! FASTER! FASTER!", "This keeps getting worse!", "The wind hurts my eyes!", "My eyes are watering!", "WOO HOO!", "Do I smell smoke?", "Do I name myself?", "Dodge mode: activated!", "Rocket reflexes baby!", "Missed it by that much!", "I don't wanna hurt people!", "Do I have brakes?", "I need brakes!", "Ludicrous Speed!", "Do a barrel roll!", "this is fine.", "can't touch this!", "this is the way!", "I have a plan!", "I hope I make it!", "I think I can!", "faster than fast!", "quicker than quick!", "Can't slow down!", "I know what I must do!"])
-death_messages = Array[String](["I'm sorry everyone!", "I didn't mean to!", "If only I wasn't born.", "Here comes the boom!", "Not like the simulations!", "AHHHHHHHHHHH!", "Mission failed.", "F", "run away!", "Oh no!", "OH NO OH NO OH NO!", "SKIBIDI BOP MM DADA PFFFFFF", "Going nuclear!", "This is bad.", "That's a spicy meatball!", "It's over.", "Eject! Eject!", "Not my best landing.", "navigation failure!", "I hope there's a checkpoint!", "fatality!", "Lag! it was Lag!", "Laaaaaaaaaag!", "Going out with a bang!", "Wall jumps don't work!"])
-
-[node name="NinePatchRect2" type="NinePatchRect" parent="ScoreControl/RandomQuipBox"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -28.0
-offset_right = 94.0
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_aq72h")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="MarginContainer" type="MarginContainer" parent="ScoreControl/RandomQuipBox/NinePatchRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="DialogueLabel" type="Label" parent="ScoreControl/RandomQuipBox/NinePatchRect2/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_outline_color = Color(0.321569, 0.529412, 0.219608, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("1_apw14")
-theme_override_font_sizes/font_size = 20
-text = "Hellooo? Is anyone there?"
-horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="FaceCam" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ri6y0")

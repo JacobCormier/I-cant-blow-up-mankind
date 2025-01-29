@@ -6,14 +6,21 @@
 
 [node name="RandomQuipBox" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -2.0
+offset_right = -109.0
+offset_bottom = -2.0
+grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_jttyr")
-random_messages = Array[String](["I need to go faster!", "I got a biiiig cock"])
-death_messages = Array[String](["I'm sorry everyone!"])
+starting_messages = Array[String](["Here we go!", "Good luck, me!", "I'd better not hit anything.", "I need to collect fuel!", "I need to get to orbit!", "I shouldn't be here!", "I need to go higher!", "What a nightmare!", "Where am I?", "This is only a test, right?", "I don't belong here!", "Why did they launch me?", "Not on Taco Tuesday!", "Don't Panic!", "This has got to be illegal.", "who authorized this?", "There's a 0.001% of survival!", "Praise the sun!", "Wake up samurai!", "It's dangerous to go alone!", "Would you kindly dodge?", "i am speed!", "do or to not, there is no try", "I can't touch anything!"])
+random_messages = Array[String](["I need to go faster!", "I need more fuel", "Golden fuel is worth more!", "I can't crash now!", "I need to get out here!", "Gas gas gas!", "Gotta go fast!", "A little to the left!", "A little to the right!", "Watch out!", "FASTER! FASTER! FASTER!", "This keeps getting worse!", "The wind hurts my eyes!", "My eyes are watering!", "WOO HOO!", "Do I smell smoke?", "Do I name myself?", "Dodge mode: activated!", "Rocket reflexes baby!", "Missed it by that much!", "I don't wanna hurt people!", "Do I have brakes?", "I need brakes!", "Ludicrous Speed!", "Do a barrel roll!", "this is fine.", "can't touch this!", "this is the way!", "I have a plan!", "I hope I make it!", "I think I can!", "faster than fast!", "quicker than quick!", "Can't slow down!", "I know what I must do!"])
+death_messages = Array[String](["I'm sorry everyone!", "I didn't mean to!", "If only I wasn't born.", "Here comes the boom!", "Not like the simulations!", "AHHHHHHHHHHH!", "Mission failed.", "F", "run away!", "Oh no!", "OH NO OH NO OH NO!", "SKIBIDI BOP MM DADA PFFFFFF", "Going nuclear!", "This is bad.", "That's a spicy meatball!", "It's over.", "Eject! Eject!", "Not my best landing.", "navigation failure!", "I hope there's a checkpoint!", "fatality!", "Lag! it was Lag!", "Laaaaaaaaaag!", "Going out with a bang!", "Wall jumps don't work!"])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.666667)
