@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc0amdcqx54ym"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_w1yeb"]
+
+[node name="CreditsBody" instance=ExtResource("1_w1yeb")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+vertical_alignment = 1

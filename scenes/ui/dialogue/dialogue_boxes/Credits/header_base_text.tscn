@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgtduxpmpq4h6"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_7rmdy"]
+
+[node name="CreditsHeader" instance=ExtResource("1_7rmdy")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -136.0
+offset_top = -48.5
+offset_right = 136.0
+offset_bottom = 48.5
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+theme_override_font_sizes/font_size = 40
+text = "Header"
+vertical_alignment = 1

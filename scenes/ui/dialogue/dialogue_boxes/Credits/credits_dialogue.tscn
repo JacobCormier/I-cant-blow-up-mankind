@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://jlfo7us68iuh"]
-
-[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_4jojc"]
-
-[node name="TextBox" instance=ExtResource("1_4jojc")]

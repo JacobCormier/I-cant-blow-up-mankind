@@ -1,15 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://db2mnov3asksr"]
 
-[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_a8qw3"]
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_ni0i5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0juxt"]
 load_path = "res://.godot/imported/panel_grey_bolts_detail_b.png-dc8a7fcf3b5561e5735209f5ee7d2d17.ctex"
 
-[node name="Credits1" instance=ExtResource("1_a8qw3")]
+[node name="CreditsBody" instance=ExtResource("1_ni0i5")]
 
 [node name="NinePatchRect" parent="." index="0"]
 texture = SubResource("CompressedTexture2D_0juxt")
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "Developed by:
-Jacob Cormier and Caleb Reath"
+text = "Jacob Cormier
+and
+Caleb Reath"
+vertical_alignment = 1
