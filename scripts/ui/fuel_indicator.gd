@@ -23,6 +23,11 @@ func check_fuel_level(fuel_amount: int) -> void:
 
 func trigger_fuel_indicator() -> void:
 	is_indicator_on = true
+	
+	if tween != null:
+		tween.kill()
+		tween = null
+		
 	tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.set_loops()
@@ -32,7 +37,12 @@ func trigger_fuel_indicator() -> void:
 
 func disable_fuel_indicator() -> void:
 	is_indicator_on = false
-	tween = null
+	
+	if tween != null:
+		tween.kill()
+		tween = null
+	
+	
 	tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
 	tween.set_trans(Tween.TRANS_LINEAR)
