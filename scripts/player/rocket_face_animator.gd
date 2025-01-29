@@ -44,16 +44,14 @@ func _process(delta):
 	
 func _input(event):
 	# Read input Actions
-	if event is InputEventKey:  # Check if it's a key event
-		if event.pressed:  # Check if the key was pressed
-			if Input.is_action_pressed("ui_left") and not is_input_left:
-				is_input_left = true
-			elif Input.is_action_pressed("ui_right") and not is_input_right:
-				is_input_right = true
-		elif event.is_action_released("ui_left") and is_input_left:
-			is_input_left = false
-		elif event.is_action_released("ui_right") and is_input_right:
-			is_input_right = false
+	if Input.is_action_pressed("left") and not is_input_left:
+		is_input_left = true
+	elif Input.is_action_pressed("right") and not is_input_right:
+		is_input_right = true
+	elif event.is_action_released("left") and is_input_left:
+		is_input_left = false
+	elif event.is_action_released("right") and is_input_right:
+		is_input_right = false
 
 func turn():
 	if turn_dir != cur_tween_dir:

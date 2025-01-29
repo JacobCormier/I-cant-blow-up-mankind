@@ -56,12 +56,11 @@ func _input(event):
 	face_cam_rocket._input(event)
 
 	# Reset Command
-	if event is InputEventKey and has_skip:  # Check if it's a key event
-		if event.pressed:  # Check if the key was pressed
-			if Input.is_action_pressed("ui_left"):
-				_on_restart_button_pressed()
-			elif Input.is_action_pressed("ui_right"):
-				_on_menu_button_pressed()
+	if has_skip:  # Check if it's a key event
+		if Input.is_action_pressed("left"):
+			_on_restart_button_pressed()
+		elif Input.is_action_pressed("right"):
+			_on_menu_button_pressed()
 
 func trigger_death():
 	if PlayerStats.save_data.has_exploded == false:
