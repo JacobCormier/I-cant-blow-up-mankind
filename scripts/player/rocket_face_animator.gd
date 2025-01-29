@@ -77,6 +77,9 @@ func turn():
 		turn_tween.tween_property(icbm_character, "rotation_degrees:x", rotation,  1)	
 
 func randomize_talk_frequency() -> void:
+	if (get_tree() == null):
+		return
+
 	tween = null
 	talk_frequency = randf_range(MIN_TALK_FREQUENCY, MAX_TALK_FREQUENCY)
 	tween = get_tree().create_tween()
