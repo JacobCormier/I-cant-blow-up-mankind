@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=24 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" uid="uid://cisn6hwfq6row" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 [ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
 [ext_resource type="Script" uid="uid://cxcvbxtc1qkhr" path="res://scripts/ui/skip_prompt.gd" id="11_opxtl"]
+[ext_resource type="Script" uid="uid://do3gmbwxhrofg" path="res://scripts/ui/jump_prompt.gd" id="13_crnce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
 bg_color = Color(0.254782, 0.0311538, 0.0629222, 1)
@@ -61,6 +62,8 @@ expand_margin_right = 10.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ri6y0"]
 shader = ExtResource("6_avoad")
 shader_parameter/time = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crnce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fftnl"]
 bg_color = Color(0.713726, 0, 0.0196078, 0.254902)
@@ -338,16 +341,8 @@ expand_mode = 1
 
 [node name="FaceCamRocket" parent="FaceCam/SubViewport" instance=ExtResource("5_ee4rg")]
 
-[node name="WhiteTransition" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="InitialPrompt" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -415,6 +410,64 @@ text = "Left and right
 to move"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="JumpPrompt" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 42.0
+offset_right = 20.0
+offset_bottom = 82.0
+grow_horizontal = 2
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_crnce")
+script = ExtResource("13_crnce")
+
+[node name="InitialControlsPromptLabel" type="Label" parent="JumpPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = 18.0
+offset_right = 77.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+text = "Space or up
+to jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpArrow" type="TextureRect" parent="JumpPrompt"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("11_bxde6")
+
+[node name="WhiteTransition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="SkipPrompt" type="Panel" parent="."]
 visible = false

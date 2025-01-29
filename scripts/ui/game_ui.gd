@@ -15,6 +15,7 @@ extends CanvasLayer
 @onready var white_transition: ColorRect = $WhiteTransition
 @onready var skip_prompt: Panel = $SkipPrompt
 @onready var initial_move_prompt: Panel = $InitialPrompt
+@onready var jump_prompt: Panel = $JumpPrompt
 
 var rumble_intensity = 0
 var camera_root_position
@@ -25,6 +26,8 @@ var space_pressed = false
 var is_dead := false
 var has_skip := false
 
+var is_player_input_disabled := false
+
 func _ready():
 	camera_root_position = get_viewport().get_camera_3d().position
 	death_screen_control.visible = false
@@ -33,6 +36,7 @@ func _ready():
 	PlayerStats.on_progress_changed.connect(update_progress)
 	PlayerStats.start_gameplay()
 	initial_move_prompt.visible = not PlayerStats.save_data.has_moved
+	jump_prompt.visible = not PlayerStats.save_data.has_jumped
 	slide_face_cam()
 	
 func _process(delta):
@@ -65,25 +69,29 @@ func _input(event):
 			_on_menu_button_pressed()
 			
 	# Checks for beginner controls
-	# Move
-	if PlayerStats.save_data.has_moved == false:
-		if Input.is_action_pressed("left"):
-			PlayerStats.save_data.has_moved = true
-			initial_move_prompt.visible = false
-		if Input.is_action_pressed("right"):
-			PlayerStats.save_data.has_moved = true
-			initial_move_prompt.visible = false
-			
-	# Jump
-	if PlayerStats.save_data.has_jumped == false:
-		if Input.is_action_pressed("jump"):
-			PlayerStats.save_data.has_jumped = true
+	if not is_player_input_disabled:
+		# Move
+		if PlayerStats.save_data.has_moved == false:
+			if Input.is_action_pressed("left"):
+				PlayerStats.save_data.has_moved = true
+				initial_move_prompt.visible = false
+			if Input.is_action_pressed("right"):
+				PlayerStats.save_data.has_moved = true
+				initial_move_prompt.visible = false
+				
+		# Jump
+		if PlayerStats.save_data.has_jumped == false:
+			if Input.is_action_pressed("jump"):
+				PlayerStats.save_data.has_jumped = true
+				jump_prompt.visible = false
 			
 func trigger_death():
 	if PlayerStats.save_data.has_exploded == false:
 		PlayerStats.save_data.has_exploded = true
 	else:
 		is_dead = true
+		
+	is_player_input_disabled = true
 	
 	var tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
@@ -97,6 +105,8 @@ func skip_prompt_timeout() -> void:
 	show_death_ui()
 	skip_prompt.hide()
 	face_cam.hide()
+	jump_prompt.hide()
+	initial_move_prompt.hide()
 	has_skip = true
 	
 func show_death_ui():
