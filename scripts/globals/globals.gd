@@ -9,7 +9,7 @@ const LEVEL_3 = preload("res://scenes/story_levels/3_level_3.tscn")
 const ARCADE = preload("res://scenes/endless_levels/arcade.tscn")
 const FIRST_PERSON = preload("res://scenes/endless_levels/first_person.tscn")
 const STANDARD = preload("res://scenes/endless_levels/standard.tscn")
-
+const OUTRO = preload("res://scenes/story_levels/4_outro.tscn")
 var current_level = 1
 
 const level_1_buildings = [
@@ -63,7 +63,8 @@ func next_level() -> void:
 	else:
 		if current_level == 3:
 			# Final Level complete!
-			# transition out of this to final scene
+			PlayerStats.end_gameplay()
+			get_tree().change_scene_to_packed(OUTRO)
 			return
 		else:
 			# Increment to next level
@@ -71,11 +72,11 @@ func next_level() -> void:
 			
 	match current_level:
 		1: 
-			get_tree().change_scene_to_packed(Globals.LEVEL_1)
+			get_tree().change_scene_to_packed(LEVEL_1)
 		2:
-			get_tree().change_scene_to_packed(Globals.LEVEL_2)
+			get_tree().change_scene_to_packed(LEVEL_2)
 		3:
-			get_tree().change_scene_to_packed(Globals.LEVEL_3)
+			get_tree().change_scene_to_packed(LEVEL_3)
 		_:
 			printerr("Globals::next_level() was called with an invalid level: ", current_level)
 	
@@ -84,7 +85,7 @@ func restart_level() -> void:
 		get_tree().reload_current_scene()
 	else:
 		current_level = 1
-		get_tree().change_scene_to_packed(Globals.LEVEL_1)
+		get_tree().change_scene_to_packed(LEVEL_1)
 	
 func get_current_level_obstacles() -> Array:
 	if current_level == 1:

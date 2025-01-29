@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68563, 0)
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_ma121")
-fuel_amount = 50
+fuel_amount = 25
 score_amount = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider/Area3D"]
