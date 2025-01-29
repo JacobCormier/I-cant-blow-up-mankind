@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh2u5jg1f5ex2"]
+
+[ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="1_ebv3b"]
+[ext_resource type="Script" uid="uid://bjic8mtj84ruc" path="res://scripts/ui/random_quip_box.gd" id="1_jttyr"]
+[ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="2_jttyr"]
+
+[node name="RandomQuipBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jttyr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -28.0
+offset_right = 94.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ebv3b")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogueLabel" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.321569, 0.529412, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_jttyr")
+theme_override_font_sizes/font_size = 20
+text = "I'M FAST AS FUCK BOYSSSS"
+horizontal_alignment = 1
+autowrap_mode = 3

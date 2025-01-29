@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=25 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" uid="uid://cisn6hwfq6row" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
+[ext_resource type="PackedScene" uid="uid://dh2u5jg1f5ex2" path="res://scenes/ui/dialogue/random_quip_box.tscn" id="9_x0n6o"]
 [ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
 [ext_resource type="Script" uid="uid://cxcvbxtc1qkhr" path="res://scripts/ui/skip_prompt.gd" id="11_opxtl"]
 [ext_resource type="Script" uid="uid://do3gmbwxhrofg" path="res://scripts/ui/jump_prompt.gd" id="13_crnce"]
@@ -311,6 +312,18 @@ theme_override_fonts/font = ExtResource("1_apw14")
 theme_override_font_sizes/font_size = 20
 text = "Progress"
 horizontal_alignment = 1
+
+[node name="RandomQuipBox" parent="ScoreControl" instance=ExtResource("9_x0n6o")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 1.0
+offset_right = -105.0
+offset_bottom = 1.0
+grow_horizontal = 0
 
 [node name="FaceCam" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ri6y0")
