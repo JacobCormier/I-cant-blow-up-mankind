@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
 [node name="Area3D" parent="Collider" index="0"]
 fuel_amount = 3000
-score_amount = 200
+score_amount = 500
 
 [node name="ShineEmitter" type="GPUParticles3D" parent="." index="2"]
 transform = Transform3D(0.976567, -0.215213, 0, 0.215213, 0.976567, 0, 0, 0, 1, 0.179599, 35, 0)
