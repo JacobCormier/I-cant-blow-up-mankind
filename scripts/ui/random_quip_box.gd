@@ -41,15 +41,7 @@ func _trigger_random_message() -> void:
 	# pick a message
 	is_triggered = true
 	tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dialogue_label, "scale:y", 1.0, 1.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 2.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_interval(1.5)
-	tween.tween_property(dialogue_label, "scale:y", 0.01, 1.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_callback(_reset_all)
+	tween_message()
 	
 	visible = true
 
@@ -60,23 +52,15 @@ func _trigger_death_message() -> void:
 	
 	tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dialogue_label, "scale:y", 1.0, 1.0)
-	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 2.0)
-	tween.tween_interval(1.5)
-	tween.tween_property(dialogue_label, "scale:y", 0.01, 1.0)
+	tween_message()
 	
 	visible = true
 
-func call_me_to_say_stuff() -> void:
-	say_stuff += 1
-	
-	print("STEP ", say_stuff)
-	
-	if say_stuff == 1:
-		print("The box should be at 1 scale now")
-	if say_stuff == 2:
-		print("The box should be full of letters now")
-	if say_stuff == 3:
-		print("The box should be gone now!")
-	
+
+func tween_message() -> void:
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "scale:y", 1.0, 0.5)
+	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 1.7)
+	tween.tween_interval(1.5)
+	tween.tween_property(self, "scale:y", 0.01, 0.3)
+	tween.tween_callback(_reset_all)

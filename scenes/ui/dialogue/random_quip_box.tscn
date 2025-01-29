@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_jttyr")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.666667)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,6 +52,6 @@ theme_override_colors/font_outline_color = Color(0.321569, 0.529412, 0.219608, 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_jttyr")
 theme_override_font_sizes/font_size = 20
-text = "I'M FAST AS FUCK BOYSSSS"
+text = "TEMPLATE MESSAGE"
 horizontal_alignment = 1
 autowrap_mode = 3
