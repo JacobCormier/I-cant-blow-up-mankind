@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 		_trigger_random_message()
 			
 func _reset_all() -> void:
+	PlayerStats.is_talking = false
 	self.visible = false
 	if tween != null:
 		tween.kill()
@@ -41,6 +42,7 @@ func _restart_interval_timer() -> void:
 	current_interval_timer = randf_range(MIN_INTERVAL, MAX_INTERVAL)
 
 func _trigger_random_message() -> void:
+	PlayerStats.is_talking = true
 	var random_number = randi_range(0, random_messages.size() - 1)
 	dialogue_label.text = random_messages[random_number]
 	
@@ -52,6 +54,7 @@ func _trigger_random_message() -> void:
 
 func _trigger_death_message() -> void:
 	_reset_all() 
+	PlayerStats.is_talking = true
 	
 	var random_number = randi_range(0, death_messages.size() - 1)
 	dialogue_label.text = death_messages[random_number]
