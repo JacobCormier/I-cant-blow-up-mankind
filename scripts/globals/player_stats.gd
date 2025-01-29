@@ -97,8 +97,6 @@ func end_gameplay() -> void:
 func check_end_of_level(value) -> void:
 	if value >= progress_goal:
 		print("YOU WIN!")
-		# Jacob Cormier
-		# This will trigger the transition and scene swap
 		Globals.next_level()
 
 #region Save Data
@@ -123,10 +121,6 @@ func _initialize_save_data() -> void:
 		
 	loaded_high_score = save_data.high_score
 	loaded_endless_unlocked = save_data.loaded_endless_unlocked
-	
-	# Jacob Cormier
-	# Add check for if high_score is > 1 for skipping intro
-
 
 func trigger_save() -> void:
 	ResourceSaver.save(save_data, 'user://save_data.tres')

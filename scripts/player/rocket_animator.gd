@@ -38,9 +38,6 @@ func _process(delta: float) -> void:
 		
 	if is_jumping: 
 		process_jump(delta)
-	#Tilting isn't gonna work yet cause Quaternions suck
-	#if is_tilting:
-		#_handle_tilting(delta)
 		
 	# Random Rumble
 	var random_rumble_x = current_root_position.x + randf_range(0, MAX_RUMBLE_VARIANCE.x)
@@ -59,18 +56,6 @@ func _handle_turning(delta: float):
 		# Check if the current angle is close to the target angle to switch direction
 		if abs(current_angle- target_turn_angle) < 1.0: # A small threshold to detect when to reverse
 			is_turning = false
-
-			
-func _handle_tilting(delta: float):
-	# Jacob Cormier 2025-01-25
-	# Deprecated, will most likely set up an animation to tilt
-		current_tilt = lerp(current_tilt, target_tilt, tilt_speed * delta)
-		
-		rotation_degrees.z = current_tilt
-		rotation_degrees.y = current_tilt
-		
-		if abs(current_tilt - target_tilt) < 1.0: # A small threshold to detect when to reverse
-			is_tilting = false
 		
 func trigger_turn(direction: PlayerController.TurnDirection = PlayerController.TurnDirection.NONE):
 	# This function is called often by the player controller to update what moves they are making

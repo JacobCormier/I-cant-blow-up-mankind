@@ -1,10 +1,5 @@
 extends Node3D
 
-# Jacob Cormier 2025-01-25
-# Add a radius for where the game takes place,
-# and a different radius for the visual of the mesh
-
-
 const globe_game_radius = 500
 @export var sky_color: Color # Sky color
 @export var planet_color: Color # Planet Color

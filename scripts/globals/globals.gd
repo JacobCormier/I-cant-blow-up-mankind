@@ -64,6 +64,8 @@ func next_level() -> void:
 		if current_level == 3:
 			# Final Level complete!
 			PlayerStats.end_gameplay()
+			# Jacob Cormier
+			# Is there an issue with this transition too?
 			get_tree().change_scene_to_packed(OUTRO)
 			return
 		else:
