@@ -13,12 +13,16 @@ extends CanvasLayer
 @onready var progress_label: Label = $ScoreControl/ProgressLabel
 
 @onready var white_transition: ColorRect = $WhiteTransition
+@onready var skip_prompt: Panel = $SkipPrompt
 
 var rumble_intensity = 0
 var camera_root_position
 
 var tween
 var space_pressed = false
+
+var is_dead := false
+var has_skip := false
 
 func _ready():
 	camera_root_position = get_viewport().get_camera_3d().position
@@ -39,22 +43,45 @@ func _process(delta):
 		
 	if rumble_intensity > 0:
 		AnimationUtils.rumble(get_viewport().get_camera_3d(), camera_root_position, rumble_intensity, rumble_intensity, Vector3(1.0, 1.0, 1.0))
+		
+		
+	# Quick death skip check
+	if is_dead:
+		is_dead = false
+		await get_tree().create_timer(0.5, false, false, true).timeout
+		has_skip = true
+		skip_prompt.show()
 
 func _input(event):
 	face_cam_rocket._input(event)
 
+	# Reset Command
+	if event is InputEventKey and has_skip:  # Check if it's a key event
+		if event.pressed:  # Check if the key was pressed
+			if Input.is_action_pressed("ui_left"):
+				_on_restart_button_pressed()
+			elif Input.is_action_pressed("ui_right"):
+				_on_menu_button_pressed()
+
 func trigger_death():
-	# Wait a few seconds for explosion to occur before showing UI. Skippable on space
-	# Jacob Cormier - add a check to not allow the player to skip the very first time
+	if PlayerStats.save_data.has_exploded == false:
+		PlayerStats.save_data.has_exploded = true
+	else:
+		is_dead = true
+	
 	var tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
 	tween.tween_property(white_transition, "modulate:a", 1.0, 4)
 	tween.parallel().tween_property(self, "rumble_intensity", 15, 4)
-	tween.tween_callback(show_death_ui)
-	tween.tween_callback(face_cam.hide)
 	tween.tween_interval(3.0)
+	tween.tween_callback(skip_prompt_timeout)
 	tween.tween_property(white_transition, "modulate:a", 0.0, 2)
 	
+func skip_prompt_timeout() -> void:
+	show_death_ui()
+	skip_prompt.hide()
+	face_cam.hide()
+	has_skip = true
 	
 func show_death_ui():
 	death_screen_control.visible = true

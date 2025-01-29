@@ -14,7 +14,7 @@ var letters_count = 0
 func _ready() -> void:
 	dialogue_label.visible_characters = 0
 	self.visible = false
-	self.scale = Vector2(0.01, 0.01)
+	self.scale = Vector2(1.0, 0.01)
 
 func _process(delta: float) -> void:
 	
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		if int_letter_count > dialogue_label.get_total_character_count():
 			await get_tree().create_timer(end_delay).timeout
 			var tween = get_tree().create_tween()
-			tween.tween_property(self, "scale", Vector2(0.01, 0.01), 0.1)
+			tween.tween_property(self, "scale:y", 0.01, 0.1)
 			tween.tween_callback(_finish_dialogue)
 			
 
@@ -37,7 +37,7 @@ func trigger_dialogue() -> void:
 	await get_tree().create_timer(initial_delay).timeout
 	self.visible = true
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.2)
+	tween.tween_property(self, "scale:y", 1.0, 0.2)
 	tween.tween_callback(_trigger_text)
 
 func _trigger_text() -> void:

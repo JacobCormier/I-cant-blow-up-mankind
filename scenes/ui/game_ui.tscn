@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=22 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" uid="uid://cisn6hwfq6row" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -10,6 +10,8 @@
 [ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
+[ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
+[ext_resource type="Script" uid="uid://cxcvbxtc1qkhr" path="res://scripts/ui/skip_prompt.gd" id="11_opxtl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
 bg_color = Color(0.254782, 0.0311538, 0.0629222, 1)
@@ -45,6 +47,8 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opxtl"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fjat"]
 bg_color = Color(0.15, 0.15, 0.15, 0.713726)
 corner_radius_top_left = 10
@@ -58,11 +62,17 @@ expand_margin_right = 10.0
 shader = ExtResource("6_avoad")
 shader_parameter/time = null
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fftnl"]
+bg_color = Color(0.713726, 0, 0.0196078, 0.254902)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_mbn1m")
 
 [node name="DeathScreenControl" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,6 +177,54 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4ahxr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o6mna")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cr7hd")
 text = "Menu"
+
+[node name="SkipPrompt" type="Panel" parent="DeathScreenControl/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_opxtl")
+script = ExtResource("11_opxtl")
+
+[node name="Control" type="Control" parent="DeathScreenControl/Panel/SkipPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftArrow" type="TextureRect" parent="DeathScreenControl/Panel/SkipPrompt/Control"]
+offset_left = 128.0
+offset_top = 63.0
+offset_right = 168.0
+offset_bottom = 103.0
+rotation = 1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("11_bxde6")
+
+[node name="RightArrow" type="TextureRect" parent="DeathScreenControl/Panel/SkipPrompt/Control"]
+offset_left = -128.0
+offset_top = 63.0
+offset_right = -88.0
+offset_bottom = 103.0
+rotation = -1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("11_bxde6")
 
 [node name="ScoreControl" type="Control" parent="."]
 layout_mode = 3
@@ -287,6 +345,100 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="SkipPrompt" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -48.0
+offset_right = 189.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(152, 48)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fftnl")
+script = ExtResource("11_opxtl")
+
+[node name="Control" type="Control" parent="SkipPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+
+[node name="LeftArrow" type="TextureRect" parent="SkipPrompt/Control"]
+layout_mode = 0
+offset_left = 127.0
+offset_right = 167.0
+offset_bottom = 40.0
+rotation = 1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("11_bxde6")
+
+[node name="RightArrow" type="TextureRect" parent="SkipPrompt/Control"]
+layout_mode = 0
+offset_left = -127.0
+offset_right = -87.0
+offset_bottom = 40.0
+rotation = -1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("11_bxde6")
+
+[node name="RightLabel" type="Label" parent="SkipPrompt"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -27.0
+offset_right = -12.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(83, 19)
+theme_override_colors/font_outline_color = Color(0.752941, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftLabel" type="Label" parent="SkipPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = 21.0
+offset_right = -83.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(83, 19)
+theme_override_colors/font_outline_color = Color(0.752941, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_apw14")
+theme_override_font_sizes/font_size = 20
+text = "restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="DeathScreenControl/Panel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="DeathScreenControl/Panel/MenuButton" to="." method="_on_menu_button_pressed"]
