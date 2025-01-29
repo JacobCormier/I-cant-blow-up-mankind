@@ -11,6 +11,7 @@ extends Node3D
 @onready var player: Node3D = $PlayerRoot/Player
 @onready var moon_visual: Node3D = $MoonRevealLight/Moon/MoonVisual
 @onready var reveal_cam: Camera3D = $PlayerRoot/Player/RevealCam
+@onready var icbm_character: Node3D = $MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter
 
 var OutroTweens = preload("res://scripts/cutscenes/tweens/outro_tweens.gd").new()
 

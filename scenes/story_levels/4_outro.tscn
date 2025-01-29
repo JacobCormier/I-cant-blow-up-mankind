@@ -204,13 +204,13 @@ environment = SubResource("Environment_1a3k3")
 script = SubResource("GDScript_lbxvt")
 
 [node name="DirectionalLight_Part1" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.553392, 0.832921, 0, -0.832921, 0.553392, 0, 1.70846, -2.77706)
+transform = Transform3D(1, 0, 0, 0, 0.935098, -0.354389, 0, 0.354389, 0.935098, 0, 3.08736, 1.04838)
 visible = false
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="MoonRevealLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0593064, 0.99824, 0, -0.99824, -0.0593064, 0, 1497.45, -981.144)
+transform = Transform3D(1, 0, 0, 0, 0.960079, 0.279729, 0, -0.279729, 0.960079, 0, 1289.47, 1241.88)
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
@@ -282,7 +282,7 @@ mesh = SubResource("SphereMesh_f6u0m")
 surface_material_override/0 = SubResource("StandardMaterial3D_etc3m")
 
 [node name="OrbitCam" type="Camera3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer"]
-transform = Transform3D(-0.985608, 0.168145, 0.0173855, 0.0776833, 0.541879, -0.836858, -0.150135, -0.823465, -0.547143, -4.36938, -8.52161, -7.22412)
+transform = Transform3D(-0.985608, 0.168146, 0.0173855, 0.0776833, 0.541879, -0.836858, -0.150135, -0.823465, -0.547142, -4.36938, -8.52161, -7.22412)
 fov = 100.0
 far = 10000.0
 
@@ -527,20 +527,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cl26b")
 surface_material_override/0 = SubResource("StandardMaterial3D_cl26b")
 
 [node name="IntroCam" type="Camera3D" parent="."]
-transform = Transform3D(0.955547, -0.225521, 0.189921, -0.251122, -0.284996, 0.925049, -0.154491, -0.931621, -0.32896, -6.69781, 1518.12, -964.881)
+transform = Transform3D(0.955547, -0.225521, 0.189921, 0.0948017, 0.844957, 0.526365, -0.279182, -0.484962, 0.828776, -6.69781, 1278.21, 1265.64)
 current = true
 fov = 119.4
 
 [node name="FinaleCam" type="Camera3D" parent="."]
-transform = Transform3D(0.961595, -0.229062, 0.151214, 0.21607, 0.292002, -0.931691, 0.169261, 0.928582, 0.330281, 1.995, 1501.33, -957.806)
+transform = Transform3D(0.961595, -0.229063, 0.151214, -0.116994, -0.840437, -0.52913, 0.24829, 0.491117, -0.834959, 1.995, 1267.58, 1250.85)
 fov = 100.0
 far = 10000.0
 
 [node name="PlayerRoot" type="Node3D" parent="."]
-transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.0220589, 0.945846, -0.323866, 0.116767, -0.31929, -0.940436, -4.08041, 1510.39, -962.796)
+transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.118749, 0.52156, 0.844911, 0.00445003, 0.851203, -0.524819, -4.08041, 1274.46, 1258.57)
 
 [node name="Player" type="Node3D" parent="PlayerRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="ICBMCharacter" type="Node3D" parent="PlayerRoot/Player"]
 
@@ -598,8 +597,6 @@ far = 10000.0
 transform = Transform3D(0.950631, 0.035889, 0.308239, 0.267235, 0.410256, -0.871938, -0.15775, 0.911264, 0.380412, 4.02155, -7.21497, 1.87491)
 fov = 100.0
 far = 10000.0
-
-[node name="Node3D" type="Node3D" parent="."]
 
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/RestartButton" to="GameUI" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/MenuButton" to="GameUI" method="_on_menu_button_pressed"]

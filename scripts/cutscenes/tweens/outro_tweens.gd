@@ -26,8 +26,8 @@ static func play_sequence(caller: Node):
 	
 	# Configure Tweens
 	intro_tween = outro_tweens.intro(caller, intro_tween, 0.1)
-	moon_reveal_tween = outro_tweens.moon_reveal(caller, moon_reveal_tween)
-	orbit_moon_tween = outro_tweens.orbit_moon(caller, orbit_moon_tween)
+	moon_reveal_tween = outro_tweens.moon_reveal(caller, moon_reveal_tween, 0.1)
+	orbit_moon_tween = outro_tweens.orbit_moon(caller, orbit_moon_tween, 0.1)
 	finale_tween = outro_tweens.finale(caller, finale_tween)
 	
 func intro(caller, tween, time_scale = 1):
@@ -79,10 +79,17 @@ func orbit_moon(caller, tween, time_scale = 1):
 func finale(caller, tween, time_scale = 1):
 	tween.tween_callback(caller.finale_started)
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(caller.orbit_player, "position:x", 200, 8 * time_scale).as_relative()
-	tween.parallel().tween_property(caller.orbit_player, "position:y", 100, 8 * time_scale).as_relative()
+	tween.tween_property(caller.orbit_player, "position:x", 400, 8 * time_scale).as_relative()
+	tween.parallel().tween_property(caller.orbit_player, "position:y", 200, 8 * time_scale).as_relative()
 	tween.parallel().tween_property(caller.orbit_player, "position:z", 1400, 8 * time_scale).as_relative()
-	tween.tween_interval(2)
+	
+	tween.tween_property(caller.orbit_cam, "rotation_degrees:x", 102.3, 4 * time_scale)
+	tween.parallel().tween_property(caller.orbit_cam, "rotation_degrees:y", 207.2, 4 * time_scale)
+	tween.parallel().tween_property(caller.orbit_cam, "rotation_degrees:z", -7.22, 4 * time_scale)
+	tween.parallel().tween_property(caller.orbit_cam, "fov", 150, 4 * time_scale)
+	tween.parallel().tween_property(caller.icbm_character, "position:x", -31, 4 * time_scale).as_relative()
+	tween.parallel().tween_property(caller.icbm_character, "position:y", 400, 4 * time_scale).as_relative()
+	tween.parallel().tween_property(caller.icbm_character, "position:z", -85, 4 * time_scale).as_relative()
 	
 func sputter(caller, tween, time):
 	tween.tween_callback(caller.stop_camera_shake)
