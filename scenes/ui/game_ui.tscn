@@ -287,7 +287,6 @@ offset_top = 328.0
 offset_right = 94.0
 offset_bottom = 351.0
 grow_horizontal = 2
-value = 50.0
 nine_patch_stretch = true
 stretch_margin_left = 6
 stretch_margin_top = 6
