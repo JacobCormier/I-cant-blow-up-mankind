@@ -186,9 +186,6 @@ emission_energy_multiplier = 0.15
 [node name="Outro" type="Node3D"]
 script = ExtResource("1_830yr")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.830012, -0.557745, 0, 0.557745, -0.830012, 0, 0, 0)
-
 [node name="GameGlobe" type="Node3D" parent="."]
 
 [node name="VisualContainer" type="Node3D" parent="GameGlobe"]
@@ -221,64 +218,73 @@ directional_shadow_max_distance = 200.0
 transform = Transform3D(1, 0, 0, 0, 0.988494, 0.151261, 0, -0.151261, 0.988494, 0, -2041.99, -10111.6)
 visible = false
 
-[node name="VisualContainer" type="Node3D" parent="MoonRevealLight/Moon"]
-transform = Transform3D(0.978148, -0.0710874, -0.195311, 0, -0.939394, 0.341912, -0.207912, -0.33444, -0.918866, 0, 0, 0)
+[node name="MoonVisual" type="Node3D" parent="MoonRevealLight/Moon"]
+transform = Transform3D(0.978148, -0.0710876, -0.195311, -1.4189e-07, -0.939394, 0.341912, -0.207912, -0.33444, -0.918866, 0, 0, 0)
 
-[node name="GlobeVisual" type="MeshInstance3D" parent="MoonRevealLight/Moon/VisualContainer"]
+[node name="GlobeVisual" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual"]
 transform = Transform3D(0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_uy4vs")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhnro")
 
-[node name="Player" type="Node3D" parent="."]
-transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.0220589, 0.945846, -0.323865, 0.116767, -0.31929, -0.940436, -4.08041, 1510.39, -962.796)
+[node name="OrbitControl" type="Node3D" parent="MoonRevealLight/Moon/MoonVisual"]
 
-[node name="ICBMCharacter" type="Node3D" parent="Player"]
+[node name="OrbitPlayer" type="Node3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl"]
+transform = Transform3D(-0.995715, 0.0266584, -0.0886155, -0.0591495, 0.553061, 0.831418, 0.0711292, 0.833096, -0.549111, -3.0955, -485.254, 182.007)
+visible = false
 
-[node name="RocketModel" parent="Player/ICBMCharacter" instance=ExtResource("3_uy4vs")]
+[node name="ICBMCharacter" type="Node3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer"]
 
-[node name="RightEngine" parent="Player/ICBMCharacter/RocketModel" index="2"]
+[node name="RocketModel" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter" instance=ExtResource("3_uy4vs")]
+
+[node name="RightEngine" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
 
-[node name="CenterEngine" parent="Player/ICBMCharacter/RocketModel" index="3"]
+[node name="CenterEngine" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel" index="3"]
 surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
 
-[node name="LeftEngine" parent="Player/ICBMCharacter/RocketModel" index="4"]
+[node name="LeftEngine" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
 
-[node name="RocketParticles" parent="Player/ICBMCharacter/RocketModel" instance=ExtResource("5_o4cpy")]
+[node name="RocketParticles" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel" instance=ExtResource("5_o4cpy")]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
+visible = false
 
-[node name="Face" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel"]
+[node name="Face" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel"]
 transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
 mesh = SubResource("BoxMesh_67xb7")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i0sbu")
 
-[node name="Left Eye" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel/Face"]
+[node name="Left Eye" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel/Face"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
 mesh = SubResource("BoxMesh_4stcf")
 
-[node name="Left Eye Inner" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel/Face/Left Eye"]
+[node name="Left Eye Inner" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel/Face/Left Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
 mesh = SubResource("BoxMesh_amacs")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
 
-[node name="Right Eye" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel/Face"]
+[node name="Right Eye" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel/Face"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
 mesh = SubResource("BoxMesh_0f66h")
 
-[node name="Right Eye Inner" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel/Face/Right Eye"]
+[node name="Right Eye Inner" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel/Face/Right Eye"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
 mesh = SubResource("BoxMesh_7cpbi")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
 
-[node name="Mouth" type="MeshInstance3D" parent="Player/ICBMCharacter/RocketModel/Face"]
+[node name="Mouth" type="MeshInstance3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel/Face"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
 mesh = SubResource("SphereMesh_f6u0m")
 surface_material_override/0 = SubResource("StandardMaterial3D_etc3m")
+
+[node name="OrbitCam" type="Camera3D" parent="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer"]
+transform = Transform3D(-0.985608, 0.168145, 0.0173855, 0.0776833, 0.541879, -0.836858, -0.150135, -0.823465, -0.547143, -4.36938, -8.52161, -7.22412)
+fov = 100.0
+far = 10000.0
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
@@ -525,19 +531,81 @@ transform = Transform3D(0.955547, -0.225521, 0.189921, -0.251122, -0.284996, 0.9
 current = true
 fov = 119.4
 
-[node name="RevealCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.943234, -0.153885, -0.294328, 0.282883, 0.0921205, -0.95472, 0.174031, -0.983785, -0.0433596, -7.84482, 1502.87, -961.786)
+[node name="FinaleCam" type="Camera3D" parent="."]
+transform = Transform3D(0.961595, -0.229062, 0.151214, 0.21607, 0.292002, -0.931691, 0.169261, 0.928582, 0.330281, 1.995, 1501.33, -957.806)
 fov = 100.0
 far = 10000.0
 
-[node name="FinaleCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.943234, -0.153885, -0.294328, 0.282883, 0.0921205, -0.95472, 0.174031, -0.983785, -0.0433596, -3.95981, 1455.94, -974.983)
+[node name="PlayerRoot" type="Node3D" parent="."]
+transform = Transform3D(-0.992915, -0.0585618, -0.1034, -0.0220589, 0.945846, -0.323866, 0.116767, -0.31929, -0.940436, -4.08041, 1510.39, -962.796)
+
+[node name="Player" type="Node3D" parent="PlayerRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ICBMCharacter" type="Node3D" parent="PlayerRoot/Player"]
+
+[node name="RocketModel" parent="PlayerRoot/Player/ICBMCharacter" instance=ExtResource("3_uy4vs")]
+
+[node name="RightEngine" parent="PlayerRoot/Player/ICBMCharacter/RocketModel" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="CenterEngine" parent="PlayerRoot/Player/ICBMCharacter/RocketModel" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="LeftEngine" parent="PlayerRoot/Player/ICBMCharacter/RocketModel" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xab3b")
+
+[node name="RocketParticles" parent="PlayerRoot/Player/ICBMCharacter/RocketModel" instance=ExtResource("5_o4cpy")]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 2.98023e-07, -8.9407e-08)
+
+[node name="Face" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel"]
+transform = Transform3D(0.997012, -0.0131078, -0.0761215, -0.00605694, 0.969194, -0.246224, 0.077004, 0.245949, 0.966219, 0.00771868, 4.15444, -0.149763)
+mesh = SubResource("BoxMesh_67xb7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_i0sbu")
+
+[node name="Left Eye" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278536, 0.413641, 0.247611)
+mesh = SubResource("BoxMesh_4stcf")
+
+[node name="Left Eye Inner" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel/Face/Left Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_amacs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
+
+[node name="Right Eye" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.413261, 0.247834)
+mesh = SubResource("BoxMesh_0f66h")
+
+[node name="Right Eye Inner" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel/Face/Right Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0964932, 0)
+mesh = SubResource("BoxMesh_7cpbi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vknu")
+
+[node name="Mouth" type="MeshInstance3D" parent="PlayerRoot/Player/ICBMCharacter/RocketModel/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.103, 0.018)
+mesh = SubResource("SphereMesh_f6u0m")
+surface_material_override/0 = SubResource("StandardMaterial3D_etc3m")
+
+[node name="RevealCam2" type="Camera3D" parent="PlayerRoot/Player"]
+transform = Transform3D(-0.985608, 0.168146, 0.0173855, 0.0776833, 0.541879, -0.836859, -0.150135, -0.823465, -0.547143, -4.36938, -8.52161, -7.22412)
 fov = 100.0
+far = 10000.0
+
+[node name="RevealCam" type="Camera3D" parent="PlayerRoot/Player"]
+transform = Transform3D(0.950631, 0.035889, 0.308239, 0.267235, 0.410256, -0.871938, -0.15775, 0.911264, 0.380412, 4.02155, -7.21497, 1.87491)
+fov = 100.0
+far = 10000.0
+
+[node name="Node3D" type="Node3D" parent="."]
 
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/RestartButton" to="GameUI" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/MenuButton" to="GameUI" method="_on_menu_button_pressed"]
 
-[editable path="Player/ICBMCharacter/RocketModel"]
+[editable path="MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/ICBMCharacter/RocketModel"]
 [editable path="GameUI/FaceCam/SubViewport/FaceCamRocket"]
 [editable path="GameUI/FaceCam/SubViewport/FaceCamRocket/Camera3D/ICBMCharacter"]
 [editable path="GameUI/FaceCam/SubViewport/FaceCamRocket/Camera3D/ICBMCharacter/RocketModel"]
+[editable path="PlayerRoot/Player/ICBMCharacter/RocketModel"]

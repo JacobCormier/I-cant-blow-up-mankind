@@ -1,13 +1,16 @@
 extends Node3D
 
 @onready var intro_cam: Camera3D = $IntroCam
-@onready var reveal_cam: Camera3D = $RevealCam
-@onready var finale_cam: Camera3D = $FinaleCam
 @onready var moon_reveal_light: DirectionalLight3D = $MoonRevealLight
-@onready var rocket_particles: Node3D = $Player/ICBMCharacter/RocketModel/RocketParticles
+@onready var rocket_particles: Node3D = $PlayerRoot/Player/ICBMCharacter/RocketModel/RocketParticles
 @onready var game_globe: Node3D = $GameGlobe
 @onready var moon: Node3D = $MoonRevealLight/Moon
-@onready var moon_visual: Node3D = $MoonRevealLight/Moon/VisualContainer
+@onready var orbit_control: Node3D = $MoonRevealLight/Moon/MoonVisual/OrbitControl
+@onready var orbit_player: Node3D = $MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer
+@onready var orbit_cam: Camera3D = $MoonRevealLight/Moon/MoonVisual/OrbitControl/OrbitPlayer/OrbitCam
+@onready var player: Node3D = $PlayerRoot/Player
+@onready var moon_visual: Node3D = $MoonRevealLight/Moon/MoonVisual
+@onready var reveal_cam: Camera3D = $PlayerRoot/Player/RevealCam
 
 var OutroTweens = preload("res://scripts/cutscenes/tweens/outro_tweens.gd").new()
 
@@ -34,16 +37,21 @@ func intro_started():
 	intro_cam.make_current()
 	
 func moon_reveal_started():
-	print("moon_reveal_started")
 	active_camera = reveal_cam
 	reveal_cam.make_current()
 	game_globe.visible = false
 	moon.visible = true
 
+func orbit_moon_started():
+	active_camera = orbit_cam
+	orbit_cam.make_current()
+	orbit_player.visible = true
+	player.visible = false
+
 func finale_started():
 	print("finale_started")
-	active_camera = finale_cam
-	finale_cam.make_current()
+	#active_camera = finale_cam
+	#finale_cam.make_current()
 
 func start_camera_shake():
 	camera_shake = true
