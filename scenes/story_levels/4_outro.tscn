@@ -509,6 +509,7 @@ expand_mode = 1
 [node name="SubViewport" type="SubViewport" parent="GameUI/FaceCam"]
 
 [node name="FaceCamRocket" parent="GameUI/FaceCam/SubViewport" instance=ExtResource("14_klxeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100000, 0, 0)
 script = null
 
 [node name="ICBMCharacter" parent="GameUI/FaceCam/SubViewport/FaceCamRocket/Camera3D" index="0"]

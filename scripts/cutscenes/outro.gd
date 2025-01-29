@@ -51,8 +51,6 @@ func orbit_moon_started():
 
 func finale_started():
 	print("finale_started")
-	#active_camera = finale_cam
-	#finale_cam.make_current()
 
 func start_camera_shake():
 	camera_shake = true

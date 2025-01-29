@@ -25,9 +25,9 @@ static func play_sequence(caller: Node):
 	tween.tween_subtween(finale_tween)
 	
 	# Configure Tweens
-	intro_tween = outro_tweens.intro(caller, intro_tween, 0.1)
-	moon_reveal_tween = outro_tweens.moon_reveal(caller, moon_reveal_tween, 0.1)
-	orbit_moon_tween = outro_tweens.orbit_moon(caller, orbit_moon_tween, 0.1)
+	intro_tween = outro_tweens.intro(caller, intro_tween)
+	moon_reveal_tween = outro_tweens.moon_reveal(caller, moon_reveal_tween)
+	orbit_moon_tween = outro_tweens.orbit_moon(caller, orbit_moon_tween)
 	finale_tween = outro_tweens.finale(caller, finale_tween)
 	
 func intro(caller, tween, time_scale = 1):
