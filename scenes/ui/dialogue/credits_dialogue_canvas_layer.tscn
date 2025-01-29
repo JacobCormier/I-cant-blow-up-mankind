@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu8yhnf6cxavh"]
+
+[ext_resource type="Script" uid="uid://y1x1xoel35x" path="res://scripts/dialogue/credits_dialogue_canvas_script.gd" id="1_f712o"]
+[ext_resource type="PackedScene" uid="uid://db2mnov3asksr" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/credits_1.tscn" id="2_f712o"]
+[ext_resource type="PackedScene" uid="uid://b2j6755iwdti0" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/credits_2.tscn" id="3_y4o1p"]
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="4_y4o1p"]
+
+[node name="CreditsDialogueUI" type="CanvasLayer"]
+script = ExtResource("1_f712o")
+
+[node name="Credits2" parent="." instance=ExtResource("3_y4o1p")]
+
+[node name="Credits1" parent="." instance=ExtResource("2_f712o")]
+
+[node name="base_voiceline" parent="." instance=ExtResource("4_y4o1p")]
+
+[editable path="base_voiceline"]
