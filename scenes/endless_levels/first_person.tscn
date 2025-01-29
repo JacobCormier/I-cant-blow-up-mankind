@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0x0l2bg21gy0"]
+[gd_scene load_steps=8 format=3 uid="uid://d0x0l2bg21gy0"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_eo700"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_t62dd"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_5dkun"]
+[ext_resource type="Resource" uid="uid://byjr2bbbdnskp" path="res://resources/custom/level_data/first_person_endless_data.tres" id="3_rcsm1"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_rcsm1"]
 [ext_resource type="Texture2D" uid="uid://bp1cbsjw2y1p7" path="res://resources/assets/models/ICBM/UVs/ICBM_Engine_UV_active.png" id="4_t62dd"]
 
@@ -25,7 +26,7 @@ directional_shadow_max_distance = 200.0
 [node name="GameGlobe" parent="." instance=ExtResource("2_t62dd")]
 sky_color = Color(1, 0, 0, 1)
 globe_visual_radius = 500.0
-obstacle_array_name = "level_1_buildings"
+level_data = ExtResource("3_rcsm1")
 
 [node name="Player" parent="." instance=ExtResource("3_5dkun")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)

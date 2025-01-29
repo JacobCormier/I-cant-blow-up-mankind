@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxwc2rg0hl3c5"]
+[gd_scene load_steps=6 format=3 uid="uid://cxwc2rg0hl3c5"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_3utl4"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_mftq4"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_a6dx8"]
+[ext_resource type="Resource" uid="uid://dkiri7o1g84fq" path="res://resources/custom/level_data/arcade_endless_data.tres" id="3_mftq4"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_bmgqk"]
 
 [node name="ArcadeEndless" type="Node3D"]
@@ -21,6 +22,7 @@ current = true
 [node name="GameGlobe" parent="." instance=ExtResource("2_mftq4")]
 sky_color = Color(1, 0, 0, 1)
 globe_visual_radius = 500.0
+level_data = ExtResource("3_mftq4")
 
 [node name="Player" parent="." instance=ExtResource("3_a6dx8")]
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
