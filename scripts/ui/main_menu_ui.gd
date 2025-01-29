@@ -14,8 +14,6 @@ extends Control
 
 
 func _ready() -> void:
-	print(OS.get_data_dir())
-	print(OS.get_user_data_dir())
 	Engine.time_scale = 0.0
 	
 	endless_button.disabled = not PlayerStats.loaded_endless_unlocked
