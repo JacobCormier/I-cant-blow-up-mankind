@@ -37,6 +37,7 @@ func _on_skip_button_pressed() -> void:
 	MusicManager.play_music_sequence()
 	PlayerStats.current_score = 0.0
 	PlayerStats.current_progress = 0.0
+	Globals.current_level = 1
 	get_tree().change_scene_to_packed(Globals.LEVEL_1)
 
 func _on_options_button_pressed() -> void:
@@ -53,6 +54,7 @@ func _on_launch_button_pressed() -> void:
 	Engine.time_scale = 1.0
 	self.visible = false
 	dialogue_ui.start_dialogue()
+	Globals.current_level = 1
 	
 	MusicManager.stop()
 	#await get_tree().create_timer(1).timeout
