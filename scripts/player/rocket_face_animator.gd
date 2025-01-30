@@ -111,5 +111,6 @@ func micro_rumble(node, root_position, delta, index, x_variance = 0.01, y_varian
 func on_death():
 	dead = true
 	rotation = Vector3(-90.0,rotation.y, rotation.z)
-	tween.kill()
+	if tween != null:
+		tween.kill()
 	mouth.mesh.set("height", MAX_MOUTH_HEIGHT)
