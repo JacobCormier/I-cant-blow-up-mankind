@@ -44,7 +44,8 @@ func _on_options_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	main_menu_control.visible = true
-	skip_button.visible = true
+	if PlayerStats.loaded_high_score > 0:
+		skip_button.visible = true
 	options_control.visible = false
 	endless_control.visible = false
 	
