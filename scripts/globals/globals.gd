@@ -101,8 +101,14 @@ func get_current_level_obstacles() -> Array:
 		return level_3_buildings
 	elif current_level == -1:
 		# Endless mode
-		return level_2_buildings
-		pass
+		var all_buildings: Array
+		for each in level_2_buildings:
+			all_buildings.append(each)
+		for x in range(0,  7):
+			all_buildings.append(level_3_buildings[0])
+			
+		
+		return all_buildings
 	else:
 		print("Globals::get_current_level_obstacles --- INVALID LEVEL REQUESTED")
 		
