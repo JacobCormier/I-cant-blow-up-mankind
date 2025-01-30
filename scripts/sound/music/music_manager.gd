@@ -17,9 +17,9 @@ func _ready():
 	music_player.pitch_scale = 1.0
 	add_child(music_player)
 	
+func play_ambiance():
 	music_player.stream = CALM_AMBIANCE
 	music_player.play()
-	 
 
 func play_music_sequence():
 	if (music_player.stream == THEME_INTRO_AND_VERSE or music_player.stream == VERSE_2_LOOPEDTWICE) and music_player.playing:

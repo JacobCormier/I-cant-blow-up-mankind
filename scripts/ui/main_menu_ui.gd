@@ -16,6 +16,7 @@ extends Control
 
 func _ready() -> void:
 	Engine.time_scale = 0.0
+	MusicManager.play_ambiance()
 	
 	endless_button.disabled = not PlayerStats.loaded_endless_unlocked
 	
