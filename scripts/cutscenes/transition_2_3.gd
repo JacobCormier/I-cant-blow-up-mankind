@@ -95,3 +95,4 @@ func start_tween_animation(callback):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "rumble_intensity", 0,  5)	
+	tween.tween_callback(callback)	
