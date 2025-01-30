@@ -7,6 +7,7 @@ signal on_player_death
 signal on_fuel_changed(fuel_amount: int)
 signal on_score_changed(score_amount: int)
 signal on_progress_changed(progress_value: int, progress_goal: int)
+signal on_begin_transition(callback: Callable)
 
 var is_gameplay_running := false
 
@@ -90,7 +91,7 @@ func start_gameplay() -> void:
 func after_progress_goal_loaded() -> void:
 	current_progress = 0
 	is_progress_loaded = false
-
+ 	
 func end_gameplay() -> void:
 	MusicManager.stop()
 	SoundManager.play_nuclear_sound()
@@ -101,7 +102,7 @@ func end_gameplay() -> void:
 func check_end_of_level(value) -> void:
 	if value >= progress_goal and progress_goal > 0:
 		print("YOU WIN!")
-		Globals.next_level()
+		on_begin_transition.emit(Globals.next_level)
 
 #region Save Data
 

@@ -82,7 +82,7 @@ shader_parameter/time = null
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqj4c"]
 shader = ExtResource("11_oqj4c")
 shader_parameter/noise_intensity = 1.0
-shader_parameter/time = null
+shader_parameter/time = 0.674
 shader_parameter/shutdown_time = 6.514
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crnce"]

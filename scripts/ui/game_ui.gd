@@ -23,7 +23,7 @@ var camera_root_position
 
 var tween
 var space_pressed = false
-var static_transition_time = 0.0
+var static_transition_time = 0.5
 
 var is_dead := false
 var has_skip := false
@@ -43,6 +43,8 @@ func _ready():
 	
 func _process(delta):
 	if static_effect.material and static_effect.material.is_class("ShaderMaterial"):
+		if not is_dead:
+			static_transition_time = max(0, ((randf() - 0.5)) + 0.3)
 		var shader_material = static_effect.material as ShaderMaterial
 		shader_material.set("shader_parameter/time", static_transition_time)
 	
