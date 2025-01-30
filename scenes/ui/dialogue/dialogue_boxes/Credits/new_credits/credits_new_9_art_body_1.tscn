@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsaxnfna7qisi"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_wpq8a"]
+
+[node name="TextBox" instance=ExtResource("1_wpq8a")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -89.0
+offset_top = -42.0
+offset_right = 90.0
+offset_bottom = 43.0
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Missile by Caleb Reath"
+vertical_alignment = 1

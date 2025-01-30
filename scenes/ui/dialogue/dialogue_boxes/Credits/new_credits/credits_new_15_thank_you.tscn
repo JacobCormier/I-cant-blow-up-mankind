@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://unq4hif85sn7"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_5y7q6"]
+
+[node name="base_voiceline" instance=ExtResource("1_5y7q6")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Thank you
+for playing!"
+vertical_alignment = 1

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://27cnydw1a0u6"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_17s4r"]
+[ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_q5a0w"]
+
+[node name="base_voiceline" instance=ExtResource("1_17s4r")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_top = -31.0
+offset_bottom = 31.0
+texture = ExtResource("2_q5a0w")
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_font_sizes/font_size = 40
+text = "Music"
+vertical_alignment = 1

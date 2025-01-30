@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp5rh360s6f4j"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_k6ipp"]
+[ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_5g3n0"]
+
+[node name="base_voiceline" instance=ExtResource("1_k6ipp")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -294.0
+offset_top = -17.0
+offset_right = 294.0
+offset_bottom = 17.0
+texture = ExtResource("2_5g3n0")
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+text = "Unlocked endless"

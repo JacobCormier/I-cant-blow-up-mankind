@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://r5f2nrcy0ryd"]
+
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_2hkko"]
+
+[node name="TextBox" instance=ExtResource("1_2hkko")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Jacob Cormier
+and
+Caleb Reath"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjj52688ybjb0"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_a0ny5"]
+[ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_kj2lp"]
+
+[node name="base_voiceline" instance=ExtResource("1_a0ny5")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -104.0
+offset_top = -45.0
+offset_right = 104.0
+offset_bottom = 45.0
+texture = ExtResource("2_kj2lp")
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_font_sizes/font_size = 40
+text = "Art + Assets"
