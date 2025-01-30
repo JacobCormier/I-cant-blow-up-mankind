@@ -11,6 +11,7 @@ extends Control
 @onready var title_real: Label = $MainMenuControl/Panel/TitleReal
 @onready var sub_title: Label = $MainMenuControl/Panel/SubTitle
 @onready var sub_title_real: Label = $MainMenuControl/Panel/SubTitleReal
+@onready var high_score_label: Label = $MainMenuControl/Panel/HighScoreLabel
 
 
 func _ready() -> void:
@@ -20,6 +21,8 @@ func _ready() -> void:
 	
 	if PlayerStats.loaded_high_score > 0:
 		skip_button.visible = true
+		high_score_label.text = "High Score: " + str(PlayerStats.loaded_high_score)
+		high_score_label.visible = true
 		
 		title.visible = false
 		title_real.visible = true
