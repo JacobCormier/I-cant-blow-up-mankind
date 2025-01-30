@@ -6,8 +6,6 @@ extends CanvasLayer
 @onready var header_music: Control = $HeaderMusic
 @onready var body_music: Control = $BodyMusic
 @onready var header_art: Control = $HeaderArt
-@onready var body_art_1: Control = $BodyArt1
-@onready var body_art_2: Control = $BodyArt2
 @onready var header_sound: Control = $HeaderSound
 @onready var body_sound: Control = $BodySound
 @onready var header_special_thanks: Control = $HeaderSpecialThanks
@@ -15,7 +13,7 @@ extends CanvasLayer
 @onready var body_final_statement: Control = $BodyFinalStatement
 @onready var thank_you: Control = $ThankYou
 @onready var unlocked_endless: Control = $UnlockedEndless
-@onready var body_art_3: Control = $BodyArt3
+@onready var body_art: Control = $BodyArt
 
 var current_step = 0
 var story_array = []
@@ -36,17 +34,15 @@ var playing = false
 
 func _ready() -> void:
 	phase_data = [
-		{ "header": icbm_text, "body": null, "timing": Vector2(0,4) },
-		{ "header": header_developed_by, "body": body_developed_by, "timing": Vector2(3,6) },
-		{ "header": header_music, "body": body_music, "timing": null },
-		{ "header": header_sound, "body": body_sound, "timing": null },
-		{ "header": header_art, "body": body_art_1, "timing": null },
-		{ "header": header_art, "body": body_art_2, "timing": null },
-		{ "header": header_art, "body": body_art_3, "timing": null },
-		{ "header": header_special_thanks, "body": body_special_thanks, "timing": null },
-		{ "header": body_final_statement, "body": null, "timing": null },
-		{ "header": thank_you, "body": null, "timing": null },
-		{ "header": unlocked_endless, "body": null, "timing": null }
+		{ "header": icbm_text, "body": null, "timing": Vector2(0,5) },
+		{ "header": header_developed_by, "body": body_developed_by, "timing": Vector2(1,3) },
+		{ "header": header_music, "body": body_music, "timing": Vector2(1,3) },
+		{ "header": header_sound, "body": body_sound, "timing": Vector2(1,3)  },
+		{ "header": header_art, "body": body_art, "timing": Vector2(1,6)  },
+		{ "header": header_special_thanks, "body": body_special_thanks, "timing": Vector2(1,3)  },
+		{ "header": body_final_statement, "body": null, "timing": Vector2(1,3)  },
+		{ "header": thank_you, "body": null, "timing": Vector2(1,3)  },
+		{ "header": unlocked_endless, "body": null, "timing": Vector2(1,3)  }
 	]
 	phases = Phase.from_array(phase_data)
 
@@ -63,9 +59,7 @@ func _ready() -> void:
 func _process(delta):
 	total_time += delta
 	
-	if current_phase_playing >= phase_data.size():
-		Phase.print_phases(phases)
-	elif not playing and phase_data[current_phase_playing].timing:
+	if not playing and phase_data[current_phase_playing].timing:
 		if phase_data[current_phase_playing].timing.x <= total_time:
 			print("playing phase",current_phase_playing)
 			phases[current_phase_playing].play()
@@ -74,22 +68,3 @@ func _process(delta):
 func message_complete():
 	current_phase_playing += 1
 	playing = false
-
-func _input(event):
-	# Start the dialogue when SPACE is pressed
-	if event.is_action_pressed("jump") and not show_text_box:
-		print("jump")
-		if current_phase:
-			show_text_box = true
-			current_phase.timing.x = total_time
-			current_phase.play()
-		
-		if prev_phase:
-			prev_phase.timing.y = total_time
-		
-		prev_phase = current_phase
-
-	# When SPACE is released, record `timing.x` (message open time)
-	elif event.is_action_released("jump") and show_text_box:
-		print("released")
-		show_text_box = false

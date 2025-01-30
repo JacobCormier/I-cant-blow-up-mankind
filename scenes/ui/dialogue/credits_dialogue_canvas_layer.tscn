@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bu8yhnf6cxavh"]
+[gd_scene load_steps=18 format=3 uid="uid://bu8yhnf6cxavh"]
 
 [ext_resource type="Script" uid="uid://y1x1xoel35x" path="res://scripts/dialogue/credits_dialogue_canvas_script.gd" id="1_f712o"]
 [ext_resource type="PackedScene" uid="uid://cdkek8v18lxea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_developed_by.tscn" id="2_nkcil"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cmswckc40rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_special_thanks.tscn" id="13_jorwc"]
 [ext_resource type="PackedScene" uid="uid://bpgaca3lqc5y8" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_final_statement.tscn" id="14_d7lfj"]
 [ext_resource type="PackedScene" uid="uid://cmsrh2sl8rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/thank_you_text.tscn" id="15_3sgn3"]
+[ext_resource type="Script" uid="uid://cs50ep4jshmhm" path="res://scripts/dialogue/body_dialogues_script.gd" id="15_uj88h"]
 [ext_resource type="PackedScene" uid="uid://d3ywoaldr8sy5" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/unlocked_endless.tscn" id="16_bhxcv"]
 
 [node name="CreditsDialogueUI" type="CanvasLayer"]
@@ -32,31 +33,101 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HeaderDevelopedBy" parent="." instance=ExtResource("2_nkcil")]
+offset_left = -176.0
+offset_top = -124.0
+offset_right = -176.0
+offset_bottom = -124.0
 
 [node name="BodyDevelopedBy" parent="." instance=ExtResource("3_uj88h")]
+offset_left = 178.0
+offset_top = -124.0
+offset_right = 178.0
+offset_bottom = -124.0
 
 [node name="HeaderMusic" parent="." instance=ExtResource("4_ujloo")]
+offset_left = -174.0
+offset_top = -23.0
+offset_right = -174.0
+offset_bottom = -23.0
 
 [node name="BodyMusic" parent="." instance=ExtResource("5_2j1mq")]
+offset_left = 148.0
+offset_top = -12.0
+offset_right = 148.0
+offset_bottom = -12.0
 
 [node name="HeaderArt" parent="." instance=ExtResource("8_tpx1s")]
-
-[node name="BodyArt1" parent="." instance=ExtResource("11_otntu")]
-
-[node name="BodyArt2" parent="." instance=ExtResource("10_qtr6t")]
-
-[node name="BodyArt3" parent="." instance=ExtResource("11_otntu")]
+offset_left = -171.0
+offset_top = 75.0
+offset_right = -171.0
+offset_bottom = 75.0
 
 [node name="HeaderSound" parent="." instance=ExtResource("6_3d37g")]
+offset_left = -176.0
+offset_top = -185.0
+offset_right = -176.0
+offset_bottom = -185.0
 
 [node name="BodySound" parent="." instance=ExtResource("7_1mxf5")]
+offset_left = -169.0
+offset_top = -164.0
+offset_right = -169.0
+offset_bottom = -164.0
 
 [node name="HeaderSpecialThanks" parent="." instance=ExtResource("12_wwlwk")]
+offset_left = 23.0
+offset_top = -157.0
+offset_right = 23.0
+offset_bottom = -157.0
 
 [node name="BodySpecialThanks" parent="." instance=ExtResource("13_jorwc")]
+offset_left = 44.0
+offset_top = -138.0
+offset_right = 44.0
+offset_bottom = -138.0
 
 [node name="BodyFinalStatement" parent="." instance=ExtResource("14_d7lfj")]
+offset_left = 247.0
+offset_top = 94.0
+offset_right = 247.0
+offset_bottom = 94.0
 
 [node name="ThankYou" parent="." instance=ExtResource("15_3sgn3")]
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 16.0
+offset_bottom = 112.0
 
 [node name="UnlockedEndless" parent="." instance=ExtResource("16_bhxcv")]
+offset_left = 6.0
+offset_top = 43.0
+offset_right = 6.0
+offset_bottom = 43.0
+
+[node name="BodyArt" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_uj88h")
+
+[node name="BodyArt1" parent="BodyArt" instance=ExtResource("11_otntu")]
+layout_mode = 1
+offset_left = 548.0
+offset_top = 339.0
+offset_right = 548.0
+offset_bottom = 339.0
+
+[node name="BodyArt2" parent="BodyArt" instance=ExtResource("10_qtr6t")]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 341.0
+offset_right = 120.0
+offset_bottom = 341.0
+
+[node name="BodyArt3" parent="BodyArt" instance=ExtResource("11_otntu")]
+layout_mode = 1
+offset_left = 317.0
+offset_top = 340.0
+offset_right = 317.0
+offset_bottom = 340.0

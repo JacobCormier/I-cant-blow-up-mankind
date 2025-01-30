@@ -21,7 +21,7 @@ var _done_count = 0
 var _waiting_count = 0
 
 ## Initializes the phase with the given header, body, and timing.
-func _init(h: Variant, b: Variant, t: Variant = Vector2(0.0, 0.0)):
+func _init(h: Variant, b: Variant, t: Variant = Vector3(0.0, 0.0, 0.0)):
 	header = h
 	body = b
 	timing = t
@@ -39,9 +39,13 @@ func complete():
 		on_complete.emit()
 
 func play():
-	header.trigger_dialogue()
+	header.initial_delay = timing.x
+	header.end_delay = timing.y
+	header.trigger_dialogue(timing)
 	if body:
-		body.trigger_dialogue()
+		body.initial_delay = timing.x + 0.1
+		body.end_delay = timing.y + 0.1
+		body.trigger_dialogue(timing)
 
 ## 🔹 Static method to create an array of Phases from an array of dictionaries.
 static func from_array(data_list: Array) -> Array:
@@ -53,12 +57,3 @@ static func from_array(data_list: Array) -> Array:
 			print("Invalid phase data: " + str(data))
 			
 	return phases
-
-## 🔹 Static method to print all phases in phase_data format.
-static func print_phases(phases: Array) -> void:
-	print("[")
-	for phase in phases:
-		print("  { \"header\": ", phase.header.name, 
-			", \"body\": ", "null" if phase.body == null else phase.body.name, 
-			", \"timing\": Vector2(", phase.timing.x, ", ", phase.timing.y, ") },")
-	print("]")

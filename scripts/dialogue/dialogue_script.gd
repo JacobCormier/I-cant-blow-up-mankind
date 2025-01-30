@@ -33,7 +33,9 @@ func _process(delta: float) -> void:
 			
 
 
-func trigger_dialogue() -> void:
+func trigger_dialogue(timing: Vector2 = Vector2(initial_delay, end_delay)) -> void:
+	initial_delay = timing.x
+	end_delay = timing.y
 	await get_tree().create_timer(initial_delay).timeout
 	self.visible = true
 	var tween = get_tree().create_tween()
