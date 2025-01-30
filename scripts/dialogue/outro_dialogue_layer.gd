@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var outro_voiceline_4: Control = $outro_voiceline_4
 @onready var outro_voiceline_5: Control = $outro_voiceline_5
 @onready var outro_voiceline_6: Control = $outro_voiceline_6
+@onready var credits_new_1: Control = $credits_new_1
 
 var current_step = 0
 var story_array = []
@@ -17,6 +18,7 @@ func _ready() -> void:
 	story_array.append(outro_voiceline_4)
 	story_array.append(outro_voiceline_5)
 	story_array.append(outro_voiceline_6)
+	story_array.append(credits_new_1)
 	
 	start_dialogue()
 

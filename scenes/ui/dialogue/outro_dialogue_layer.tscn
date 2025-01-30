@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vseos7h81cdu"]
+[gd_scene load_steps=9 format=3 uid="uid://vseos7h81cdu"]
 
 [ext_resource type="Script" uid="uid://brnudi80vngv0" path="res://scripts/dialogue/outro_dialogue_layer.gd" id="1_0rukj"]
 [ext_resource type="PackedScene" uid="uid://ckrigtct07ivc" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_1.tscn" id="2_ua0eq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkxv8ghsg1tq" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_4.tscn" id="5_e05d1"]
 [ext_resource type="PackedScene" uid="uid://beuaa6iyxcyyq" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_5.tscn" id="6_ko0no"]
 [ext_resource type="PackedScene" uid="uid://dohd1tngdgbt3" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_6.tscn" id="7_s81ka"]
+[ext_resource type="PackedScene" uid="uid://c77w87e6qb65p" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/new_credits/credits_new_1.tscn" id="8_y3rxn"]
 
 [node name="OutroDialogueLayer" type="CanvasLayer"]
 script = ExtResource("1_0rukj")
@@ -85,3 +86,10 @@ offset_bottom = -89.0
 grow_vertical = 0
 initial_delay = 2.5
 end_delay = 3.0
+
+[node name="credits_new_1" parent="." instance=ExtResource("8_y3rxn")]
+offset_top = 11.0
+offset_bottom = 11.0
+letter_reveal_speed = 32.0
+initial_delay = 4.0
+end_delay = 4.0

@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://c77w87e6qb65p"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_v6xxe"]
+[ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="2_srmmf"]
+[ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_nb8e4"]
+
+[node name="credits_new_1" instance=ExtResource("1_v6xxe")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = ""
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer/DialogueLabel" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -116.0
+offset_right = 99.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_srmmf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Cant" type="Label" parent="NinePatchRect/MarginContainer/DialogueLabel/NinePatchRect" index="0"]
+custom_minimum_size = Vector2(17.905, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_top = 67.0
+offset_right = -12.595
+offset_bottom = 127.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_nb8e4")
+theme_override_font_sizes/font_size = 20
+text = "ant"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BlowUp" type="Label" parent="NinePatchRect/MarginContainer/DialogueLabel/NinePatchRect" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 2.5
+offset_top = 67.0
+offset_right = 20.405
+offset_bottom = 190.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_nb8e4")
+theme_override_font_sizes/font_size = 20
+text = "lowUp"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Mankind" type="Label" parent="NinePatchRect/MarginContainer/DialogueLabel/NinePatchRect" index="2"]
+custom_minimum_size = Vector2(17.905, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 35.5
+offset_top = 67.0
+offset_right = 53.405
+offset_bottom = 211.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_nb8e4")
+theme_override_font_sizes/font_size = 20
+text = "ankind"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DialogueLabel" type="Label" parent="NinePatchRect/MarginContainer/DialogueLabel/NinePatchRect" index="3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_top = 30.0
+offset_right = 106.5
+offset_bottom = 66.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_nb8e4")
+theme_override_font_sizes/font_size = 40
+text = "I.C.B.M."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
