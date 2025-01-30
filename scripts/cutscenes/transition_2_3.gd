@@ -11,7 +11,6 @@ var camera_root_position
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerStats.is_gameplay_running = false
-	print("Transition 2 - 3")
 	Engine.time_scale = 1
 	SoundManager.kill_sound()
 	camera_root_position = ground_cam.position

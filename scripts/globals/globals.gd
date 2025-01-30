@@ -58,7 +58,6 @@ func set_level(level_code: int) -> void:
 	
 func next_level() -> void:
 	if current_level <= 0:
-		printerr("Globals::next_level() was called with an invalid level: ", current_level)
 		return
 	else:
 		if current_level == 3:
@@ -80,7 +79,7 @@ func next_level() -> void:
 		3:
 			get_tree().change_scene_to_file(LEVEL_3)
 		_:
-			printerr("Globals::next_level() was called with an invalid level: ", current_level)
+			pass
 	
 func restart_level() -> void:
 	if current_level <= 0:
@@ -110,7 +109,7 @@ func get_current_level_obstacles() -> Array:
 		
 		return all_buildings
 	else:
-		print("Globals::get_current_level_obstacles --- INVALID LEVEL REQUESTED")
+		pass
 		
 	return []
 

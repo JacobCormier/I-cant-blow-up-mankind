@@ -19,7 +19,6 @@ func set_environment_color(ground_color: Color, sky_color: Color) -> void:
 	
 func _ready():
 	PlayerStats.is_gameplay_running = false
-	print("Transition")
 	Engine.time_scale = 1
 	camera_root_position = tracking_cam.position
 	start_tween_animation(finish)

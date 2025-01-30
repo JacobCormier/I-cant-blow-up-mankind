@@ -259,9 +259,9 @@ anchor_bottom = 1.0
 offset_top = -116.0
 offset_bottom = -116.0
 grow_vertical = 0
-letter_reveal_speed = 48.0
+letter_reveal_speed = 36.0
 initial_delay = 0.5
-end_delay = 3.5
+end_delay = 2.8
 
 [node name="credits_new_15" parent="." instance=ExtResource("22_031ap")]
 end_delay = 5.0

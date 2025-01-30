@@ -101,7 +101,6 @@ func end_gameplay() -> void:
 	
 func check_end_of_level(value) -> void:
 	if value >= progress_goal and progress_goal > 0:
-		print("YOU WIN!")
 		on_begin_transition.emit(Globals.next_level)
 
 #region Save Data

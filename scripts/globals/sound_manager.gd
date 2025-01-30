@@ -23,6 +23,7 @@ func _ready():
 	rocket_engine_player = AudioStreamPlayer.new()
 	audio_player.bus = "FX"
 	rocket_engine_player.bus = "FX"
+	audio_player.volume_db = -10.0
 	add_child(audio_player)
 	add_child(rocket_engine_player)
 	

@@ -5,10 +5,14 @@
 [node name="credits_new_14" instance=ExtResource("1_ptoqo")]
 
 [node name="NinePatchRect" parent="." index="0"]
+offset_left = -189.0
 offset_top = -106.0
+offset_right = 190.0
 offset_bottom = 107.0
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
 text = "Everything else not mentioned was crafted by our blood, sweat, and rocket fuel.
+
+No generative A.I. was used in the making of this game.
 
 We hope you enjoyed helping Alli save humanity!"
