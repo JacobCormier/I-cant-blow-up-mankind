@@ -20,19 +20,23 @@ var cur_tween_dir = 1
 var did_turn= false 
 var icbm_character_root_position
 var last_jitter = [0, 0, 0]
+var dead = false
 
 var is_input_left = false
 var is_input_right = false
 
 func _ready() -> void:
-	randomize_talk_frequency()
 	icbm_character_root_position = icbm_character.position
+	PlayerStats.on_player_death.connect(on_death)
 	
 func _process(delta):	
 	micro_rumble(icbm_character, icbm_character_root_position, delta, 0, 0.05, 0.1, 0.05)
 	micro_rumble(icbm_character, icbm_character_root_position, delta, 1, 0.2, 0.1, 0.17)
 	micro_rumble(icbm_character, icbm_character_root_position, delta, 2, 0.4, 0.3, 0.3)
 	
+	if dead:
+		return
+
 	if (is_input_left and is_input_right) or (not is_input_left and not is_input_right): 
 		turn_dir = 1
 	elif is_input_left:
@@ -41,6 +45,14 @@ func _process(delta):
 		turn_dir = 2
 
 	turn()
+	
+	if tween != null and not PlayerStats.is_talking:
+		tween.kill()
+		tween = null
+		mouth.mesh.set("height", MIN_MOUTH_HEIGHT)
+	elif tween == null and PlayerStats.is_talking:
+		randomize_talk_frequency()
+		
 	
 func _input(event):
 	# Read input Actions
@@ -95,4 +107,9 @@ func micro_rumble(node, root_position, delta, index, x_variance = 0.01, y_varian
 		node.position = Vector3(random_rumble_x, random_rumble_y, root_position.z)
 	else:
 		last_jitter[index] += randf() * delta
-	
+
+func on_death():
+	dead = true
+	rotation = Vector3(-90.0,rotation.y, rotation.z)
+	tween.kill()
+	mouth.mesh.set("height", MAX_MOUTH_HEIGHT)

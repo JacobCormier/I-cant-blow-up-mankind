@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bj45q8xq7lgpo"]
+[gd_scene load_steps=29 format=3 uid="uid://bj45q8xq7lgpo"]
 
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_apw14"]
 [ext_resource type="Script" uid="uid://cisn6hwfq6row" path="res://scripts/ui/game_ui.gd" id="1_mbn1m"]
@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="6_1anad"]
 [ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
-[ext_resource type="Script" uid="uid://bjlivulhvfjlt" path="res://scripts/ui/fuel_indicator.gd" id="7_aq72h"]
+[ext_resource type="Script" path="res://scripts/ui/fuel_indicator.gd" id="7_aq72h"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 [ext_resource type="PackedScene" uid="uid://dh2u5jg1f5ex2" path="res://scenes/ui/dialogue/random_quip_box.tscn" id="9_x0n6o"]
 [ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
 [ext_resource type="Script" uid="uid://cxcvbxtc1qkhr" path="res://scripts/ui/skip_prompt.gd" id="11_opxtl"]
+[ext_resource type="Shader" uid="uid://srmsw7nweodo" path="res://resources/assets/shaders/static.gdshader" id="11_oqj4c"]
 [ext_resource type="Script" uid="uid://do3gmbwxhrofg" path="res://scripts/ui/jump_prompt.gd" id="13_crnce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq746"]
@@ -77,6 +78,12 @@ corner_radius_bottom_left = 8
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ri6y0"]
 shader = ExtResource("6_avoad")
 shader_parameter/time = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqj4c"]
+shader = ExtResource("11_oqj4c")
+shader_parameter/noise_intensity = 1.0
+shader_parameter/time = null
+shader_parameter/shutdown_time = 6.514
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crnce"]
 
@@ -356,6 +363,25 @@ offset_right = 116.0
 offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
+texture = ExtResource("6_1anad")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="StaticEffect" type="TextureRect" parent="FaceCam"]
+material = SubResource("ShaderMaterial_oqj4c")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -108.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 texture = ExtResource("6_1anad")
 expand_mode = 1
 stretch_mode = 4

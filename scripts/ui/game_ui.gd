@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var sub_viewport: SubViewport = $FaceCam/SubViewport
 @onready var face_cam: TextureRect = $FaceCam
 @onready var face_cam_rocket: Node3D = $FaceCam/SubViewport/FaceCamRocket
+@onready var static_effect: TextureRect = $FaceCam/StaticEffect
 
 @onready var level_progress_bar: TextureProgressBar = $ScoreControl/LevelProgressBar
 @onready var progress_label: Label = $ScoreControl/ProgressLabel
@@ -22,6 +23,7 @@ var camera_root_position
 
 var tween
 var space_pressed = false
+var static_transition_time = 0.0
 
 var is_dead := false
 var has_skip := false
@@ -40,6 +42,10 @@ func _ready():
 	slide_face_cam()
 	
 func _process(delta):
+	if static_effect.material and static_effect.material.is_class("ShaderMaterial"):
+		var shader_material = static_effect.material as ShaderMaterial
+		shader_material.set("shader_parameter/time", static_transition_time)
+	
 	face_cam.texture = sub_viewport.get_texture()
 	if face_cam.material and face_cam.material.is_class("ShaderMaterial"):
 		var shader_material = face_cam.material as ShaderMaterial
@@ -93,10 +99,13 @@ func trigger_death():
 		
 	is_player_input_disabled = true
 	
+	face_cam_rocket.on_death()
+	
 	var tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
 	tween.tween_property(white_transition, "modulate:a", 1.0, 4)
 	tween.parallel().tween_property(self, "rumble_intensity", 15, 4)
+	tween.parallel().tween_property(self, "static_transition_time", 10, 4)
 	tween.tween_interval(3.0)
 	tween.tween_callback(skip_prompt_timeout)
 	tween.tween_property(white_transition, "modulate:a", 0.0, 2)
