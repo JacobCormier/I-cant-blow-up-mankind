@@ -6,12 +6,14 @@
 [node name="credits_new_4" instance=ExtResource("1_17s4r")]
 
 [node name="NinePatchRect" parent="." index="0"]
-offset_top = -31.0
-offset_bottom = 31.0
+offset_left = -95.0
+offset_top = -43.0
+offset_right = 95.0
+offset_bottom = 43.0
 texture = ExtResource("2_q5a0w")
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
 theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
 theme_override_font_sizes/font_size = 40
-text = "Music"
+text = "Music By"
 vertical_alignment = 1
