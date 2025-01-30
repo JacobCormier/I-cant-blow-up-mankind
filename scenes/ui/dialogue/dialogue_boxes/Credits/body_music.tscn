@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2j6755iwdti0"]
 
-[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_kv7wi"]
+[ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_8a564"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qxgtn"]
 load_path = "res://.godot/imported/panel_grey_bolts_detail_b.png-dc8a7fcf3b5561e5735209f5ee7d2d17.ctex"
 
-[node name="CreditsBody" instance=ExtResource("1_kv7wi")]
+[node name="CreditsBody" instance=ExtResource("1_8a564")]
 
 [node name="NinePatchRect" parent="." index="0"]
 layout_mode = 1
@@ -23,6 +23,6 @@ grow_vertical = 2
 texture = SubResource("CompressedTexture2D_qxgtn")
 
 [node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "Main Theme by Jacob Cormier
-Other ambiance and sounds acquired from Pixabay.com"
+theme_override_font_sizes/font_size = 40
+text = "Jacob Cormier"
 vertical_alignment = 1
