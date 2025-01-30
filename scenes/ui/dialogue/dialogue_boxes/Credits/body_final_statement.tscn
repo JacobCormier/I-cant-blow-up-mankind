@@ -2,4 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://dhvewrcc7lahp" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_base_text.tscn" id="1_eqgxu"]
 
-[node name="CreditsBody" instance=ExtResource("1_eqgxu")]
+[node name="BodyFinalStatement" instance=ExtResource("1_eqgxu")]

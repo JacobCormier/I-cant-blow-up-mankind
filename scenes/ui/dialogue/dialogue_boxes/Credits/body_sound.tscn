@@ -5,7 +5,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qxgtn"]
 load_path = "res://.godot/imported/panel_grey_bolts_detail_b.png-dc8a7fcf3b5561e5735209f5ee7d2d17.ctex"
 
-[node name="CreditsBody" instance=ExtResource("1_ermhg")]
+[node name="BodySound" instance=ExtResource("1_ermhg")]
 
 [node name="NinePatchRect" parent="." index="0"]
 layout_mode = 1

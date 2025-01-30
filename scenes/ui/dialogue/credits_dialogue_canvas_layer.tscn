@@ -1,79 +1,62 @@
-[gd_scene load_steps=18 format=3 uid="uid://bu8yhnf6cxavh"]
+[gd_scene load_steps=17 format=3 uid="uid://bu8yhnf6cxavh"]
 
 [ext_resource type="Script" uid="uid://y1x1xoel35x" path="res://scripts/dialogue/credits_dialogue_canvas_script.gd" id="1_f712o"]
-[ext_resource type="PackedScene" uid="uid://ddqeqgfy5nfn4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_developed_by.tscn" id="2_nkcil"]
+[ext_resource type="PackedScene" uid="uid://cdkek8v18lxea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_developed_by.tscn" id="2_nkcil"]
 [ext_resource type="PackedScene" uid="uid://rrq4jspi003e" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/ICBM.tscn" id="2_uj88h"]
-[ext_resource type="PackedScene" uid="uid://db2mnov3asksr" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_developers.tscn" id="3_uj88h"]
-[ext_resource type="PackedScene" uid="uid://kqa15y1quf70" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_music.tscn" id="4_ujloo"]
+[ext_resource type="PackedScene" uid="uid://db2mnov3asksr" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_developed_by.tscn" id="3_uj88h"]
+[ext_resource type="PackedScene" uid="uid://cdkd7ejvp8xea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_music.tscn" id="4_ujloo"]
 [ext_resource type="PackedScene" uid="uid://b2j6755iwdti0" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_music.tscn" id="5_2j1mq"]
-[ext_resource type="PackedScene" uid="uid://cf6x0ifiwj1lm" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_sound.tscn" id="6_3d37g"]
+[ext_resource type="PackedScene" uid="uid://d4mss7bkk7jnc" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_sound.tscn" id="6_3d37g"]
 [ext_resource type="PackedScene" uid="uid://qjc3g8onrwci" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_sound.tscn" id="7_1mxf5"]
-[ext_resource type="PackedScene" uid="uid://dyd7gaj5lqyf6" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_art.tscn" id="8_tpx1s"]
-[ext_resource type="PackedScene" uid="uid://cxlgivqo68hwl" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_1.tscn" id="9_p8alv"]
-[ext_resource type="PackedScene" uid="uid://c3sjxyvu7051b" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_2.tscn" id="10_qtr6t"]
-[ext_resource type="PackedScene" uid="uid://chknotrjlcosb" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art.tscn" id="11_otntu"]
-[ext_resource type="PackedScene" uid="uid://cky5hqr3cctyg" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_special_thanks.tscn" id="12_wwlwk"]
-[ext_resource type="PackedScene" uid="uid://da7rnn222whfx" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_special_thanks.tscn" id="13_jorwc"]
+[ext_resource type="PackedScene" uid="uid://c14daqlvx3xkm" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_art.tscn" id="8_tpx1s"]
+[ext_resource type="PackedScene" uid="uid://cmsrh2sm02ar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_2.tscn" id="10_qtr6t"]
+[ext_resource type="PackedScene" uid="uid://cmsrhpc40rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_3.tscn" id="11_otntu"]
+[ext_resource type="PackedScene" uid="uid://cdkm6woke8xea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_special_thanks.tscn" id="12_wwlwk"]
+[ext_resource type="PackedScene" uid="uid://cmswckc40rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_special_thanks.tscn" id="13_jorwc"]
 [ext_resource type="PackedScene" uid="uid://bpgaca3lqc5y8" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_final_statement.tscn" id="14_d7lfj"]
-[ext_resource type="PackedScene" uid="uid://8edgmk4di11n" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/thank_you_text.tscn" id="15_3sgn3"]
-[ext_resource type="PackedScene" uid="uid://codk518g83hdd" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/unlocked_endless.tscn" id="16_bhxcv"]
+[ext_resource type="PackedScene" uid="uid://cmsrh2sl8rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/thank_you_text.tscn" id="15_3sgn3"]
+[ext_resource type="PackedScene" uid="uid://d3ywoaldr8sy5" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/unlocked_endless.tscn" id="16_bhxcv"]
 
 [node name="CreditsDialogueUI" type="CanvasLayer"]
 script = ExtResource("1_f712o")
 
 [node name="ICBMText" parent="." instance=ExtResource("2_uj88h")]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = -92.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DevelopedByHeader" parent="." instance=ExtResource("2_nkcil")]
-visible = false
+[node name="HeaderDevelopedBy" parent="." instance=ExtResource("2_nkcil")]
 
-[node name="DevelopedByBody" parent="." instance=ExtResource("3_uj88h")]
-visible = false
+[node name="BodyDevelopedBy" parent="." instance=ExtResource("3_uj88h")]
 
-[node name="MusicHeader" parent="." instance=ExtResource("4_ujloo")]
-visible = false
+[node name="HeaderMusic" parent="." instance=ExtResource("4_ujloo")]
 
-[node name="MusicBody" parent="." instance=ExtResource("5_2j1mq")]
-visible = false
+[node name="BodyMusic" parent="." instance=ExtResource("5_2j1mq")]
 
-[node name="SoundsHeader" parent="." instance=ExtResource("6_3d37g")]
-visible = false
+[node name="HeaderArt" parent="." instance=ExtResource("8_tpx1s")]
 
-[node name="SoundsBody" parent="." instance=ExtResource("7_1mxf5")]
-visible = false
+[node name="BodyArt1" parent="." instance=ExtResource("11_otntu")]
 
-[node name="ArtHeader" parent="." instance=ExtResource("8_tpx1s")]
-visible = false
+[node name="BodyArt2" parent="." instance=ExtResource("10_qtr6t")]
 
-[node name="ArtBody1" parent="." instance=ExtResource("9_p8alv")]
-visible = false
+[node name="BodyArt3" parent="." instance=ExtResource("11_otntu")]
 
-[node name="ArtBody2" parent="." instance=ExtResource("10_qtr6t")]
-visible = false
+[node name="HeaderSound" parent="." instance=ExtResource("6_3d37g")]
 
-[node name="ArtBody3" parent="." instance=ExtResource("11_otntu")]
-visible = false
+[node name="BodySound" parent="." instance=ExtResource("7_1mxf5")]
 
-[node name="SpecialThanksHeader" parent="." instance=ExtResource("12_wwlwk")]
-visible = false
+[node name="HeaderSpecialThanks" parent="." instance=ExtResource("12_wwlwk")]
 
-[node name="SpecialThanksBody" parent="." instance=ExtResource("13_jorwc")]
-visible = false
+[node name="BodySpecialThanks" parent="." instance=ExtResource("13_jorwc")]
 
-[node name="FinalStatement" parent="." instance=ExtResource("14_d7lfj")]
-visible = false
+[node name="BodyFinalStatement" parent="." instance=ExtResource("14_d7lfj")]
 
 [node name="ThankYou" parent="." instance=ExtResource("15_3sgn3")]
-visible = false
 
-[node name="EndlessModeUnlocked" parent="." instance=ExtResource("16_bhxcv")]
-visible = false
-
-[editable path="ICBMText"]
+[node name="UnlockedEndless" parent="." instance=ExtResource("16_bhxcv")]

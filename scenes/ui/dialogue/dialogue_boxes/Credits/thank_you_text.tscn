@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="2_bkvvd"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_8okgl"]
 
-[node name="base_voiceline" type="Control"]
+[node name="ThankYou" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

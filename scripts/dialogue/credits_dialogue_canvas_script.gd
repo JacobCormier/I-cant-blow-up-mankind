@@ -1,21 +1,21 @@
 extends CanvasLayer
 
 @onready var icbm_text: Control = $ICBMText
-@onready var developed_by_header: Control = $DevelopedByHeader
-@onready var developed_by_body: Control = $DevelopedByBody
-@onready var music_header: Control = $MusicHeader
-@onready var music_body: Control = $MusicBody
-@onready var sounds_header: Control = $SoundsHeader
-@onready var sounds_body: Control = $SoundsBody
-@onready var art_header: Control = $ArtHeader
-@onready var art_body_1: Control = $ArtBody1
-@onready var art_body_2: Control = $ArtBody2
-@onready var art_body_3: Control = $ArtBody3
-@onready var special_thanks_header: Control = $SpecialThanksHeader
-@onready var special_thanks_body: Control = $SpecialThanksBody
-@onready var final_statement: Control = $FinalStatement
+@onready var header_developed_by: Control = $HeaderDevelopedBy
+@onready var body_developed_by: Control = $BodyDevelopedBy
+@onready var header_music: Control = $HeaderMusic
+@onready var body_music: Control = $BodyMusic
+@onready var header_art: Control = $HeaderArt
+@onready var body_art_1: Control = $BodyArt
+@onready var body_art_2: Control = $BodyArt2
+@onready var header_sound: Control = $HeaderSound
+@onready var body_sound: Control = $BodySound
+@onready var header_special_thanks: Control = $HeaderSpecialThanks
+@onready var body_special_thanks: Control = $BodySpecialThanks
+@onready var body_final_statement: Control = $BodyFinalStatement
 @onready var thank_you: Control = $ThankYou
-@onready var endless_mode_unlocked: Control = $EndlessModeUnlocked
+@onready var unlocked_endless: Control = $UnlockedEndless
+@onready var body_art_3: Control = $BodyArt3
 
 var current_step = 0
 var story_array = []
@@ -38,16 +38,16 @@ func _ready() -> void:
 	phases = Phase.from_array(phase_data)
 	phase_data = [
 		{ "header": icbm_text, "body": null, "timing": Vector2(0,4) },
-		{ "header": developed_by_header, "body": developed_by_body, "timing": Vector2(3,6) },
-		{ "header": music_header, "body": music_body, "timing": null },
-		{ "header": sounds_header, "body": sounds_header, "timing": null },
-		{ "header": art_header, "body": art_body_1, "timing": null },
-		{ "header": art_header, "body": art_body_2, "timing": null },
-		{ "header": art_header, "body": art_body_3, "timing": null },
-		{ "header": special_thanks_header, "body": special_thanks_body, "timing": null },
-		{ "header": final_statement, "body": null, "timing": null },
+		{ "header": header_developed_by, "body": body_developed_by, "timing": Vector2(3,6) },
+		{ "header": header_music, "body": body_music, "timing": null },
+		{ "header": header_sound, "body": body_sound, "timing": null },
+		{ "header": header_art, "body": body_art_1, "timing": null },
+		{ "header": header_art, "body": body_art_2, "timing": null },
+		{ "header": header_art, "body": body_art_3, "timing": null },
+		{ "header": header_special_thanks, "body": body_special_thanks, "timing": null },
+		{ "header": body_final_statement, "body": null, "timing": null },
 		{ "header": thank_you, "body": null, "timing": null },
-		{ "header": endless_mode_unlocked, "body": null, "timing": null }
+		{ "header": unlocked_endless, "body": null, "timing": null }
 	]
 
 	# Find the first phase with `timing == null`
