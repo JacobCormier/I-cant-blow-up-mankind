@@ -36,7 +36,7 @@ func _on_skip_button_pressed() -> void:
 	PlayerStats.current_score = 0.0
 	PlayerStats.current_progress = 0.0
 	Globals.current_level = 1
-	get_tree().change_scene_to_packed(Globals.LEVEL_1)
+	get_tree().change_scene_to_file(Globals.LEVEL_1)
 
 func _on_options_button_pressed() -> void:
 	main_menu_control.visible = false

@@ -36,7 +36,7 @@ func trigger_dialogue() -> void:
 func end_sequence() -> void:
 	PlayerStats.current_score = 0.0
 	PlayerStats.current_progress = 0.0
-	get_tree().change_scene_to_packed(Globals.LEVEL_1)
+	get_tree().change_scene_to_file(Globals.LEVEL_1)
 	
 func end_launch_shake() -> void:
 	is_launching = false
