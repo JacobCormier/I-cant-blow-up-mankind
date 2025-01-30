@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdkek8v18lxea"]
-
-[ext_resource type="PackedScene" uid="uid://bemcqm5lywh3n" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_base_text.tscn" id="1_v6knc"]
-
-[node name="HeaderDevelopedBy" instance=ExtResource("1_v6knc")]
-
-[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "Developed by"
