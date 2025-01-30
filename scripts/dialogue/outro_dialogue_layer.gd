@@ -7,6 +7,21 @@ extends CanvasLayer
 @onready var outro_voiceline_5: Control = $outro_voiceline_5
 @onready var outro_voiceline_6: Control = $outro_voiceline_6
 @onready var credits_new_1: Control = $credits_new_1
+@onready var credits_new_2: Control = $credits_new_2
+@onready var credits_new_3: Control = $credits_new_3
+@onready var credits_new_4: Control = $credits_new_4
+@onready var credits_new_5: Control = $credits_new_5
+@onready var credits_new_6: Control = $credits_new_6
+@onready var credits_new_7: Control = $credits_new_7
+@onready var credits_new_8: Control = $credits_new_8
+@onready var credits_new_9: Control = $credits_new_9
+@onready var credits_new_10: Control = $credits_new_10
+@onready var credits_new_11: Control = $credits_new_11
+@onready var credits_new_12: Control = $credits_new_12
+@onready var credits_new_13: Control = $credits_new_13
+@onready var credits_new_14: Control = $credits_new_14
+@onready var credits_new_15: Control = $credits_new_15
+@onready var credits_new_16: Control = $credits_new_16
 
 var current_step = 0
 var story_array = []
@@ -19,6 +34,21 @@ func _ready() -> void:
 	story_array.append(outro_voiceline_5)
 	story_array.append(outro_voiceline_6)
 	story_array.append(credits_new_1)
+	story_array.append(credits_new_2)
+	story_array.append(credits_new_3)
+	story_array.append(credits_new_4)
+	story_array.append(credits_new_5)
+	story_array.append(credits_new_6)
+	story_array.append(credits_new_7)
+	story_array.append(credits_new_8)
+	story_array.append(credits_new_9)
+	story_array.append(credits_new_10)
+	story_array.append(credits_new_11)
+	story_array.append(credits_new_12)
+	story_array.append(credits_new_13)
+	story_array.append(credits_new_14)
+	story_array.append(credits_new_15)
+	story_array.append(credits_new_16)
 	
 	start_dialogue()
 
