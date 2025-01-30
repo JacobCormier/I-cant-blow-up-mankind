@@ -34,6 +34,7 @@ func _on_theme_intro_finished():
 	music_player.play()
 	
 func play_outro_theme():
+	music_player.finished.disconnect(_on_theme_intro_finished)
 	if music_player.stream != ALLIS_GOODBYE:
 		music_player.stream = ALLIS_GOODBYE
 		music_player.play()
