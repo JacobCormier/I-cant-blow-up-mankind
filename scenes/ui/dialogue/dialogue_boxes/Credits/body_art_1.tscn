@@ -1,3 +1,5 @@
-[gd_scene format=3 uid="uid://kdmin6m451bn"]
+[gd_scene load_steps=2 format=3 uid="uid://doiirpjlj7sld"]
 
-[node name="Ddd" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://dhvewrcc7lahp" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_base_text.tscn" id="1_vuc0h"]
+
+[node name="TextBox" instance=ExtResource("1_vuc0h")]

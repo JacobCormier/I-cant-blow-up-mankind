@@ -1,24 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpgaca3lqc5y8"]
 
-[ext_resource type="PackedScene" uid="uid://bc0amdcqx54ym" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_base_text.tscn" id="1_eqgxu"]
+[ext_resource type="PackedScene" uid="uid://dhvewrcc7lahp" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_base_text.tscn" id="1_eqgxu"]
 
 [node name="CreditsBody" instance=ExtResource("1_eqgxu")]
-
-[node name="NinePatchRect" parent="." index="0"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -139.5
-offset_top = -127.5
-offset_right = 139.5
-offset_bottom = 127.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
-text = "Everything else not mentioned was crafted by our blood, sweat, and rocket fuel.
-
-We hope you enjoyed helping Alli save humanity!"
