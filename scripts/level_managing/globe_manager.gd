@@ -210,6 +210,9 @@ func _setup_globe() -> void:
 	# Set up the globe based on export variables
 	globe_visual.mesh.radius = globe_visual_radius
 	globe_visual.mesh.height = globe_visual_radius * 2.0
+	set_environment_color(planet_color, sky_color)
+	
+func set_environment_color(planet_color: Color, sky_color: Color) -> void:
 	var globe_material = globe_visual.get_surface_override_material(0)
 	globe_material.albedo_color = planet_color
 	custom_environment.set_sky_color(sky_color)
