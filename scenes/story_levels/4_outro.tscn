@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cgkpwkc0ea2i5"]
+[gd_scene load_steps=46 format=3 uid="uid://cgkpwkc0ea2i5"]
 
 [ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_830yr"]
 [ext_resource type="Texture2D" uid="uid://bego8y2qlfr1n" path="res://resources/assets/png/moon_texture.jpg" id="2_uy4vs"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cufe868f4q6s0" path="res://resources/assets/ui/progress_red_small.png" id="8_5h676"]
 [ext_resource type="Texture2D" uid="uid://bfuokk4mxoble" path="res://resources/assets/ui/minimap_icon_jewel_white.png" id="9_pmh31"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="10_ujlnn"]
-[ext_resource type="Shader" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="11_x2kum"]
+[ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="11_x2kum"]
 [ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="12_ch573"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="13_ckfaw"]
 [ext_resource type="PackedScene" uid="uid://cti5lnlicuk1l" path="res://scenes/player/face_cam_rocket.tscn" id="14_klxeu"]
+[ext_resource type="PackedScene" uid="uid://vseos7h81cdu" path="res://scenes/ui/dialogue/outro_dialogue_layer.tscn" id="16_qhnro"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_qhnro"]
 radius = 500.0
@@ -598,6 +599,8 @@ far = 10000.0
 transform = Transform3D(0.950631, 0.035889, 0.308239, 0.267235, 0.410256, -0.871938, -0.15775, 0.911264, 0.380412, 4.02155, -7.21497, 1.87491)
 fov = 100.0
 far = 10000.0
+
+[node name="OutroDialogueLayer" parent="." instance=ExtResource("16_qhnro")]
 
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/RestartButton" to="GameUI" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameUI/DeathScreenControl/Panel/MenuButton" to="GameUI" method="_on_menu_button_pressed"]

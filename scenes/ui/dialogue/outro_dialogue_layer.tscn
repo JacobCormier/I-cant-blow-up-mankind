@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vseos7h81cdu"]
+[gd_scene load_steps=8 format=3 uid="uid://vseos7h81cdu"]
 
 [ext_resource type="Script" uid="uid://brnudi80vngv0" path="res://scripts/dialogue/outro_dialogue_layer.gd" id="1_0rukj"]
 [ext_resource type="PackedScene" uid="uid://ckrigtct07ivc" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_1.tscn" id="2_ua0eq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0tfss55vfb84" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_3.tscn" id="4_36wpm"]
 [ext_resource type="PackedScene" uid="uid://bkxv8ghsg1tq" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_4.tscn" id="5_e05d1"]
 [ext_resource type="PackedScene" uid="uid://beuaa6iyxcyyq" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_5.tscn" id="6_ko0no"]
+[ext_resource type="PackedScene" uid="uid://dohd1tngdgbt3" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/outro_voiceline_6.tscn" id="7_s81ka"]
 
 [node name="OutroDialogueLayer" type="CanvasLayer"]
 script = ExtResource("1_0rukj")
@@ -39,17 +40,17 @@ initial_delay = 2.0
 end_delay = 1.2
 
 [node name="outro_voiceline_3" parent="." instance=ExtResource("4_36wpm")]
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 0.0
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -136.0
-offset_top = 75.0
-offset_right = -136.0
-offset_bottom = 75.0
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -58.0
+offset_right = -117.0
+offset_bottom = -58.0
 grow_horizontal = 0
-grow_vertical = 1
+grow_vertical = 0
 initial_delay = 3.0
 end_delay = 1.3
 
@@ -60,15 +61,27 @@ anchor_bottom = 1.0
 offset_top = -89.0
 offset_bottom = -89.0
 grow_vertical = 0
-initial_delay = 0.8
+initial_delay = 5.0
 end_delay = 2.0
 
 [node name="outro_voiceline_5" parent="." instance=ExtResource("6_ko0no")]
-anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_top = 52.0
-offset_bottom = 52.0
-grow_vertical = 1
-initial_delay = 0.5
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_top = -2.0
+offset_right = -113.0
+offset_bottom = -2.0
+grow_horizontal = 0
+initial_delay = 3.0
 end_delay = 1.3
+
+[node name="outro_voiceline_6" parent="." instance=ExtResource("7_s81ka")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -89.0
+offset_bottom = -89.0
+grow_vertical = 0
+initial_delay = 2.5
+end_delay = 3.0

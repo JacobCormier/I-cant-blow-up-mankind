@@ -42,6 +42,8 @@ func disable_fuel_indicator() -> void:
 		tween.kill()
 		tween = null
 	
+	if get_tree() == null:
+		return
 	
 	tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
