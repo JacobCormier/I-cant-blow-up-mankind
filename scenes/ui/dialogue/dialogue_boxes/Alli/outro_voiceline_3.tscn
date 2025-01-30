@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0tfss55vfb84"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_28nxa"]
+
+[node name="outro_voiceline_3" instance=ExtResource("1_28nxa")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -105.0
+offset_top = -39.0
+offset_right = 105.0
+offset_bottom = 39.0
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Now, there's only one place left for me to go..."

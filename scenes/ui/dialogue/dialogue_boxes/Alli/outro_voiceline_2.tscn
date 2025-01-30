@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c73wqa213tpkp"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_4dv67"]
+
+[node name="outro_voicline_2" instance=ExtResource("1_4dv67")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "I escaped earth's orbit!"
