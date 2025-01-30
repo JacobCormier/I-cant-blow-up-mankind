@@ -359,7 +359,6 @@ theme_override_font_sizes/font_size = 20
 text = "Mute:
 Music:
 Master:
-Dialogue:
 Music:
 FX:"
 horizontal_alignment = 2
@@ -367,45 +366,44 @@ vertical_alignment = 1
 
 [node name="MuteAll" type="CheckBox" parent="OptionsControl/Panel/Panel/SubTitle"]
 layout_mode = 1
-offset_left = 110.0
-offset_top = -2.0
-offset_right = 134.0
-offset_bottom = 22.0
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 32.0
 
 [node name="MuteMusic" type="CheckBox" parent="OptionsControl/Panel/Panel/SubTitle"]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 19.0
-offset_right = 134.0
-offset_bottom = 43.0
+offset_left = 112.0
+offset_top = 29.0
+offset_right = 136.0
+offset_bottom = 53.0
 
 [node name="FXVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
 layout_mode = 1
-offset_left = 114.0
-offset_top = 66.0
-offset_right = 314.0
-offset_bottom = 82.0
+offset_left = 116.0
+offset_top = 76.0
+offset_right = 316.0
+offset_bottom = 92.0
+max_value = 1.0
+step = 0.05
 
 [node name="MusicVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 45.0
-offset_right = 314.0
-offset_bottom = 61.0
-
-[node name="DialogueVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
-layout_mode = 0
-offset_left = 114.0
-offset_top = 107.0
-offset_right = 314.0
-offset_bottom = 123.0
+offset_left = 116.0
+offset_top = 55.0
+offset_right = 316.0
+offset_bottom = 71.0
+max_value = 1.0
+step = 0.05
 
 [node name="MasterVolume" type="HSlider" parent="OptionsControl/Panel/Panel/SubTitle"]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 86.0
-offset_right = 314.0
-offset_bottom = 102.0
+offset_left = 116.0
+offset_top = 96.0
+offset_right = 316.0
+offset_bottom = 112.0
+max_value = 1.0
+step = 0.05
 
 [node name="Control" type="Control" parent="OptionsControl/Panel/Panel"]
 layout_mode = 1
@@ -565,7 +563,6 @@ text = "Arcade"
 [connection signal="toggled" from="OptionsControl/Panel/Panel/SubTitle/MuteMusic" to="OptionsControl/Panel" method="_on_mute_music_toggled"]
 [connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/FXVolume" to="OptionsControl/Panel" method="_on_fx_volume_value_changed"]
 [connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/MusicVolume" to="OptionsControl/Panel" method="_on_music_volume_value_changed"]
-[connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/DialogueVolume" to="OptionsControl/Panel" method="_on_dialogue_volume_value_changed"]
 [connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/MasterVolume" to="OptionsControl/Panel" method="_on_master_volume_value_changed"]
 [connection signal="pressed" from="EndlessControl/Panel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="EndlessControl/Panel/StandardButton" to="." method="_on_standard_button_pressed"]

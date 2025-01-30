@@ -13,6 +13,7 @@ var music_player: AudioStreamPlayer
 func _ready():
 	# Create an AudioStreamPlayer node dynamically or ensure it exists in the scene tree
 	music_player = AudioStreamPlayer.new()
+	music_player.bus = "Music"
 	music_player.pitch_scale = 1.0
 	add_child(music_player)
 	
