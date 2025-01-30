@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://rrq4jspi003e"]
+[gd_scene load_steps=6 format=3 uid="uid://rrq4jspi003e"]
 
 [ext_resource type="Script" uid="uid://bovc8fhhsjjh7" path="res://scripts/dialogue/message_transition_script.gd" id="1_ibglv"]
 [ext_resource type="Script" uid="uid://b8gu6jnhnerka" path="res://scripts/dialogue/dialogue_script.gd" id="1_qaghd"]
 [ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_1jjbf"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_ibglv"]
 [ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="5_epo56"]
-[ext_resource type="Script" uid="uid://pomx6x03rjjb" path="res://scripts/dialogue/ICBM_dialogue_script.gd" id="5_mveo0"]
 
 [node name="ICBMText" type="Control"]
 layout_mode = 3
@@ -79,7 +78,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_mveo0")
+script = ExtResource("1_qaghd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ICBMHeader2"]
 layout_mode = 1
