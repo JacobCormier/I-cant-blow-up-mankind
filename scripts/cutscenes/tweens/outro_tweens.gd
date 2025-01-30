@@ -7,7 +7,6 @@ static var intro_tween
 static var moon_reveal_tween
 static var orbit_moon_tween
 static var finale_tween
-static var credits_tween
 
 static func play_sequence(caller: Node):
 	var outro_tweens = OutroTweens.new()
@@ -18,21 +17,18 @@ static func play_sequence(caller: Node):
 	moon_reveal_tween = caller.get_tree().create_tween()
 	orbit_moon_tween = caller.get_tree().create_tween()
 	finale_tween = caller.get_tree().create_tween()
-	credits_tween = caller.get_tree().create_tween()
 	
 	# Configure Primary Tween
 	tween.tween_subtween(intro_tween)
 	tween.tween_subtween(moon_reveal_tween)
 	tween.tween_subtween(orbit_moon_tween)
 	tween.tween_subtween(finale_tween)
-	tween.tween_subtween(credits_tween)
 	
 	# Configure Tweens
 	intro_tween = outro_tweens.intro(caller, intro_tween)
 	moon_reveal_tween = outro_tweens.moon_reveal(caller, moon_reveal_tween)
 	orbit_moon_tween = outro_tweens.orbit_moon(caller, orbit_moon_tween)
 	finale_tween = outro_tweens.finale(caller, finale_tween)
-	credits_tween = outro_tweens.credits(caller, credits_tween)
 	
 func intro(caller, tween, time_scale = 1):
 	# Shake Camera as rocket flies by
@@ -95,13 +91,6 @@ func finale(caller, tween, time_scale = 1):
 	tween.parallel().tween_property(caller.icbm_character, "position:x", -31, 4 * time_scale).as_relative()
 	tween.parallel().tween_property(caller.icbm_character, "position:y", 400, 4 * time_scale).as_relative()
 	tween.parallel().tween_property(caller.icbm_character, "position:z", -85, 4 * time_scale).as_relative()
-	
-func credits(caller, tween, time_scale = 1):
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_callback(caller.credits_started)
-	tween.tween_property(caller.orbit_player, "position:x", 400, 8 * time_scale).as_relative()
-	tween.parallel().tween_property(caller.orbit_player, "position:y", 200, 8 * time_scale).as_relative()
 	
 func sputter(caller, tween, time):
 	tween.tween_callback(caller.stop_camera_shake)
