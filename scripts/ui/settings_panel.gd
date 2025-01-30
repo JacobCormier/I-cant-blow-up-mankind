@@ -52,9 +52,9 @@ func load_settings() -> void:
 	var settings_exist = config.load("user://settings.cfg") == OK
 
 	# If settings do not exist, set default values
-	var default_master = 0.8
-	var default_music = 0.8
-	var default_fx = 0.7
+	var default_master = 0.5
+	var default_music = 0.5
+	var default_fx = 0.5
 	var default_mute_all = false
 	var default_mute_music = false
 

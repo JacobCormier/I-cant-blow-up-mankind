@@ -99,7 +99,7 @@ func end_gameplay() -> void:
 	is_progress_loaded = false
 	
 func check_end_of_level(value) -> void:
-	if value >= progress_goal:
+	if value >= progress_goal and progress_goal > 0:
 		print("YOU WIN!")
 		Globals.next_level()
 
@@ -108,12 +108,12 @@ func check_end_of_level(value) -> void:
 func check_high_score(score: float) -> void:
 	save_data.check_high_score(score)
 	trigger_save()
-	loaded_high_score = save_data.high_score
+	loaded_high_score = save_data.high_score	
 	
-func toggle_unlock() -> void:
-	save_data.loaded_endless_unlocked = not save_data.loaded_endless_unlocked
+func unlock_endless() -> void:
+	save_data.endless_unlocked = true
 	trigger_save()
-	loaded_endless_unlocked = save_data.loaded_endless_unlocked
+	loaded_endless_unlocked = save_data.endless_unlocked
 
 func _initialize_save_data() -> void:
 	if ResourceLoader.exists('user://save_data.tres'):
@@ -124,7 +124,7 @@ func _initialize_save_data() -> void:
 		ResourceSaver.save(save_data, 'user://save_data.tres')
 		
 	loaded_high_score = save_data.high_score
-	loaded_endless_unlocked = save_data.loaded_endless_unlocked
+	loaded_endless_unlocked = save_data.endless_unlocked
 
 func trigger_save() -> void:
 	ResourceSaver.save(save_data, 'user://save_data.tres')

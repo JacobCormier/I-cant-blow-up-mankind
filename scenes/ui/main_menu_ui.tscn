@@ -130,29 +130,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
 disabled = true
 text = "Endless"
 
-[node name="DebugToggelUnlockButton" type="Button" parent="MainMenuControl/Panel/EndlessButton"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = 4.0
-offset_right = 91.0
-offset_bottom = 55.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.47, 0.47)
-theme_override_fonts/font = ExtResource("1_q7ib8")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
-text = " toggle Unlock "
-
 [node name="LaunchButton" type="Button" parent="MainMenuControl/Panel"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 1
@@ -272,6 +249,7 @@ autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="SkipButton" type="Button" parent="MainMenuControl/Panel"]
+visible = false
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 1
 anchors_preset = 7
@@ -554,7 +532,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
 text = "Arcade"
 
 [connection signal="pressed" from="MainMenuControl/Panel/EndlessButton" to="." method="_on_endless_button_pressed"]
-[connection signal="pressed" from="MainMenuControl/Panel/EndlessButton/DebugToggelUnlockButton" to="." method="_on_toggle_unlock_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/LaunchButton" to="." method="_on_launch_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/SkipButton" to="." method="_on_skip_button_pressed"]

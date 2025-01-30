@@ -48,7 +48,11 @@ func _ready() -> void:
 	story_array.append(credits_new_13)
 	story_array.append(credits_new_14)
 	story_array.append(credits_new_15)
-	story_array.append(credits_new_16)
+	
+	if not PlayerStats.loaded_endless_unlocked:
+		PlayerStats.unlock_endless()
+		story_array.append(credits_new_16)
+		
 	
 	start_dialogue()
 
