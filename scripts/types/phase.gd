@@ -1,13 +1,15 @@
 class_name Phase
 extends RefCounted
 
+signal on_complete
+
 ## Represents a phase with a header, body, and timing settings.
 
 ## The title or heading of the message.
-var header: Node
+var header: Variant
 
 ## The main content or body text of the message.
-var body: Node
+var body: Variant
 
 ## Timing parameters for when and how long the message appears.
 ## - x: Time before the message opens.
@@ -15,16 +17,31 @@ var body: Node
 ## - z: Time after the message closes.
 var timing: Variant = null
 
+var _done_count = 0
+var _waiting_count = 0
+
 ## Initializes the phase with the given header, body, and timing.
-func _init(h: Node, b: Node, t: Variant = Vector2(0.0, 0.0)):
+func _init(h: Variant, b: Variant, t: Variant = Vector2(0.0, 0.0)):
 	header = h
 	body = b
 	timing = t
+	
+	header.on_complete.connect(complete)
+		
+	if body != null:
+		body.on_complete.connect(complete)
+		_waiting_count = 2
+
+func complete():
+	_done_count += 1
+	
+	if _done_count >= _waiting_count:
+		on_complete.emit()
 
 func play():
-	header._trigger_text()
+	header.trigger_dialogue()
 	if body:
-		body._trigger_text()
+		body.trigger_dialogue()
 
 ## 🔹 Static method to create an array of Phases from an array of dictionaries.
 static func from_array(data_list: Array) -> Array:
@@ -33,9 +50,8 @@ static func from_array(data_list: Array) -> Array:
 		if data is Dictionary and "header" in data and "body" in data and "timing" in data:
 			phases.append(Phase.new(data.header, data.body, data.timing))
 		else:
-			push_error("Invalid phase data: " + str(data))
+			print("Invalid phase data: " + str(data))
 			
-	print(data_list)
 	return phases
 
 ## 🔹 Static method to print all phases in phase_data format.

@@ -14,9 +14,9 @@ func _ready():
 func message_done():
 	if count == 0:
 		count += 1
-		icbm_header_2._trigger_text()
+		icbm_header_2.trigger_dialogue()
 	else:
 		on_complete.emit()
 
-func _trigger_text() -> void:
-	icbm_header._trigger_text()
+func trigger_dialogue() -> void:
+	icbm_header.trigger_dialogue()

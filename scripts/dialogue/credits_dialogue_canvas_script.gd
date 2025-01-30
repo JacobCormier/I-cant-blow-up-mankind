@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var header_music: Control = $HeaderMusic
 @onready var body_music: Control = $BodyMusic
 @onready var header_art: Control = $HeaderArt
-@onready var body_art_1: Control = $BodyArt
+@onready var body_art_1: Control = $BodyArt1
 @onready var body_art_2: Control = $BodyArt2
 @onready var header_sound: Control = $HeaderSound
 @onready var body_sound: Control = $BodySound
@@ -35,7 +35,6 @@ var phase_data = []
 var playing = false
 
 func _ready() -> void:
-	phases = Phase.from_array(phase_data)
 	phase_data = [
 		{ "header": icbm_text, "body": null, "timing": Vector2(0,4) },
 		{ "header": header_developed_by, "body": body_developed_by, "timing": Vector2(3,6) },
@@ -49,6 +48,7 @@ func _ready() -> void:
 		{ "header": thank_you, "body": null, "timing": null },
 		{ "header": unlocked_endless, "body": null, "timing": null }
 	]
+	phases = Phase.from_array(phase_data)
 
 	# Find the first phase with `timing == null`
 	for phase in phases:
@@ -66,8 +66,9 @@ func _process(delta):
 	if current_phase_playing >= phase_data.size():
 		Phase.print_phases(phases)
 	elif not playing and phase_data[current_phase_playing].timing:
-		if phase_data[current_phase_playing].timing.x >= total_time:
-			phase_data[current_phase_playing].play()
+		if phase_data[current_phase_playing].timing.x <= total_time:
+			print("playing phase",current_phase_playing)
+			phases[current_phase_playing].play()
 			playing = true
 
 func message_complete():
