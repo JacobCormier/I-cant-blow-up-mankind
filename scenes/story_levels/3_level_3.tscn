@@ -21,7 +21,7 @@ emission_energy_multiplier = 0.15
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.939692, 0.34202, 0, -0.34202, -0.939692, 0, 3.26051, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 350.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971566, 0.23677, 0, -0.23677, 0.971566, 0.036, 516.134, 134.103)

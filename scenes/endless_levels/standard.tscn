@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy5enov6kbp5k"]
+[gd_scene load_steps=7 format=3 uid="uid://dy5enov6kbp5k"]
 
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_x3clm"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_knqev"]
 [ext_resource type="Resource" uid="uid://c0l36fjudti3x" path="res://resources/custom/level_data/standard_endless_data.tres" id="3_dhlg7"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_km06b"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_a8woj"]
+[ext_resource type="Script" uid="uid://bxy4wmcj4rvul" path="res://scripts/level_managing/color_change_environment.gd" id="6_1buqg"]
 
 [node name="StandardEndless" type="Node3D"]
 
@@ -28,5 +29,9 @@ level_data = ExtResource("3_dhlg7")
 transform = Transform3D(1, -0.000409997, 0.00013332, 6.80056e-05, 0.455381, 0.890297, -0.000425731, -0.890296, 0.455381, 0, 499.303, 97)
 
 [node name="GameUI" parent="." instance=ExtResource("4_a8woj")]
+
+[node name="ColorChangeEnvironment" type="Node" parent="."]
+script = ExtResource("6_1buqg")
+color_array = Array[Color]([Color(1, 1, 1, 1), Color(1, 0.54049, 0.985698, 1), Color(0.804283, 0.430076, 0.948207, 1), Color(0.654202, 0.281647, 0.999539, 1), Color(0.460082, 0.228859, 0.913122, 1), Color(0.367658, 0.106265, 0.82827, 1), Color(0.266382, 0.0553122, 0.792425, 1), Color(0.159523, 1.54018e-06, 0.752869, 1), Color(0.0865244, 0.243848, 0.725917, 1), Color(0.0774, 0.403483, 0.86, 1), Color(0.117071, 0.454958, 0.678457, 1), Color(0.00131036, 0.441908, 0.456157, 1), Color(0.119778, 0.633383, 0.517498, 1), Color(0, 0.611763, 0.369432, 1), Color(0.0199234, 0.662261, 5.77569e-07, 1), Color(0.461882, 0.727774, 1.15514e-06, 1), Color(0.746634, 0.826426, 3.85046e-07, 1), Color(0.66225, 0.54743, 3.85046e-07, 1), Color(0.774347, 0.38889, 0, 1), Color(0.85516, 0.341932, 5.77569e-07, 1), Color(0.965, 0.0899097, 1.92523e-07, 1), Color(0.786076, 0, 0.207299, 1), Color(0.538632, 2.18995e-06, 0.333449, 1), Color(0.365127, 0.0065684, 0.219045, 1), Color(0.25, 0.1, 0.21, 1), Color(0.180005, 0.180005, 0.180005, 1), Color(0, 0, 0, 1)])
 
 [editable path="GameUI"]

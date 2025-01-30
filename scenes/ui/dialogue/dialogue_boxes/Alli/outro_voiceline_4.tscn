@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxv8ghsg1tq"]
+
+[ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_1llve"]
+
+[node name="outro_voiceline_4" instance=ExtResource("1_1llve")]
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Goodbye, everyone!"

@@ -24,7 +24,8 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_t62dd")]
-sky_color = Color(1, 0, 0, 1)
+sky_color = Color(0.35133, 0.729302, 0.730476, 1)
+planet_color = Color(0.202301, 0.467725, 0.299507, 1)
 globe_visual_radius = 500.0
 level_data = ExtResource("3_rcsm1")
 

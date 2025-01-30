@@ -2,6 +2,10 @@ extends Control
 
 @onready var dialogue_label: Label = $NinePatchRect/MarginContainer/DialogueLabel
 
+@export var starting_messages: Array[String]
+@export var random_messages: Array[String]
+@export var death_messages: Array[String]
+
 @export var MAX_INTERVAL : float = 15.0
 @export var MIN_INTERVAL : float = 10.0
 var current_interval_timer : float
@@ -16,6 +20,8 @@ var say_stuff: int = 0
 func _ready() -> void:
 	PlayerStats.on_player_death.connect(_trigger_death_message)
 	_reset_all()
+	is_triggered = true
+	_trigger_starting_message()
 
 func _process(delta: float) -> void:
 	# timer runs to calculate when next message will be displayed
@@ -25,6 +31,7 @@ func _process(delta: float) -> void:
 		_trigger_random_message()
 			
 func _reset_all() -> void:
+	PlayerStats.is_talking = false
 	self.visible = false
 	if tween != null:
 		tween.kill()
@@ -37,46 +44,48 @@ func _reset_all() -> void:
 func _restart_interval_timer() -> void:
 	current_interval_timer = randf_range(MIN_INTERVAL, MAX_INTERVAL)
 
-func _trigger_random_message() -> void:
-	# pick a message
+func _trigger_starting_message() -> void:
+	PlayerStats.is_talking = true
+	var random_number = randi_range(0, starting_messages.size() - 1)
+	dialogue_label.text = starting_messages[random_number]
+	
 	is_triggered = true
 	tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dialogue_label, "scale:y", 1.0, 1.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 2.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_interval(1.5)
-	tween.tween_property(dialogue_label, "scale:y", 0.01, 1.0)
-	tween.tween_callback(call_me_to_say_stuff)
-	tween.tween_callback(_reset_all)
+	tween.tween_interval(0.3)
+	tween_message()
+	
+	visible = true
+func _trigger_random_message() -> void:
+	PlayerStats.is_talking = true
+	var random_number = randi_range(0, random_messages.size() - 1)
+	dialogue_label.text = random_messages[random_number]
+	
+	is_triggered = true
+	tween = get_tree().create_tween()
+	tween_message()
 	
 	visible = true
 
 func _trigger_death_message() -> void:
 	_reset_all() 
+	PlayerStats.is_talking = true
+	
+	var random_number = randi_range(0, death_messages.size() - 1)
+	dialogue_label.text = death_messages[random_number]
 	
 	# select death message
 	
 	tween = get_tree().create_tween()
 	tween.set_ignore_time_scale(true)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dialogue_label, "scale:y", 1.0, 1.0)
-	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 2.0)
-	tween.tween_interval(1.5)
-	tween.tween_property(dialogue_label, "scale:y", 0.01, 1.0)
+	tween_message()
 	
 	visible = true
 
-func call_me_to_say_stuff() -> void:
-	say_stuff += 1
-	
-	print("STEP ", say_stuff)
-	
-	if say_stuff == 1:
-		print("The box should be at 1 scale now")
-	if say_stuff == 2:
-		print("The box should be full of letters now")
-	if say_stuff == 3:
-		print("The box should be gone now!")
-	
+
+func tween_message() -> void:
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "scale:y", 1.0, 0.5)
+	tween.tween_property(dialogue_label, "visible_ratio", 1.0, 0.8)
+	tween.tween_interval(2.3)
+	tween.tween_property(self, "scale:y", 0.01, 0.3)
+	tween.tween_callback(_reset_all)

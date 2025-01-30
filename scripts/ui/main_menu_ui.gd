@@ -3,7 +3,7 @@ extends Control
 @onready var main_menu_control: Control = $MainMenuControl
 @onready var dialogue_ui: CanvasLayer = $"../DialogueUI"
 @onready var options_control: Control = $OptionsControl
-@onready var skip_button: Button = $CommonControl/SkipButton
+@onready var skip_button: Button = $MainMenuControl/Panel/SkipButton
 @onready var endless_control: Control = $EndlessControl
 @onready var endless_button: Button = $MainMenuControl/Panel/EndlessButton
 
@@ -14,8 +14,6 @@ extends Control
 
 
 func _ready() -> void:
-	print(OS.get_data_dir())
-	print(OS.get_user_data_dir())
 	Engine.time_scale = 0.0
 	
 	endless_button.disabled = not PlayerStats.loaded_endless_unlocked

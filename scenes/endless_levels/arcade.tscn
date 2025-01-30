@@ -13,14 +13,15 @@
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 3.26051, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 300.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.665635, 0.746278, 0, -0.746278, 0.665635, 0.036, 598.428, 133.717)
 current = true
 
 [node name="GameGlobe" parent="." instance=ExtResource("2_mftq4")]
-sky_color = Color(1, 0, 0, 1)
+sky_color = Color(0.631971, 0.637488, 0.612011, 1)
+planet_color = Color(0.237358, 0.23384, 0.44237, 1)
 globe_visual_radius = 500.0
 level_data = ExtResource("3_mftq4")
 

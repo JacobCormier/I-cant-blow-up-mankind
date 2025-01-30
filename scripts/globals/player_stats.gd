@@ -1,5 +1,8 @@
 extends Node
 
+# Used for a last touch to make the rocket speak
+var is_talking = false
+
 signal on_player_death
 signal on_fuel_changed(fuel_amount: int)
 signal on_score_changed(score_amount: int)

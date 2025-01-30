@@ -51,6 +51,7 @@ func intro(caller, tween, time_scale = 1):
 	tween.tween_callback(caller.stop_particles)
 	tween.tween_interval(1 * time_scale)
 	tween.tween_callback(caller.stop_camera_shake)
+	tween.tween_callback(MusicManager.play_outro_theme)
 	tween.tween_interval(2 * time_scale) # Time after full cutout
 	
 func moon_reveal(caller, tween, time_scale = 1):

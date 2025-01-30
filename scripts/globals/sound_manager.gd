@@ -21,6 +21,8 @@ func _ready():
 	# Create an AudioStreamPlayer node dynamically or ensure it exists in the scene tree
 	audio_player = AudioStreamPlayer.new()
 	rocket_engine_player = AudioStreamPlayer.new()
+	audio_player.bus = "FX"
+	rocket_engine_player.bus = "FX"
 	add_child(audio_player)
 	add_child(rocket_engine_player)
 	
