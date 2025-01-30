@@ -3,7 +3,7 @@ extends Control
 @onready var main_menu_control: Control = $MainMenuControl
 @onready var dialogue_ui: CanvasLayer = $"../DialogueUI"
 @onready var options_control: Control = $OptionsControl
-@onready var skip_button: Button = $CommonControl/SkipButton
+@onready var skip_button: Button = $MainMenuControl/Panel/SkipButton
 @onready var endless_control: Control = $EndlessControl
 @onready var endless_button: Button = $MainMenuControl/Panel/EndlessButton
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dti42yrq2ji54"]
+[gd_scene load_steps=16 format=3 uid="uid://dti42yrq2ji54"]
 
 [ext_resource type="Script" uid="uid://i4qapvc5yvp7" path="res://scripts/ui/main_menu_ui.gd" id="1_can6x"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="1_q7ib8"]
 [ext_resource type="Texture2D" uid="uid://dithw8t1j65s1" path="res://resources/assets/png/tic_tac_toe.png" id="3_b8bkt"]
+[ext_resource type="Script" uid="uid://c5dy7jipx5av3" path="res://scripts/ui/settings_panel.gd" id="3_qegi1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfpyc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -270,6 +271,29 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="SkipButton" type="Button" parent="MainMenuControl/Panel"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -89.0
+offset_right = 36.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_q7ib8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
+text = "SKIP
+INTRO"
+
 [node name="OptionsControl" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -287,18 +311,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qegi1")
+script = ExtResource("3_qegi1")
 
 [node name="BackButton" type="Button" parent="OptionsControl/Panel"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 120.0
-offset_top = -160.0
-offset_right = 216.0
-offset_bottom = -64.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_q7ib8")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_02l8k")
@@ -527,49 +555,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
 text = "Arcade"
 
-[node name="CommonControl" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="SkipButton" type="Button" parent="CommonControl"]
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -94.0
-offset_right = 36.0
-offset_bottom = -22.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_q7ib8")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6vh4c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_efrib")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_p1w6t")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5bpym")
-text = "SKIP
-INTRO"
-
 [connection signal="pressed" from="MainMenuControl/Panel/EndlessButton" to="." method="_on_endless_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/EndlessButton/DebugToggelUnlockButton" to="." method="_on_toggle_unlock_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/LaunchButton" to="." method="_on_launch_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/Panel/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/Panel/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="OptionsControl/Panel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="OptionsControl/Panel/Panel/SubTitle/MuteAll" to="OptionsControl/Panel" method="_on_mute_all_toggled"]
+[connection signal="toggled" from="OptionsControl/Panel/Panel/SubTitle/MuteMusic" to="OptionsControl/Panel" method="_on_mute_music_toggled"]
+[connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/FXVolume" to="OptionsControl/Panel" method="_on_fx_volume_value_changed"]
+[connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/MusicVolume" to="OptionsControl/Panel" method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/DialogueVolume" to="OptionsControl/Panel" method="_on_dialogue_volume_value_changed"]
+[connection signal="value_changed" from="OptionsControl/Panel/Panel/SubTitle/MasterVolume" to="OptionsControl/Panel" method="_on_master_volume_value_changed"]
 [connection signal="pressed" from="EndlessControl/Panel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="EndlessControl/Panel/StandardButton" to="." method="_on_standard_button_pressed"]
 [connection signal="pressed" from="EndlessControl/Panel/FirstPersonButton" to="." method="_on_first_person_button_pressed"]
 [connection signal="pressed" from="EndlessControl/Panel/ArcadeButton" to="." method="_on_arcade_button_pressed"]
-[connection signal="pressed" from="CommonControl/SkipButton" to="." method="_on_skip_button_pressed"]
