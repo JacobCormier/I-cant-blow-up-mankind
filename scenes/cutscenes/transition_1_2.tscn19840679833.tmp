@@ -1,9 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4le72d53g6k2"]
+[gd_scene load_steps=13 format=3 uid="uid://d4le72d53g6k2"]
 
 [ext_resource type="Script" uid="uid://c84vvjovl3643" path="res://scripts/cutscenes/transition_1_2.gd" id="1_muwdx"]
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="2_3q5uh"]
 [ext_resource type="Script" uid="uid://banqelddfh8mm" path="res://scripts/cutscenes/transition_globe.gd" id="3_ovfvn"]
 [ext_resource type="PackedScene" uid="uid://bo1qjl47rsq2h" path="res://scenes/player/icbm_character.tscn" id="3_rfwuq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufb2q"]
+sky_top_color = Color(0.217712, 0.699647, 0.960938, 1)
+sky_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_bottom_color = Color(0.219608, 0.698039, 0.960784, 1)
+ground_horizon_color = Color(0.219608, 0.698039, 0.960784, 1)
+
+[sub_resource type="Sky" id="Sky_672je"]
+sky_material = SubResource("ProceduralSkyMaterial_ufb2q")
+
+[sub_resource type="Environment" id="Environment_26u3x"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_672je")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.75
+tonemap_mode = 3
+tonemap_exposure = 0.8
+glow_enabled = true
+glow_intensity = 0.42
+glow_strength = 1.26
+glow_blend_mode = 0
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 0.0
+fog_depth_end = 410.5
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+volumetric_fog_length = 74.78
+volumetric_fog_detail_spread = 1.21838
+adjustment_contrast = 1.02
+adjustment_saturation = 1.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_27lpb"]
 radius = 3000.0
@@ -33,11 +64,10 @@ normal_texture = SubResource("NoiseTexture2D_0hec7")
 script = ExtResource("1_muwdx")
 
 [node name="CustomEnvironment" parent="." instance=ExtResource("2_3q5uh")]
+environment = SubResource("Environment_26u3x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.939693, 0.34202, 0, -0.34202, -0.939693, 0, 3.26051, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 350.0
+transform = Transform3D(0.576293, 0.771863, 0.268542, -0.236836, -0.156759, 0.95882, 0.782173, -0.616161, 0.0924663, 0, 3.26051, 0)
 
 [node name="TransitionGlobe" type="Node3D" parent="."]
 script = ExtResource("3_ovfvn")
@@ -55,13 +85,9 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_eneyr")
 
 [node name="ICBMCharacter" parent="." instance=ExtResource("3_rfwuq")]
-transform = Transform3D(1, 0, 0, 0, 0.0157073, 0.999876, 0, -0.999876, 0.0157073, -0.02, 503.044, 137.77)
+transform = Transform3D(-1, 5.64642e-08, -8.82957e-08, -8.74001e-08, 0.0156702, 0.999877, 5.78407e-08, 0.999877, -0.0156702, -0.02, 510.074, -500)
 
 [node name="TrackingCam" type="Camera3D" parent="ICBMCharacter"]
-transform = Transform3D(0.999997, -0.00217529, 0.00139117, 0.00258178, 0.850769, -0.525533, -4.03748e-05, 0.525535, 0.850772, -0.2, 12.554, 21.268)
+transform = Transform3D(0.0331552, -0.367922, 0.929265, 0.999328, 0.0267735, -0.0250545, -0.0156615, 0.929471, 0.368562, 299.393, 530.93, 128.591)
 current = true
-fov = 79.5
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999998, -0.00177739, 0.000333024, 0.00169145, 0.984502, 0.175366, -0.000639558, -0.175366, 0.984503, -0.22, 523.995, 20.3316)
-fov = 79.5
+fov = 78.0

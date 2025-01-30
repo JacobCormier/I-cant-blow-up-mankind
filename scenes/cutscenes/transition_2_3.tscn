@@ -19,7 +19,7 @@ colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0
 noise_type = 3
 frequency = 0.0034
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bva8p"]
 seamless = true
 as_normal_map = true
 color_ramp = SubResource("Gradient_4fqsv")
@@ -28,7 +28,7 @@ noise = SubResource("FastNoiseLite_pcctt")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_0hec7")
+normal_texture = SubResource("NoiseTexture2D_bva8p")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
 albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
@@ -45,10 +45,6 @@ script = ExtResource("1_xc4ri")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.398749, -0.834489, 0.380299, 0, -0.414693, -0.909961, 0.91706, -0.362846, 0.165359, 0, 3.26051, 0)
 
-[node name="GroundCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.999077, 0.0131688, 0.0408882, 3.66114e-09, 0.951851, -0.306562, -0.0429565, -0.306279, -0.950972, 2.859, 506.941, 5.239)
-fov = 65.2
-
 [node name="TransitionGlobe" type="Node3D" parent="."]
 script = ExtResource("2_d64km")
 sky_color = Color(0.059476, 0.36885, 0.745168, 1)
@@ -63,6 +59,10 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_smda0")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
+
+[node name="GroundCam" type="Camera3D" parent="."]
+transform = Transform3D(-0.999077, 0.0131688, 0.0408882, 3.66114e-09, 0.951851, -0.306562, -0.0429565, -0.306279, -0.950972, 2.859, 506.941, 5.239)
+fov = 65.2
 
 [node name="EmpireDiorama" parent="." instance=ExtResource("2_acfpc")]
 
@@ -80,10 +80,13 @@ transform = Transform3D(1, 0, 0, 0, 0.999402, -0.0345681, 0, 0.0345681, 0.999402
 mesh = SubResource("BoxMesh_ensnl")
 skeleton = NodePath("")
 
-[node name="ICBMCharacter" parent="." instance=ExtResource("3_bva8p")]
-transform = Transform3D(-1, 5.64642e-08, -8.82957e-08, -8.74001e-08, 0.0156702, 0.999877, 5.78407e-08, 0.999877, -0.0156702, -0.0203956, 536.461, -14.3227)
+[node name="PlayerOrigin" type="Node3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 0, 4.57536e-09, -0.052336, 0.998629, -8.7303e-08, 0.998629, 0.052336, 2.58, 804.603, 21.825)
 
-[node name="FollowCam" type="Camera3D" parent="ICBMCharacter"]
+[node name="ICBMCharacter" parent="PlayerOrigin" instance=ExtResource("3_bva8p")]
+transform = Transform3D(1, 0, -2.10942e-15, 0, 1, 0, -2.77556e-16, 0, 1, 0, -2.639, -289.806)
+
+[node name="FollowCam" type="Camera3D" parent="PlayerOrigin/ICBMCharacter"]
 transform = Transform3D(-0.572774, 0.087504, -0.81503, -0.819686, -0.0530207, 0.570354, 0.00669472, 0.994752, 0.102095, -1.72098, 5.78796, 0.301147)
 
 [editable path="EmpireDiorama"]
