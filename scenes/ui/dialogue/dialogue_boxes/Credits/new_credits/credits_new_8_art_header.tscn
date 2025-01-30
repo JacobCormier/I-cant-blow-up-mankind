@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_a0ny5"]
 [ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_kj2lp"]
 
-[node name="base_voiceline" instance=ExtResource("1_a0ny5")]
+[node name="credits_new_8" instance=ExtResource("1_a0ny5")]
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_left = -104.0

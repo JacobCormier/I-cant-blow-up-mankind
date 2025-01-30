@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6ham2ips8k1d" path="res://scenes/ui/dialogue/dialogue_boxes/Narrator/dialogue_base.tscn" id="1_wpq8a"]
 
-[node name="TextBox" instance=ExtResource("1_wpq8a")]
+[node name="credits_new_9" instance=ExtResource("1_wpq8a")]
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_left = -89.0

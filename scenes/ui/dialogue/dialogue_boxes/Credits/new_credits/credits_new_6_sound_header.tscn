@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_sl3cn"]
 [ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_nw1rr"]
 
-[node name="base_voiceline" instance=ExtResource("1_sl3cn")]
+[node name="credits_new_6" instance=ExtResource("1_sl3cn")]
 
 [node name="NinePatchRect" parent="." index="0"]
 texture = ExtResource("2_nw1rr")

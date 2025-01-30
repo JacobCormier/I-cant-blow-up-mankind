@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uw48ju0wchfo" path="res://scenes/ui/dialogue/dialogue_boxes/Alli/base_voiceline.tscn" id="1_17s4r"]
 [ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_q5a0w"]
 
-[node name="base_voiceline" instance=ExtResource("1_17s4r")]
+[node name="credits_new_4" instance=ExtResource("1_17s4r")]
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_top = -31.0
