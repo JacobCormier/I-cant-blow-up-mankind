@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bu8yhnf6cxavh"]
+[gd_scene load_steps=18 format=3 uid="uid://bu8yhnf6cxavh"]
 
 [ext_resource type="Script" uid="uid://y1x1xoel35x" path="res://scripts/dialogue/credits_dialogue_canvas_script.gd" id="1_f712o"]
 [ext_resource type="PackedScene" uid="uid://cdkek8v18lxea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_developed_by.tscn" id="2_nkcil"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d4mss7bkk7jnc" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_sound.tscn" id="6_3d37g"]
 [ext_resource type="PackedScene" uid="uid://qjc3g8onrwci" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_sound.tscn" id="7_1mxf5"]
 [ext_resource type="PackedScene" uid="uid://c14daqlvx3xkm" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_art.tscn" id="8_tpx1s"]
-[ext_resource type="PackedScene" uid="uid://doiirpjlj7sld" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_1.tscn" id="9_p8alv"]
 [ext_resource type="PackedScene" uid="uid://cmsrh2sm02ar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_2.tscn" id="10_qtr6t"]
 [ext_resource type="PackedScene" uid="uid://cmsrhpc40rar4" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/body_art_3.tscn" id="11_otntu"]
 [ext_resource type="PackedScene" uid="uid://cdkm6woke8xea" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_special_thanks.tscn" id="12_wwlwk"]
@@ -112,8 +111,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("15_uj88h")
 
-[node name="BodyArt1" parent="BodyArt" instance=ExtResource("9_p8alv")]
+[node name="BodyArt1" parent="BodyArt" instance=ExtResource("11_otntu")]
 layout_mode = 1
+offset_left = 548.0
+offset_top = 339.0
+offset_right = 548.0
+offset_bottom = 339.0
 
 [node name="BodyArt2" parent="BodyArt" instance=ExtResource("10_qtr6t")]
 layout_mode = 1

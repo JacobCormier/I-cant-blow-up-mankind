@@ -3,3 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bemcqm5lywh3n" path="res://scenes/ui/dialogue/dialogue_boxes/Credits/header_base_text.tscn" id="1_v6knc"]
 
 [node name="HeaderArt" instance=ExtResource("1_v6knc")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_top = -48.0
+offset_right = 138.0
+offset_bottom = 49.0
+
+[node name="DialogueLabel" parent="NinePatchRect/MarginContainer" index="0"]
+text = "Art + Assets"

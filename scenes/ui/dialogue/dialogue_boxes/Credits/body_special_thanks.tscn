@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmswckc40rar4"]
+[gd_scene load_steps=5 format=3 uid="uid://cmswckc40rar4"]
 
 [ext_resource type="Script" uid="uid://b8gu6jnhnerka" path="res://scripts/dialogue/dialogue_script.gd" id="1_n5jfn"]
 [ext_resource type="Texture2D" uid="uid://eyq25q8trk07" path="res://resources/assets/ui/panel_grey_bolts_detail_b.png" id="2_8xcgi"]
+[ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="3_8xcgi"]
 [ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_eft3w"]
 
 [node name="BodySpecialThanks" type="Control"]
@@ -17,11 +18,18 @@ size_flags_horizontal = 4
 script = ExtResource("1_n5jfn")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = -130.0
-offset_top = -52.0
-offset_right = 131.0
-offset_bottom = 53.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -112.0
+offset_right = 110.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(130, 52)
 texture = ExtResource("2_8xcgi")
 patch_margin_left = 16
@@ -41,14 +49,20 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
+[node name="MochiFace" type="Sprite2D" parent="NinePatchRect/MarginContainer"]
+position = Vector2(111, 112)
+scale = Vector2(0.492611, 0.478873)
+texture = ExtResource("3_8xcgi")
+
 [node name="DialogueLabel" type="Label" parent="NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0.317647, 0.372549, 0.419608, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_eft3w")
 theme_override_font_sizes/font_size = 20
-text = "Derpyderpy"
+text = "Jacob’s Cat Mochi"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3

@@ -1,0 +1,183 @@
+[gd_scene load_steps=7 format=3 uid="uid://rrq4jspi003e"]
+
+[ext_resource type="Script" uid="uid://bovc8fhhsjjh7" path="res://scripts/dialogue/message_transition_script.gd" id="1_ibglv"]
+[ext_resource type="Script" uid="uid://b8gu6jnhnerka" path="res://scripts/dialogue/dialogue_script.gd" id="1_qaghd"]
+[ext_resource type="Texture2D" uid="uid://bwkikw5adytt" path="res://resources/assets/ui/panel_grey_red.png" id="2_1jjbf"]
+[ext_resource type="FontFile" uid="uid://bdmuvtj8lv6s6" path="res://resources/assets/fonts/upheaval/upheavtt.ttf" id="3_ibglv"]
+[ext_resource type="Texture2D" uid="uid://cbn7uo8r3iueq" path="res://resources/assets/ui/panel_grey_green.png" id="5_epo56"]
+[ext_resource type="Script" uid="uid://pomx6x03rjjb" path="res://scripts/dialogue/ICBM_dialogue_script.gd" id="5_mveo0"]
+
+[node name="ICBMText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -128.0
+offset_top = -40.5
+offset_right = 128.0
+offset_bottom = 40.5
+script = ExtResource("1_ibglv")
+
+[node name="ICBMHeader" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qaghd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ICBMHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -48.5
+offset_right = 136.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1jjbf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="ICBMHeader/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogueLabel" type="Label" parent="ICBMHeader/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ibglv")
+theme_override_font_sizes/font_size = 40
+text = "I.C.B.M."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ICBMHeader2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_mveo0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ICBMHeader2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -48.0
+offset_right = 135.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_epo56")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Cant" type="Label" parent="ICBMHeader2/NinePatchRect"]
+custom_minimum_size = Vector2(17.905, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_top = 67.0
+offset_right = -12.595
+offset_bottom = 127.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ibglv")
+theme_override_font_sizes/font_size = 20
+text = "ant"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BlowUp" type="Label" parent="ICBMHeader2/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 2.5
+offset_top = 67.0
+offset_right = 20.405
+offset_bottom = 190.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ibglv")
+theme_override_font_sizes/font_size = 20
+text = "lowUp"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Mankind" type="Label" parent="ICBMHeader2/NinePatchRect"]
+custom_minimum_size = Vector2(17.905, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 35.5
+offset_top = 67.0
+offset_right = 53.405
+offset_bottom = 211.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ibglv")
+theme_override_font_sizes/font_size = 20
+text = "ankind"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DialogueLabel" type="Label" parent="ICBMHeader2/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_top = 30.0
+offset_right = 106.5
+offset_bottom = 66.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ibglv")
+theme_override_font_sizes/font_size = 40
+text = "I.C.B.M."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
