@@ -62,12 +62,12 @@ func start_dialogue() -> void:
 
 func next_story_step() -> void:
 	current_step += 1
-	print(current_step)
 	var current_story_step
 	
 	if story_array.size() > current_step:
 		current_story_step = story_array[current_step]
 	else:
+		get_tree().change_scene_to_file("res://scenes/story_levels/0_main_menu.tscn")
 		return
 
 	current_story_step.trigger_dialogue()
