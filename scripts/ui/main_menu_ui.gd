@@ -66,18 +66,17 @@ func _on_launch_button_pressed() -> void:
 func _on_standard_button_pressed() -> void:
 	var scene_path = "res://scenes/endless_levels/standard.tscn"
 	Globals.current_level = -1
+	PlayerStats.current_score = 0
 	get_tree().change_scene_to_file(scene_path)
 	
 func _on_arcade_button_pressed() -> void:
 	var scene_path = "res://scenes/endless_levels/arcade.tscn"
 	Globals.current_level = -1
+	PlayerStats.current_score = 0
 	get_tree().change_scene_to_file(scene_path)
 	
 func _on_first_person_button_pressed() -> void:
 	var scene_path = "res://scenes/endless_levels/first_person.tscn"
 	Globals.current_level = -1
+	PlayerStats.current_score = 0
 	get_tree().change_scene_to_file(scene_path)
-
-func _on_toggle_unlock_button_pressed() -> void:
-	PlayerStats.toggle_unlock()
-	endless_button.disabled = not PlayerStats.loaded_endless_unlocked
