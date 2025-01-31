@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d4gsarj15etcw"]
 
-[ext_resource type="Script" path="res://scripts/cutscenes/transition_2_3.gd" id="1_xc4ri"]
+[ext_resource type="Script" uid="uid://ggqoo1g5od2s" path="res://scripts/cutscenes/transition_2_3.gd" id="1_xc4ri"]
 [ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="2_acfpc"]
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="2_bva8p"]
 [ext_resource type="Script" uid="uid://banqelddfh8mm" path="res://scripts/cutscenes/transition_globe.gd" id="2_d64km"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5gs18itf47d4"]
+[gd_scene load_steps=10 format=3 uid="uid://b5gs18itf47d4"]
 
+[ext_resource type="Script" uid="uid://mdxklk8eesbj" path="res://scenes/story_levels/level_2_init.gd" id="1_ikyu8"]
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="1_rqmkm"]
 [ext_resource type="PackedScene" uid="uid://c1rnwuckdbdon" path="res://scenes/world/GameGlobe.tscn" id="2_or4ol"]
 [ext_resource type="Resource" uid="uid://dkviox713ps61" path="res://resources/custom/level_data/level2_data.tres" id="3_pa4fy"]
@@ -16,6 +17,7 @@ emission = Color(0.923906, 0, 0.246785, 1)
 emission_energy_multiplier = 0.15
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_ikyu8")
 
 [node name="CustomEnvironment" parent="." instance=ExtResource("1_rqmkm")]
 

@@ -98,6 +98,7 @@ func get_current_level_obstacles() -> Array:
 		return level_2_buildings
 	elif current_level == 3:
 		# Level 3, Asteroids (Eventually), Lower fuel
+		print(level_3_buildings)
 		return level_3_buildings
 	elif current_level == -1:
 		# Endless mode

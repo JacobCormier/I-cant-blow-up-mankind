@@ -54,14 +54,12 @@ func _ready():
 		for x in range(0, 400):
 			_create_decoration()
 	
-func _process(delta: float) -> void:
-	
-		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
-		
-		
-		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
-		globe_visual.rotate_z(orbit_speed_z * delta)
-		
+func _process(delta: float) -> void:	
+	globe_visual.rotate_x(ORBIT_SPEED_X * delta)
+
+	orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
+	globe_visual.rotate_z(orbit_speed_z * delta)
+
 #region Sphere Positioning
 
 # Function to generate a random point on the sphere and surface normal
@@ -246,6 +244,7 @@ func _create_fuel() -> void:
 		create_object_at_random_bottom_point(new_object, globe_game_radius)
 
 func _create_obstacle() -> void:
+	print(Globals.current_level)
 	var obstacles = Globals.get_current_level_obstacles()
 	var size = obstacles.size()
 	var new_object = obstacles[randi_range(0, size - 1)]
