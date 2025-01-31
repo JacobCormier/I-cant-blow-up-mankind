@@ -21,7 +21,6 @@ func set_environment_color(ground_color: Color, sky_color: Color) -> void:
 	
 func _ready():
 	PlayerStats.is_gameplay_running = false
-	print("Transition")
 	SoundManager.kill_engine()
 	Engine.time_scale = 1
 	camera_root_position = tracking_cam.position
@@ -50,7 +49,7 @@ func start_tween_animation(callback):
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(icbm_character, "position:z", 0,  5)
-	tween.tween_interval(6)
+	tween.tween_interval(1)
 	tween2.set_trans(Tween.TRANS_LINEAR)
 	tween2.tween_property(tracking_cam, "position:y", -20,  5)
 	tween2.set_ease(Tween.EASE_OUT)

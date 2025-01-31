@@ -27,7 +27,6 @@ noise = SubResource("FastNoiseLite_rfwuq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26u3x"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
-normal_scale = 16.0
 normal_texture = SubResource("NoiseTexture2D_ovfvn")
 
 [node name="Transition_1_2" type="Node3D"]
