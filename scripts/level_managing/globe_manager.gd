@@ -235,8 +235,8 @@ func _reset_object(object: Node3D) -> void:
 
 func _create_fuel() -> void:
 		var new_object
-		# Golden Fuel Cans have a 20% of spawning
-		var random_selection = randi_range(0, 4)
+		# Golden Fuel Cans have a 15% of spawning
+		var random_selection = randi_range(0, 5)
 		if random_selection != 0:
 			new_object = Globals.FUEL_CAN
 		else:
