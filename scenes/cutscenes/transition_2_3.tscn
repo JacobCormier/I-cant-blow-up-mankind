@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d4gsarj15etcw"]
 
-[ext_resource type="Script" path="res://scripts/cutscenes/transition_2_3.gd" id="1_xc4ri"]
+[ext_resource type="Script" uid="uid://ggqoo1g5od2s" path="res://scripts/cutscenes/transition_2_3.gd" id="1_xc4ri"]
 [ext_resource type="PackedScene" uid="uid://bu5bgy0tdjos2" path="res://scenes/world/dioramas/empire_diorama.tscn" id="2_acfpc"]
 [ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="2_bva8p"]
 [ext_resource type="Script" uid="uid://banqelddfh8mm" path="res://scripts/cutscenes/transition_globe.gd" id="2_d64km"]
@@ -19,16 +19,17 @@ colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0
 noise_type = 3
 frequency = 0.0034
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bva8p"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
 seamless = true
 as_normal_map = true
 color_ramp = SubResource("Gradient_4fqsv")
 noise = SubResource("FastNoiseLite_pcctt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bva8p"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_bva8p")
+normal_scale = 9.0
+normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htgb0"]
 albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
@@ -58,7 +59,7 @@ transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.4334
 cast_shadow = 0
 mesh = SubResource("SphereMesh_smda0")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
+surface_material_override/0 = SubResource("StandardMaterial3D_bva8p")
 
 [node name="GroundCam" type="Camera3D" parent="."]
 transform = Transform3D(-0.999077, 0.0131688, 0.0408882, 3.66114e-09, 0.951851, -0.306562, -0.0429565, -0.306279, -0.950972, 2.859, 506.941, 5.239)

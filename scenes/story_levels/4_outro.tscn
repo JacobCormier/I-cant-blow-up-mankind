@@ -1,6 +1,7 @@
 [gd_scene load_steps=46 format=3 uid="uid://cgkpwkc0ea2i5"]
 
 [ext_resource type="Script" uid="uid://btspb5ogbnhar" path="res://scripts/cutscenes/outro.gd" id="1_830yr"]
+[ext_resource type="PackedScene" uid="uid://3rvmrijmbdl0" path="res://scenes/world/custom_environment.tscn" id="2_o4cpy"]
 [ext_resource type="Texture2D" uid="uid://bego8y2qlfr1n" path="res://resources/assets/png/moon_texture.jpg" id="2_uy4vs"]
 [ext_resource type="Texture2D" uid="uid://bvqqcbtgsydm8" path="res://resources/assets/png/moon_normal.jpg" id="3_qhnro"]
 [ext_resource type="PackedScene" uid="uid://cjj5vuqes34yd" path="res://resources/assets/models/ICBM/ICBM.fbx" id="3_uy4vs"]
@@ -16,6 +17,34 @@
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="13_ckfaw"]
 [ext_resource type="PackedScene" uid="uid://cti5lnlicuk1l" path="res://scenes/player/face_cam_rocket.tscn" id="14_klxeu"]
 [ext_resource type="PackedScene" uid="uid://vseos7h81cdu" path="res://scenes/ui/dialogue/outro_dialogue_layer.tscn" id="16_qhnro"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mm1gd"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_lwdw5"]
+sky_material = SubResource("ProceduralSkyMaterial_mm1gd")
+
+[sub_resource type="Environment" id="Environment_5h676"]
+background_mode = 2
+background_color = Color(0.119751, 0.7315, 0.851563, 1)
+sky = SubResource("Sky_lwdw5")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.75
+glow_intensity = 1.4
+glow_strength = 1.22
+glow_blend_mode = 0
+fog_mode = 1
+fog_density = 1.0
+fog_depth_begin = 0.0
+fog_depth_end = 410.5
+volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
+volumetric_fog_length = 74.78
+volumetric_fog_detail_spread = 1.21838
+adjustment_contrast = 1.02
+adjustment_saturation = 1.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_qhnro"]
 radius = 500.0
@@ -36,53 +65,11 @@ as_normal_map = true
 color_ramp = SubResource("Gradient_4fqsv")
 noise = SubResource("FastNoiseLite_pcctt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4cpy"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
+normal_scale = 9.0
 normal_texture = SubResource("NoiseTexture2D_0hec7")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n355b"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-sky_cover_modulate = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_jm84i"]
-sky_material = SubResource("ProceduralSkyMaterial_n355b")
-
-[sub_resource type="Environment" id="Environment_1a3k3"]
-background_mode = 2
-background_color = Color(0.119751, 0.7315, 0.851563, 1)
-sky = SubResource("Sky_jm84i")
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.75
-tonemap_mode = 3
-tonemap_exposure = 0.8
-glow_enabled = true
-glow_intensity = 1.4
-glow_strength = 1.22
-glow_blend_mode = 0
-fog_mode = 1
-fog_density = 1.0
-fog_depth_begin = 0.0
-fog_depth_end = 410.5
-volumetric_fog_emission = Color(0.046875, 0.910645, 1, 1)
-volumetric_fog_length = 74.78
-volumetric_fog_detail_spread = 1.21838
-adjustment_contrast = 1.02
-adjustment_saturation = 1.1
-
-[sub_resource type="GDScript" id="GDScript_lbxvt"]
-script/source = "extends WorldEnvironment
-
-
-func set_sky_color(color: Color):
-	environment.sky.sky_material.sky_top_color = color
-	environment.sky.sky_material.sky_horizon_color = color
-	environment.sky.sky_material.ground_bottom_color = color
-	environment.sky.sky_material.ground_horizon_color = color
-"
 
 [sub_resource type="SphereMesh" id="SphereMesh_uy4vs"]
 radius = 500.0
@@ -187,6 +174,9 @@ emission_energy_multiplier = 0.15
 [node name="Outro" type="Node3D"]
 script = ExtResource("1_830yr")
 
+[node name="CustomEnvironment" parent="." instance=ExtResource("2_o4cpy")]
+environment = SubResource("Environment_5h676")
+
 [node name="GameGlobe" type="Node3D" parent="."]
 
 [node name="VisualContainer" type="Node3D" parent="GameGlobe"]
@@ -196,13 +186,9 @@ transform = Transform3D(1, 0, 0, 0, 0.431, 0.902, 0, -0.902, 0.431, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("SphereMesh_qhnro")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
+surface_material_override/0 = SubResource("StandardMaterial3D_o4cpy")
 
 [node name="WaveTimer" type="Timer" parent="GameGlobe"]
-
-[node name="CustomEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1a3k3")
-script = SubResource("GDScript_lbxvt")
 
 [node name="DirectionalLight_Part1" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.935098, -0.354389, 0, 0.354389, 0.935098, 0, 3.08736, 1.04838)

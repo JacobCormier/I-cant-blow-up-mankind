@@ -46,9 +46,10 @@ as_normal_map = true
 color_ramp = SubResource("Gradient_4fqsv")
 noise = SubResource("FastNoiseLite_pcctt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq7ph"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8m8y"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
+normal_scale = 9.0
 normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ix6l"]
@@ -86,7 +87,7 @@ transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.4334
 cast_shadow = 0
 mesh = SubResource("SphereMesh_smda0")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uq7ph")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8m8y")
 
 [node name="MenuPlayer" parent="." instance=ExtResource("3_fnbgm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0203956, 494.067, 0.081514)

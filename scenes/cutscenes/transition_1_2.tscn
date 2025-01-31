@@ -11,22 +11,23 @@ height = 6000.0
 radial_segments = 120
 rings = 64
 
-[sub_resource type="Gradient" id="Gradient_cw078"]
+[sub_resource type="Gradient" id="Gradient_4fqsv"]
 colors = PackedColorArray(0.519531, 0.519531, 0.519531, 1, 0.789063, 0.789063, 0.789063, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_s8laa"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcctt"]
 noise_type = 3
 frequency = 0.0034
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0hec7"]
 seamless = true
 as_normal_map = true
-color_ramp = SubResource("Gradient_cw078")
-noise = SubResource("FastNoiseLite_s8laa")
+color_ramp = SubResource("Gradient_4fqsv")
+noise = SubResource("FastNoiseLite_pcctt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eneyr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q5uh"]
 albedo_color = Color(0.377091, 0.890625, 0.191345, 1)
 normal_enabled = true
+normal_scale = 9.0
 normal_texture = SubResource("NoiseTexture2D_0hec7")
 
 [node name="Transition_1_2" type="Node3D"]
@@ -52,7 +53,7 @@ transform = Transform3D(1.00465, 0, 0, 0, 0.433414, 0.90635, 0, -0.90635, 0.4334
 cast_shadow = 0
 mesh = SubResource("SphereMesh_27lpb")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_eneyr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3q5uh")
 
 [node name="ICBMCharacter" parent="." instance=ExtResource("3_rfwuq")]
 transform = Transform3D(1, 0, 0, 0, 0.0157073, 0.999876, 0, -0.999876, 0.0157073, -0.02, 503.044, 137.77)
