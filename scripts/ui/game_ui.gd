@@ -153,6 +153,7 @@ func _on_restart_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	PlayerStats.reload_fuel()
 	SoundManager.kill_sound()
+	SoundManager.kill_engine()
 	get_tree().change_scene_to_file("res://scenes/story_levels/0_main_menu.tscn")
 
 func slide_face_cam():

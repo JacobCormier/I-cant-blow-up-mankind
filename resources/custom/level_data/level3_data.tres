@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_llfh4")
-progress_goal = 3000
-initial_obstacles = 200
+progress_goal = 4000
+initial_obstacles = 300
 initial_fuel = 100
 obstacles_per_wave = 30
 fuel_per_wave = 20

@@ -12,7 +12,7 @@ var camera_root_position
 func _ready() -> void:
 	PlayerStats.is_gameplay_running = false
 	Engine.time_scale = 1
-	SoundManager.kill_sound()
+	SoundManager.kill_engine()
 	camera_root_position = ground_cam.position
 	start_tween_animation(finish)
 	

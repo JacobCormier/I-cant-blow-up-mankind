@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://c0l36fjudti3x" path="res://resources/custom/level_data/standard_endless_data.tres" id="3_dhlg7"]
 [ext_resource type="PackedScene" uid="uid://cwtn180ee6nw8" path="res://scenes/player/player.tscn" id="3_km06b"]
 [ext_resource type="PackedScene" uid="uid://bj45q8xq7lgpo" path="res://scenes/ui/game_ui.tscn" id="4_a8woj"]
-[ext_resource type="Script" path="res://scripts/level_managing/color_change_environment.gd" id="6_1buqg"]
+[ext_resource type="Script" uid="uid://bxy4wmcj4rvul" path="res://scripts/level_managing/color_change_environment.gd" id="6_1buqg"]
 
 [node name="StandardEndless" type="Node3D"]
 

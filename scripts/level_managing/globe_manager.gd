@@ -54,14 +54,12 @@ func _ready():
 		for x in range(0, 400):
 			_create_decoration()
 	
-func _process(delta: float) -> void:
-	
-		globe_visual.rotate_x(ORBIT_SPEED_X * delta)
-		
-		
-		orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
-		globe_visual.rotate_z(orbit_speed_z * delta)
-		
+func _process(delta: float) -> void:	
+	globe_visual.rotate_x(ORBIT_SPEED_X * delta)
+
+	orbit_speed_z = lerpf(orbit_speed_z, orbit_speed_z_target, delta * z_transition_speed)
+	globe_visual.rotate_z(orbit_speed_z * delta)
+
 #region Sphere Positioning
 
 # Function to generate a random point on the sphere and surface normal

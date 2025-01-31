@@ -5,11 +5,13 @@ extends Node3D
 @onready var tracking_cam: Camera3D = $ICBMCharacter/TrackingCam
 @onready var transition_globe: Node3D = $TransitionGlobe
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var globe_visual: MeshInstance3D = $TransitionGlobe/VisualContainer/GlobeVisual
 
 var rumble_intensity = 0
 
 var tween
 var tween2
+var globe_tween
 var camera_root_position
 var current_ground_color = Color("#60e331")
 var current_sky_color = Color("#38b2f5")
@@ -19,6 +21,7 @@ func set_environment_color(ground_color: Color, sky_color: Color) -> void:
 	
 func _ready():
 	PlayerStats.is_gameplay_running = false
+	SoundManager.kill_engine()
 	Engine.time_scale = 1
 	camera_root_position = tracking_cam.position
 	start_tween_animation(finish)
@@ -37,12 +40,16 @@ func switch_camera():
 func start_tween_animation(callback):
 	tween = get_tree().create_tween()
 	tween2 = get_tree().create_tween()
+	globe_tween = get_tree().create_tween()
 	
 	# Shake Camera as rocket flies by
+	globe_tween.set_trans(Tween.TRANS_LINEAR)
+	globe_tween.tween_property(globe_visual, "rotation_degrees:x", 10*11, 16)
+	
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(icbm_character, "position:z", 0,  5)
-	tween.tween_interval(6)
+	tween.tween_interval(1)
 	tween2.set_trans(Tween.TRANS_LINEAR)
 	tween2.tween_property(tracking_cam, "position:y", -20,  5)
 	tween2.set_ease(Tween.EASE_OUT)

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4mddl")
-progress_goal = 3000
+progress_goal = 2000
 initial_obstacles = 200
 initial_fuel = 150
 obstacles_per_wave = 5
