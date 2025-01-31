@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b84i5sk53v6yp" path="res://resources/assets/png/MochiFace.png" id="6_1anad"]
 [ext_resource type="Shader" uid="uid://bc5ou03v04ash" path="res://resources/assets/shaders/horizontal_glitch_shader.gdshader" id="6_avoad"]
 [ext_resource type="Texture2D" uid="uid://di7favq6mp7lg" path="res://resources/assets/ui/minimap_icon_jewel_yellow.png" id="6_bxde6"]
-[ext_resource type="Script" path="res://scripts/ui/fuel_indicator.gd" id="7_aq72h"]
+[ext_resource type="Script" uid="uid://bjlivulhvfjlt" path="res://scripts/ui/fuel_indicator.gd" id="7_aq72h"]
 [ext_resource type="Texture2D" uid="uid://iw4j5vglh2cg" path="res://resources/assets/png/FacePanel.png" id="8_jb3l7"]
 [ext_resource type="PackedScene" uid="uid://dh2u5jg1f5ex2" path="res://scenes/ui/dialogue/random_quip_box.tscn" id="9_x0n6o"]
 [ext_resource type="Texture2D" uid="uid://bitg6b4oj0b37" path="res://resources/assets/ui/minimap_arrow_b.png" id="11_bxde6"]
@@ -349,6 +349,7 @@ horizontal_alignment = 1
 
 [node name="RandomQuipBox" parent="ScoreControl" instance=ExtResource("9_x0n6o")]
 layout_mode = 1
+death_messages = Array[String](["I'm sorry everyone!", "I didn't mean to!", "If only I wasn't born.", "Here comes the boom!", "Not like the simulations!", "AHHHHHHHHHHH!", "Mission failed.", "F", "run away!", "Oh no!", "OH NO OH NO OH NO!", "SKIBIDI BOP MM DADA PFFFFFF", "Going nuclear!", "This is bad.", "That's a spicy meatball!", "It's over.", "Eject! Eject!", "Not my best landing.", "navigation failure!", "I hope there's a checkpoint!", "fatality!", "Lag! it was Lag!", "Laaaaaaaaaag!", "Going out with a bang!", "Wall jumps don't work!", "nothing happened."])
 
 [node name="FaceCam" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ri6y0")
