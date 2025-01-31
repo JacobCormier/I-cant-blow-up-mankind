@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/pick-up-sfx.wav-f72d4f1f05d69a3000f9f64aa60e5
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100

@@ -227,7 +227,7 @@ func pass_in_movement_direction(direction: PlayerController.TurnDirection):
 
 func _reset_building_for_points(object: Node3D) -> void:
 	# Technically, ANYTHING we reset with this is generating pointsd >:(
-	PlayerStats.add_to_score(10)
+	PlayerStats.add_to_score(1)
 	place_object_at_random_bottom_point(object, globe_game_radius)	
 		
 func _reset_object(object: Node3D) -> void:

@@ -34,7 +34,6 @@ func start_dialogue() -> void:
 
 func next_story_step() -> void:
 	current_step += 1
-	print(current_step)
 	var current_story_step
 	
 	if story_array.size() > current_step:

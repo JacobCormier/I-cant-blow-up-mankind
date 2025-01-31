@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 		AnimationUtils.rumble(active_camera, camera_root_position)
 
 func intro_started():
-	print("intro_started")
 	active_camera = intro_cam
 	intro_cam.make_current()
 	
@@ -50,7 +49,7 @@ func orbit_moon_started():
 	player.visible = false
 
 func finale_started():
-	print("finale_started")
+	pass
 
 func start_camera_shake():
 	camera_shake = true
